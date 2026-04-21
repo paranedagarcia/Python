@@ -1,6 +1,6 @@
 ---
 id: ml-hiperparametros
-title: "Hiperparámetros en Scikit-Learn"
+title: "Hiperparámetros"
 sidebar_label: "Hiperparámetros"
 sidebar_position: 3
 ---

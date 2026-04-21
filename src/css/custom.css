@@ -33,6 +33,14 @@
   font: normal 1.3em KaTeX_Main, Times New Roman, serif !important;
 }
 
+.hero {
+  align-items: center;
+  background-color: rgb(66 147 167);
+  color: var(--ifm-hero-text-color);
+  display: flex;
+  padding: 4rem 2rem;
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner_qdFl {
     padding: 1rem !important;
