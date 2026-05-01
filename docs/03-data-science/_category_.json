@@ -1,6 +1,6 @@
 {
-  "label": "📄​ Data Science",
-  "position": 2,
+  "label": "Data Science",
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": "Conceptos generales sobre Data Science"
