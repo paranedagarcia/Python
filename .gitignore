@@ -1,24 +1,19 @@
 # Dependencies
 /node_modules
-<<<<<<< HEAD
 /.venv
-=======
->>>>>>> a0cc904 (first commit)
 
 # Production
 /build
+/blog
 
 # Generated files
 .docusaurus
 .cache-loader
+.quarto
 
 # Misc
 .DS_Store
-<<<<<<< HEAD
 .env
-=======
-.env.local
->>>>>>> a0cc904 (first commit)
 .env.development.local
 .env.test.local
 .env.production.local
@@ -26,8 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-<<<<<<< HEAD
-=======
-
-notes.txt
->>>>>>> a0cc904 (first commit)

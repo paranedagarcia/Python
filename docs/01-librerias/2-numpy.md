@@ -7,7 +7,7 @@ sidebar_position: 2
 
 NumPy (Numerical Python) es una librería fundamental de Python para computación científica. Proporciona soporte para arrays y matrices multidimensionales, junto con una amplia colección de funciones matemáticas de alto nivel para operar sobre estos objetos. Es la base para muchas otras librerías científicas como Pandas, Matplotlib y Scikit-learn.
 
-## Tipos de datos
+## 🤎​Tipos de datos
 
 
 ## Arrays
