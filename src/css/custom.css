@@ -1,0 +1,126 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+.katex {
+  font: normal 1.3em KaTeX_Main, Times New Roman, serif !important;
+}
+
+.hero {
+  align-items: center;
+  background-color: rgb(66 147 167);
+  color: var(--ifm-hero-text-color);
+  display: flex;
+  padding: 4rem 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner_qdFl {
+    padding: 1rem !important;
+  }
+}
+
+figure {
+  display: block;
+  margin-block-start: 0em !important;
+  margin-block-end: 0em !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+}
+
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.6rem !important;
+  color: #525f58 !important;
+}
+
+.title_kItE {
+  --ifm-h1-font-size: 2.6rem !important;
+  margin-bottom: calc(1.25 * var(--ifm-leading));
+  color: #525f58 !important;
+}
+
+.tabs__item--active {
+  background-color: rgb(170, 201, 107) !important;
+}
+
+.table-of-contents {
+  font-size: .9rem !important;
+}
+
+.alert {
+  margin-bottom: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+h1 {
+  font-size: 2.6rem !important;
+}
+
+h2 {
+  font-size: 2rem !important;
+}
+
+h3 {
+  font-size: 1.6rem !important;
+}
+
+h4 {
+  font-size: 1.3rem !important;
+}
+
+h2.anchor.anchorTargetStickyNavbar_Vzrq::before {
+  content: "▫️";
+  margin-left: -0.5em !important;
+}
+
+h3.anchor.anchorTargetStickyNavbar_Vzrq::before {
+  content: "🔹";
+  margin-left: -0.5em !important;
+}
+
+/* sidebar */
+.theme-doc-sidebar-item-link-level-2 .menu__link::before {
+  content: "🔹";
+}
+
+.table-of-contents ul:not([class]) a.table-of-contents__link::before {
+  content: "🔸";
+  margin-left: -0.8em !important;
+}
+=======
+>>>>>>> a0cc904 (first commit)
+=======
+
+.katex {
+    font: normal 1.3em KaTeX_Main, Times New Roman, serif !important;
+}
+>>>>>>> a1ed4ca (actualizacion)
