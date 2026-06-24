@@ -2,7 +2,15 @@
 id: controles
 title: "Sentencias de control"
 sidebar_label: "Sentencias de control"
-sidebar_position: 4
+sidebar_position: 6
 ---
 
-## logicas
+## Lógicas
+
+
+## Control de flujo
+
+### For
+
+
+### While

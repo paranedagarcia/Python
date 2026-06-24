@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Python',
-  tagline: 'Programación en Python',
+  title: 'Programación en Python v1.0',
+  tagline: 'Desde Ciencia de Datos hasta Machine Learning',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -20,15 +20,16 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://paranedagarcia.github.io/',
+  url: 'https://patricioaraneda.cl/',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/Python/',
+  baseUrl: '/python/',
+
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'paranedagarcia', // Usually your GitHub org/user name.
-  projectName: 'Python', // Usually your repo name.
+  projectName: 'python', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -111,22 +112,22 @@ const config = {
                 label: 'Curso',
                 to: '/docs/intro',
               },
+              {
+                label: 'Autor',
+                to: '/docs/autor',
+              },
             ],
           },
           {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/paranedagarcia',
               },
               {
                 label: 'X',
-                href: 'https://x.com/docusaurus',
+                href: 'https://x.com/paranedagarcia',
               },
             ],
           },
@@ -136,12 +137,12 @@ const config = {
               
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/paranedagarcia/Python',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Patricio Araneda, Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
