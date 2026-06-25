@@ -1,0 +1,17 @@
+
+
+<br />
+#### 💻 Código:
+<Tabs>
+<TabItem value="mnp" label="Antecedentes" default>
+<div class="alert alert--primary">
+**Muestreo no probabilistico:**<br />
+</div>
+</TabItem>
+<TabItem value="mnp-python" label="Pyhton" default>
+```python showLineNumbers
+# Implementación en Python
+```
+</TabItem>
+</Tabs>
+<br />

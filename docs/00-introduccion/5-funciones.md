@@ -2,7 +2,7 @@
 id: funciones
 title: "Funciones"
 sidebar_label: "Funciones"
-sidebar_position: 7
+sidebar_position: 10
 ---
 
 

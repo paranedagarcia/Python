@@ -1,14 +1,16 @@
 ---
-id: instalacion
+id: operadores
 title: "Operadores básicos"
 sidebar_label: "Operadores básicos"
 description: "Operaciones básicos"
-sidebar_position: 2
+sidebar_position: 4
 ---
 # Operadores básicos
+:::info[Codigo:]
+- https://colab.research.google.com/drive/1PBjQ5QWjprbD8ruNbMt2Z_TufHtEViZ7
+:::
 
-
-```python
+```python title="Operaciones aritméticas"
 print("--- Ejemplos de Operaciones Aritméticas ---")
 
 # Definimos dos números para las operaciones
@@ -42,21 +44,35 @@ print(f"Multiplicación de {numero1} y {numero2}: {resultado_multiplicacion}")
 # División (siempre devuelve un flotante)
 resultado_division = numero1 / numero2
 print(f"División de {numero1} y {numero2}: {resultado_division}") 
-
+```
+```python
 # División Entera (descarta la parte decimal)
 resultado_division_entera = numero1 // numero2
 print(f"División Entera de {numero1} y {numero2}: {resultado_division_entera}") 
-
+```
+```python
 # Módulo (resto de la división)
 resultado_modulo = numero1 % numero2
 print(f"Módulo de {numero1} y {numero2}: {resultado_modulo}") 
-
+```
+```python
 # Potencia (numero1 elevado a la potencia de numero2)
 resultado_potencia = numero1 ** 2 # 20 elevado a la 2
 print(f"Potencia de {numero1} al cuadrado: {resultado_potencia}") 
 
 ```
-
+### Jerarquia de operaciones
+```python
+# Jerarquía PEMDAS
+# P: Parentesis
+# E: exponenciacion
+# M: multiplicacion
+# D: division
+# A: Adicion
+# S: Sustracción
+(2 + 3) * (5 + 5)
+```
+Operaciones Lógicas
 
 ```python
 print("--- Ejemplos de Operaciones Lógicas ---")

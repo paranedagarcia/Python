@@ -29,6 +29,9 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.hero--primary {
+  background-color: #188385 !important;
+}
 .katex {
     font: normal 1.3em KaTeX_Main, Times New Roman, serif !important;
 }
