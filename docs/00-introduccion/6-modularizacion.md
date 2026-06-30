@@ -98,7 +98,7 @@ def rut_valido(rut_str):
     valida que la cadena recibida sea un rut validado
     """
     def rut_valido(rut_str):
-    # 1. Limpieza y separación (usando slicing de las fuentes)
+    # 1. Limpieza y separación
     limpio = rut_str.replace(".", "").replace("-", "").upper()
     cuerpo, dv_real = limpio[:-1], limpio[-1] #
     

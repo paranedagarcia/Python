@@ -101,7 +101,7 @@ h3.anchor.anchorTargetStickyNavbar_Vzrq::before {
 
 /* sidebar */
 .theme-doc-sidebar-item-link-level-2 .menu__link::before {
-  content: "​-";
+  content: "​";
   margin-left: 0em !important;
 }
 
