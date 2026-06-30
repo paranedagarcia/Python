@@ -210,3 +210,16 @@ for n in numeros:
 | --- | --- | --- |
 | **`while`** | Cuando la cantidad de repeticiones **depende de una condición** o de eventos que ocurren en tiempo de ejecución (interacción del usuario, estado de una conexión, etc.). | Se puede volver infinito si no se maneja con cuidado. |
 | **`for`** | Cuando quieres **recorrer una colección de datos fija** o necesitas realizar una acción una cantidad exacta de veces previamente calculada. | Es más seguro, limpio y rápido para recorrer datos. |
+
+
+### EJERCICIOS:
+```python showLineNumbers
+# detecta similitudes en listas
+"""
+Ana_peliculas = ["tiburon", "star wars", "fever", "olivia", "poltergeist", "kung fu panda", "minions", "everest", "titanic", "terremoto", "7 almas", "el padrino", "cadena perpetua", "el viaje de chihiro", "la vida es bella"]
+Carlos_peliculas = ["tron", "star wars", "olivia", "poltergeist", "el señor de los anillos", "minions", "duro de matar", "normandia", "terremoto", "harry potter", "el padrino", "007", "el viaje", "el camino"]
+
+1. ¿cuantas películas tienen en común?
+2. ¿qué peliculas tienen en común?
+"""
+```

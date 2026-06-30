@@ -6,7 +6,6 @@ sidebar_position: 10
 ---
 
 
-
 Las funciones son bloques de código reutilizables que realizan una tarea específica. Nos ayudan a organizar nuestro código, hacerlo más legible y evitar repetir código.
 
 ### Funciones Preconstruidas (Built-in) de Python
@@ -432,3 +431,49 @@ print(f"Estudiantes ordenados por edad: {estudiantes_ordenados_por_edad}")
 *   La función realiza una acción en lugar de devolver un valor (aunque técnicamente se puede hacer, es menos idiomático y menos legible).
 
 En resumen, las funciones lambda son una herramienta poderosa para mejorar la concisión de tu código, pero es importante usarlas con moderación y solo cuando la simplicidad de la función lo justifique.
+
+
+### Usa map con funciones lambda en listas
+El uso de **`map()`** con **funciones lambda** es una técnica común en Python para aplicar una operación específica a cada elemento de una lista de manera concisa. La función `map()` toma dos argumentos principales: una función y un objeto iterable (como una lista).
+
+A continuación se detalla el proceso y se proporcionan ejemplos basados en las fuentes:
+
+#### 1. Sintaxis Básica
+La estructura fundamental combina la definición "sobre la marcha" de una función anónima con la lista que se desea procesar:
+`map(lambda parámetro: expresión, lista)`.
+
+#### 2. Conversión a Lista
+En Python 3, `map()` devuelve un **iterador** (u objeto map) en lugar de una lista física. Esto ahorra memoria al no procesar todos los elementos simultáneamente. Para obtener una lista final con los resultados, es necesario envolver la llamada en el constructor **`list()`**.
+
+**Ejemplo de elevar al cuadrado:**
+```python
+numeros =
+# Aplica la lambda a cada número y convierte el iterador resultante en lista
+cuadrados = list(map(lambda n: n ** 2, numeros))
+# Resultado:
+```
+
+
+#### 3. Uso con múltiples listas
+La función `map()` puede aceptar más de un iterable. En este caso, la función lambda debe recibir tantos argumentos como listas se proporcionen, procesándolas en paralelo. Si las listas tienen longitudes diferentes, `map()` se detiene cuando se agota la lista más corta.
+
+**Ejemplo con dos listas:**
+```python
+list1 =
+list2 =
+# Suma elementos correspondientes de ambas listas
+sumas = list(map(lambda x, y: x + y, list1, list2))
+# Resultado:
+```
+
+
+#### 4. Alternativas y Rendimiento
+Aunque `map()` con lambda es eficiente, las fuentes indican que en el Python moderno se suelen preferir las **comprensiones de lista** (*list comprehensions*) por su mayor legibilidad y porque a menudo resultan más rápidas al no requerir la creación de una función intermedia.
+
+*   **Con `map`:** `list(map(lambda x: x**2, range(10)))`.
+*   **Con comprensión:** `[x**2 for x in range(10)]`.
+
+#### Casos de uso comunes
+*   **Transformación de tipos:** Convertir una lista de cadenas en enteros: `list(map(int, ["1", "2", "3"]))`.
+*   **Limpieza de texto:** Aplicar métodos de cadena como `strip()` o `upper()` a una lista de palabras.
+*   **Análisis de datos:** En librerías como **pandas**, el método `.map()` (y similares como `.apply()`) se utiliza para transformar columnas completas basándose en diccionarios o funciones lambda.
