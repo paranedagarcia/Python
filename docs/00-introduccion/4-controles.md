@@ -1,7 +1,7 @@
 ---
 id: controles
 title: "Sentencias de control"
-sidebar_label: "Sentencias de control"
+sidebar_label: "⚙️ Sentencias de control"
 sidebar_position: 9
 ---
 
@@ -109,6 +109,7 @@ else:
 :::
 
 ## Control de flujo
+
 Los controles de flujo basados en bucles o ciclos nos permiten ejecutar un bloque de código repetidas veces sin tener que escribirlo una y otra vez. En Python, contamos con dos estructuras principales para lograr esto: while (basado en una condición) y for (basado en colecciones o elementos iterables).
 
 ### While
@@ -220,6 +221,6 @@ Ana_peliculas = ["tiburon", "star wars", "fever", "olivia", "poltergeist", "kung
 Carlos_peliculas = ["tron", "star wars", "olivia", "poltergeist", "el señor de los anillos", "minions", "duro de matar", "normandia", "terremoto", "harry potter", "el padrino", "007", "el viaje", "el camino"]
 
 1. ¿cuantas películas tienen en común?
-2. ¿qué peliculas tienen en común?
+2. ¿qué películas tienen en común?
 """
 ```

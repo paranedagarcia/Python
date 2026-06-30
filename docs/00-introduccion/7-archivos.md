@@ -1,7 +1,7 @@
 ---
 id: archivos
 title: "Archivos y sistema operativo"
-sidebar_label: "Manejo de archivos"
+sidebar_label: "🗂️​ Manejo de archivos"
 description: "Ingesta de datos y procesos de carga"
 sidebar_position: 12
 ---

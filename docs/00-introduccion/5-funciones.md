@@ -1,7 +1,7 @@
 ---
 id: funciones
 title: "Funciones"
-sidebar_label: "Funciones"
+sidebar_label: "🔃 Funciones"
 sidebar_position: 10
 ---
 
@@ -13,7 +13,7 @@ Las funciones son bloques de código reutilizables que realizan una tarea espec�
 Python viene con muchas funciones ya listas para usar. Aquí te presento algunas de las más comunes y básicas.
 
 
-```python
+```python showLineNumbers
 # Función: print()
 # Uso: Muestra un mensaje o el valor de una variable en la consola.
 # Parámetros: Puede recibir cero o más argumentos (valores a mostrar).
@@ -30,7 +30,7 @@ print("Tengo", edad, "años.") # Con múltiples variables y texto
 ---
 
 
-```python
+```python showLineNumbers
 # Función: len()
 # Uso: Devuelve la longitud (cantidad de elementos) de un objeto.
 # Parámetros: Recibe un único argumento, que debe ser un objeto con longitud (como una cadena, lista o tupla).
@@ -47,7 +47,7 @@ print(f"La longitud de la lista es: {longitud_lista}")
 ---
 
 
-```python
+```python showLineNumbers
 # Función: type()
 # Uso: Devuelve el tipo de un objeto.
 # Parámetros: Recibe un único argumento (el objeto del que quieres saber el tipo).
@@ -65,7 +65,7 @@ print(f"El tipo de {es_verdad} es: {type(es_verdad)}")
 ---
 
 
-```python
+```python showLineNumbers
 # Función: input()
 # Uso: Permite al usuario introducir datos a través de la consola.
 # Parámetros: Opcionalmente, recibe un mensaje (string) que se muestra al usuario antes de que introduzca el dato.
@@ -84,7 +84,7 @@ Ahora, aprenderemos a crear nuestras propias funciones. Usamos la palabra clave 
 #### A. Funciones Simples: Sin parámetros y/o sin valor de retorno
 
 
-```python
+```python showLineNumbers
 # Función sin parámetros y sin valor de retorno
 # Uso: Realiza una acción simple sin necesidad de información externa ni devolver un resultado específico.
 
@@ -98,7 +98,7 @@ saludar()
 ---
 
 
-```python
+```python showLineNumbers
 # Función con un parámetro y sin valor de retorno
 # Uso: Realiza una acción utilizando un valor que le pasamos.
 # Parámetros: `nombre` es el parámetro que la función espera recibir.
@@ -114,7 +114,7 @@ saludar_a_persona("Maria")
 ---
 
 
-```python
+```python showLineNumbers
 # Función con un parámetro y con valor de retorno
 # Uso: Calcula un resultado y lo 'devuelve' para que podamos usarlo fuera de la función.
 # La palabra clave `return` se usa para devolver un valor.
@@ -136,7 +136,7 @@ print(f"El doble de 15 es: {duplicar_numero(15)}")
 Múltiples parámetros y características avanzadas
 
 
-```python
+```python showLineNumbers
 # Función con múltiples parámetros
 # Uso: Requiere varios valores para realizar su tarea.
 # Parámetros: `num1` y `num2` son los dos números que la función sumará.
@@ -155,7 +155,7 @@ print(f"La suma de -3 y 8 es: {resultado_otra_suma}")
 ---
 
 
-```python
+```python showLineNumbers
 # Función con parámetros por defecto
 # Uso: Algunos parámetros pueden tener un valor predefinido. Si no se proporciona un valor al llamar la función, se usa el predeterminado.
 # Parámetros: `mensaje` tiene un valor por defecto 'Hola'. `veces` tiene un valor por defecto 1.
@@ -177,7 +177,7 @@ saludar_personalizado("Adiós", "Pedro", 3) # -> Adiós, Pedro! (3 veces)
 ---
 
 
-```python
+```python showLineNumbers
 # Función con argumentos variables (*args y **kwargs)
 # Uso: Cuando no sabes cuántos argumentos vas a pasar a la función.
 # *args: Recopila un número variable de argumentos posicionales en una tupla.
@@ -196,7 +196,7 @@ mostrar_argumentos("Solo fijo", "otro", nombre="Juan")
 ---
 
 
-```python
+```python showLineNumbers
 # Función con Type Hints (Sugerencias de Tipo)
 # Uso: Mejora la legibilidad del código y ayuda a herramientas de desarrollo a detectar errores antes de ejecutar el programa.
 # Nota: Son solo sugerencias, Python no las "obliga" en tiempo de ejecución.
@@ -227,7 +227,7 @@ Son los argumentos que se pasan a una función basándose en su **posición** u 
 *   Son la forma más común y sencilla de pasar argumentos.
 
 
-```python
+```python showLineNumbers
 # Ejemplo de argumentos posicionales
 def describir_persona(nombre, edad, ciudad):
     print(f"Me llamo {nombre}, tengo {edad} años y vivo en {ciudad}.")
@@ -249,7 +249,7 @@ Son argumentos que se pasan a una función identificándolos por el **nombre de 
 *   Permiten omitir parámetros que tienen valores por defecto si no se quiere cambiar su valor predefinido.
 
 
-```python
+```python showLineNumbers
 # Ejemplo de argumentos por nombre
 def describir_coche(marca, modelo, año, color="rojo"):
     print(f"Este coche es un {marca} {modelo}, del año {año}, de color {color}.")
@@ -286,7 +286,7 @@ Puedes ver un ejemplo de esto en la celda de código con la función describir_c
 En Python, una función puede devolver más de un valor a la vez. Cuando haces esto, los valores se agrupan automáticamente en una **tupla**.
 
 
-```python
+```python showLineNumbers
 # Ejemplo de función que devuelve múltiples valores
 def obtener_info_calculo(numero):
     cuadrado = numero ** 2
@@ -329,7 +329,7 @@ Las **funciones lambda** en Python son pequeñas funciones anónimas, es decir, 
 ### Ejemplo Básico de una Función Lambda
 
 
-```python
+```python showLineNumbers
 # Una función normal para sumar dos números
 def sumar_normal(a, b):
     return a + b
@@ -357,7 +357,7 @@ Aquí es donde las funciones `lambda` realmente brillan, ya que nos permiten pas
 `filter(funcion, iterable)` construye un iterador a partir de elementos de un `iterable` para los que `funcion` devuelve verdadero.
 
 
-```python
+```python showLineNumbers
 numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # Usando una función normal para filtrar números pares
@@ -377,7 +377,7 @@ print(f"Números pares (lambda): {pares_lambda}")
 `map(funcion, iterable)` aplica `funcion` a cada elemento de un `iterable` y devuelve un iterador con los resultados.
 
 
-```python
+```python showLineNumbers
 numeros = [1, 2, 3, 4, 5]
 
 # Usando una función normal para obtener el cuadrado de cada número
@@ -397,7 +397,7 @@ print(f"Cuadrados (lambda): {cuadrados_lambda}")
 `sorted(iterable, key=funcion)` devuelve una nueva lista ordenada a partir de los elementos del `iterable`. El argumento `key` acepta una función para personalizar el criterio de ordenación.
 
 
-```python
+```python showLineNumbers
 palabras = ["Python", "es", "un", "lenguaje", "genial"]
 
 # Ordenar por la longitud de la palabra usando una función lambda
@@ -446,7 +446,7 @@ La estructura fundamental combina la definición "sobre la marcha" de una funci�
 En Python 3, `map()` devuelve un **iterador** (u objeto map) en lugar de una lista física. Esto ahorra memoria al no procesar todos los elementos simultáneamente. Para obtener una lista final con los resultados, es necesario envolver la llamada en el constructor **`list()`**.
 
 **Ejemplo de elevar al cuadrado:**
-```python
+```python showLineNumbers
 numeros =
 # Aplica la lambda a cada número y convierte el iterador resultante en lista
 cuadrados = list(map(lambda n: n ** 2, numeros))
@@ -458,7 +458,7 @@ cuadrados = list(map(lambda n: n ** 2, numeros))
 La función `map()` puede aceptar más de un iterable. En este caso, la función lambda debe recibir tantos argumentos como listas se proporcionen, procesándolas en paralelo. Si las listas tienen longitudes diferentes, `map()` se detiene cuando se agota la lista más corta.
 
 **Ejemplo con dos listas:**
-```python
+```python showLineNumbers
 list1 =
 list2 =
 # Suma elementos correspondientes de ambas listas

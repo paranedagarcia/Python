@@ -1,7 +1,7 @@
 ---
 id: operadores
 title: "Operadores básicos"
-sidebar_label: "Operadores básicos"
+sidebar_label: "💻 Operadores básicos"
 description: "Operaciones básicos"
 sidebar_position: 4
 ---

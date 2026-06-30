@@ -1,7 +1,7 @@
 ---
 id: datos
 title: "Datos y estructuras"
-sidebar_label: "Datos y estructuras"
+sidebar_label: "💻 Datos y estructuras"
 sidebar_position: 5
 ---
 
