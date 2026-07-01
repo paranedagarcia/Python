@@ -84,7 +84,7 @@ if __name__ == "__main__":
 
 ---
 
-### Descarga de Archivos desde la Web y Creación de Réplica Local
+### Descarga de Archivos desde la Web
 
 Para trabajar con archivos en la web, se utiliza comúnmente la biblioteca externa `requests` (debe ser instalada previamente ejecutando `pip install requests`). Este script realiza una petición HTTP a un servidor web para descargar un archivo (en este caso, un logo o imagen) y guardarlo en el disco duro local.
 
@@ -137,7 +137,7 @@ A continuación se detallan las disparidades principales según las fuentes:
 *   **Lectura:** Se utilizan métodos como `read()` (lee todo el contenido), `readline()` (lee una sola línea) o `readlines()` (devuelve una lista con todas las líneas).
 *   **Escritura:** Se emplean métodos como `write(cadena)` o `writelines(lista_de_cadenas)`. Cabe destacar que `write()` no añade automáticamente saltos de línea, por lo que es necesario incluirlos manualmente con `\n`.
 
-#### Resumen comparativo
+### Resumen comparativo
 
 | Característica | Modo Lectura (`'r'`) | Modo Escritura (`'w'`) |
 | :--- | :--- | :--- |
@@ -146,7 +146,7 @@ A continuación se detallan las disparidades principales según las fuentes:
 | **Permisos** | Solo lectura | Solo escritura |
 | **Puntero inicial** | Al inicio del archivo | Al inicio (tras borrar el contenido) |
 
-### Modos relacionados para mayor control
+#### Modos relacionados para mayor control
 Existen otros modos que resuelven limitaciones de los anteriores:
 *   **Modo Anexar (`'a'`):** Abre el archivo para escribir pero, a diferencia de `'w'`, mantiene el contenido existente y **añade los nuevos datos al final** del archivo.
 *   **Modo Creación Exclusiva (`'x'`):** Permite escribir pero **falla si el archivo ya existe**, evitando así sobreescrituras accidentales.
@@ -159,7 +159,7 @@ Existen otros modos que resuelven limitaciones de los anteriores:
 * **`'r'` (Read):** Abre un archivo de texto para lectura. Lanza un error (`FileNotFoundError`) si el archivo no existe.
 * **`'wb'` (Write Binary):** Abre un archivo en formato binario para escribir (imágenes, PDFs, ejecutables).
 
-#### manejan los bytes y Unicode al leer archivos
+#### Manejo de los bytes y Unicode
 
 El manejo de archivos en Python distingue fundamentalmente entre datos de texto (**Unicode**) y datos binarios (**bytes**). Aunque físicamente todos los archivos son secuencias de bytes almacenados en disco, la forma en que Python los interpreta depende del modo en que se abran.
 
@@ -253,30 +253,29 @@ finally:
 **
 
 ### La Alternativa Moderna: `with`
-Aunque `try-except-finally` es la base del manejo de recursos, las fuentes destacan que el uso de un **administrador de contexto** con la palabra clave **`with`** es la forma más limpia y "pitónica" de lograr el mismo resultado. El bloque `with` asegura automáticamente que el archivo se cierre al finalizar el bloque de código, simplificando la estructura y evitando que el programador olvide la limpieza manual.
+Aunque `try-except-finally` es la base del manejo de recursos, se debe destacar que el uso de un **administrador de contexto** (*context manager*) para gestionar los recursos de forma automática. Con la palabra clave **`with`** es la forma más limpia y "pitónica" de lograr el mismo resultado. El bloque `with` asegura automáticamente que el archivo se cierre al finalizar el bloque de código, simplificando la estructura y evitando que el programador olvide la limpieza manual.
 
-El uso de la sentencia **`with`** en Python es la forma más "pitónica", segura y elegante de manejar archivos, ya que utiliza un mecanismo denominado **administrador de contexto** (*context manager*) para gestionar los recursos de forma automática.
 
-A continuación se detalla su funcionamiento y ventajas según las fuentes:
+A continuación se detalla su funcionamiento y ventajas:
 
-### 1. Funcionamiento y Sintaxis
+#### Funcionamiento y Sintaxis
 La sentencia `with` crea un bloque de código delimitado donde el archivo permanece abierto. Al finalizar dicho bloque, Python se encarga de realizar las tareas de limpieza necesarias.
 
 *   **Estructura básica:** `with open('archivo.txt', 'r') as fh:`.
 *   **Apertura:** La función `open()` genera un objeto de archivo que el administrador de contexto vincula a la variable indicada después de la palabra clave `as`.
 *   **Cierre automático:** La mayor ventaja es que el método `.close()` se invoca **automáticamente** al salir del bloque, incluso si ocurre una excepción o error durante la ejecución.
 
-### 2. Ventajas sobre el bloque `try-finally`
+#### Ventajas sobre el bloque `try-finally`
 Antes del uso extendido de `with`, los programadores debían usar estructuras `try-finally` para asegurar que un archivo se cerrara (llamando a `.close()` en el bloque `finally`).
 *   **Legibilidad:** `with` simplifica el código, haciéndolo más conciso y fácil de leer al evitar la gestión manual de cierres.
 *   **Seguridad:** Previene errores comunes como fugas de memoria o que el sistema operativo informe que un archivo sigue en uso por otro software porque se olvidó cerrarlo.
 
-### 3. El protocolo interno del administrador de contexto
+#### El protocolo interno del administrador de contexto
 Técnicamente, un objeto que funciona con `with` debe implementar dos métodos especiales o "mágicos":
 *   **`__enter__()`**: Se ejecuta justo antes de entrar al cuerpo del bloque `with`. Generalmente abre el recurso y lo devuelve para ser usado.
 *   **`__exit__()`**: Se ejecuta al salir del bloque. Recibe información sobre cualquier excepción que haya ocurrido (`tipo`, `valor` y `traceback`) y se encarga de cerrar el recurso.
 
-### 4. Usos avanzados
+#### Usos avanzados
 *   **Múltiples archivos:** Es posible abrir varios archivos en una sola sentencia `with` separándolos por comas, lo cual es muy útil para leer de un origen y escribir en un destino simultáneamente.
 *   **Diferentes tipos de recursos:** Además de archivos físicos, este protocolo se usa para **bloqueos de hilos** (*locks*), sesiones de bases de datos, sockets de red y flujos en memoria como `io.StringIO()`.
 *   **Integración con `pathlib`:** El módulo moderno para rutas, `pathlib`, también permite usar sus objetos `Path` directamente con `with` mediante el método `.open()`.
@@ -291,31 +290,30 @@ with path.open(encoding='utf-8') as f:
         print(linea.strip())
 # Al llegar aquí, el archivo ya está cerrado automáticamente.
 ```
+### Manejo de error
 
 Si intentas abrir o leer un archivo que no existe dentro de un bloque **`try`**, Python genera automáticamente una excepción denominada **`FileNotFoundError`**. 
 
 Lo que sucede a continuación depende de si has definido un bloque `except` para capturar ese error específico:
 
-### 1. Si la excepción es capturada (`except FileNotFoundError`)
+#### 1. Si la excepción es capturada (`except FileNotFoundError`)
 *   **Interrupción inmediata**: En el momento exacto en que Python detecta que el archivo no está, la ejecución de las líneas restantes dentro del bloque `try` se detiene.
 *   **Salto al bloque except**: El flujo del programa salta directamente al bloque `except FileNotFoundError`.
 *   **Recuperación**: Dentro de este bloque, puedes programar una respuesta controlada, como mostrar un mensaje amigable al usuario indicando que el archivo no se encontró, en lugar de permitir que el programa falle estrepitosamente.
 *   **Continuidad**: Una vez ejecutado el código del bloque `except`, el programa puede seguir funcionando normalmente con las instrucciones que sigan después de la estructura `try-except`.
 
-### 2. Si la excepción NO es capturada
+#### 2. Si la excepción NO es capturada
 *   **Finalización del programa**: Si no hay un bloque `except` compatible con `FileNotFoundError`, Python detiene la ejecución del programa por completo.
 *   **Traceback**: Se mostrará un informe de error detallado o **traceback**, que termina con el mensaje: `FileNotFoundError: [Errno 2] No such file or directory` seguido del nombre del archivo.
 
-### 3. Otras posibilidades de manejo
+#### 3. Otras posibilidades de manejo
 *   **Fallos silenciosos**: Puedes usar la sentencia **`pass`** en el bloque `except` si prefieres que el programa simplemente ignore el error y continúe sin notificar al usuario.
 *   **Bloque else**: Si el archivo **sí existiera** y se leyera correctamente, el código dentro de un bloque **`else`** (si se incluye) se ejecutaría justo después del `try`, saltándose todos los bloques `except`.
 *   **Uso de pathlib**: Una alternativa recomendada es verificar la existencia del archivo antes de intentar abrirlo usando el método **`path.exists()`**, lo que puede evitar lanzar la excepción en primer lugar.
 
-Ejemplos
+## Ejemplos
 
 Python ofrece múltiples herramientas para trabajar con archivos de datos, desde el módulo estándar `csv` para tareas básicas hasta la biblioteca **Pandas**, que es el estándar para el análisis y manipulación de datos a gran escala.
-
-## Ejemplos
 
 A continuación, se presentan ejemplos de código organizados por tipo de archivo y operación:
 
@@ -406,3 +404,69 @@ df.to_excel("resultados.xlsx", sheet_name="Final")
 ```
 
 **Nota técnica:** Al exportar a Excel desde Pandas, es importante asegurar que las fechas no tengan información de zona horaria, ya que el formato de Excel no siempre las soporta directamente.
+
+**EJEMPLO:**
+
+Cargar un archivo 'csv' con información de covid a nivel regional, sumar los totales de cada region y crear un nuevo archivo 'csv' con esta información.
+
+```python
+import csv
+
+# Diccionario para almacenar la suma por región
+totales_por_region = {}
+
+# 1. Leer el archivo original
+with open('datos-covid-por-region.csv', mode='r', encoding='utf-8') as archivo_entrada:
+    lector_csv = csv.DictReader(archivo_entrada)
+    
+    for fila in lector_csv:
+        region = fila['Region']
+        
+        # Evitamos sumar las filas que correspondan al gran total del archivo original
+        if region.lower() == 'total':
+            continue
+            
+        # Convertir el valor a flotante (o entero si estás seguro de que no hay decimales)
+        total_casos = float(fila['Total'])
+        
+        # Acumular el total por región
+        if region in totales_por_region:
+            totales_por_region[region] += total_casos
+        else:
+            totales_por_region[region] = total_casos
+
+# 2. Ordenar las regiones por el valor total de forma descendente
+regiones_ordenadas = sorted(totales_por_region.items(), key=lambda x: x[1], reverse=True)
+
+# 3. Crear y escribir el nuevo archivo de resumen
+with open('resumen-covid.csv', mode='w', newline='', encoding='utf-8') as archivo_salida:
+    escritor_csv = csv.writer(archivo_salida)
+    
+    # Escribir los encabezados
+    escritor_csv.writerow(['Region', 'Total'])
+    
+    # Escribir los datos ordenados
+    for region, total in regiones_ordenadas:
+        escritor_csv.writerow([region, total])
+
+print("El archivo 'resumen-covid.csv' ha sido creado exitosamente.")
+```
+**Uso de Pandas:**
+```python
+import pandas as pd
+
+# 1. Leer el archivo CSV adjunto
+df = pd.read_csv('datos-covid-por-region.csv')
+
+# Opcional: Filtrar la fila 'Total' si el archivo original ya incluye una fila de suma global
+df = df[df['Region'] != 'Total']
+
+# 2. Agrupar por 'Region', sumar la columna 'Total' y ordenar de forma descendente
+resumen = df.groupby('Region')['Total'].sum().reset_index()
+resumen = resumen.sort_values(by='Total', ascending=False)
+
+# 3. Guardar el resultado en un nuevo archivo CSV
+resumen.to_csv('resumen-covid.csv', index=False)
+
+print("El archivo 'resumen-covid.csv' ha sido creado exitosamente.")
+```
