@@ -17,6 +17,31 @@ La programación orientada a objetos (POO) en Python es un paradigma fundamental
 *   **El método `__init__`:** Conocido como **constructor** o inicializador, es un método especial que Python ejecuta automáticamente al crear una nueva instancia para establecer sus valores iniciales.
 *   **El parámetro `self`:** Es el primer argumento obligatorio en los métodos de una instancia y representa al objeto específico que está llamando al método, permitiendo acceder a sus propios atributos y otros métodos.
 
+Las clases se definen con la palabra clave `class` seguida con el nombre de la clase, dos puntos `:` y luego el cuerpo de la clase con todas sus definiciones. Incluya siempre un cadena de texto docstring """ para documentar la clase.
+
+```python title="clase" showLineNumbers
+class Auto:
+    “””Abstraccion de los objetos auto.”””
+    def __init__(self, gasolina):
+        self.gasolina = gasolina
+        print “Tenemos”, gasolina, “litros”
+    
+    def arrancar(self):
+        if self.gasolina > 0:
+            print “Arranca”
+        else:
+            print “No arranca”
+
+    def conducir(self):
+        if self.gasolina > 0:
+            self.gasolina -= 1
+        print “Quedan”, self.gasolina, “litros”
+            else:
+        print “No se mueve”
+ ```
+El primer método `__init__` es relevante porque es la instanciación inicial, realiza todo el proceso de inicialización que sea necesario.
+El primer parámetro de este es `self`y que se refiere al objeto actual y permite acceder a todos los atributos y métodos del objeto.
+
 ### Características Principales
 
 1.  **Herencia (Inheritance):** Permite crear una nueva clase (subclase) a partir de una existente (superclase), heredando todos sus atributos y métodos. Esto facilita la reutilización de código y la especialización de funciones.
@@ -85,7 +110,7 @@ class Account:
         """Devuelve el balance actual de la cuenta."""
         return self.__balance
 
-    def deposit(self, amount):
+    def deposito(self, amount):
         """Realiza un depósito controlado verificando que el monto sea positivo."""
         if amount > 0:
             self.__balance += amount
@@ -94,7 +119,7 @@ class Account:
         else:
             print("Error: El monto a depositar debe ser mayor que cero.")
 
-    def withdraw(self, amount):
+    def retiro(self, amount):
         """Realiza un retiro controlado verificando fondos y montos válidos."""
         if amount <= 0:
             print("Error: El monto a retirar debe ser mayor que cero.")
@@ -117,16 +142,16 @@ if __name__ == "__main__":
     cuenta_juan.show_statement()
 
     print("--- Prueba de Depósito Válido ---")
-    cuenta_juan.deposit(150.50)
+    cuenta_juan.deposito(150.50)
 
     print("--- Prueba de Depósito Inválido ---")
-    cuenta_juan.deposit(-20.0)
+    cuenta_juan.deposito(-20.0)
 
     print("--- Prueba de Retiro Válido ---")
-    cuenta_juan.withdraw(200.0)
+    cuenta_juan.retiro(200.0)
 
     print("--- Prueba de Retiro por Encima de los Fondos ---")
-    cuenta_juan.withdraw(600.0)
+    cuenta_juan.retiro(600.0)
 
     print("--- Demostración de Encapsulamiento (Protección) ---")
     # Si intentamos alterar el balance directamente desde fuera, Python lanzará un error 

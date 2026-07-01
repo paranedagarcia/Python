@@ -95,15 +95,15 @@ h2.anchor.anchorTargetStickyNavbar_Vzrq::before {
 }
 
 h3.anchor.anchorTargetStickyNavbar_Vzrq::before {
-  content: "​▫️";
+  content: "​";
   margin-left: -0.2em !important;
 }
 
-/* sidebar */
+/* sidebar 
 .theme-doc-sidebar-item-link-level-2 .menu__link::before {
   content: "​";
   margin-left: 0em !important;
-}
+}*/
 
 .table-of-contents ul:not([class]) a.table-of-contents__link::before {
   content: "▪️ ";
@@ -114,6 +114,6 @@ h3.anchor.anchorTargetStickyNavbar_Vzrq::before {
   font-size: 1.6rem !important;
 }
 
-.cardTitle_rnsV::before {
+/*.cardTitle_rnsV::before {
   content: "​";
-}
+} */
