@@ -80,7 +80,7 @@ Las fuentes también mencionan que Matplotlib puede utilizarse para:
 
 La diferencia principal entre usar **`plt.plot`** y **`ax.plot`** radica en el nivel de control y la estructura del código dentro de la librería Matplotlib. Mientras que el primero es una función de conveniencia de alto nivel, el segundo es un método de un objeto específico que ofrece mayor flexibilidad para visualizaciones complejas.
 
-A continuación se detallan las disparidades clave según las fuentes:
+A continuación se detallan las disparidades clave:
 
 ### 1. Nivel de la API y Control
 *   **`plt.plot`**: Es una función del módulo **`pyplot`** (importado habitualmente como `plt`). Se considera una función de **máximo nivel** que actúa sobre el subgráfico que esté activo en ese momento. Es ideal para trazados rápidos y sencillos donde solo hay un gráfico en la figura.
@@ -103,6 +103,82 @@ La diferencia se vuelve evidente cuando se trabaja con múltiples gráficos a la
 | **Contexto** | Global (actúa sobre el eje activo) | Local (específico de ese objeto `ax`) |
 | **Recomendación** | Para gráficos rápidos y únicos | **Preferido** para figuras con múltiples subgráficos |
 | **Sintaxis común** | `plt.plot(datos)` | `fig, ax = plt.subplots(); ax.plot(datos)` |
+
+Para mostrar la diferencia entre el enfoque basado en estados (`plt.plot`) y el enfoque orientado a objetos (`ax.plot`), se presentan ejemplos que ilustran cómo se estructuran y cuándo es preferible cada uno.
+
+### 1. Enfoque basado en estados (`plt.plot`)
+Este método es el más sencillo y similar a la interfaz de MATLAB. Se utiliza el módulo `pyplot` (alias `plt`) para realizar trazados rápidos de forma implícita sobre la "figura actual" y el "eje actual".
+
+**Ejemplo de uso:**
+```python showLineNumbers title="plt.plot"
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Datos de ejemplo
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+# Se traza directamente sobre el estado global
+plt.plot(x, y, label='Seno')
+plt.title('Estilo Pyplot (plt.plot)') # Afecta al gráfico activo
+plt.xlabel('x')
+plt.ylabel('y')
+plt.legend()
+plt.show()
+```
+
+### 2. Enfoque orientado a objetos (`ax.plot`)
+Este es el enfoque **preferido para personalizaciones complejas**. Aquí se crean explícitamente objetos de tipo `Figure` (la ventana completa) y `Axes` (un trazado individual). Esto permite manipular cada gráfico de forma independiente y precisa.
+
+**Ejemplo de uso:**
+```python showLineNumbers title="ax.plot"
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+y = np.cos(x)
+
+# Se crean explícitamente los objetos Figure y Axes
+fig, ax = plt.subplots() 
+
+# Se usa el método del objeto Axes
+ax.plot(x, y, color='red', label='Coseno')
+ax.set_title('Estilo Orientado a Objetos (ax.plot)') # Métodos del objeto ax
+ax.set_xlabel('x')
+ax.set_ylabel('y')
+ax.legend()
+plt.show()
+```
+
+### 3. Diferencia clave en subgráficos (Múltiples ejes)
+La mayor ventaja de `ax.plot` se hace evidente al trabajar con varias gráficas en una misma figura. Mientras que con `plt` tendrías que estar cambiando de subgráfico activo constantemente, con el enfoque orientado a objetos tienes un objeto `ax` para cada espacio.
+
+**Ejemplo con múltiples subgráficos:**
+```python showLineNumbers title="ax.plot con subgraficos"
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 100)
+
+# Se crea una cuadrícula de 1 fila y 2 columnas
+# subplots() devuelve un array de objetos Axes en la variable axes
+fig, axes = plt.subplots(1, 2, figsize=(10, 4)) 
+
+# Acceso directo al primer objeto Axes
+axes.plot(x, np.sin(x), color='blue')
+axes.set_title('Seno')
+
+# Acceso directo al segundo objeto Axes
+axes.plot(x, np.cos(x), color='green')
+axes.set_title('Coseno')
+
+plt.tight_layout() # Ajusta el espacio entre subgráficos
+plt.show()
+```
+
+### Resumen de diferencias detectadas:
+*   **`plt.plot`**: Es una función de **nivel alto** que actúa sobre el subgráfico que esté activo en ese momento de forma global. Es ideal para scripts rápidos o exploraciones breves.
+*   **`ax.plot`**: Es un **método de instancia** de la clase `Axes`. Permite una arquitectura de código más limpia y organizada, facilitando la creación de flujos de trabajo donde se definen y personalizan múltiples trazados de manera independiente dentro de una misma figura.
 
 ## Anotaciones
 
@@ -129,7 +205,7 @@ A menudo, las anotaciones se complementan con figuras geométricas para encerrar
 
 ### Ejemplo lógico de anotación
 En un gráfico de precios financieros, se podría iterar sobre una lista de fechas importantes para añadir anotaciones automáticas:
-```python
+```python showLineNumbers
 # Basado en el ejemplo de la crisis financiera 2008-2009
 for fecha, etiqueta in datos_crisis:
     ax.annotate(etiqueta, 
