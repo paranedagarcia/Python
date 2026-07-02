@@ -5,6 +5,8 @@ sidebar_label: "⚙️ Librerías"
 sidebar_position: 1
 ---
 
+![](img/data-visualisation-python-setup.png)
+
 Además de **pandas**, el ecosistema de Python cuenta con una amplia variedad de librerías especializadas en diferentes etapas del trabajo con datos, desde el cálculo numérico base hasta el aprendizaje automático y la visualización avanzada.
 
 A continuación se detallan las librerías más relevantes mencionadas:
@@ -26,6 +28,39 @@ A continuación se detallan las librerías más relevantes mencionadas:
 *   **Seaborn:** Basada en Matplotlib, simplifica la creación de **visualizaciones estadísticas** complejas con una sintaxis más amigable y estilos predefinidos atractivos.
 *   **Plotly:** Especialmente útil para crear **visualizaciones interactivas** y dinámicas que funcionan bien en navegadores web.
 *   **Bokeh:** Otra librería orientada a la visualización interactiva de grandes volúmenes de datos en navegadores modernos.
+
+**Matplotlib** y **Seaborn** son dos de las librerías de visualización más importantes en Python, y aunque están estrechamente relacionadas, cumplen funciones distintas según el nivel de control y el tipo de análisis requerido. **Seaborn está construida sobre Matplotlib**, lo que significa que utiliza Matplotlib para sus gráficos subyacentes pero ofrece una interfaz de mayor nivel.
+
+A continuación se presenta una comparación detallada:
+
+#### Nivel de Abstracción y Facilidad de Uso
+*   **Matplotlib:** Es una herramienta de **bajo nivel**. Los gráficos se construyen desde sus componentes básicos (ejes, títulos, etiquetas, leyendas), lo que requiere más líneas de código para visualizaciones complejas. Es la base de casi todo el ecosistema de trazado en Python.
+*   **Seaborn:** Es una librería de **alto nivel** orientada a la estadística. Simplifica enormemente la creación de gráficos complejos, permitiendo realizar en una sola línea lo que en Matplotlib requeriría varias. Por ejemplo, Seaborn maneja automáticamente la agregación y el resumen de datos antes de generar el gráfico.
+
+#### Estética y Estilos Predeterminados
+*   **Matplotlib:** Sus ajustes predeterminados están diseñados principalmente para la preparación de figuras aptas para su publicación técnica, pero pueden resultar visualmente básicos sin personalización manual.
+*   **Seaborn:** Ofrece una estética mucho más atractiva y moderna "de fábrica". Incluye temas integrados que configuran automáticamente la paleta de colores, el fondo y los estilos de cuadrícula, mejorando la legibilidad inmediata. Incluso Matplotlib permite usar los estilos de Seaborn mediante el comando `plt.style.use('seaborn')`.
+
+#### Integración con Datos (Pandas)
+*   **Matplotlib:** Tiene una fuerte integración nativa con **Pandas**, permitiendo generar gráficos básicos directamente desde objetos *Series* o *DataFrame*.
+*   **Seaborn:** Está diseñada específicamente para trabajar con estructuras de datos de Pandas. Sus funciones suelen requerir un argumento `data` (el DataFrame) y los nombres de las columnas para los ejes, facilitando el análisis de conjuntos de datos relacionales.
+
+#### Capacidades Estadísticas
+*   **Seaborn:** Brilla en la creación de visualizaciones estadísticas avanzadas como:
+    *   **Histogramas con KDE:** Trazado simultáneo de frecuencias y estimaciones de densidad continua.
+    *   **Gráficos de barras con intervalos de confianza:** Calcula automáticamente el valor medio y muestra el error estándar.
+    *   **Matrices de dispersión (Pairplots):** Permiten visualizar relaciones entre múltiples variables de un vistazo.
+    *   **Cuadrículas de facetas:** División automática de datos en subgráficos basados en variables categóricas.
+*   **Matplotlib:** Aunque puede realizar estos gráficos, el usuario debe encargarse manualmente de la mayor parte del procesamiento estadístico previo.
+
+#### Resumen de uso recomendado
+| Característica | Matplotlib | Seaborn |
+| :--- | :--- | :--- |
+| **Uso principal** | Gráficos básicos y control granular total. | Análisis estadístico y visualización rápida. |
+| **Personalización** | Permite ajustar cada elemento individualmente. | Se basa en el sistema de Matplotlib para ajustes finos. |
+| **Ideal para...** | Figuras únicas altamente personalizadas para publicación. | Explorar patrones en grandes conjuntos de datos estructurados. |
+
+En la práctica, muchos científicos de datos utilizan **Seaborn para crear la estructura principal** del gráfico por su rapidez y estética, y luego emplean la **API de Matplotlib para realizar personalizaciones finas** finales.
 
 ### Ingeniería de Datos y Escalabilidad
 *   **Dask:** Diseñada para escalar el procesamiento de datos a conjuntos que superan la memoria RAM de un solo equipo, permitiendo el **procesamiento en paralelo**.

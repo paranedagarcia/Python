@@ -5,10 +5,35 @@ sidebar_label: "🔃 Funciones"
 sidebar_position: 10
 ---
 
+:::info[Codigo:]
+- https://drive.google.com/file/d/1CD6ClM2ewntNgAFnxegGU9gnyTmIEKS6
+:::
 
 Las funciones son bloques de código reutilizables que realizan una tarea específica. Nos ayudan a organizar nuestro código, hacerlo más legible y evitar repetir código.
 
-### Funciones Preconstruidas (Built-in) de Python
+### Anatomía de una función
+
+Toda función se compone de los siguientes elementos esenciales:
+- `def`: como comando de definición de función
+
+- `nombre de la función`: nombre de la función
+
+- `(parametro)`: opcional si necesita un valor para operar
+
+- `:`: indica el inicio del bloque de función
+
+- Bloque de codigo de la función
+
+- `return`: opcional si devuelve un resultado
+
+```pyhton showLineNumbers
+# creación de función que retorna el valor de un numero al cuadrado
+def numero_cuadrado(numero):
+    cuadrado = numero * numero
+    return cuadrado
+```
+
+### Funciones Preconstruidas
 
 Python viene con muchas funciones ya listas para usar. Aquí te presento algunas de las más comunes y básicas.
 
@@ -77,7 +102,7 @@ edad_usuario = input("¿Cuántos años tienes? ") # input siempre devuelve una c
 print(f"Tienes {edad_usuario} años.")
 ```
 
-### Funciones Personalizadas (Definidas por el Usuario)
+### Funciones Personalizadas
 
 Ahora, aprenderemos a crear nuestras propias funciones. Usamos la palabra clave `def` para definirlas.
 
@@ -157,7 +182,8 @@ print(f"La suma de -3 y 8 es: {resultado_otra_suma}")
 
 ```python showLineNumbers
 # Función con parámetros por defecto
-# Uso: Algunos parámetros pueden tener un valor predefinido. Si no se proporciona un valor al llamar la función, se usa el predeterminado.
+# Uso: Algunos parámetros pueden tener un valor predefinido. 
+# Si no se proporciona un valor al llamar la función, se usa el predeterminado.
 # Parámetros: `mensaje` tiene un valor por defecto 'Hola'. `veces` tiene un valor por defecto 1.
 
 def saludar_personalizado(mensaje="Hola", nombre="visitante", veces=1):
@@ -198,7 +224,8 @@ mostrar_argumentos("Solo fijo", "otro", nombre="Juan")
 
 ```python showLineNumbers
 # Función con Type Hints (Sugerencias de Tipo)
-# Uso: Mejora la legibilidad del código y ayuda a herramientas de desarrollo a detectar errores antes de ejecutar el programa.
+# Uso: Mejora la legibilidad del código y ayuda a herramientas de desarrollo a 
+# detectar errores antes de ejecutar el programa.
 # Nota: Son solo sugerencias, Python no las "obliga" en tiempo de ejecución.
 
 def multiplicar(a: int, b: int) -> int:
