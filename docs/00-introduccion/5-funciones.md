@@ -504,3 +504,6 @@ Aunque `map()` con lambda es eficiente, las fuentes indican que en el Python mod
 *   **Transformación de tipos:** Convertir una lista de cadenas en enteros: `list(map(int, ["1", "2", "3"]))`.
 *   **Limpieza de texto:** Aplicar métodos de cadena como `strip()` o `upper()` a una lista de palabras.
 *   **Análisis de datos:** En librerías como **pandas**, el método `.map()` (y similares como `.apply()`) se utiliza para transformar columnas completas basándose en diccionarios o funciones lambda.
+
+## Ejercicios:
+
