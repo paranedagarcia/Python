@@ -33,9 +33,22 @@ def numero_cuadrado(numero):
     return cuadrado
 ```
 
+:::warning
+Si una función en Python no incluye la sentencia `return`, o si llega al final de su ejecución sin encontrar una, la función devuelve automáticamente el objeto especial `None`
+:::
+
+### return `None`
+
+*   **Retorno invisible:** Python inserta internamente una instrucción invisible de `return None` al final del bloque de código de la función. Esto asegura que todas las funciones en Python siempre devuelvan algo, manteniendo la consistencia del lenguaje.
+*   **Comportamiento de la sentencia `return` vacía:** Si se incluye la palabra clave `return` pero no se especifica ningún valor después de ella (un *bare return*), el resultado es exactamente el mismo: la función devuelve `None`.
+*   **Asignación de resultados:** Si intentas almacenar el resultado de una función que no tiene `return` en una variable (por ejemplo, `resultado = mi_funcion()`), la variable `resultado` hará referencia al objeto `None`.
+*   **Significado de `None`:** Este es un objeto especial que representa la **ausencia de un valor**, "nada" o "datos vacíos". Es equivalente a lo que en otros lenguajes como C, C++ o Java se conoce como `void` o `null`.
+*   **Visualización en el intérprete:** Cuando ejecutas una función que devuelve `None` en el intérprete interactivo, este normalmente **no muestra ninguna salida** para esa línea, a diferencia de cuando se devuelve un número o una cadena.
+*   **Uso común:** Este tipo de funciones (a veces llamadas "procedimientos" en otros lenguajes) suelen utilizarse cuando el objetivo principal no es calcular un valor, sino realizar una **acción o efecto secundario**, como imprimir un mensaje en pantalla o modificar una lista global.
+
 ### Funciones Preconstruidas
 
-Python viene con muchas funciones ya listas para usar. Aquí te presento algunas de las más comunes y básicas.
+Python viene con muchas funciones ya listas para usar. Algunas de las más comunes y básicas.
 
 
 ```python showLineNumbers
@@ -50,12 +63,7 @@ print("Mi nombre es", nombre) # Con una variable
 
 edad = 30
 print("Tengo", edad, "años.") # Con múltiples variables y texto
-```
 
----
-
-
-```python showLineNumbers
 # Función: len()
 # Uso: Devuelve la longitud (cantidad de elementos) de un objeto.
 # Parámetros: Recibe un único argumento, que debe ser un objeto con longitud (como una cadena, lista o tupla).
@@ -67,12 +75,7 @@ print(f"La longitud de '{cadena}' es: {longitud_cadena}")
 lista_numeros = [1, 2, 3, 4, 5]
 longitud_lista = len(lista_numeros)
 print(f"La longitud de la lista es: {longitud_lista}")
-```
 
----
-
-
-```python showLineNumbers
 # Función: type()
 # Uso: Devuelve el tipo de un objeto.
 # Parámetros: Recibe un único argumento (el objeto del que quieres saber el tipo).
@@ -85,12 +88,8 @@ print(f"El tipo de '{texto}' es: {type(texto)}")
 
 es_verdad = True
 print(f"El tipo de {es_verdad} es: {type(es_verdad)}")
-```
-
----
 
 
-```python showLineNumbers
 # Función: input()
 # Uso: Permite al usuario introducir datos a través de la consola.
 # Parámetros: Opcionalmente, recibe un mensaje (string) que se muestra al usuario antes de que introduzca el dato.
@@ -505,5 +504,106 @@ Aunque `map()` con lambda es eficiente, las fuentes indican que en el Python mod
 *   **Limpieza de texto:** Aplicar métodos de cadena como `strip()` o `upper()` a una lista de palabras.
 *   **Análisis de datos:** En librerías como **pandas**, el método `.map()` (y similares como `.apply()`) se utiliza para transformar columnas completas basándose en diccionarios o funciones lambda.
 
-## Ejercicios:
+## Ejercicios
+
+### (A):
+Crea un notebook (.ipynb) que contenga las 4 funciones que se mencionan abajo, con las siguientes características:
+
+#### 1. Función sin argumentos
+Esta función no requiere información externa para realizar su tarea. En Python, aunque no reciba parámetros, es obligatorio incluir los paréntesis en su definición y llamada.
+
+```python
+def mostrar_mensaje():
+    """
+    Muestra un mensaje de bienvenida al sistema.
+    Esta función no recibe argumentos y no retorna ningún valor 
+    (devuelve None por defecto).
+    """
+    
+```
+
+#### 2. Función con argumentos (sin retorno explícito)
+Las funciones pueden aceptar **parámetros**, que son nombres que actúan como variables locales dentro de la función y reciben los valores (**argumentos**) al ser llamadas.
+
+```python
+def saludar():
+    """
+    Imprime un saludo personalizado para el estudiante
+
+    Argumentos:
+    nombre (str): El nombre del alumno que se desea saludar.
+    """
+    
+```
+
+#### 3. Función con argumentos y un resultado de retorno
+Para que una función envíe un dato de vuelta al programa principal, se utiliza la palabra clave **`return`**. Una vez que se ejecuta un `return`, la función termina inmediatamente.
+
+```python
+def calcular_cuadrado():
+    """
+    Calcula el cuadrado de un número dado.
+
+    Argumentos:
+    numero (int o float): El valor numérico a elevar.
+
+    Retorna:
+    float: El resultado del número multiplicado por sí mismo.
+    """
+    
+
+def perimetro():
+    """
+    Calcula el perimetro de un rectangulo. 
+
+    Argumentos:
+    a (int o float): primer lado de un rectangulo.
+    b (int o float): segundo lado de un rectangulo.
+    """
+
+```
+
+#### 4. Función con argumentos y múltiples resultados
+En Python, una función puede devolver más de un valor separándolos por comas en la sentencia `return`. Técnicamente, Python empaqueta estos valores en una **tupla** que luego puede ser desempaquetada por el usuario.
+
+```python
+def obtener_estadisticas_basicas():
+    """
+    Calcula la suma y el producto de dos números.
+    
+    Argumentos:
+    a (int o float): Primer número.
+    b (int o float): Segundo número.
+    
+    Retorna:
+    tuple: Una tupla que contiene (suma, producto).
+    """
+
+```
+
+#### Ejemplo de uso de las funciones
+Para probar estas funciones, se puede utilizar el siguiente bloque de código:
+
+```python
+# 1. Llamada a función sin argumentos
+
+
+# 2. Llamada a función con argumento
+
+
+# 3. Almacenar el resultado de una función que retorna un valor
+
+
+# 4. Desempaquetar múltiples resultados
+
+```
+
+**Nota sobre los Docstrings:** Es una convención en Python insertar estas cadenas de texto inmediatamente después de la línea `def`. Sirven para que herramientas como `help()` muestren la ayuda de la función al usuario.
+
+---
+### (B):
+Crea una funcion 'limpiar_rut' que acepte un 'texto' y devuelva un rut limpio:
+- **ingrese:** limpiar_rut(' 10. 789 . 300-k')
+- **devuelve:** '10789300-K'
+
 

@@ -81,7 +81,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/ODC-isotipo.svg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
@@ -89,7 +89,7 @@ const config = {
         title: 'Python',
         logo: {
           alt: 'Python Logo',
-          src: 'img/logo.svg',
+          src: 'img/ODC-isotipo.svg',
         },
         items: [
           {

@@ -8,6 +8,10 @@ sidebar_position: 1
 
 # Pandas
 
+:::info[Codigo:]
+https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z
+:::
+
 Pandas es una biblioteca de Python diseñada para análisis y manipulación de datos. Proporciona estructuras de datos eficientes y herramientas para trabajar con datos tabulares y series temporales.
 
 ## Características principales
@@ -21,8 +25,10 @@ Pandas es una biblioteca de Python diseñada para análisis y manipulación de d
 
 ## Instalación
 
-```python
+```bash
 pip install pandas
+ó
+uv add pandas
 ```
 
 ## Uso básico

@@ -5,6 +5,10 @@ sidebar_label: "Limpieza"
 sidebar_position: 1
 ---
 
+:::info[Codigo:]
+- https://colab.research.google.com/drive/19BgqL7U0SE7BoHutwZT_wWGOUDmHHVwB
+:::
+
 El proceso de **limpieza y preparación de datos** en pandas es una etapa crítica que a menudo ocupa la mayor parte del tiempo en un proyecto de análisis. A continuación, se detallan los aspectos solicitados basándose en las fuentes:
 
 ## Gestión de datos faltantes
@@ -235,9 +239,11 @@ Si una sola celda contiene varias categorías separadas por un delimitador (por 
 *   **`drop_first`**: Booleano para eliminar la primera categoría, útil en modelos estadísticos para evitar la redundancia.
 
 
+## Ejercicio
 
-¿Cómo crear una variable dummy a partir de categorías?
-¿Cómo se gestionan los valores atípicos usando el método clip?
-¿Qué diferencia hay entre pd.cut y pd.qcut para discretización?
-¿Cómo funciona la función get_dummies para variables categóricas?
-¿Cómo funciona el método clip para tratar valores atípicos?
+:::info
+**Descarga el archivo**: [Plan de compras 2025.xlsx](/static/data/plan_de_compras_2025.xlsx)
+
+Plan de compras 2025. MINVU
+:::
+

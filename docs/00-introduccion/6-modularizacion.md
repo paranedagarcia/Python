@@ -37,11 +37,11 @@ Para evitar conflictos entre las versiones de las bibliotecas que utilizan difer
 *   **Generadores:** Optimizan el uso de memoria al generar elementos sobre la marcha en lugar de almacenarlos todos en una lista.
 *   **Administradores de contexto (`with`):** Formalizan la preparación y limpieza de recursos, asegurando que tareas como cerrar archivos se realicen correctamente siempre.
 
-## Creación y uso de modulos de funciones
+### Creación y uso de modulos de funciones
 
 Para crear y usar un módulo de funciones en un proyecto de Python, se deben seguir una serie de pasos que permiten organizar el código en unidades lógicas, facilitando su mantenimiento y reutilización.
 
-### Creación del módulo
+#### Creación del módulo
 Un módulo es simplemente un archivo de texto con extensión **`.py`** que contiene definiciones de funciones, clases o variables.
 
 *   **Nombre del archivo:** El nombre del archivo (sin la extensión) será el nombre del módulo. Por ejemplo, un archivo llamado `perimetros.py` se convierte en el módulo `perimetros`. 
@@ -49,12 +49,12 @@ Un módulo es simplemente un archivo de texto con extensión **`.py`** que conti
 *   **Funciones internas:** Si se desea que una función sea de uso interno y no se importe automáticamente con `from modulo import *`, su nombre debe comenzar con un **guion bajo** (ej. `_funcion_privada`).
 *   **Restricciones de nombre:** Se deben evitar nombres que coincidan con palabras clave de Python o módulos de la biblioteca estándar (como `math.py` o `random.py`) para evitar conflictos.
 
-### El bloque de prueba (`if __name__ == '__main__':`)
+#### El bloque de prueba (`if __name__ == '__main__':`)
 Es fundamental incluir un bloque de código al final del módulo que solo se ejecute cuando el archivo se inicie como un programa independiente, pero que se ignore cuando el módulo sea importado por otro script.
 *   La variable especial `__name__` se establece automáticamente como `'__main__'` si el archivo se ejecuta directamente.
 *   Si el archivo se importa, `__name__` toma el nombre del módulo, evitando que se ejecuten las pruebas o ejemplos incluidos en dicho bloque.
 
-### Uso del módulo (Importación)
+#### Uso del módulo (Importación)
 Existen diversas formas de incorporar la funcionalidad de un módulo en otro archivo del proyecto:
 
 *   **`import modulo`:** Importa el módulo completo. Para acceder a sus funciones se utiliza la "notación de punto": `modulo.nombre_funcion()`.
@@ -62,15 +62,15 @@ Existen diversas formas de incorporar la funcionalidad de un módulo en otro arc
 *   **`import modulo as alias`:** Permite asignar un nombre más corto o conveniente al módulo (ej. `import math as m`).
 *   **`from modulo import *`:** Importa todos los nombres del módulo. Se desaconseja su uso frecuente porque puede "ensuciar" el espacio de nombres local y causar conflictos con funciones que tengan el mismo nombre en diferentes archivos.
 
-### Rutas de búsqueda y paquetes
+#### Rutas de búsqueda y paquetes
 *   **Ubicación:** Para que Python encuentre el módulo, este debe residir en el mismo directorio que el programa que lo llama o en una de las carpetas listadas en `sys.path`. Se puede añadir una carpeta a esta lista mediante la variable de entorno `PYTHONPATH`.
 *   **Paquetes:** Si el proyecto crece, se pueden agrupar varios módulos en directorios llamados **paquetes**. Para que un directorio sea reconocido como tal, tradicionalmente debe contener un archivo llamado **`__init__.py`**. La importación de un módulo dentro de un paquete se hace mediante la ruta jerárquica: `import paquete.subpaquete.modulo`.
 
-### Organización en Paquetes
+#### Organización en Paquetes
 
 Cuando un proyecto tiene muchos módulos, estos pueden agruparse en directorios llamados paquetes. Para que Python reconozca una carpeta como un paquete, tradicionalmente esta debe contener un archivo llamado __init__.py (que puede estar vacío). La importación se realiza entonces indicando la ruta jerárquica: import paquete.subpaquete.módulo
 
-#### Validacion de un rut chileno
+### Validacion de un rut chileno
 
 Para validar si un RUT es matemáticamente correcto, se aplica el algoritmo denominado **Módulo 11**. Este procedimiento permite determinar si el dígito verificador (DV) es el resultado exacto de una serie de operaciones sobre los dígitos precedentes.
 
@@ -89,7 +89,7 @@ Finalmente, se utiliza el **operador de igualdad (`==`)** para comparar el DV ca
 
 Este enfoque garantiza la precisión matemática al evitar errores de redondeo que podrían ocurrir con tipos **`float`**, los cuales son inherentemente inexactos para este tipo de validaciones exactas.
 
-**EJERCICIO:**
+### EJERCICIO
 
 ```python title="rut_utils.py"
 # modulo rut_utils.py

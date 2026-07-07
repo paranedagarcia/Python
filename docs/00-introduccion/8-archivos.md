@@ -405,11 +405,21 @@ df.to_excel("resultados.xlsx", sheet_name="Final")
 
 **Nota técnica:** Al exportar a Excel desde Pandas, es importante asegurar que las fechas no tengan información de zona horaria, ya que el formato de Excel no siempre las soporta directamente.
 
-**EJEMPLO:**
 
-Cargar un archivo 'csv' con información de covid a nivel regional, sumar los totales de cada region y crear un nuevo archivo 'csv' con esta información.
+#### 💻 Código:
+<Tabs>
+<TabItem value="file" label="Antecedentes" default>
+<div class="alert alert--primary">
+**EJEMPLO:**<br />
+Cargar un archivo 'csv' con información de covid a nivel regional, sumar los totales de cada region y crear un nuevo archivo resumen 'csv' con esta información.
 
-```python
+**Descarga el archivo csv**: [datos-covid-por-region.csv](/data/datos-covid-por-region.csv)
+
+</div>
+</TabItem>
+<TabItem value="file-csv" label="CSV" default>
+```python showLineNumbers
+# Implementación en Python con csv
 import csv
 
 # Diccionario para almacenar la suma por región
@@ -451,8 +461,10 @@ with open('resumen-covid.csv', mode='w', newline='', encoding='utf-8') as archiv
 
 print("El archivo 'resumen-covid.csv' ha sido creado exitosamente.")
 ```
-**Uso de Pandas:**
-```python
+</TabItem>
+<TabItem value="file-pandas" label="Pandas" default>
+```python showLineNumbers
+# Implementación en Python con Pandas
 import pandas as pd
 
 # 1. Leer el archivo CSV adjunto
@@ -470,3 +482,7 @@ resumen.to_csv('resumen-covid.csv', index=False)
 
 print("El archivo 'resumen-covid.csv' ha sido creado exitosamente.")
 ```
+</TabItem>
+</Tabs>
+
+

@@ -15,3 +15,11 @@
 </TabItem>
 </Tabs>
 <br />
+
+Pandas
+
+¿Cómo crear una variable dummy a partir de categorías?
+¿Cómo se gestionan los valores atípicos usando el método clip?
+¿Qué diferencia hay entre pd.cut y pd.qcut para discretización?
+¿Cómo funciona la función get_dummies para variables categóricas?
+¿Cómo funciona el método clip para tratar valores atípicos?

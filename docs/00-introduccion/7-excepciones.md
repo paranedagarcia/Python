@@ -222,3 +222,8 @@ except Exception:
 ```
 
 **Nota sobre el orden:** Cuando se usan múltiples cláusulas `except`, Python ejecuta solo la **primera que coincida** con la excepción lanzada. Por ello, debes colocar las excepciones más específicas al principio y las más genéricas (como `Exception`) al final.
+
+
+## EJERCICIO
+
+Aplique `try` y `except` a los ejercicios para el calculo de la edad futura (edad, año).
