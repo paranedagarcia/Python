@@ -1,0 +1,10 @@
+Registro de Usuario
+-------------------
+Nombre: Veronica Solis
+Edad: 48
+Ciudad: Valdivia
+Registro de Usuario
+-------------------
+Nombre: Pablo Saldias
+Edad: 42
+Ciudad: Concepcion

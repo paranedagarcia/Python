@@ -6,7 +6,7 @@ sidebar_position: 10
 ---
 
 :::info[Codigo:]
-- https://drive.google.com/file/d/1CD6ClM2ewntNgAFnxegGU9gnyTmIEKS6
+- https://colab.research.google.com/drive/1ym02PRXCpqTB1cJhP4q8zvk2nUM_4ulq
 :::
 
 Las funciones son bloques de código reutilizables que realizan una tarea específica. Nos ayudan a organizar nuestro código, hacerlo más legible y evitar repetir código.
@@ -113,6 +113,11 @@ Ahora, aprenderemos a crear nuestras propias funciones. Usamos la palabra clave 
 # Uso: Realiza una acción simple sin necesidad de información externa ni devolver un resultado específico.
 
 def saludar():
+    """
+    el objetivo de la funcion
+    Argumento: 
+    Respuesta: que entrega 
+    """
     print("¡Hola desde mi primera función!")
 
 # Llamar a la función para ejecutarla

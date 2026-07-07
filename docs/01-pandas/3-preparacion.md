@@ -1,8 +1,8 @@
 ---
-id: pandas-datos
+id: pandas-limpieza
 title: "Limpieza y preparación de datos"
 sidebar_label: "Limpieza"
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 :::info[Codigo:]
@@ -65,7 +65,7 @@ Para eliminar duplicados en Python, especialmente cuando se trabaja con la libre
 
 A continuación se detallan los métodos y sus funcionalidades según las fuentes:
 
-### 1. El método `drop_duplicates()` en pandas
+#### 1. El método `drop_duplicates()` en pandas
 Es la herramienta principal para limpiar duplicados en `Series` y `DataFrames`.
 *   **Funcionamiento básico:** Al llamarlo sin argumentos en un DataFrame, elimina las filas que son copias exactas de una fila anterior.
 *   **Parámetro `subset`:** Permite especificar una columna o una lista de columnas para identificar duplicados, ignorando el resto. Por ejemplo, se puede usar para conservar solo un registro por cada categoría o ID específico.
@@ -75,16 +75,16 @@ Es la herramienta principal para limpiar duplicados en `Series` y `DataFrames`.
     *   `False`: Elimina todas las filas que tengan duplicados, incluyendo la primera aparición.
 *   **Parámetro `inplace=True`:** Modifica el objeto original directamente en lugar de devolver una copia.
 
-### 2. Identificación con `duplicated()`
+#### 2. Identificación con `duplicated()`
 Este método devuelve una serie booleana donde `True` indica que una fila es un duplicado de una anterior. Es útil para inspeccionar o filtrar datos antes de eliminarlos definitivamente.
 
-### 3. Uso de Conjuntos (`set`)
+#### 3. Uso de Conjuntos (`set`)
 Para colecciones de datos básicas de Python (como listas), el método más sencillo es convertir la colección en un **conjunto**.
 *   Un `set` es una colección desordenada de **elementos únicos**.
 *   Al pasar una lista con duplicados a la función `set()`, Python identifica y extrae solo los elementos únicos automáticamente.
 *   Es ideal para obtener rápidamente valores distintos de una secuencia sin preocuparse por el orden.
 
-### 4. Otras técnicas y contextos
+#### 4. Otras técnicas y contextos
 *   **SQL e ingesta de datos:** En procesos de carga (ETL), se pueden usar sentencias como `INSERT OR IGNORE` para evitar la entrada de registros duplicados en una base de datos.
 *   **Duplicados adyacentes:** Si solo se desean eliminar duplicados que aparecen de forma consecutiva (común en series temporales), se puede combinar el método `shift()` con filtros de máscara booleana.
 *   **Nombres de usuario únicos:** En flujos lógicos, se suele pasar una lista de nombres a minúsculas antes de compararlos con un conjunto existente para asegurar la unicidad sin distinguir mayúsculas.
@@ -109,6 +109,7 @@ df_limpio = df.drop_duplicates()
 print("DataFrame original:\n", df)
 print("\nDataFrame sin duplicados exactos:\n", df_limpio)
 ```
+
 ```python showLineNumbers title="Uso del parámetro subset y control de registros con keep"
 """
 En este ejemplo, se eliminan registros considerando solo una columna específica 
@@ -137,6 +138,7 @@ print("Última compra por cliente:\n", df_ultima_compra)
 print("\nClientes sin registros duplicados:\n", df_sin_repetidos)
 
 ```
+
 ```python showLineNumbers title="Identificación previa con duplicated() y modificación inplace"
 """
 A veces es útil identificar los duplicados antes de borrarlos para realizar inspecciones o marcas. 
@@ -212,7 +214,7 @@ Para crear variables dummy (también conocidas como variables indicadoras o codi
 
 A continuación se detallan las formas de aplicarlo según las fuentes:
 
-### Uso básico de `pd.get_dummies()`
+#### Uso básico de `pd.get_dummies()`
 Puedes pasarle una `Series` o un `DataFrame` completo. Si pasas un dataframe, pandas identificará automáticamente las columnas de tipo cadena o categóricas para transformarlas.
 
 *   **Ejemplo simple:** Si tienes una columna "key" con valores "a", "b" y "c", `pd.get_dummies(df["key"])` generará tres columnas nuevas llamadas "a", "b" y "c" con valores binarios.
@@ -223,16 +225,16 @@ Puedes pasarle una `Series` o un `DataFrame` completo. Si pasas un dataframe, pa
     df_con_dummies = df[["otro_dato"]].join(dummies)
     ```
 
-### Tratamiento de pertenencia múltiple (`str.get_dummies`)
+#### Tratamiento de pertenencia múltiple (`str.get_dummies`)
 Si una sola celda contiene varias categorías separadas por un delimitador (por ejemplo, géneros de películas como "Acción|Drama"), se debe utilizar el método de serie **`str.get_dummies()`** especificando el separador.
 *   **Ejemplo:** `movies["genres"].str.get_dummies("|")` creará una columna para cada género individual, marcando con 1 todas las categorías que aparezcan en esa celda específica.
 
-### Casos especiales y aplicaciones
+#### Casos especiales y aplicaciones
 *   **Variables discretizadas:** Es una técnica común combinar la creación de dummies con la función `pd.cut()` para convertir datos numéricos continuos en rangos categóricos y luego en columnas indicadoras.
 *   **Preparación para modelos:** Este proceso es fundamental en el **aprendizaje automático**, ya que muchos algoritmos no admiten datos de texto y requieren que todas las entradas sean numéricas.
 *   **Uso de Patsy:** Para modelos estadísticos complejos, se puede usar la librería **Patsy** (integrada en `statsmodels`), que gestiona automáticamente la creación de variables indicadoras dentro de una fórmula, eliminando usualmente un nivel para evitar problemas de colinealidad (intercepto).
 
-### Resumen de parámetros útiles en `pd.get_dummies`:
+#### Resumen de parámetros útiles en `pd.get_dummies`:
 *   **`data`**: El objeto (Series o DataFrame) a convertir.
 *   **`prefix`**: Cadena para añadir al inicio de los nombres de las nuevas columnas.
 *   **`dummy_na`**: Booleano para añadir una columna que indique si el valor original era nulo (NaN).
@@ -242,7 +244,7 @@ Si una sola celda contiene varias categorías separadas por un delimitador (por 
 ## Ejercicio
 
 :::info
-**Descarga el archivo**: [Plan de compras 2025.xlsx](/static/data/plan_de_compras_2025.xlsx)
+**Descarga el archivo**: [Plan de compras 2025.xlsx](/data/plan_de_compras_2025.xlsx)
 
 Plan de compras 2025. MINVU
 :::

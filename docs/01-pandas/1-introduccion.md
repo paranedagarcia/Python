@@ -1,5 +1,5 @@
 ---
-id: archivos
+id: pandas
 title: "Introducción a Pandas"
 sidebar_label: "Introducción"
 sidebar_position: 1
@@ -10,12 +10,20 @@ sidebar_position: 1
 
 :::info[Codigo:]
 https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z
+
+Atajos:
+- https://www.dataquest.io/cheat-sheet/pandas-cheat-sheet/
+:::
+
+:::info[Descarga fichas de atajos]
+ - [Resumen Pandas](/files/pandas_es.pdf)
+ - [Data Wrangling](/files/pandas_datawrangling.pdf)
 :::
 
 Pandas es una biblioteca de Python diseñada para análisis y manipulación de datos. Proporciona estructuras de datos eficientes y herramientas para trabajar con datos tabulares y series temporales.
 
 ## Características principales
-
+s
 - **DataFrames**: Estructuras bidimensionales similares a tablas SQL o hojas de cálculo
 - **Series**: Arreglos unidimensionales etiquetados
 - **Manipulación de datos**: Filtrado, transformación, agregación y limpieza
