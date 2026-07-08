@@ -37,6 +37,8 @@ def numero_cuadrado(numero):
 Si una función en Python no incluye la sentencia `return`, o si llega al final de su ejecución sin encontrar una, la función devuelve automáticamente el objeto especial `None`
 :::
 
+La instrucción `**return**` sirve para indicar el resultado que la función "devuelve". Una vez que se alcanza la instrucción return la función termina y devuelve el valor indicado. En general es preferible devolver información usando return antes que imprimirla usando `print` ya que esto permite reutilizar la función para una mayor cantidad de casos.
+
 ### return `None`
 
 *   **Retorno invisible:** Python inserta internamente una instrucción invisible de `return None` al final del bloque de código de la función. Esto asegura que todas las funciones en Python siempre devuelvan algo, manteniendo la consistencia del lenguaje.
@@ -45,6 +47,12 @@ Si una función en Python no incluye la sentencia `return`, o si llega al final 
 *   **Significado de `None`:** Este es un objeto especial que representa la **ausencia de un valor**, "nada" o "datos vacíos". Es equivalente a lo que en otros lenguajes como C, C++ o Java se conoce como `void` o `null`.
 *   **Visualización en el intérprete:** Cuando ejecutas una función que devuelve `None` en el intérprete interactivo, este normalmente **no muestra ninguna salida** para esa línea, a diferencia de cuando se devuelve un número o una cadena.
 *   **Uso común:** Este tipo de funciones (a veces llamadas "procedimientos" en otros lenguajes) suelen utilizarse cuando el objetivo principal no es calcular un valor, sino realizar una **acción o efecto secundario**, como imprimir un mensaje en pantalla o modificar una lista global.
+
+:::warning
+Los parámetros de una función son utilizados como variable local a la función. A las que accede solo la función que las utiliza.
+
+Por tanto no tienen valor fuera de la función.
+:::
 
 ### Funciones Preconstruidas
 
@@ -114,9 +122,9 @@ Ahora, aprenderemos a crear nuestras propias funciones. Usamos la palabra clave 
 
 def saludar():
     """
-    el objetivo de la funcion
-    Argumento: 
-    Respuesta: que entrega 
+    Presenta un mensaje de saludo en formato str
+    Argumento: None
+    Respuesta: mensaje (str) 
     """
     print("¡Hola desde mi primera función!")
 
@@ -133,6 +141,15 @@ saludar()
 # Parámetros: `nombre` es el parámetro que la función espera recibir.
 
 def saludar_a_persona(nombre):
+    """
+    Presenta un mensaje de saludo
+
+    Args:
+        nombre (str): nombre de la persona a saludar
+
+    Returns:
+        str: Mensaje de saludo
+    """
     print(f"¡Mucho gusto, {nombre}!")
 
 # Llamar a la función, pasándole un argumento
@@ -242,6 +259,24 @@ print(f"4 * 5 = {resultado_mult}")
 # Puedes pasar tipos incorrectos, pero las herramientas de análisis de código te advertirían
 # resultado_incorrecto = multiplicar("hola", 2) # Esto generaría un error de tipo en tiempo de ejecución
 ```
+```python showLineNumbers
+def conversion(valor):
+    """ calcula la conversion de una moneda a otra pesos a dolares"""
+    valor_fijo = 890
+    return valor / valor_fijo
+
+# uso con varios valores
+
+for valorpeso in (234500, 278900, 275600, 329800):
+    print(f"{valorpeso} pesos son {conversion(valorpeso):.2f} dólares")
+```
+```raw
+--salida:
+234500 pesos son 263.48 dólares
+278900 pesos son 313.37 dólares
+275600 pesos son 309.66 dólares
+329800 pesos son 370.56 dólares
+```
 
 ---
 
@@ -296,6 +331,16 @@ describir_coche("BMW", "Serie 3", año=2023) # 'BMW' y 'Serie 3' son posicionale
 # describir_coche(año=2023, "BMW", "Serie 3") # -> SyntaxError: positional argument follows keyword argument
 ```
 
+### Argumentos arbitrarios
+
+En situaciones donde se desconoce a priori el numero exacto de parametros se establece el último parámetro con nombre precedido por (*).
+
+```python
+def media(*valores):
+    """ Calcula la media de una serie de un numero arbitrario de valores """
+    return float(sum(valores)) / len(valores)
+```
+
 #### En Resumen:
 
 *   **Posicionales**: Se identifican por su **orden**. Si cambias el orden, cambias la asignación. Requieren que se pasen todos los argumentos esperados en la posición correcta.
@@ -345,169 +390,6 @@ print(f"  El cuadrado es: {resultados_tupla[0]}") # Accediendo por índice
 Como puedes ver, la función `obtener_info_calculo` devuelve tres valores: el cuadrado, el cubo y si el número es par. Luego, puedes asignar estos tres valores a tres variables diferentes en una sola línea (`cuad, cub, par = ...`). Esto se llama **desempaquetado de tuplas** y es una característica muy útil de Python.
 
 
-
-### Funciones Lambda (Funciones Anónimas)
-
-Las **funciones lambda** en Python son pequeñas funciones anónimas, es decir, funciones que no se definen con la palabra clave `def` ni tienen un nombre. Se crean con la palabra clave `lambda`.
-
-**Características Principales:**
-
-*   **Anónimas:** No tienen un nombre.
-*   **Pequeñas y Concisas:** Están limitadas a una única expresión. El resultado de esa expresión es lo que la función `lambda` devuelve.
-*   **Sintaxis:** `lambda argumentos: expresión`
-*   **Uso:** Son útiles para tareas sencillas que requieren una función de un solo uso, especialmente como argumentos para funciones de orden superior (funciones que toman otras funciones como argumentos), como `map()`, `filter()`, `sorted()`, etc.
-
-### Ejemplo Básico de una Función Lambda
-
-
-```python showLineNumbers
-# Una función normal para sumar dos números
-def sumar_normal(a, b):
-    return a + b
-
-print(f"Suma normal (1, 2): {sumar_normal(1, 2)}")
-
-# La función lambda equivalente
-sumar_lambda = lambda a, b: a + b
-
-print(f"Suma lambda (1, 2): {sumar_lambda(1, 2)}")
-
-# Otro ejemplo: una lambda para duplicar un número
-duplicar = lambda x: x * 2
-print(f"Duplicar 5 con lambda: {duplicar(5)}")
-```
-
-Como puedes ver, la sintaxis es mucho más compacta para funciones sencillas. El `lambda` toma `a` y `b` como argumentos, y la expresión `a + b` es lo que se evalúa y se devuelve.
-
-### Uso de Lambda con Funciones de Orden Superior
-
-Aquí es donde las funciones `lambda` realmente brillan, ya que nos permiten pasar una pequeña lógica como argumento a otra función sin necesidad de definir una función completa con `def`.
-
-#### 1. `filter()`
-
-`filter(funcion, iterable)` construye un iterador a partir de elementos de un `iterable` para los que `funcion` devuelve verdadero.
-
-
-```python showLineNumbers
-numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-# Usando una función normal para filtrar números pares
-def es_par(num):
-    return num % 2 == 0
-
-pares_normal = list(filter(es_par, numeros))
-print(f"Números pares (función normal): {pares_normal}")
-
-# Usando una función lambda para filtrar números pares
-pares_lambda = list(filter(lambda num: num % 2 == 0, numeros))
-print(f"Números pares (lambda): {pares_lambda}")
-```
-
-#### 2. `map()`
-
-`map(funcion, iterable)` aplica `funcion` a cada elemento de un `iterable` y devuelve un iterador con los resultados.
-
-
-```python showLineNumbers
-numeros = [1, 2, 3, 4, 5]
-
-# Usando una función normal para obtener el cuadrado de cada número
-def cuadrado(num):
-    return num ** 2
-
-cuadrados_normal = list(map(cuadrado, numeros))
-print(f"Cuadrados (función normal): {cuadrados_normal}")
-
-# Usando una función lambda para obtener el cuadrado de cada número
-cuadrados_lambda = list(map(lambda num: num ** 2, numeros))
-print(f"Cuadrados (lambda): {cuadrados_lambda}")
-```
-
-#### 3. `sorted()`
-
-`sorted(iterable, key=funcion)` devuelve una nueva lista ordenada a partir de los elementos del `iterable`. El argumento `key` acepta una función para personalizar el criterio de ordenación.
-
-
-```python showLineNumbers
-palabras = ["Python", "es", "un", "lenguaje", "genial"]
-
-# Ordenar por la longitud de la palabra usando una función lambda
-palabras_ordenadas_por_longitud = sorted(palabras, key=lambda palabra: len(palabra))
-print(f"Palabras ordenadas por longitud: {palabras_ordenadas_por_longitud}")
-
-# Una lista de diccionarios (objetos)
-estudiantes = [
-    {'nombre': 'Ana', 'edad': 20},
-    {'nombre': 'Carlos', 'edad': 22},
-    {'nombre': 'Beatriz', 'edad': 19}
-]
-
-# Ordenar la lista de estudiantes por edad usando una función lambda
-estudiantes_ordenados_por_edad = sorted(estudiantes, key=lambda estudiante: estudiante['edad'])
-print(f"Estudiantes ordenados por edad: {estudiantes_ordenados_por_edad}")
-```
-
-### Cuándo Usar y Cuándo No Usar Lambda
-
-**Usa Lambda cuando:**
-
-*   Necesitas una función simple y de un solo uso.
-*   La lógica puede expresarse en una sola línea.
-*   La estás pasando como argumento a una función de orden superior (`map`, `filter`, `sorted`, etc.).
-
-**Evita Lambda cuando:**
-
-*   La lógica es compleja o requiere múltiples declaraciones/pasos.
-*   Necesitas que la función tenga un nombre (para reutilizarla o para mayor legibilidad en el código).
-*   La función realiza una acción en lugar de devolver un valor (aunque técnicamente se puede hacer, es menos idiomático y menos legible).
-
-En resumen, las funciones lambda son una herramienta poderosa para mejorar la concisión de tu código, pero es importante usarlas con moderación y solo cuando la simplicidad de la función lo justifique.
-
-
-### Usa map con funciones lambda en listas
-El uso de **`map()`** con **funciones lambda** es una técnica común en Python para aplicar una operación específica a cada elemento de una lista de manera concisa. La función `map()` toma dos argumentos principales: una función y un objeto iterable (como una lista).
-
-A continuación se detalla el proceso y se proporcionan ejemplos basados en las fuentes:
-
-#### 1. Sintaxis Básica
-La estructura fundamental combina la definición "sobre la marcha" de una función anónima con la lista que se desea procesar:
-`map(lambda parámetro: expresión, lista)`.
-
-#### 2. Conversión a Lista
-En Python 3, `map()` devuelve un **iterador** (u objeto map) en lugar de una lista física. Esto ahorra memoria al no procesar todos los elementos simultáneamente. Para obtener una lista final con los resultados, es necesario envolver la llamada en el constructor **`list()`**.
-
-**Ejemplo de elevar al cuadrado:**
-```python showLineNumbers
-numeros =
-# Aplica la lambda a cada número y convierte el iterador resultante en lista
-cuadrados = list(map(lambda n: n ** 2, numeros))
-# Resultado:
-```
-
-
-#### 3. Uso con múltiples listas
-La función `map()` puede aceptar más de un iterable. En este caso, la función lambda debe recibir tantos argumentos como listas se proporcionen, procesándolas en paralelo. Si las listas tienen longitudes diferentes, `map()` se detiene cuando se agota la lista más corta.
-
-**Ejemplo con dos listas:**
-```python showLineNumbers
-list1 =
-list2 =
-# Suma elementos correspondientes de ambas listas
-sumas = list(map(lambda x, y: x + y, list1, list2))
-# Resultado:
-```
-
-
-#### 4. Alternativas y Rendimiento
-Aunque `map()` con lambda es eficiente, las fuentes indican que en el Python moderno se suelen preferir las **comprensiones de lista** (*list comprehensions*) por su mayor legibilidad y porque a menudo resultan más rápidas al no requerir la creación de una función intermedia.
-
-*   **Con `map`:** `list(map(lambda x: x**2, range(10)))`.
-*   **Con comprensión:** `[x**2 for x in range(10)]`.
-
-#### Casos de uso comunes
-*   **Transformación de tipos:** Convertir una lista de cadenas en enteros: `list(map(int, ["1", "2", "3"]))`.
-*   **Limpieza de texto:** Aplicar métodos de cadena como `strip()` o `upper()` a una lista de palabras.
-*   **Análisis de datos:** En librerías como **pandas**, el método `.map()` (y similares como `.apply()`) se utiliza para transformar columnas completas basándose en diccionarios o funciones lambda.
 
 ## Ejercicios
 
@@ -612,3 +494,83 @@ Crea una funcion 'limpiar_rut' que acepte un 'texto' y devuelva un rut limpio:
 - **devuelve:** '10789300-K'
 
 
+## Docstring
+
+Los **docstrings** (o cadenas de documentación) son literales de cadena que se insertan como la primera sentencia en la definición de un módulo, función, clase o método en Python. A diferencia de los comentarios comunes (usando `#`), los docstrings se conservan en el código compilado y son accesibles en tiempo de ejecución.
+
+#### Cómo se usan los docstrings
+
+1.  **Ubicación:** Deben aparecer inmediatamente después de la línea de encabezado del objeto (por ejemplo, justo debajo de la línea `def` o `class`) y antes de cualquier otra sentencia de código.
+2.  **Delimitadores:** La convención estándar es encerrarlos entre **triples comillas dobles (`"""..."""`)**, lo cual permite que la cadena abarque múltiples líneas.
+3.  **Acceso:** Se pueden consultar de dos maneras principales:
+    *   A través del atributo especial **`__doc__`** del objeto (ej. `func_nombre.__doc__`).
+    *   Utilizando la función integrada **`help()`**, que genera una página de documentación basada en el docstring.
+
+#### Mejores recomendaciones y convenciones
+
+Para escribir docstrings profesionales, las fuentes sugieren seguir las pautas de la **PEP 257** y adoptar las siguientes prácticas:
+
+*   **Docstrings de una sola línea:** Se utilizan para funciones muy simples. Deben indicar el propósito del objeto de forma concisa y terminar con un punto (ej. `"""Convierte grados Celsius a Fahrenheit."""`). No deben simplemente repetir la firma de la función.
+
+*   **Estructura multilínea:** Para objetos complejos, se recomienda incluir:
+    *   Un **resumen corto** en la primera línea seguido de una línea en blanco.
+    *   Una descripción detallada de los **argumentos** (parámetros) y los **valores de retorno**.
+    *   Menciones sobre posibles **efectos secundarios** o excepciones que se puedan lanzar.
+*   **Inclusión de ejemplos (Doctests):** Una de las mejores prácticas es incluir ejemplos de sesiones interactivas de Python (comenzando con `>>>`) dentro del docstring. Herramientas como el módulo `doctest` pueden ejecutar estos ejemplos automáticamente para asegurar que la documentación y el código coincidan y funcionen correctamente.
+*   **Legibilidad y Estilo:**
+    *   Mantener la longitud de las líneas por debajo de los **80 caracteres**.
+    *   No dejar líneas en blanco inmediatamente antes ni después del docstring dentro del cuerpo de la función.
+    *   En las clases, el docstring debe resumir el comportamiento de la categoría y sus atributos principales.
+    *   En los módulos, el docstring debe ir al principio del archivo para explicar su propósito y uso general.
+
+#### Estándares de estilo más comunes
+
+Existen varios formatos reconocidos por la comunidad, pero los más utilizados son:Estilo Google: Es muy legible y divide la información en secciones claras.
+
+#### 1. Estilo Google
+Es muy legible y divide la información en secciones claras.
+```python
+def calcular_area(base, altura):
+    """
+    Calcula el área de un rectángulo.
+
+    Args:
+        base (float): La longitud de la base del rectángulo.
+        altura (float): La longitud de la altura del rectángulo.
+
+    Returns:
+        float: El área calculada del rectángulo.
+    """
+
+    return base * altura
+```
+
+#### 2. Estilo NumPy/SciPy
+Muy usado en ciencia de datos, detalla ampliamente los parámetros y el tipo de dato.
+```python
+def calcular_area(base, altura):
+    """
+    Calcula el área de un rectángulo.
+
+    Parameters
+    ----------
+    base : float
+        La longitud de la base del rectángulo.
+    altura : float
+        La longitud de la altura del rectángulo.
+
+    Returns
+    -------
+    float
+        El área calculada del rectángulo.
+    """
+
+    return base * altura
+```
+
+#### Cómo acceder a la documentación
+Puedes visualizar el docstring de cualquier objeto, módulo o función de dos maneras principales en Python:
+- 1. Usando la función help()
+Es la forma nativa de consultar la documentación desde tu terminal o script
+- 2. Usando el atributo __doc__ de la funcion
+print(calcular_area.__doc__)

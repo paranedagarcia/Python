@@ -2,7 +2,7 @@
 id: modularizacion
 title: "Modularización"
 sidebar_label: "​​📦 Modularización"
-sidebar_position: 11
+sidebar_position: 12
 description: "Modularización y reutilización de código"
 ---
 

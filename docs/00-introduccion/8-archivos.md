@@ -3,7 +3,7 @@ id: archivos
 title: "Archivos y sistema operativo"
 sidebar_label: "🗂️​ Manejo de archivos"
 description: "Ingesta de datos y procesos de carga"
-sidebar_position: 13
+sidebar_position: 14
 ---
 
 El manejo de archivos en Python es una habilidad fundamental. Para trabajar de manera correcta y segura, la mejor práctica en Python moderno es usar un **administrador de contexto** mediante la palabra clave `with`. Esto garantiza que los archivos se cierren automáticamente al terminar, evitando fugas de memoria o corrupción de datos.

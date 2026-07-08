@@ -3,7 +3,7 @@ id: excepciones
 title: "Excepciones"
 sidebar_label: "🗂️​ Excepciones"
 description: "Manejo de excepciones y errores"
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 El manejo de excepciones en Python es un mecanismo fundamental para gestionar errores que ocurren durante la ejecución de un programa, permitiendo que este responda a situaciones inesperadas de manera controlada en lugar de detenerse abruptamente.
