@@ -2,7 +2,7 @@
 id: matplotlib
 title: "Matplotlib"
 sidebar_label: "​📊 Matplotlib"
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 ![](img/matplotlib.png)
@@ -18,6 +18,9 @@ Para utilizarla, habitualmente se importa el módulo `pyplot` con el alias `plt`
 import matplotlib.pyplot as plt
 import numpy as np
 ```
+### Anatomía de un gráfico
+
+![](https://github.com/paranedagarcia/Cienciadedatos/blob/main/images/plt.anatomia.png?raw=true)
 
 #### 1. Gráfico de líneas sencillo
 Es el tipo de gráfico por defecto. Puedes pasarle una lista de números y Matplotlib se encarga de generar los ejes y trazar la línea.
@@ -227,6 +230,7 @@ plt.ylabel('y')
 plt.legend()
 plt.show()
 ```
+![](img/plt-pyplot.png)
 
 ### Enfoque orientado a objetos (`ax.plot`)
 Este es el enfoque **preferido para personalizaciones complejas**. Aquí se crean explícitamente objetos de tipo `Figure` (la ventana completa) y `Axes` (un trazado individual). Esto permite manipular cada gráfico de forma independiente y precisa.

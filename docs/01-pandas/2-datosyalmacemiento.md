@@ -5,7 +5,7 @@ sidebar_label: "Datos en pandas"
 sidebar_position: 2
 ---
 
-La manipulación de datos en **pandas** se centra en sus dos estructuras principales: la **Series** (unidimensional) y el **DataFrame** (bidimensional, similar a una tabla SQL o una hoja de Excel). El detalle de el manejo de diferentes fuentes de datos con ejemplos:.
+La manipulación de datos en **pandas** se centra en sus dos estructuras principales: **Series** (unidimensional) y el **DataFrame** (bidimensional, similar a una tabla SQL o una hoja de Excel). El detalle de el manejo de diferentes fuentes de datos con ejemplos:.
 
 ### Archivos CSV (Valores Separados por Comas)
 Es el formato más común para el intercambio de datos tabulares entre sistemas informáticos.
@@ -25,6 +25,7 @@ Es el formato más común para el intercambio de datos tabulares entre sistemas 
 Pandas utiliza librerías internas como `openpyxl` (para .xlsx) o `xlrd` (para .xls) para gestionar estos archivos.
 
 *   **Lectura:** `pd.read_excel()` permite cargar una hoja específica mediante `sheet_name`.
+
 *   **Escritura:** `df.to_excel()` requiere a menudo el uso de `pd.ExcelWriter` si se desean guardar múltiples hojas en un solo archivo.
 *   **Ejemplo:**
     ```python showLineNumbers
@@ -52,7 +53,9 @@ Para archivos `.txt` donde el delimitador no es necesariamente una coma, se empl
 Los formatos binarios son más eficientes para el almacenamiento masivo y mantienen los tipos de datos.
 
 *   **Pickle:** Es el formato nativo de Python para serialización rápida de objetos, aunque se recomienda solo para almacenamiento a corto plazo.
+
 *   **HDF5:** Ideal para grandes cantidades de datos científicos; permite compresión y acceso a fragmentos sin cargar todo el archivo en memoria.
+
 *   **Ejemplo:**
     ```python showLineNumbers
     # Guardar y cargar en formato Pickle
@@ -68,6 +71,7 @@ Los formatos binarios son más eficientes para el almacenamiento masivo y mantie
 La mayoría de las API web devuelven datos en formato **JSON**.
 
 *   **Proceso:** Normalmente se usa la librería `requests` para obtener los datos y luego `pd.json_normalize()` para aplanar estructuras anidadas.
+
 *   **Ejemplo:**
     ```python showLineNumbers
     import requests
@@ -100,7 +104,9 @@ Para conectar **pandas** a una base de datos **PostgreSQL** y cargar datos, se u
 #### Pasos principales para la conexión
 
 1.  **Instalación de dependencias:** Es necesario tener instaladas las librerías `sqlalchemy` y `psycopg2` (el adaptador de base de datos para PostgreSQL).
+
 2.  **Creación del motor (Engine):** Se utiliza la función `create_engine()` de SQLAlchemy pasando una cadena de conexión (URI) con el formato: `postgresql://usuario:contraseña@host:puerto/nombre_base_datos`.
+
 3.  **Lectura de datos:** Se emplea la función `pd.read_sql()`, la cual acepta una consulta SQL o un nombre de tabla y el objeto de conexión.
 
 #### Ejemplo

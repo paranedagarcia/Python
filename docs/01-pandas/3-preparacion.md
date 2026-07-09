@@ -3,13 +3,14 @@ id: pandas-limpieza
 title: "Limpieza y preparación de datos"
 sidebar_label: "Limpieza"
 sidebar_position: 3
+description: "Proceso de depuración y confianza de datos"
 ---
 
 :::info[Codigo:]
 - https://colab.research.google.com/drive/19BgqL7U0SE7BoHutwZT_wWGOUDmHHVwB
 :::
 
-El proceso de **limpieza y preparación de datos** en pandas es una etapa crítica que a menudo ocupa la mayor parte del tiempo en un proyecto de análisis. A continuación, se detallan los aspectos solicitados basándose en las fuentes:
+El proceso de **limpieza y preparación de datos** en pandas es una etapa crítica que a menudo ocupa la mayor parte del tiempo en un proyecto de análisis.
 
 ## Gestión de datos faltantes
 Pandas utiliza principalmente el valor centinela **`NaN`** (Not a Number) para representar datos nulos en tipos de punto flotante, aunque también emplea **`pd.NA`** para tipos de extensión como los enteros anulables (`Int64`).
