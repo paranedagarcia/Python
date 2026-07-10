@@ -7,9 +7,21 @@ sidebar_position: 2
 
 ![](img/matplotlib.png)
 
+Información adicional:
+- [Guía de usuario](https://matplotlib.org/stable/users/index.html#)
+- [Cheatsheet](https://matplotlib.org/cheatsheets/)
+
 **Matplotlib** es la biblioteca de Python más conocida y utilizada para la creación de gráficos y visualizaciones de datos bidimensionales de alta calidad. Fue diseñada originalmente por John Hunter para ofrecer una interfaz de trazado similar a MATLAB dentro de Python, y permite generar figuras aptas para su publicación en una amplia variedad de formatos (PDF, PNG, SVG, etc.).
 
 Es una herramienta fundamental en el ecosistema científico, ya que sirve de base para otras bibliotecas como **Seaborn** y tiene una integración nativa muy fuerte con **Pandas**.
+
+**Matplotlib** utiliza un concepto de "figura" para el despliegue de un gráfico, esta contiene ejes (Axes)donde se agrupan todos los elementos del gráfico que incluyen: titulos, leyendas e incluso otras figuras.
+
+Se espera el uso de arrays de numpy para plotear, y por ende es recomendable para obtener los mejores resultados usar una conversion como numpy.matrix.
+
+Existen dos formas de generar gráficos en Matplotlib:
+1. **Explicita**: Crear Figuras y Axes y usando métodos OOP (orientado a objetos)
+1. **Implicita**: Utiliza Pyplot para generar Figuras y Axes, mediante las funciones propias de pyplot
 
 ### Ejemplos de uso básicos
 
@@ -48,6 +60,8 @@ plt.grid(True, linestyle=':', alpha=0.6)
 plt.show()
 ```
 ![](img/plt-serie.png)
+
+
 
 #### 2. Gráfico de dispersión (Scatter plot)
 Útil para visualizar puntos individuales y encontrar relaciones entre variables.
@@ -100,6 +114,56 @@ plt.show()
 ```
 ![](img/plt-barras.png)
 
+
+#### Gráfico de barras apiladas
+En este tipo de gráfico se define una variable "bottom" para establecer la apilación y orden de las series.
+- Cuándo usar
+    - Para mostrar la composición de un total por categoría (qué parte aporta cada subserie al total).
+    - Cuando el interés principal es el total y la proporción relativa de las partes (p. ej. participación de mercado, desglose presupuestario).
+    - Cuando hay pocas subseries por barra (recomendable ≤ 4–5) y las diferencias son claras.
+
+- Cuándo no usar
+    - Si necesitas comparar valores absolutos de una misma subserie entre categorías (las subseries apiladas son difíciles de comparar salvo la base).
+    - Cuando hay muchas subseries o muchas barras: el gráfico se vuelve confuso.
+    - Si existen valores negativos que complican la apilación.
+    - Para comparaciones precisas entre pequeñas porciones — en ese caso, mejor barras agrupadas o small multiples.
+
+- Buenas prácticas
+    - Limitar el número de subseries; agrupar las muy pequeñas en “Otros”.
+    - Ordenar las subseries de forma consistente (p. ej. del mismo criterio en todas las barras) o por importancia para facilitar la lectura.
+    - Mostrar totales encima de cada barra si el total es relevante.
+    - Ofrecer una versión normalizada (100%) si interesa comparar proporciones en lugar de valores absolutos.
+    - Usar paletas de colores contrastantes y accesibles (color‑blind friendly) y evitar efectos 3D.
+    - Añadir etiquetas/porcentajes visibles (autopct) y una leyenda clara; considerar anotaciones directas sobre las porciones más importantes.
+    - Usar barras horizontales si las categorías tienen etiquetas largas.
+    - Considerar alternativas cuando se necesite comparar subseries entre categorías: barras agrupadas, small multiples, o líneas.
+    - Mantener el orden y la paleta consistentes entre múltiples gráficos para facilitar comparaciones.
+
+```python showLineNumbers
+plt.bar(years, nivel1, label='Nivel 1', color='blue')
+plt.bar(years, nivel2, label='Nivel 2', color='orange', bottom=nivel1)
+plt.bar(years, nivel3, label='Nivel 3', color='green', bottom=nivel1+nivel2)
+plt.bar(years, nivel4, label='Nivel 4', color='red', bottom=nivel1+nivel2+nivel3)
+plt.bar(years, nivel5, label='Nivel 5', color='purple', bottom=nivel1+nivel2+nivel3+nivel4)
+
+# añadir etiquetas y título
+
+plt.xlabel('Años de examen')
+plt.ylabel('Puntajes')
+plt.title('Puntajes a lo largo de los años', fontsize=18)
+plt.xlabel('Años de examen', fontsize=14)
+plt.ylabel('Puntajes', fontsize=14)
+
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.legend(loc='upper center', ncol=5)
+plt.gcf().set_size_inches(12, 8)
+
+plt.show()
+
+```
+![](img/plt-barrapilada.png)
+
 #### 4. Histograma
 Ideal para explorar la distribución de un conjunto de datos.
 - **Set de datos**: Iris Dataset (Atributos morfológicos de flores).
@@ -132,6 +196,61 @@ plt.show()
 ```
 ![](img/plt-histograma.png)
 
+#### Torta o Pie
+
+Los gráficos de torta (pie charts) muestran cómo se reparte un todo en partes; cada porción representa la proporción de una categoría respecto al total.
+
+- Usos adecuados
+    - Visualizar la composición relativa (porcentajes) de un conjunto con pocas categorías.
+    - Mostrar participación de cada categoría cuando el interés es la proporción del total (share).
+    - Paneles y resúmenes donde una vista rápida de “qué parte ocupa cada cosa” es suficiente.
+
+- Cuándo conviene usarlos
+    - Cuando hay pocas categorías (recomendable ≤ 5).
+    - Cuando las diferencias entre partes son grandes y fáciles de distinguir.
+    - Cuando el objetivo es comunicar proporciones, no comparar valores exactos entre categorías.
+
+- Cuándo evitarlos
+    - Muchas categorías o muchas porciones pequeñas (mejor usar barras).
+    - Valores muy similares que requieren comparación precisa (usar gráfico de barras).
+    - Series temporales o datos con valores negativos.
+
+- Buenas prácticas
+    - Mostrar porcentajes y/o valores absolutos (autopct, etiquetas claras).
+    - Ordenar las porciones (p. ej. descendente) y agrupar los muy pequeños en “Otros”.
+    - Evitar efectos 3D y exageraciones visuales; preferir paletas de colores legibles.
+    - Considerar un donut (anillo) si se quiere colocar una etiqueta central o enfatizar menos el volumen.
+    - Si la audiencia necesita comparar categorías, usar un gráfico de barras en su lugar.
+
+
+```python showLineNumbers
+plt.pie(nivel1, labels=years, autopct='%1.1f%%', startangle=140)
+plt.title('Distribución del Nivel 1 a lo largo de los años', fontsize=16)
+plt.gcf().set_size_inches(6,6)
+plt.show()
+```
+![](img/plt-pie.png)
+
+Crear un gráfico que reune todos los niveles de puntaje en 2 columnas.
+
+```python showLineNumbers
+fig, axs = plt.subplots(3, 2, figsize=(12, 18))
+niveles = [nivel1, nivel2, nivel3, nivel4, nivel5]
+titulos = ['Nivel 1', 'Nivel 2', 'Nivel 3', 'Nivel 4', 'Nivel 5']
+
+for i, (nivel, titulo) in enumerate(zip(niveles, titulos)):
+    row, col = divmod(i, 2)
+    axs[row, col].pie(nivel, labels=years, autopct='%1.1f%%', startangle=140)
+    axs[row, col].set_title(f'Distribución del {titulo}', fontsize=16)
+    axs[row, col].figure.set_size_inches(12, 12)
+
+# Eliminar el subplot vacío (última celda)
+axs[2, 1].axis('off')
+
+plt.tight_layout()
+plt.show()
+```
+![](img/plt-piemultiple.png)
 
 #### Subplots Múltiples Básicos
 
@@ -188,6 +307,155 @@ ax.set_ylabel("Resultado", fontsize=14)
 ax.legend()
 plt.show()
 ```
+
+#### Gráfico simple con personalización
+Se presentan una serie de personalizaciones respecto de los aspectos generales de un gráfico.
+```python showLineNumbers
+import matplotlib.pyplot as plt
+import numpy as np
+
+# crear una serie de datos ficticios
+# una lista de años desde 2011 a 2020
+years = ["2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"]
+
+nivel1 = np.random.rand(10) * 100
+nivel2 = np.random.rand(10) * 200 +100
+nivel3 = np.random.rand(10) * 300 +200
+nivel4 = np.random.rand(10) * 400 +300
+nivel5 = np.random.rand(10) * 500 +400
+
+plt.rcParams['font.family'] = 'arial'
+
+# crear un gráfico de líneas en modo explícito
+
+fig, ax = plt.subplots(figsize=(8, 4))
+ax.plot(years, nivel1, label='Nivel 1')  # Plot some data on the Axes.
+ax.plot(years, nivel2, label='Nivel 2')  # Plot more data on the Axes...
+ax.plot(years, nivel3, label='Nivel 3')  # ... and some more.
+ax.set_xlabel('Años de examen')  # Add an x-label to the Axes.
+ax.set_ylabel('Puntajes')  # Add a y-label to the Axes.
+ax.set_title("Puntajes a lo largo de los años")  # Add a title to the Axes.
+ax.legend()  # Add a legend.
+```
+![](img/plt-personal.png)
+
+```python showLineNumbers
+# crear un gráfico de líneas en modo implícito
+plt.figure(figsize=(8, 4))
+plt.plot(years, nivel1, label='Nivel 1')
+plt.plot(years, nivel2, label='Nivel 2')
+plt.plot(years, nivel3, label='Nivel 3')
+plt.xlabel('Años de examen')
+plt.ylabel('Puntajes')
+plt.title("Puntajes a lo largo de los años")
+plt.legend()
+plt.show()
+```
+![](img/plt-personal1.png)
+
+```python showLineNumbers
+# creación de un gráfico con matplotlib
+# crear una figura y un eje
+plt.plot(years, nivel1, label='Nivel 1')
+plt.plot(years, nivel2, label='Nivel 2')
+plt.plot(years, nivel3, label='Nivel 3')
+plt.plot(years, nivel4, label='Nivel 4')
+plt.plot(years, nivel5, label='Nivel 5')
+
+# añadir una leyenda
+plt.legend()
+
+# establecer el tipo de letra para todo el grafico
+plt.rcParams['font.family'] = 'Nimbus Sans'
+
+# añadir etiquetas y título
+plt.xlabel('Años de examen')
+plt.ylabel('Puntajes')
+plt.title('Puntajes a lo largo de los años', fontsize=16)
+
+# personalizar eje y respecto de los puntajes de 0 a 500 en incrementos de 50
+plt.yticks(np.arange(0, 901, 50))
+
+# activar cuadricula
+plt.grid()
+
+# activar marcas menores solo en el eje y
+plt.minorticks_on()
+plt.grid(which='minor', axis='y', linestyle=':', linewidth=0.5)
+
+#establecer un tamaño de figura en pulgadas
+plt.gcf().set_size_inches(12, 7)
+
+# no mostrar ticks menores, solo mayores en el eje x en los años
+plt.tick_params(axis='x', which='minor', bottom=False, top=False)
+
+# mostrar el gráfico
+plt.show()
+```
+![](img/plt-personal2.png)
+
+### Marcadores
+El uso de marcadores permite diferenciar mayormente entre las series de un gráfico.
+[Guía de marcas](https://matplotlib.org/stable/api/markers_api.html#module-matplotlib.markers)
+
+```python showLineNumbers
+# establecer colores y marcas para cada línea, esto sobreescribe los colores por defecto.
+plt.plot(years, nivel1, label='Nivel 1', color='blue', marker='o')
+plt.plot(years, nivel2, label='Nivel 2', color='orange', marker='s')
+plt.plot(years, nivel3, label='Nivel 3', color='green', marker='^')
+plt.plot(years, nivel4, label='Nivel 4', color='red', marker='+')
+plt.plot(years, nivel5, label='Nivel 5', color='purple', marker='x')
+
+# añadir una leyenda
+plt.legend()
+
+# añadir etiquetas y título
+plt.xlabel('Años de examen')
+plt.ylabel('Puntajes')
+plt.title('Puntajes a lo largo de los años')
+
+# personalizar eje de puntaje de 0 a 500 en incrementos de 50
+plt.yticks(np.arange(0, 901, 50))
+
+# activar cuadricula
+plt.grid()
+
+# activar marcas menores solo en el eje y
+plt.minorticks_on()
+plt.grid(which='minor', axis='y', linestyle=':', linewidth=0.5)
+
+# establecer un tamaño de figura en pulgadas
+plt.gcf().set_size_inches(12, 7)
+
+# no mostrar ticks menores, solo mayores en el eje x en los años
+plt.tick_params(axis='x', which='minor', bottom=False, top=False)
+
+# mostrar el gráfico
+plt.show()
+
+```
+![](img/plt-marcador.png)
+
+```python showLineNumbers
+# definir estilo de linea para cada serie de datos
+plt.figure(figsize=(12, 6))
+plt.plot(years, nivel1, label='Nivel 1', color='blue', marker='o', linestyle='-')
+plt.plot(years, nivel2, label='Nivel 2', color='orange', marker='s', linestyle='--')
+plt.plot(years, nivel3, label='Nivel 3', color='green', marker='^', linestyle='-.')
+plt.plot(years, nivel4, label='Nivel 4', color='red', marker='+', linestyle=':')
+plt.plot(years, nivel5, label='Nivel 5', color='purple', marker='x', linestyle='-')
+
+# añadir una leyenda   
+plt.legend()
+
+# establecer un tamaño de figura en pulgadas
+#plt.gcf().set_size_inches(12, 7)
+
+
+# mostrar el gráfico
+plt.show()
+```
+![](img/plt-serielinea.png)
 
 ### Integración con Pandas
 Una de las mayores ventajas es que puedes generar gráficos directamente desde objetos de Pandas (Series o DataFrames) con una sintaxis muy simplificada.
