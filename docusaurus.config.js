@@ -96,7 +96,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Curso',
+            label: 'Curso Python',
           },
           
           {
@@ -110,16 +110,20 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Otros cursos de la serie',
             items: [
               {
-                label: 'Curso',
-                to: '/docs/intro',
+                label: 'Inteligencia Artificial',
+                to: 'https://patricioaraneda.cl/inteligencia-artificial/',
               },
               {
-                label: 'Autor',
-                to: '/docs/autor',
+                label: 'Ciencia de Datos',
+                href: 'https://patricioaraneda.cl/ciencia-de-datos/',
               },
+              {
+                label: 'Programación en Python',
+                href: 'https://patricioaraneda.cl/python/',
+              }
             ],
           },
           {

@@ -2,19 +2,46 @@
 id: poo
 title: "Fundamentos de POO"
 sidebar_label: "Fundamentos POO"
-sidebar_position: 2
+sidebar_position: 1
 description: "Fundamentos del POO"
 ---
 
 La programación orientada a objetos (POO) en Python es un paradigma fundamental que permite modelar entidades del mundo real mediante estructuras de datos llamadas **objetos**, los cuales agrupan tanto un estado (datos) como un comportamiento (funcionalidad). Python es un lenguaje **multiparadigma** donde todo es considerado un objeto, desde los números básicos hasta las funciones y módulos.
 
+La Programación Orientada a Objetos en Python te permite crear código más organizado, reutilizable y fácil de mantener, modelando el mundo real con clases y objetos. Aunque suena técnico, en el fondo es como construir con bloques de LEGO: defines piezas (clases) y luego las ensamblas (objetos) para crear algo funcional.
+
+La **Programación Orientada a Objetos (POO)** es una forma de organizar el código pensando en **objetos del mundo real**. En lugar de escribir instrucciones sueltas, creamos "plantillas" (llamadas **clases**) que definen cómo son y cómo se comportan esos objetos.
+
+**Ejemplo cotidiano**:  
+Piensa en un **auto**. Todos los autos tienen características (color, marca, velocidad) y pueden hacer cosas (acelerar, frenar). En POO, modelamos eso con clases y objetos.
+
+## Clases y objetos
+- **Clase**: Es como un **molde** o **receta** para crear objetos. Define qué atributos y comportamientos tendrán.
+- **Objeto**: Es una **instancia** de una clase. Es decir, un objeto real creado a partir de esa receta.
+
+```python
+# Definimos una clase llamada "Perro"
+class Perro:
+    pass
+
+# Creamos un objeto (instancia) de la clase Perro
+mi_perro = Perro()
+
+# Aquí, `Perro` es la clase (el molde), y `mi_perro` es un objeto real basado en ese molde.
+```
+
 ### Fundamentos de la POO en Python
 
 *   **Clase (Class):** Es la "plantilla" o plano general que define los atributos y métodos comunes a una categoría de objetos. Se define con la palabra clave `class`.
+
 *   **Objeto o Instancia:** Es una realización específica de una clase. La creación de un objeto se llama **instanciación**.
+
 *   **Atributos:** Son variables que almacenan el estado o las características de un objeto.
+
 *   **Métodos:** Son funciones definidas dentro de una clase que determinan qué acciones puede realizar el objeto.
+
 *   **El método `__init__`:** Conocido como **constructor** o inicializador, es un método especial que Python ejecuta automáticamente al crear una nueva instancia para establecer sus valores iniciales.
+
 *   **El parámetro `self`:** Es el primer argumento obligatorio en los métodos de una instancia y representa al objeto específico que está llamando al método, permitiendo acceder a sus propios atributos y otros métodos.
 
 Las clases se definen con la palabra clave `class` seguida con el nombre de la clase, dos puntos `:` y luego el cuerpo de la clase con todas sus definiciones. Incluya siempre un cadena de texto docstring """ para documentar la clase.
@@ -39,15 +66,44 @@ class Auto:
             else:
         print “No se mueve”
  ```
+
+## Constructores
+El **constructor** es un método especial que se ejecuta **automáticamente** cuando creamos un nuevo objeto. En Python, se llama `__init__`.
+
+```python
+class Perro:
+    def __init__(self, nombre, raza):
+        self.nombre = nombre
+        self.raza = raza
+
+# Creamos un perro con nombre y raza
+mi_perro = Perro("Firulais", "Labrador")
+print(mi_perro.nombre)  # Imprime: Firulais
+```
+El constructor permite **inicializar** los atributos del objeto al crearlo.
+
 El primer método `__init__` es relevante porque es la instanciación inicial, realiza todo el proceso de inicialización que sea necesario.
 El primer parámetro de este es `self`y que se refiere al objeto actual y permite acceder a todos los atributos y métodos del objeto.
+
+## Función isinstance()
+Esta función nos dice si un objeto **es una instancia** de una clase determinada.
+
+```python
+print(isinstance(mi_perro, Perro))   # True
+print(isinstance(mi_perro, str))    # False
+```
+
 
 ### Características Principales
 
 1.  **Herencia (Inheritance):** Permite crear una nueva clase (subclase) a partir de una existente (superclase), heredando todos sus atributos y métodos. Esto facilita la reutilización de código y la especialización de funciones.
+
 2.  **Polimorfismo:** Es la capacidad de objetos de distintas clases de responder al mismo mensaje o nombre de método. Python lo implementa principalmente a través del **Duck Typing**: "si camina como un pato y grazna como un pato, entonces es un pato", priorizando lo que el objeto puede hacer sobre su tipo estricto.
+
 3.  **Encapsulamiento:** Se refiere a ocultar los detalles internos de un objeto y exponer solo una interfaz pública. A diferencia de otros lenguajes, Python no impone restricciones técnicas estrictas (como `private`), sino que utiliza convenciones de nombres (como un guion bajo inicial `_variable`) para indicar que un atributo es de uso interno.
+
 4.  **Composición (Composition):** Consiste en construir clases complejas utilizando instancias de otras clases como atributos (relación "tiene un" o *has-a*).
+
 5.  **Métodos Especiales (Dunder Methods):** Métodos que comienzan y terminan con doble guion bajo (como `__str__` o `__len__`) y permiten que los objetos se integren con la sintaxis nativa de Python, como el uso de operadores matemáticos o la función `len()`.
 
 ### Ejercicios
@@ -177,7 +233,7 @@ if __name__ == "__main__":
 **Geometría:** <br /> 
 Desarrollar clases para figuras como `Circle`, `Rectangle` o `Triangle` que incluyan métodos para calcular el área y la circunferencia basándose en sus dimensiones.
 
-**Conceptos de POO aplicados en este programa:**
+**Conceptos de POO aplicados:**
 
 1. **Abstracción:** Creamos la clase base `Shape` utilizando el decorador `@abstractmethod`. Esto define una interfaz obligatoria para todas las figuras, ocultando la complejidad y dictando las reglas que cada subclase debe seguir (no se puede instanciar directamente un `Shape`).
 2. **Herencia:** Las clases `Circle`, `Rectangle` y `Triangle` heredan de `Shape` mediante la sintaxis `class NombreClase(Shape):`. Al hacer esto, adoptan el compromiso de implementar sus propios métodos de cálculo.
