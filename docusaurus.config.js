@@ -27,7 +27,6 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/python/',
 
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'paranedagarcia', // Usually your GitHub org/user name.
@@ -100,7 +99,7 @@ const config = {
           },
           
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/paranedagarcia/python',
             label: 'GitHub',
             position: 'right',
           },
@@ -113,21 +112,25 @@ const config = {
             title: 'Otros cursos de la serie',
             items: [
               {
-                label: 'Inteligencia Artificial',
-                to: 'https://patricioaraneda.cl/inteligencia-artificial/',
+                label: 'Programación en Python',
+                href: 'https://patricioaraneda.cl/python/',
+              },
+              {
+                label: 'Bioestadística',
+                href: 'https://patricioaraneda.cl/bioestadistica/',
               },
               {
                 label: 'Ciencia de Datos',
                 href: 'https://patricioaraneda.cl/ciencia-de-datos/',
               },
               {
-                label: 'Programación en Python',
-                href: 'https://patricioaraneda.cl/python/',
-              }
+                label: 'Inteligencia Artificial',
+                href: 'https://patricioaraneda.cl/inteligencia-artificial/',
+              },
             ],
           },
           {
-            title: 'Communidad',
+            title: 'Comunidad',
             items: [
               {
                 label: 'LinkedIn',
