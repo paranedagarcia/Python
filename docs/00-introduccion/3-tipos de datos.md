@@ -369,7 +369,7 @@ El formato tiene un rango finito, aproximadamente entre $\pm 2.22 \times 10^{-30
 *   **Underflow:** Los números más pequeños que el límite mínimo suelen redondearse automáticamente a cero, lo que puede causar pérdidas de información críticas en ciertos modelos físicos.
 
 ### Alternativas para mayor precisión
-Cuando estas limitaciones son inaceptables (como en aplicaciones financieras o investigación de alta precisión), las fuentes sugieren:
+Cuando estas limitaciones son inaceptables (como en aplicaciones financieras o investigación de alta precisión):
 *   **Módulo `decimal`:** Permite trabajar con aritmética decimal y precisión ajustable.
 *   **Módulo `fractions`:** Para cálculos exactos con números racionales.
 *   **NumPy:** Ofrece tipos específicos como `float128` (precisión extendida) para mejorar la resolución en cálculos masivos.
@@ -379,7 +379,7 @@ Cuando estas limitaciones son inaceptables (como en aplicaciones financieras o i
 
 Para evitar los errores de redondeo en Python, que surgen porque el tipo estándar `float` no puede representar exactamente muchas fracciones decimales debido a su naturaleza binaria (estándar IEEE 754), se deben emplear estrategias y módulos específicos diseñados para la alta precisión.
 
-A continuación se detallan las principales formas de mitigar estos errores según las fuentes:
+A continuación se detallan las principales formas de mitigar estos errores:
 
 #### 1. Uso del módulo `decimal`
 La herramienta principal para obtener precisión exacta es el módulo **`decimal`**, que permite trabajar con aritmética decimal de precisión ajustable. 

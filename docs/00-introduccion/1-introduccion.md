@@ -38,7 +38,7 @@ A continuación se describen sus características principales y cómo se diferen
 
 ## Tipado dinamico
 
-En los proyectos de ciencia de datos, el **tipado dinámico** de Python ofrece una serie de ventajas estratégicas que facilitan el manejo de la incertidumbre y la rapidez necesarias en la investigación científica. A continuación, se detallan los beneficios principales según las fuentes:
+En los proyectos de ciencia de datos, el **tipado dinámico** de Python ofrece una serie de ventajas estratégicas que facilitan el manejo de la incertidumbre y la rapidez necesarias en la investigación científica. A continuación, se detallan los beneficios principales:
 
 ### 1. Flexibilidad y reducción de la carga mental
 El tipado dinámico significa que no es necesario declarar el tipo de dato de una variable antes de usarla; el tipo se determina automáticamente en tiempo de ejecución. Esto permite a los científicos de datos:

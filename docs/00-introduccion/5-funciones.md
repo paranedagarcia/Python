@@ -508,7 +508,7 @@ Los **docstrings** (o cadenas de documentación) son literales de cadena que se 
 
 #### Mejores recomendaciones y convenciones
 
-Para escribir docstrings profesionales, las fuentes sugieren seguir las pautas de la **PEP 257** y adoptar las siguientes prácticas:
+Para escribir docstrings profesionales, se sugiere seguir las pautas de la **PEP 257** y adoptar las siguientes prácticas:
 
 *   **Docstrings de una sola línea:** Se utilizan para funciones muy simples. Deben indicar el propósito del objeto de forma concisa y terminar con un punto (ej. `"""Convierte grados Celsius a Fahrenheit."""`). No deben simplemente repetir la firma de la función.
 

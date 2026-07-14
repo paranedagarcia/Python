@@ -29,7 +29,7 @@ Estos métodos constituyen un **protocolo** que determina cómo responde el leng
 | `__call__` | `objeto()` | Permite que una instancia se comporte y sea llamada como una función. |
 
 ### Recomendaciones de uso
-Las fuentes advierten que **nunca se deben inventar nombres propios** que sigan esta convención de doble guion bajo (como `__mi_metodo__`). Estos nombres están reservados para el núcleo de Python, y crear uno nuevo podría causar errores si en versiones futuras del lenguaje se introduce un método oficial con ese mismo nombre.
+**Nunca se deben inventar nombres propios** que sigan esta convención de doble guion bajo (como `__mi_metodo__`). Estos nombres están reservados para el núcleo de Python, y crear uno nuevo podría causar errores si en versiones futuras del lenguaje se introduce un método oficial con ese mismo nombre.
 
 
 A continuación se detallan los más utilizados:

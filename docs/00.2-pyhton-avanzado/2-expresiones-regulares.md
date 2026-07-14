@@ -523,7 +523,7 @@ for test in test_cases:
 
 ### Validación de fecha
 
-Para validar fechas con la estructura condicional **`(?(id)yes|no)`**, el ejemplo más destacado en las fuentes es la validación del formato **ISO 8601**. Este mecanismo permite asegurar la **consistencia de los delimitadores**: si se usa un guion para separar el año del mes, también debe usarse para separar el mes del día.
+Para validar fechas con la estructura condicional **`(?(id)yes|no)`**, el ejemplo más destacado es la validación del formato **ISO 8601**. Este mecanismo permite asegurar la **consistencia de los delimitadores**: si se usa un guion para separar el año del mes, también debe usarse para separar el mes del día.
 
 :::info
 **ISO 8601** es un estándar internacional creado por la Organización Internacional de Normalización (ISO) que especifica formatos uniformes para la representación y el intercambio de fechas y horas.

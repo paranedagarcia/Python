@@ -75,7 +75,7 @@ En la práctica, muchos científicos de datos utilizan **Seaborn para crear la e
 
 ## Uso interactivo
 
-Para la **visualización interactiva** en Python, las fuentes destacan varias librerías que permiten crear gráficos dinámicos, especialmente diseñados para su uso en navegadores web y dispositivos digitales.
+Para la **visualización interactiva** en Python, varias librerías que permiten crear gráficos dinámicos, especialmente diseñados para su uso en navegadores web y dispositivos digitales.
 
 Las principales librerías mencionadas son:
 
@@ -86,30 +86,30 @@ Las principales librerías mencionadas son:
     *   **Mapas:** Ofrece funciones potentes como `scatter_geo()` para visualizar datos geográficos sobre mapas del mundo de forma interactiva.
 *   **Bokeh:** Se enfoca en proporcionar una construcción elegante de gráficos con una **interactividad de alto rendimiento** sobre conjuntos de datos muy grandes o en tiempo real (*streaming*). Su objetivo principal son los navegadores web modernos.
 *   **Altair:** Mencionada como una herramienta moderna que aprovecha las tecnologías web para crear visualizaciones interactivas que se integran bien con entornos como Jupyter Notebook.
-*   **Matplotlib (con limitaciones):** Aunque es la librería estándar para gráficos estáticos de alta calidad, puede ofrecer interactividad básica (como ampliar y navegar) cuando se utiliza en sesiones interactivas de IPython o Jupyter Notebook. Sin embargo, para interactividad avanzada en la web, las fuentes sugieren preferir las herramientas mencionadas anteriormente.
+*   **Matplotlib (con limitaciones):** Aunque es la librería estándar para gráficos estáticos de alta calidad, puede ofrecer interactividad básica (como ampliar y navegar) cuando se utiliza en sesiones interactivas de IPython o Jupyter Notebook. Sin embargo, para interactividad avanzada en la web, se sugiere preferir las herramientas mencionadas anteriormente.
 
 Otras herramientas complementarias incluyen **Seaborn**, que aunque se basa en Matplotlib y se usa principalmente para gráficos estáticos, simplifica la creación de visualizaciones estadísticas complejas que pueden integrarse en flujos de trabajo de análisis de datos.
 
 ## Mapas
 
-Para graficar mapas en Python, las fuentes destacan principalmente a **Plotly** como una de las herramientas más potentes y versátiles, especialmente por su capacidad para generar visualizaciones interactivas y dinámicas.
+Para graficar mapas en Python, se destaca principalmente a **Plotly** como una de las herramientas más potentes y versátiles, especialmente por su capacidad para generar visualizaciones interactivas y dinámicas.
 
 A continuación, se detallan las bibliotecas y métodos recomendados según el material consultado:
 
 ### Plotly (Recomendada para mapas interactivas)
-Plotly, y específicamente su subconjunto **Plotly Express**, es la biblioteca más detallada en las fuentes para el mapeo de datos globales debido a su facilidad de uso y resultados visualmente atractivos.
+Plotly, y específicamente su subconjunto **Plotly Express**, es la biblioteca más detallada para el mapeo de datos globales debido a su facilidad de uso y resultados visualmente atractivos.
 *   **`scatter_geo()`**: Esta función permite superponer gráficos de dispersión de datos geográficos sobre un mapa del mundo. Es ideal para visualizar fenómenos distribuidos geográficamente, como la actividad sísmica o incendios mundiales.
 *   **Personalización avanzada**: Permite ajustar el **tamaño** y el **color** de los marcadores en función de variables específicas (por ejemplo, la magnitud de un terremoto), lo que facilita la identificación de patrones.
 *   **Proyecciones cartográficas**: Admite múltiples proyecciones, como la **'natural earth'**, que redondea los extremos del mapa para una apariencia más profesional.
 *   **Interactividad**: Incluye funciones nativas como **mensajes emergentes (tooltips)** que muestran información detallada (latitud, longitud, descripción) al pasar el cursor sobre un punto.
 
 ### Integración con Google Earth (KML)
-Para quienes necesitan integrar datos en visores geográficos específicos como **Google Earth**, las fuentes sugieren el uso de archivos **KML** (Keyhole Markup Language).
+Para quienes necesitan integrar datos en visores geográficos específicos como **Google Earth**, se recomienda el uso de archivos **KML** (Keyhole Markup Language).
 *   **Estructura XML**: Se puede usar Python para generar estructuras XML que definan marcas de posición (`<Placemark>`) con nombres y coordenadas específicas.
 *   **PyGeoIP**: Esta biblioteca se menciona como complemento para correlacionar direcciones IP con ubicaciones físicas (ciudad, país, latitud y longitud) antes de graficarlas en un mapa.
 
 ### Otras alternativas
-*   **Matplotlib**: Aunque es la base de muchas visualizaciones en Python y se usa para gráficos estáticos de alta calidad, las fuentes indican que para interactividad avanzada en la web y mapas dinámicos, herramientas como Plotly son preferibles.
+*   **Matplotlib**: Aunque es la base de muchas visualizaciones en Python y se usa para gráficos estáticos de alta calidad, para interactividad avanzada en la web y mapas dinámicos, herramientas como Plotly son preferibles.
 *   **Bokeh y Altair**: Se citan como bibliotecas modernas que aprovechan tecnologías web para crear visualizaciones interactivas que se integran bien con Jupyter Notebook.
 
-En resumen, si buscas rapidez y una interactividad nativa para datos en formatos como **CSV** o **GeoJSON**, **Plotly** es la opción más completa según los ejemplos de las fuentes.
+En resumen, si buscas rapidez y una interactividad nativa para datos en formatos como **CSV** o **GeoJSON**, **Plotly** es la opción más completa.

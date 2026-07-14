@@ -74,7 +74,7 @@ Cuando un proyecto tiene muchos módulos, estos pueden agruparse en directorios 
 
 Para validar si un RUT es matemáticamente correcto, se aplica el algoritmo denominado **Módulo 11**. Este procedimiento permite determinar si el dígito verificador (DV) es el resultado exacto de una serie de operaciones sobre los dígitos precedentes.
 
-Utilizando las funciones y conceptos de Python detallados en las fuentes y en nuestra conversación previa, la validación se desglosa en los siguientes pasos técnicos:
+Utilizando las funciones y conceptos de Python ya detallados, la validación se desglosa en los siguientes pasos técnicos:
 
 1.  **Preparación de los datos**: Primero se debe extraer el "cuerpo" del RUT (los números antes del guion) y el DV. Es necesario convertir los caracteres de texto en números enteros mediante la función **`int()`** para poder realizar cálculos.
 2.  **Inversión del número**: Los dígitos del cuerpo deben procesarse de derecha a izquierda. En Python, esto se logra de forma eficiente mediante **slicing** con un paso negativo (`[::-1]`), una técnica para rebanar secuencias desde el final.

@@ -123,7 +123,7 @@ if __name__ == "__main__":
 
 La diferencia fundamental entre el modo de lectura y el de escritura en Python radica en cómo interactúan con el archivo y qué sucede si este ya existe o no en el sistema de almacenamiento.
 
-A continuación se detallan las disparidades principales según las fuentes:
+A continuación se detallan las disparidades principales:
 
 #### 1. Comportamiento según la existencia del archivo
 *   **Modo Lectura (`'r'`):** Es el modo por defecto. Requiere obligatoriamente que el archivo **exista previamente** en la ruta especificada. Si el archivo no se encuentra, Python lanzará una excepción de tipo `FileNotFoundError` o `IOError`.
@@ -191,7 +191,7 @@ Al trabajar en binario, Python maneja bytes individuales como números enteros e
 
 La diferencia fundamental entre el modo texto y el modo binario al manejar archivos en Python radica en cómo el lenguaje interpreta y transforma los bytes almacenados en el disco para entregarlos al programador. Aunque físicamente **todos los archivos son secuencias de bytes**, Python ofrece el modo texto como una abstracción para facilitar el trabajo con caracteres legibles.
 
-A continuación se detallan las principales diferencias según las fuentes:
+A continuación se detallan las principales diferencias:
 
 #### 1. Interpretación del contenido
 *   **Modo Texto (`'t'` o `'r'`):** Trata el contenido del archivo como caracteres Unicode (**strings**). Python decodifica automáticamente los bytes del disco utilizando una codificación específica (usualmente UTF-8) para que el programador reciba texto legible.
@@ -217,7 +217,7 @@ A continuación se detallan las principales diferencias según las fuentes:
 | **Saltos de línea** | Se traducen (ej. `\r\n` a `\n`) | Se mantienen intactos |
 | **Uso principal** | Documentos legibles y código | Imágenes, audio, ejecutables |
 
-Como nota importante, las fuentes recomiendan usar siempre la sentencia **`with`** (administrador de contexto) independientemente del modo, para asegurar que los recursos se liberen y el archivo se cierre correctamente al finalizar la operación.
+Como nota importante, se recomienda usar siempre la sentencia **`with`** (administrador de contexto) independientemente del modo, para asegurar que los recursos se liberen y el archivo se cierre correctamente al finalizar la operación.
 
 ### Try-except para limpieza de archivos
 

@@ -116,7 +116,7 @@ Dentro de este bloque de captura, el decorador puede ejecutar diversas estrategi
 *   **Gestión de Resultados Alternativos:** El decorador podría capturar la excepción y optar por no propagarla, devolviendo en su lugar un valor por defecto o un objeto que indique la ausencia de un resultado válido, como **`None`**.
 *   **Limpieza de Recursos:** Si el decorador está gestionando recursos externos, puede incluir una cláusula **`finally`** para asegurar que tareas críticas, como cerrar un archivo o liberar un bloqueo (*lock*), se ejecuten independientemente de si la función falló o tuvo éxito.
 
-Un ejemplo técnico extraído de las fuentes muestra un decorador de registro que utiliza la estructura `try...except Exception as ex:`. En el bloque `except`, calcula el tiempo transcurrido hasta el fallo, registra el error y finalmente usa `raise` para no ocultar el problema al resto de la aplicación. Esta capacidad de supervisión permite que los decoradores actúen como una capa defensiva robusta en el diseño de software.
+Un ejemplo técnico muestra un decorador de registro que utiliza la estructura `try...except Exception as ex:`. En el bloque `except`, calcula el tiempo transcurrido hasta el fallo, registra el error y finalmente usa `raise` para no ocultar el problema al resto de la aplicación. Esta capacidad de supervisión permite que los decoradores actúen como una capa defensiva robusta en el diseño de software.
 
 ### Ejemplo de código
 
@@ -206,7 +206,7 @@ except TypeError as e:
 ### Análisis técnico:
 
 1.  **Estructura de tres niveles:** Para que el decorador acepte argumentos (como `int`), es necesario anidar tres funciones: la factoría, el decorador real y el envoltorio (*wrapper*).
-2.  **Uso de `isinstance`:** Las fuentes recomiendan usar `isinstance(objeto, tipo)` en lugar de comparar tipos directamente (como `type(x) == int`), ya que es más flexible y compatible con la herencia.
+2.  **Uso de `isinstance`:** Se recomienda usar `isinstance(objeto, tipo)` en lugar de comparar tipos directamente (como `type(x) == int`), ya que es más flexible y compatible con la herencia.
 3.  **Preservación de metadatos:** Se utiliza `@functools.wraps(func)` para asegurar que la función decorada no pierda su nombre (`__name__`) ni su cadena de documentación (*docstring*) al ser reemplazada por el *wrapper*.
 4.  **Manejo de argumentos variables:** El uso de `*args` permite que el decorador sea genérico y pueda procesar cualquier cantidad de parámetros de entrada sin conocerlos de antemano.
 5.  **Validación en tiempo de ejecución:** A diferencia de las "sugerencias de tipo" (*type hints*) de Python que son informativas, un decorador como este **fuerza** la validación durante la ejecución del programa, deteniéndolo si los datos son incorrectos mediante una excepción.

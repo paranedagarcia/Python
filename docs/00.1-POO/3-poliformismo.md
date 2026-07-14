@@ -10,7 +10,7 @@ description: "Polimorfismo con 'Duck Typing'"
 
 El **Duck Typing** (tipado de pato) es la base del polimorfismo en Python y se resume en el principio: "si camina como un pato y grazna como un pato, entonces es un pato". En este paradigma, lo que importa es **qué puede hacer un objeto** (sus métodos y comportamientos) y no qué tipo de objeto es estrictamente o de qué clase hereda.
 
-A continuación, se presentan los ejemplos más destacados de polimorfismo mediante *Duck Typing* en Python según las fuentes:
+A continuación, se presentan los ejemplos más destacados de polimorfismo mediante *Duck Typing* en Python:
 
 ### 1. Objetos "tipo archivo" (File-like objects)
 Es el ejemplo más común y práctico de *Duck Typing*. Muchas funciones esperan un objeto sobre el cual puedan llamar a métodos como `.read()`, `.write()` o `.seek()`.
@@ -43,7 +43,7 @@ Aunque el *Duck Typing* es dinámico por naturaleza, versiones modernas de Pytho
 
 Para aplicar la herencia al crear una clase `Parabola`, se utiliza una clase base preexistente (como una clase para líneas rectas) para evitar la duplicación de código y extender su funcionalidad. Matemáticamente, una parábola definida como $$y = c_0 + c_1x + c_2x^2$$ puede verse como una extensión de una línea recta $$y = c_0 + c_1x$$, donde simplemente se añade un término cuadrático.
 
-A continuación se detalla el proceso paso a paso según las fuentes:
+A continuación se detalla el proceso paso a paso:
 
 ### 1. Definición de la clase base
 Primero se debe tener una clase base, por ejemplo, **`Line`**, que gestione los coeficientes constantes y lineales ($c_0$ y $c_1$) y proporcione métodos generales como la evaluación de la función (`__call__`) o la creación de tablas de valores (`table`).

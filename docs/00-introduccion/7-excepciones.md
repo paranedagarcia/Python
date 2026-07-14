@@ -86,7 +86,7 @@ Aunque la estructura **`try-finally`** es la base para garantizar que el código
 Las principales ventajas de usar **`with`** frente a **`try-finally`** son:
 
 ### 1. Legibilidad y Concisión
-La sentencia `with` permite escribir código mucho más limpio y corto. Mientras que un bloque `try-finally` para cerrar un archivo requiere varias líneas y una llamada explícita a `.close()`, el bloque `with` realiza la misma tarea de forma implícita en una sola línea de encabezado. Las fuentes señalan que el uso repetitivo de `try-finally` puede hacer que el código se vuelva "bastante feo" y difícil de seguir.
+La sentencia `with` permite escribir código mucho más limpio y corto. Mientras que un bloque `try-finally` para cerrar un archivo requiere varias líneas y una llamada explícita a `.close()`, el bloque `with` realiza la misma tarea de forma implícita en una sola línea de encabezado. El uso repetitivo de `try-finally` puede hacer que el código se vuelva "bastante feo" y difícil de seguir.
 
 ### 2. Gestión Automática de Recursos
 La ventaja técnica más crítica es que `with` garantiza que los recursos (como archivos, sockets de red o bloqueos de bases de datos) se cierren o liberen **automáticamente** al salir del bloque, incluso si se lanza una excepción. Esto evita errores comunes, como olvidar cerrar un archivo manualmente, lo que podría causar fugas de memoria o corrupción de datos.
@@ -109,7 +109,7 @@ En resumen, se recomienda utilizar `with` siempre que se trabaje con objetos que
 
 Para definir una excepción personalizada en Python, debes crear una **clase que herede de una clase de excepción existente**, preferiblemente de la clase base **`Exception`**.
 
-A continuación se detallan los pasos y variantes según las fuentes:
+A continuación se detallan los pasos y variantes:
 
 #### 1. Definición básica
 La forma más sencilla de crear una excepción propia es definir una clase con el nombre deseado y usar la sentencia `pass` para no agregar lógica adicional.
@@ -120,7 +120,7 @@ class MiErrorPersonalizado (Exception):
 ```
 
 #### 2. Elección de la clase base
-Aunque todas las excepciones derivan técnicamente de `BaseException`, las fuentes recomiendan **heredar siempre de `Exception`** para excepciones de usuario. También es una buena práctica heredar de una excepción incorporada que sea **semánticamente similar** al problema que deseas reportar. Por ejemplo:
+Aunque todas las excepciones derivan técnicamente de `BaseException`, se recomienda **heredar siempre de `Exception`** para excepciones de usuario. También es una buena práctica heredar de una excepción incorporada que sea **semánticamente similar** al problema que deseas reportar. Por ejemplo:
 *   Si el error es sobre un valor inválido, hereda de **`ValueError`**.
 *   Si es un error de entrada/salida, hereda de **`IOError`**.
 
@@ -142,7 +142,7 @@ Para gestionar estas excepciones, se utilizan los bloques **`try-except`**, dond
 
 Un ejemplo real y robusto de una excepción personalizada en Python es la gestión de transacciones bancarias, como un retiro de dinero inválido. Este caso permite demostrar cómo una excepción puede no solo informar de un error, sino también **transportar datos útiles** y ofrecer métodos para procesarlos.
 
-A continuación, se presenta una implementación basada en los principios de diseño de las fuentes:
+A continuación, se presenta una implementación basada en los principios de diseño:
 
 ### Definición de la excepción personalizada
 En este caso, heredamos de `ValueError` porque el error se debe a un valor inapropiado (intentar sacar más dinero del disponible).
@@ -182,7 +182,7 @@ except InvalidRetiro as ex:
 
 ### ¿Por qué es un "ejemplo real" efectivo?
 *   **Encapsulación:** Al definir `InvalidRetiro`, separas la lógica de errores bancarios de los errores genéricos de Python.
-*   **Tratamiento de datos sensibles:** Las fuentes señalan que es una buena práctica no incluir datos sensibles (como números de cuenta) directamente en el mensaje de la excepción para evitar que aparezcan en los registros de errores (*logs*) o rastreos (*tracebacks*).
+*   **Tratamiento de datos sensibles:** Es una buena práctica no incluir datos sensibles (como números de cuenta) directamente en el mensaje de la excepción para evitar que aparezcan en los registros de errores (*logs*) o rastreos (*tracebacks*).
 *   **Uso de `Decimal`:** Para aplicaciones financieras, se utiliza la clase `Decimal` de la biblioteca estándar en lugar de `float` para evitar errores de redondeo binario.
 *   **Control de flujo:** Este diseño permite que el programa no se detenga bruscamente (*crash*), sino que tome una ruta alternativa para informar al usuario de forma amigable.
 
