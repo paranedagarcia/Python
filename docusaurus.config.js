@@ -130,16 +130,21 @@ const config = {
             ],
           },
           {
-            title: 'Comunidad',
-            items: [
+            title: 'Conecta',
+             items: [
               {
-                label: 'LinkedIn',
-                href: 'https://www.linkedin.com/in/paranedagarcia',
+                label: 'Website',
+                href: 'https://patricioaraneda.cl',
               },
               {
-                label: 'X',
-                href: 'https://x.com/paranedagarcia',
+                label: 'Linkedin',
+                href: 'https://www.linkedin.com/in/patricioaraneda',
               },
+              {
+                label: 'Whatsapp',
+                href: 'https://wa.me/56978872845',
+              },
+              
             ],
           },
           {
@@ -151,9 +156,13 @@ const config = {
                 href: 'https://github.com/paranedagarcia/Python',
               },
               {
-                label: 'Rpubs',
-                href: 'https://rpubs.com/paraneda',
+                label: 'ORCID',
+                href: 'https://orcid.org/0000-0002-1825-0097',
               },
+              {
+                label: 'Correo',
+                href: 'mailto:paraneda@ug.uchile.cl',
+              }
             ],
           },
         ],
