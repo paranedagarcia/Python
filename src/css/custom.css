@@ -90,7 +90,7 @@ h4 {
 }
 
 h2.anchor.anchorTargetStickyNavbar_Vzrq::before {
-  content: "​▪️";
+  content: "​▪️ ";
   margin-left: -0.2em !important;
 }
 
@@ -104,6 +104,15 @@ h3.anchor.anchorTargetStickyNavbar_Vzrq::before {
   content: "​";
   margin-left: 0em !important;
 }*/
+/* left sidebar */
+/* .theme-doc-sidebar-item-link-level-2 .menu__link::before {
+  content: "▪️ ";
+  margin-left: 0.2em !important;
+} */
+.theme-doc-sidebar-item-link-level-2 span::before {
+  content: "▪️ ";
+  margin-left: 0.2em !important;
+}
 
 .table-of-contents ul:not([class]) a.table-of-contents__link::before {
   content: "▪️ ";
