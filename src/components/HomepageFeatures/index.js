@@ -1,11 +1,19 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
+
+const SUPPORTED_IMAGE_EXTENSIONS = ['png', 'jpg', 'webp', 'svg'];
+
+function hasSupportedImageFormat(imagePath) {
+  const extension = imagePath.split('.').pop()?.toLowerCase();
+  return SUPPORTED_IMAGE_EXTENSIONS.includes(extension);
+}
 
 const FeatureList = [
   {
     title: 'Programación',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    image: '/img/programa.webp',
     description: (
       <>
         Este curso fue diseñado desde cero para ser fácilmente asequible y comprensible para todos. No requiere conocimientos previos de estadística o programación.
@@ -14,7 +22,7 @@ const FeatureList = [
   },
   {
     title: 'Data Science',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    image: '/img/programacionf.png',
     description: (
       <>
         Se enfoca en la aplicación de la estadística en la investigación médica, y cubre los conceptos y técnicas estadísticas más relevantes para el análisis de datos en este campo.
@@ -23,7 +31,7 @@ const FeatureList = [
   },
   {
     title: 'Desarrollo Continuo',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    image: '/img/undraw_docusaurus_react.svg',
     description: (
       <>
         Esta en constante desarrollo, y se irán agregando nuevos contenidos y recursos a medida que se avance en el curso. Se anima a los estudiantes a participar activamente en el curso, compartiendo sus experiencias y sugerencias.
@@ -32,11 +40,17 @@ const FeatureList = [
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({image, title, description}) {
+  if (!hasSupportedImageFormat(image)) {
+    return null;
+  }
+
+  const imageUrl = useBaseUrl(image);
+
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img className={styles.featureSvg} src={imageUrl} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>

@@ -124,6 +124,10 @@ const config = {
                 href: 'https://patricioaraneda.cl/ciencia-de-datos/',
               },
               {
+                label: 'Análisis con SQL',
+                href: 'https://patricioaraneda.cl/sql/',
+              },
+              {
                 label: 'Inteligencia Artificial',
                 href: 'https://patricioaraneda.cl/inteligencia-artificial/',
               },
@@ -157,7 +161,7 @@ const config = {
               },
               {
                 label: 'ORCID',
-                href: 'https://orcid.org/0000-0002-1825-0097',
+                href: 'https://orcid.org/0000-0001-9677-5959',
               },
               {
                 label: 'Correo',
