@@ -3,6 +3,7 @@
   "position": 5,
   "link": {
     "type": "generated-index",
-    "description": "Conceptos sobre librerías y módulos en Python"
+    "description": "Conceptos sobre librerías y módulos en Python",
+    "slug": "/librerias"
   }
 }

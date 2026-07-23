@@ -4,6 +4,7 @@ title: "Pandas"
 sidebar_label: "💻 Pandas"
 sidebar_position: 6
 description: "Pandas"
+slug: /pandas
 ---
 
 
@@ -11,5 +12,5 @@ description: "Pandas"
 :::info
 Accede al módulo de Pandas en el curso Ciencia de Datos.
 
-[**Análisis de datos en Pandas**](https://patricioaraneda.cl/ciencia-de-datos/docs/category/-pandas)
+[**Análisis de datos en Pandas**](https://patricioaraneda.cl/ciencia-de-datos/docs/category/pandas)
 :::

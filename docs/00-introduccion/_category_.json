@@ -3,6 +3,7 @@
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Conceptos generales sobre Python"
+    "description": "Conceptos generales sobre Python",
+    "slug": "/python"
   }
 }

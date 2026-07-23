@@ -11,5 +11,5 @@ description: "Fundamentos y Psicología de la Percepción Visual"
 :::info
 Acceda al curso de Ciencia de Datos para una completa revisión de visualización de datos, fundamentos y casos de uso.
 
-[**Ciencia de Datos/visualizacion**](http://patricioaraneda.cl/ciencia-de-datos/docs/category/-visualizacion-de-datos)
+[**Ciencia de Datos/visualizacion**](http://patricioaraneda.cl/ciencia-de-datos/docs/category/visualizacion-de-datos)
 :::
