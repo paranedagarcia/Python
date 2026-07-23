@@ -7,10 +7,10 @@ description: "Pandas"
 slug: /pandas
 ---
 
-
+![](img/pandas-logo.png)
 
 :::info
-Accede al módulo de Pandas en el curso Ciencia de Datos.
+Accede al módulo de Pandas dentro del curso de Ciencia de Datos.
 
 [**Análisis de datos en Pandas**](https://patricioaraneda.cl/ciencia-de-datos/docs/category/pandas)
 :::
