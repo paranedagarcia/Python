@@ -12,5 +12,5 @@ slug: /streamlit
 :::info
 Acceda al curso de Ciencia de Datos para una completa revisión de **Streamlit** y casos de uso.
 
-[**Ciencia de Datos/streamlit**](http://patricioaraneda.cl/ciencia-de-datos/docs/category/streamlit)
+[**Ciencia de Datos/streamlit**](http://patricioaraneda.cl/ciencia-de-datos/docs/streamlit)
 :::

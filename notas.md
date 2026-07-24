@@ -33,3 +33,16 @@ Explícame cómo integrar JWT para proteger las rutas modularizadas
 ¿Te interesa ver cómo se definiría el diccionario `SQLALCHEMY_BINDS` en tu archivo de configuración para la opción modular, o prefieres explorar cómo separar estos módulos en contenedores Docker independientes?
 
 
+## GIT
+¿Cómo puedo ver gráficamente la estructura de ramas en mi terminal?
+¿Para qué sirve el comando git checkout al trabajar con ramas?
+
+¿Qué es el puntero HEAD y cómo se relaciona con las ramas?
+¿Cómo puedo borrar una rama después de terminar mi trabajo?
+¿Cuáles son las diferencias entre ramas locales y remotas?
+
+¿Cómo se crea y se cambia a una rama nueva?
+¿Qué sucede con el puntero HEAD al hacer un commit?
+
+¿Qué sucede si hago un commit estando en HEAD desprendido?
+¿Cómo puedo visualizar gráficamente el historial de mis ramas?
