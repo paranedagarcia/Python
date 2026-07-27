@@ -10,7 +10,7 @@ slug: /streamlit
 ![](img/streamlit-logo.svg)
 
 :::info
-Acceda al curso de Ciencia de Datos para una completa revisión de **Streamlit** y casos de uso.
+Revise la sección de Streamlit dentro del curso de Python para una completa revisión y aprendizaje de **Streamlit** y sus casos de uso.
 
-[**Ciencia de Datos/streamlit**](http://patricioaraneda.cl/ciencia-de-datos/docs/streamlit)
+[**Python/streamlit**](http://patricioaraneda.cl/python/docs/streamlit)
 :::
