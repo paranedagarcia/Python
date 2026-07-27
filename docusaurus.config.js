@@ -17,6 +17,17 @@ const config = {
   tagline: 'Desde Ciencia de Datos hasta Machine Learning',
   favicon: 'img/favicon.ico',
 
+  markdown: {
+    mermaid: true,
+    hooks: {
+      // Downgrade to warnings so your staging preview or local build won't fail
+      onBrokenMarkdownImages: 'warn', 
+    },
+    remarkRehypeOptions: {
+      footnoteLabel: 'Notas al pie',
+      footnoteBackLabel: 'Volver a referencia',
+    },
+  },
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4

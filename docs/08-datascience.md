@@ -2,7 +2,7 @@
 id: datascience
 title: "Ciencia de Datos"
 sidebar_label: "📊 Ciencia de datos"
-sidebar_position: 8
+sidebar_position: 9
 description: "Ciencia de datos"
 ---
 
