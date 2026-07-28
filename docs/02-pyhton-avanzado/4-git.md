@@ -6,6 +6,9 @@ sidebar_position: 3
 description: "Control de versiones con git"
 ---
 
+
+## Git
+
 Un **control de versiones** es un sistema técnico que **registra de manera detallada cada cambio realizado en el código fuente de un proyecto**, permitiendo mantener un histórico completo de las modificaciones, identificar quién las realizó y cuándo ocurrieron. En términos prácticos, funciona como una serie de "fotografías" o instantáneas del estado de los archivos en momentos específicos, lo que permite navegar por la evolución del proyecto como si fuera una línea del tiempo.
 
 ### Origen del sistema moderno Git
@@ -35,7 +38,7 @@ El uso de estos sistemas es vital en el desarrollo de software profesional por l
 
 
 
-## Características principales de Git
+### Características principales de Git
 1. **Distribuido**: Cada desarrollador tiene una copia completa del repositorio, lo que permite trabajar de manera independiente y sin conexión.
 2. **Rendimiento**: Git está diseñado para ser rápido y eficiente, incluso con proyectos grandes.
 3. **Ramas y fusiones**: Git facilita la creación y gestión de ramas, lo que permite a los desarrolladores trabajar en características o correcciones de errores de manera aislada antes de fusionarlas con la rama principal.
@@ -44,7 +47,7 @@ El uso de estos sistemas es vital en el desarrollo de software profesional por l
 
 
 
-## Instalación de Git
+### Instalación de Git
 #### instalar en Mac OS
 ```bash
 brew install git
@@ -77,7 +80,7 @@ Independientemente del sistema operativo, para verificar que Git se haya instala
 git --version
 ```
 
-## Comandos básicos de Git
+### Comandos básicos de Git
 - `git init`: Inicializa un nuevo repositorio Git en el directorio actual.
 - `git add .`: Agrega todos los archivos nuevos y modificados al área de preparación (staging area).
 - `git commit -m "Mensaje del commit"`: Crea un commit con los cambios en el área de preparación y un mensaje descriptivo.
@@ -88,12 +91,19 @@ git --version
 - `git status`: Muestra el estado de los archivos en el repositorio.
 - `git log`: Muestra el historial de commits del repositorio.
 
-## Flujo de trabajo típico
+### Flujo de trabajo típico
 1. Clona el repositorio remoto (si es necesario).
 2. Realiza cambios en los archivos del proyecto.
 3. Usa `git add .` para agregar los cambios al área de preparación.
 4. Usa `git commit -m "Mensaje del commit"` para crear un commit con los cambios.
 5. Usa `git push` para subir los cambios al repositorio remoto.
+
+<center>
+<figure>
+![](img/git-flujo.jpg)
+<figcaption>Todo archivo viaja por este flujo: lo editas, lo preparas, y finalmente lo guardas en el historial.</figcaption>
+</figure>
+</center>
 
 ```bash
 git init
@@ -109,7 +119,7 @@ git commit -m "Update files"
 git push
 ```
 
-## Ramas en Git
+### Ramas en Git
 
 Una **rama (branch)** en Git es, fundamentalmente, una **línea de desarrollo independiente** que permite trabajar en diferentes partes de un proyecto al mismo tiempo sin interferir con el trabajo de los demás. Desde un punto de vista técnico, una rama no es más que un **puntero móvil** que apunta a un commit específico dentro del historial del repositorio.
 
@@ -188,9 +198,40 @@ Si solo estabas explorando una versión antigua y quieres regresar a tu línea d
 Si regresaste a una rama y te das cuenta de que olvidaste guardar commits importantes que hiciste mientras el HEAD estaba desprendido, aún puedes recuperarlos:
 *   Utiliza el comando **`git reflog`**. Este comando muestra un historial completo de todas las acciones y movimientos del puntero HEAD, permitiéndote encontrar el hash del commit "perdido" para volver a él o crear una rama a partir de él.
 
-## Administración de ramas
+### Administración de ramas
 
-### Crear una nueva rama 'testing' y trabajar en ella
+#### Cambio de nombre
+
+Es perfectamente posible **renombrar una rama** después de haberla creado. Git ofrece una forma sencilla de hacerlo sin necesidad de borrar la rama y crear una nueva desde cero.
+
+Diferentes escenarios:
+
+#### 1. Renombrar la rama en la que te encuentras (rama actual)
+Si ya estás situado en la rama que quieres renombrar, solo necesitas ejecutar el siguiente comando:
+*   **Comando:** `git branch -m <nuevo-nombre>`
+
+#### 2. Renombrar una rama distinta
+Si estás en una rama (por ejemplo, `main`) y quieres cambiar el nombre de otra rama distinta (por ejemplo, una llamada `rama-nueba`), debes especificar el nombre antiguo y el nuevo:
+*   **Comando:** `git branch -m <nombre-actual> <nuevo-nombre>`
+*   **Ejemplo:** `git branch -m rama-nueba rama-nueva`
+
+El parámetro **`-m`** es la forma corta de **`--move`**, que técnicamente indica a Git que "mueva" la referencia de la rama a un nuevo identificador.
+
+#### 3. ¿Qué pasa si la rama ya estaba en el repositorio remoto?
+Si ya habías hecho un `git push` de la rama con el nombre incorrecto, el proceso requiere pasos adicionales para que el servidor (como GitHub) también refleje el cambio:
+1.  **Renombrar la rama localmente** como se explicó arriba.
+2.  **Eliminar la rama con el nombre antiguo** en el remoto:
+    *   `git push origin --delete <nombre-antiguo>`
+3.  **Subir la rama con el nombre correcto** y establecer la relación de seguimiento:
+    *   `git push origin <nuevo-nombre>`
+
+#### Caso común: De `master` a `main`
+Actualmente, muchos desarrolladores utilizan este comando para migrar sus repositorios antiguos del nombre tradicional `master` al estándar inclusivo `main`. El comando utilizado en este caso es frecuentemente:
+*   `git branch -m master main`
+
+**Dato técnico:** Git es muy flexible con los nombres, pero recuerda que **los nombres de las ramas no pueden contener espacios**.
+
+#### Crear una nueva rama 'testing' y trabajar en ella
 ```bash
 git checkout -b testing
 # hacer cambios en los archivos
@@ -223,7 +264,7 @@ git merge testing
 ![](https://git-scm.com/book/en/v2/images/merge-testing-into-master.png)
 
 ---
-## Script para automatizar commits y push
+#### Script para automatizar commits y push
 ```sh
 #!/bin/sh
 git add .
@@ -231,18 +272,79 @@ git commit -m "Update files"
 git push
 ```
 
+### Pull Request
 
-# Github
+La mecánica de funcionamiento de una **Pull Request (PR)** —también conocida como *Merge Request* en plataformas como GitLab— consiste en un flujo de trabajo diseñado para **compartir, revisar e integrar cambios** de código en un repositorio remoto. Aunque se gestionan a través de la interfaz de servicios como GitHub, son una herramienta esencial en el día a día del desarrollo con Git.
+
+A continuación se detalla la mecánica paso a paso:
+
+#### 1. Preparación y envío de cambios
+*   **Creación de una rama:** El proceso comienza creando una **rama local** específica para la funcionalidad o corrección en la que se va a trabajar.
+*   **Realización de commits:** Se añaden los cambios necesarios mediante commits en dicha rama.
+*   **Push al repositorio remoto:** Se sube la rama local al servidor remoto mediante el comando `git push`. Si es una rama nueva, Git suele sugerir un comando para establecer la rama "upstream" y facilitar la creación de la PR.
+
+#### 2. Creación de la solicitud en la plataforma
+*   **Apertura de la PR:** Una vez que la rama está en el servidor, se utiliza la interfaz web de la plataforma (como GitHub) para **abrir la Pull Request**. En este paso se define la **rama de origen** (donde están los cambios) y la **rama de destino** (donde se quieren integrar, normalmente `main` o `master`).
+*   **Uso de Forks:** Si el colaborador no tiene permisos de escritura en el repositorio original, debe realizar primero un **Fork** (copia del repositorio en su propia cuenta), trabajar allí y luego enviar la PR desde su Fork hacia el repositorio original.
+
+#### 3. Revisión y Colaboración
+*   **Feedback y discusión:** Los colaboradores pueden revisar el código, añadir **comentarios en líneas específicas** y solicitar cambios.
+*   **Actualizaciones automáticas:** Si se realizan nuevos commits en la rama local y se vuelven a subir (`push`), la Pull Request se **actualiza automáticamente** con las nuevas modificaciones sin necesidad de abrir una solicitud nueva.
+*   **Resolución de conflictos:** Si hay conflictos (cambios incompatibles entre la rama de origen y la de destino), estos deben resolverse (ya sea en local o a veces mediante la interfaz web) antes de que la plataforma permita la fusión.
+
+#### 4. Integración y Limpieza
+*   **Aprobación y Merge:** Una vez que los revisores están satisfechos, la PR se aprueba y se procede al **Merge** (fusión). Por defecto, muchas plataformas realizan un **merge "no-fast-forward"**, lo que genera un commit de fusión explícito que deja constancia histórica de la integración.
+*   **Cierre y eliminación:** Tras la fusión, la PR se marca como "cerrada". Es una buena práctica **eliminar la rama remota** y la rama local para mantener el repositorio limpio.
+
+**Nota importante:** A pesar de llevar "pull" en el nombre, las Pull Requests **no están relacionadas directamente con el comando `git pull`** de la terminal; son una funcionalidad propia de las plataformas de alojamiento para facilitar la revisión de código antes de la integración final.
+
+### Integrar una Pull Request al repositorio original
+
+La integración de una **Pull Request (PR)** al repositorio original es el paso final de un flujo de trabajo colaborativo en plataformas como GitHub y consiste en incorporar los cambios propuestos en una rama secundaria (o un *fork*) a la rama principal del proyecto original.
+
+A continuación se detalla el proceso técnico y administrativo para realizar esta integración:
+
+#### 1. Revisión y Aprobación
+Antes de la integración, el propietario o los administradores del repositorio original deben revisar los cambios propuestos. Durante esta fase:
+*   Se pueden realizar comentarios en líneas específicas de código para solicitar ajustes.
+*   Si el colaborador añade nuevos commits para corregir lo solicitado, la PR se **actualiza automáticamente**.
+*   Una vez que el trabajo es satisfactorio, un revisor con permisos debe **aprobar** la solicitud.
+
+#### 2. Resolución de Conflictos
+Si el repositorio original ha avanzado y tiene cambios en las mismas líneas que la PR, Git no podrá fusionarlos automáticamente. En este caso:
+*   GitHub ofrece una herramienta visual mediante el botón **"Resolve conflicts"** para elegir qué cambios conservar directamente en la web.
+*   Alternativamente, el colaborador puede resolver los conflictos de forma local en su terminal y subir los cambios actualizados.
+
+#### 3. Ejecución de la Integración (Merge)
+Cuando la PR está aprobada y no tiene conflictos, el administrador utiliza el botón **"Merge pull request"** en la interfaz de la plataforma. 
+*   **Tipo de fusión:** Por defecto, la mayoría de los servicios de alojamiento realizan un **merge "no-fast-forward"** (fusión explícita). Esto significa que, aunque no haya divergencia en las historias, se crea un **commit de fusión** para que quede constancia histórica de que se integró una rama externa.
+*   **Finalización:** Al confirmar el merge, la PR se marca como cerrada y los cambios ya forman parte oficialmente del código base del repositorio original.
+
+#### 4. Limpieza y Sincronización Local
+Una vez realizada la integración en la nube, se recomienda seguir estos pasos de mantenimiento:
+1.  **Eliminar la rama remota:** Es una buena práctica borrar la rama de trabajo (topic branch) en el servidor para mantener el repositorio organizado.
+2.  **Sincronizar el entorno local:** Tanto el administrador como el colaborador deben ejecutar un **`git pull`** en su rama principal local para descargar el nuevo commit de fusión y estar al día con el repositorio original.
+3.  **Podar referencias:** Se pueden usar comandos como `git pull -p` o `git remote prune origin` para eliminar las referencias locales a ramas que ya fueron borradas en el remoto.
+
+
+## Github
 GitHub es una plataforma de alojamiento de código fuente y control de versiones que utiliza Git. Permite a los desarrolladores colaborar en proyectos, gestionar versiones de código y compartir su trabajo con la comunidad.
 
-## Crear un repositorio en GitHub
+<center>
+<figure>
+![](img/git-hub.jpg)
+<figcaption></figcaption>
+</figure>
+</center>
+
+### Crear un repositorio en GitHub
 1. Inicia sesión en tu cuenta de GitHub.
 2. Haz clic en el botón "New" o "Nuevo" para crear un nuevo repositorio.
 3. Proporciona un nombre para tu repositorio y una descripción opcional.
 4. Elige si deseas que el repositorio sea público o privado.
 5. Haz clic en "Create repository" o "Crear repositorio".
 
-## Clonar un repositorio
+### Clonar un repositorio
 ```bash
 git clone <REMOTE_REPOSITORY_URL>
 ```

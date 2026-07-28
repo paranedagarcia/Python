@@ -1,4 +1,18 @@
 # Notas
+
+<center>
+<figure>
+![](img/sql_analisis_g.png)
+<figcaption>Tu subtítulo</figcaption>
+</figure>
+</center>
+
+<details>
+<summary>💻 Código</summary>
+
+</details>
+
+
 ## Flask
 ¿Cómo configuro mi primera base de datos con Flask?
 Exploremos la creación de microservicios con Docker
