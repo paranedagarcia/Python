@@ -84,13 +84,24 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        gtag: {
+          trackingID: 'G-3V2QKLCVQR',
+          anonymizeIP: true,
+        },
       }),
     ],
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    /* @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      metadata: [
+        {name: 'description', content: 'Curso de Python para Ciencia de Datos y Machine Learning. Aprende a programar en Python desde cero, con ejemplos prácticos y ejercicios. Incluye análisis de datos, visualización, estadística, aprendizaje automático y más.'},
+        {name: 'keywords', content: 'Python, curso, ciencia de datos, machine learning, programación, análisis de datos, visualización, estadística, aprendizaje automático, fastapi, pandas, numpy, matplotlib, seaborn, scikit-learn, tensorflow, keras, Streamlit'},
+        {name: 'author', content: 'Patricio Araneda'},
+        {property: 'og:type', content: 'website' },
+        {property: 'og:image', content: 'https://patricioaraneda.cl/python/img/python.jpg' },
+      ],
       // Replace with your project's social card
       image: 'img/python.jpg',
       colorMode: {
@@ -120,7 +131,8 @@ const config = {
       footer: {
         style: 'dark',
         links: footerLinks,
-        copyright: `Copyright © ${new Date().getFullYear()} Patricio Araneda G. | Inteligencia Artificial para la Gestión Pública, Built with <a href="https://docusaurus.io/">Docusaurus</a>. <br /><img src="img/cc-by-nc-sa.png" alt="CC-BY-SA 4.0" width="100" />`,
+        copyright: `Copyright © ${new Date().getFullYear()} Patricio Araneda G. | Inteligencia Artificial para la Gestión Pública, Built with Docusaurus. <br /><a href="https://doi.org/10.5281/zenodo.21569010"><img src="https://zenodo.org/badge/1297925885.svg" alt="DOI"></a>
+        <br /><img src="https://patricioaraneda.cl/public/images/cc-by-nc-sa.png" alt="CC-BY-SA 4.0" width="120" />`,
       },
       prism: {
         theme: prismThemes.github,
