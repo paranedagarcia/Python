@@ -271,6 +271,60 @@ git add .
 git commit -m "Update files"
 git push
 ```
+### Fork
+
+Un **fork** (o bifurcación) es una **copia remota de un repositorio** que se crea dentro de tu propia cuenta de una plataforma de alojamiento como GitHub. A diferencia de un clon local, el fork vive en la nube y te otorga **permisos totales de administración**, permitiéndote evolucionar el código de forma independiente sin afectar al proyecto original.
+
+#### ¿Cómo funciona la mecánica del fork?
+El flujo de trabajo estándar para utilizar un fork sigue estos pasos técnicos:
+
+1.  **Bifurcación:** Navegas al repositorio original en el navegador y pulsas el botón **"Fork"**. GitHub crea una réplica exacta bajo tu usuario.
+
+2.  **Clonación local:** Para trabajar en tu ordenador, debes clonar tu fork (no el original) usando el comando `git clone <URL-de-tu-fork>`.
+
+3.  **Desarrollo:** Realizas los cambios, añades los archivos (`git add`) y generas los puntos de guardado (`git commit`) en tu máquina local.
+
+4.  **Sincronización remota:** Envías tus cambios de vuelta a tu fork en la nube con `git push`.
+
+5.  **Propuesta de cambios (Pull Request):** Si deseas que tus mejoras se integren en el proyecto original, abres una **Pull Request** desde la interfaz de GitHub, comparando tu rama con la del repositorio fuente.
+
+#### Diferencias clave y sincronización
+*   **Fork vs. Clone:** Mientras que el fork crea una copia en el servidor (donde tienes permisos), el clone crea una copia en tu disco duro para trabajar físicamente en los archivos.
+
+*   **Upstream:** Con el tiempo, el repositorio original puede recibir actualizaciones que tu fork no tiene. Para mantenerte al día, es común añadir el repositorio original como un remoto adicional llamado **upstream** (`git remote add upstream <URL-original>`) y traer sus cambios con `git pull upstream main`.
+
+#### ¿Para qué se utiliza?
+Se emplea principalmente cuando **no tienes permisos de escritura** en un proyecto pero quieres colaborar (flujo de código abierto), para **experimentar** con cambios radicales de forma segura, o para continuar el desarrollo de un proyecto que ha sido abandonado por su autor original.
+
+### Fork y clone
+
+La diferencia fundamental entre un **Fork** y un **Clone** radica en dónde se crea la copia del repositorio y qué permisos obtienes sobre ella. Aunque ambos procesos implican copiar un proyecto, cumplen funciones distintas dentro del flujo de trabajo de Git y GitHub.
+
+#### Ubicación y Naturaleza
+*   **Fork (Bifurcación):** Es una **copia remota** que vive en la nube, dentro de tu propia cuenta de un servicio de alojamiento como GitHub. No se descarga a tu ordenador, sino que se crea una nueva instancia del repositorio en los servidores del proveedor.
+
+*   **Clone (Clonación):** Es una **copia local** del repositorio que se descarga físicamente a tu ordenador. Al clonar, descargas todo el historial de commits, ramas y archivos a tu disco duro para poder trabajar en ellos.
+
+#### Permisos y Administración
+*   **Fork:** Al realizarlo, el repositorio resultante te pertenece totalmente. Esto te otorga **permisos de administración** para modificar el código, crear ramas o borrar el proyecto sin afectar al repositorio original. Es la herramienta ideal para colaborar en proyectos donde no tienes permisos de escritura (como el código abierto).
+
+*   **Clone:** Es simplemente una réplica para trabajar. Si clonas un repositorio del cual no eres dueño ni colaborador, podrás ver los archivos y hacer commits locales, pero **no podrás subirlos (hacer `push`)** al servidor original debido a la falta de permisos.
+
+#### Propósito y Flujo de Trabajo
+*   **Fork:** Se utiliza principalmente para **contribuir a proyectos ajenos** mediante Pull Requests o para utilizar un proyecto existente como base para uno nuevo de forma independiente. Mantiene un vínculo con el repositorio original (llamado a veces *upstream*), lo que permite sincronizar actualizaciones posteriores.
+
+*   **Clone:** Se usa para **empezar a trabajar físicamente** en el código. Una vez que tienes un fork en tu cuenta de GitHub, el siguiente paso lógico es clonar *ese fork* en tu máquina local para poder editar los archivos.
+
+##S## Resumen de diferencias clave
+
+| Característica | Fork | Clone |
+| :--- | :--- | :--- |
+| **Ubicación** | Remota (Servidor/Nube) | Local (Tu ordenador) |
+| **Permisos** | Totales en tu copia | Dependen de tu rol en el origen |
+| **Relación** | Crea una nueva dirección/URL | Es una copia de una dirección existente |
+| **Comando** | Se hace desde la interfaz web (o `gh repo fork`) | Comando `git clone <URL>` |
+
+En un flujo colaborativo estándar, primero haces un **Fork** del proyecto en la web para tener tu propia copia con permisos y luego haces un **Clone** de esa copia a tu equipo local para desarrollar los cambios.
 
 ### Pull Request
 
@@ -280,20 +334,26 @@ A continuación se detalla la mecánica paso a paso:
 
 #### 1. Preparación y envío de cambios
 *   **Creación de una rama:** El proceso comienza creando una **rama local** específica para la funcionalidad o corrección en la que se va a trabajar.
+
 *   **Realización de commits:** Se añaden los cambios necesarios mediante commits en dicha rama.
+
 *   **Push al repositorio remoto:** Se sube la rama local al servidor remoto mediante el comando `git push`. Si es una rama nueva, Git suele sugerir un comando para establecer la rama "upstream" y facilitar la creación de la PR.
 
 #### 2. Creación de la solicitud en la plataforma
 *   **Apertura de la PR:** Una vez que la rama está en el servidor, se utiliza la interfaz web de la plataforma (como GitHub) para **abrir la Pull Request**. En este paso se define la **rama de origen** (donde están los cambios) y la **rama de destino** (donde se quieren integrar, normalmente `main` o `master`).
+
 *   **Uso de Forks:** Si el colaborador no tiene permisos de escritura en el repositorio original, debe realizar primero un **Fork** (copia del repositorio en su propia cuenta), trabajar allí y luego enviar la PR desde su Fork hacia el repositorio original.
 
 #### 3. Revisión y Colaboración
 *   **Feedback y discusión:** Los colaboradores pueden revisar el código, añadir **comentarios en líneas específicas** y solicitar cambios.
+
 *   **Actualizaciones automáticas:** Si se realizan nuevos commits en la rama local y se vuelven a subir (`push`), la Pull Request se **actualiza automáticamente** con las nuevas modificaciones sin necesidad de abrir una solicitud nueva.
+
 *   **Resolución de conflictos:** Si hay conflictos (cambios incompatibles entre la rama de origen y la de destino), estos deben resolverse (ya sea en local o a veces mediante la interfaz web) antes de que la plataforma permita la fusión.
 
 #### 4. Integración y Limpieza
 *   **Aprobación y Merge:** Una vez que los revisores están satisfechos, la PR se aprueba y se procede al **Merge** (fusión). Por defecto, muchas plataformas realizan un **merge "no-fast-forward"**, lo que genera un commit de fusión explícito que deja constancia histórica de la integración.
+
 *   **Cierre y eliminación:** Tras la fusión, la PR se marca como "cerrada". Es una buena práctica **eliminar la rama remota** y la rama local para mantener el repositorio limpio.
 
 **Nota importante:** A pesar de llevar "pull" en el nombre, las Pull Requests **no están relacionadas directamente con el comando `git pull`** de la terminal; son una funcionalidad propia de las plataformas de alojamiento para facilitar la revisión de código antes de la integración final.

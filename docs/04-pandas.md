@@ -12,5 +12,5 @@ slug: /pandas
 :::info
 Accede al módulo de Pandas dentro del curso de Ciencia de Datos.
 
-[**Análisis de datos en Pandas**](https://patricioaraneda.cl/ciencia-de-datos/docs/category/pandas)
+[**Análisis de datos en Pandas**](https://patricioaraneda.cl/ciencia-de-datos/docs/pandas)
 :::
