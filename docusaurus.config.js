@@ -92,7 +92,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/ODC-isotipo.svg',
+      image: 'img/python.jpg',
       colorMode: {
         respectPrefersColorScheme: true,
       },
