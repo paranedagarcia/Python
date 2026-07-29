@@ -13,7 +13,7 @@ import {links as footerLinks} from './footer_links.js';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Programación en Python v1.0',
+  title: 'Python v1.0',
   tagline: 'Desde Ciencia de Datos hasta Machine Learning',
   favicon: 'img/favicon.ico',
 
@@ -131,7 +131,7 @@ const config = {
       footer: {
         style: 'dark',
         links: footerLinks,
-        copyright: `Copyright © ${new Date().getFullYear()} Patricio Araneda G. | Inteligencia Artificial para la Gestión Pública, Built with Docusaurus. <br /><a href="https://doi.org/10.5281/zenodo.21569010"><img src="https://zenodo.org/badge/1297925885.svg" alt="DOI"></a>
+        copyright: `Copyright © ${new Date().getFullYear()} Patricio Araneda G. | Programación en Python, Built with Docusaurus. <br />
         <br /><img src="https://patricioaraneda.cl/public/images/cc-by-nc-sa.png" alt="CC-BY-SA 4.0" width="120" />`,
       },
       prism: {
