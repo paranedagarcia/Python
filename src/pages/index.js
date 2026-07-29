@@ -27,12 +27,12 @@ function HomepageHeader() {
     </header>
   );
 }
-
+// Bienvenido a ${siteConfig.title}
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Bienvenido a ${siteConfig.title}`}
+      title={`Bienvenido`}
       description="Programación en Python desde ciencia de datos hasta machine learning <head />">
       <HomepageHeader />
       <main>
