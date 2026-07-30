@@ -1,13 +1,13 @@
 ---
 id: git
-title: "Git control de versiones"
+title: "Git"
 sidebar_label: "​📊 Git & GitHub"
 sidebar_position: 3
 description: "Control de versiones con git"
 ---
 
 
-## Git
+## Git control de versiones
 
 Un **control de versiones** es un sistema técnico que **registra de manera detallada cada cambio realizado en el código fuente de un proyecto**, permitiendo mantener un histórico completo de las modificaciones, identificar quién las realizó y cuándo ocurrieron. En términos prácticos, funciona como una serie de "fotografías" o instantáneas del estado de los archivos en momentos específicos, lo que permite navegar por la evolución del proyecto como si fuera una línea del tiempo.
 
@@ -271,7 +271,8 @@ git add .
 git commit -m "Update files"
 git push
 ```
-### Fork
+
+## Fork
 
 Un **fork** (o bifurcación) es una **copia remota de un repositorio** que se crea dentro de tu propia cuenta de una plataforma de alojamiento como GitHub. A diferencia de un clon local, el fork vive en la nube y te otorga **permisos totales de administración**, permitiéndote evolucionar el código de forma independiente sin afectar al proyecto original.
 
@@ -326,7 +327,7 @@ La diferencia fundamental entre un **Fork** y un **Clone** radica en dónde se c
 
 En un flujo colaborativo estándar, primero haces un **Fork** del proyecto en la web para tener tu propia copia con permisos y luego haces un **Clone** de esa copia a tu equipo local para desarrollar los cambios.
 
-### Pull Request
+## Pull Request
 
 La mecánica de funcionamiento de una **Pull Request (PR)** —también conocida como *Merge Request* en plataformas como GitLab— consiste en un flujo de trabajo diseñado para **compartir, revisar e integrar cambios** de código en un repositorio remoto. Aunque se gestionan a través de la interfaz de servicios como GitHub, son una herramienta esencial en el día a día del desarrollo con Git.
 
@@ -408,3 +409,7 @@ GitHub es una plataforma de alojamiento de código fuente y control de versiones
 ```bash
 git clone <REMOTE_REPOSITORY_URL>
 ```
+
+:::info
+... tema en desarrollo.
+:::
