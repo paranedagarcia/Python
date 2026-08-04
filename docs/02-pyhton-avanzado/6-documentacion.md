@@ -2,8 +2,8 @@
 id: documentacion
 title: "Documentación"
 sidebar_label: "​📚 Documentación"
-sidebar_position: 3
 description: "las mejores opciones de establecer la documentación y generar trazabilidad."
+slug: /documentacion
 ---
 
 <center>

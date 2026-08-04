@@ -2,7 +2,7 @@
 id: decoradores
 title: "Decoradores"
 sidebar_label: "​⚙️ Decoradores"
-sidebar_position: 1
+slug: /decoradores
 ---
 
 La función principal de los **decoradores** en Python es alterar o añadir funcionalidades a una función o clase de manera dinámica, sin necesidad de modificar directamente su código fuente. Se consideran una forma de **"azúcar sintáctico"** (*syntax sugar*), ya que proporcionan una sintaxis más limpia y legible para realizar una tarea que, de otro modo, sería más laboriosa de implementar.

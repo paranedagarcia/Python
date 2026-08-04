@@ -2,8 +2,8 @@
 id: crear-modulo
 title: "Crear un módulo"
 sidebar_label: "​📊 Crear un módulo"
-sidebar_position: 3
 description: "Cómo crear un módulo python"
+slug: /crear-modulo
 ---
 
 ## Cómo Crear un Módulo en Python

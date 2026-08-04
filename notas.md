@@ -60,3 +60,32 @@ Explícame cómo integrar JWT para proteger las rutas modularizadas
 
 ¿Qué sucede si hago un commit estando en HEAD desprendido?
 ¿Cómo puedo visualizar gráficamente el historial de mis ramas?
+
+## Docker
+¿Cuáles son las diferencias clave entre contenedores y máquinas virtuales?
+Enséñame qué es un archivo Dockerfile y cómo se utiliza
+¿Cómo gestiona Docker el almacenamiento persistente mediante volúmenes y redes?
+
+¿Cuáles son los pasos para crear mi propia imagen?
+¿Cómo se diferencia un contenedor de una máquina virtual?
+Explícame cómo funciona el archivo Dockerfile para mis apps
+
+¿Qué herramientas de orquestación existen para gestionar contenedores?
+Explícame qué es el Docker Hub y para qué sirve
+
+¿Para qué sirve el comando docker buildx build?
+
+¿Cómo puedo automatizar la creación de imágenes con GitHub?
+¿Qué herramientas analizan la seguridad de una imagen Docker?
+¿Cuál es la diferencia entre las instrucciones CMD y ENTRYPOINT?
+
+¿Cómo se comparten datos entre contenedores usando volúmenes?
+Diferencias entre imágenes oficiales y de la comunidad
+
+¿Cuál es la diferencia entre COPY y ADD en Dockerfile?
+
+¿Para qué se usa el comando docker push?
+¿Cómo se diferencia un repositorio público de uno privado?
+
+¿Cómo se usa el comando docker tag?
+¿Qué diferencia hay entre COPY y ADD en el Dockerfile?

@@ -2,7 +2,7 @@
 id: regexp
 title: "Expresiones regulares"
 sidebar_label: "​📊 Expresiones regulares"
-sidebar_position: 2
+slug: /regexp
 ---
 
 
