@@ -89,3 +89,6 @@ Diferencias entre imágenes oficiales y de la comunidad
 
 ¿Cómo se usa el comando docker tag?
 ¿Qué diferencia hay entre COPY y ADD en el Dockerfile?
+
+Explícame paso a paso cómo crear una imagen con Dockerfile
+Enséñame Docker desde cero asumiendo que soy un principiante
