@@ -1,14 +1,20 @@
 ---
 id: poo
 title: "Fundamentos de POO"
-sidebar_label: "Fundamentos POO"
+sidebar_label: "Fundamentos"
 sidebar_position: 1
 description: "Fundamentos del POO"
 ---
 
-La programación orientada a objetos (POO) en Python es un paradigma fundamental que permite modelar entidades del mundo real mediante estructuras de datos llamadas **objetos**, los cuales agrupan tanto un estado (datos) como un comportamiento (funcionalidad). Python es un lenguaje **multiparadigma** donde todo es considerado un objeto, desde los números básicos hasta las funciones y módulos.
+<center>
+![](img/poo.png)
+</center>
 
-La Programación Orientada a Objetos en Python te permite crear código más organizado, reutilizable y fácil de mantener, modelando el mundo real con clases y objetos. Aunque suena técnico, en el fondo es como construir con bloques de LEGO: defines piezas (clases) y luego las ensamblas (objetos) para crear algo funcional.
+La programación orientada a objetos (POO) es un paradigma fundamental que permite modelar entidades del mundo real mediante estructuras de datos llamadas **objetos**, los cuales agrupan tanto un estado (datos) como un comportamiento (funcionalidad). Python es un lenguaje **multiparadigma** donde todo es considerado un objeto, desde los números básicos hasta las funciones y módulos.
+
+La Programación Orientada a Objetos te permite crear código más organizado, reutilizable y fácil de mantener, modelando el mundo real con clases y objetos. Aunque suena técnico, en el fondo es como construir con bloques de LEGO: defines piezas (clases) y luego las ensamblas (objetos) para crear algo funcional.
+
+![](img/poo-info.webp)
 
 La **Programación Orientada a Objetos (POO)** es una forma de organizar el código pensando en **objetos del mundo real**. En lugar de escribir instrucciones sueltas, creamos "plantillas" (llamadas **clases**) que definen cómo son y cómo se comportan esos objetos.
 
@@ -30,7 +36,7 @@ mi_perro = Perro()
 # Aquí, `Perro` es la clase (el molde), y `mi_perro` es un objeto real basado en ese molde.
 ```
 
-### Fundamentos de la POO en Python
+### Fundamentos de la POO
 
 *   **Clase (Class):** Es la "plantilla" o plano general que define los atributos y métodos comunes a una categoría de objetos. Se define con la palabra clave `class`.
 

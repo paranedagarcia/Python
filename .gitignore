@@ -24,3 +24,5 @@ yarn-error.log*
 
 /.quarto/
 **/*.quarto_ipynb
+
+/plan

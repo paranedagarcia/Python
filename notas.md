@@ -12,6 +12,22 @@
 
 </details>
 
+<br />
+#### 💻 Código:
+<Tabs>
+<TabItem value="mnp" label="Antecedentes" default>
+<div class="alert alert--primary">
+**Modelado básico:** 
+
+</div>
+</TabItem>
+<TabItem value="mnp-python" label="Pyhton" >
+```python showLineNumbers
+# Implementación en Python
+```
+</TabItem>
+</Tabs>
+
 
 ## Flask
 ¿Cómo configuro mi primera base de datos con Flask?
@@ -92,3 +108,26 @@ Diferencias entre imágenes oficiales y de la comunidad
 
 Explícame paso a paso cómo crear una imagen con Dockerfile
 Enséñame Docker desde cero asumiendo que soy un principiante
+
+## POO
+
+💡 ¿Te gustaría que creemos un breve cuestionario interactivo para poner a prueba tus conocimientos sobre la abstracción y ver cómo se diferencia de los otros pilares de la POO?
+
+¿Cómo se implementan las Clases Base Abstractas?
+¿Qué otros pilares tiene la POO?
+
+Muéstrame el ejemplo con Protocol
+
+Ejemplos de métodos especiales en POO
+
+🎨 **Sugerencia:** Como tienes varios artefactos listos en tu panel de Studio, ¿te gustaría que elaboremos un **recurso visual interactivo** (como una app de tarjetas de repaso o *flashcards*) para ayudar a tus estudiantes a memorizar estos términos de POO, o prefieres profundizar en cómo se escribe un protocolo estático?
+
+
+Práctica de Duck Typing
+Diferencia con Encapsulamiento
+
+Diferencia entre @classmethod y @staticmethod
+
+¿Cómo sobrescribir un método?
+¿Qué es la herencia múltiple?
+¿Cómo funciona super()?

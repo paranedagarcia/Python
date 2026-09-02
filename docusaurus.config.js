@@ -13,7 +13,7 @@ import {links as footerLinks} from './footer_links.js';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Python v1.0',
+  title: 'Python',
   tagline: 'Desde Ciencia de Datos hasta Machine Learning',
   favicon: 'img/favicon.ico',
 
@@ -88,7 +88,7 @@ const config = {
           trackingID: 'G-3V2QKLCVQR',
           anonymizeIP: true,
         },
-      }),
+      }) ,
     ],
   ],
 

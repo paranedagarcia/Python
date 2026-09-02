@@ -2,7 +2,6 @@
 id: dunder
 title: "Métodos Dunder"
 sidebar_label: "Métodos Dunder"
-sidebar_position: 2
 description: "Métodos Dunder"
 ---
 
