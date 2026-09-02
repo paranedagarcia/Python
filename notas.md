@@ -15,13 +15,18 @@
 <br />
 #### 💻 Código:
 <Tabs>
-<TabItem value="mnp" label="Antecedentes" default>
+<TabItem value="ph" label="Antecedentes" default>
 <div class="alert alert--primary">
 **Modelado básico:** 
 
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="Pyhton" >
+<TabItem value="ph-python" label="Pyhton" >
+```python showLineNumbers
+# Implementación en Python
+```
+</TabItem>
+<TabItem value="ph-python" label="Pyhton" >
 ```python showLineNumbers
 # Implementación en Python
 ```
@@ -131,3 +136,20 @@ Diferencia entre @classmethod y @staticmethod
 ¿Cómo sobrescribir un método?
 ¿Qué es la herencia múltiple?
 ¿Cómo funciona super()?
+
+Ejemplos de métodos estáticos
+¿Qué es el MRO en Python?
+Ejercicios de herencia múltiple
+Diferencia entre __repr__ y __str__
+
+
+🚙 ¿Te gustaría que hagamos un ejercicio para ver cómo anular (sobrescribir) un método heredado de la clase base, o prefieres revisar cómo funciona la herencia múltiple en Python?
+
+¿Cómo funciona el MRO (C3 Linearization)?
+Explica el Method Resolution Order (MRO).
+¿Qué es el problema del diamante?
+
+¿Qué es el MRO?
+Explica la herencia Mixin
+Ejemplos de super()
+¿Qué es el problema del diamante?

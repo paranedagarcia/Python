@@ -21,6 +21,10 @@ La **Programación Orientada a Objetos (POO)** es una forma de organizar el cód
 **Ejemplo cotidiano**:  
 Piensa en un **auto**. Todos los autos tienen características (color, marca, velocidad) y pueden hacer cosas (acelerar, frenar). En POO, modelamos eso con clases y objetos.
 
+<center>
+![](img/poo-objeto.jpg)
+</center>
+
 ## Clases y objetos
 - **Clase**: Es como un **molde** o **receta** para crear objetos. Define qué atributos y comportamientos tendrán.
 - **Objeto**: Es una **instancia** de una clase. Es decir, un objeto real creado a partir de esa receta.
@@ -104,11 +108,34 @@ print(isinstance(mi_perro, str))    # False
 
 1.  **Herencia (Inheritance):** Permite crear una nueva clase (subclase) a partir de una existente (superclase), heredando todos sus atributos y métodos. Esto facilita la reutilización de código y la especialización de funciones.
 
+<center>
+<figure>
+![](img/poo-herencia.jpg)
+<figcaption>**Herencia**. Las clases 'hijas' heredan los atributos y métodos del 'padre', pero añaden sus propios detalles exclusivos.</figcaption>
+</figure>
+</center>
+
 2.  **Polimorfismo:** Es la capacidad de objetos de distintas clases de responder al mismo mensaje o nombre de método. Python lo implementa principalmente a través del **Duck Typing**: "si camina como un pato y grazna como un pato, entonces es un pato", priorizando lo que el objeto puede hacer sobre su tipo estricto.
 
 3.  **Encapsulamiento:** Se refiere a ocultar los detalles internos de un objeto y exponer solo una interfaz pública. A diferencia de otros lenguajes, Python no impone restricciones técnicas estrictas (como `private`), sino que utiliza convenciones de nombres (como un guion bajo inicial `_variable`) para indicar que un atributo es de uso interno.
 
-4.  **Composición (Composition):** Consiste en construir clases complejas utilizando instancias de otras clases como atributos (relación "tiene un" o *has-a*).
+<center>
+<figure>
+![](img/poo-capsula.jpg)
+<figcaption>**Encapsulamiento**. Oculta el estado interno. El acceso o modificación a lod datps privados (__saldo) solo se permite a través de métodos controlados (Getters/Setters). Esto evita accidentes.</figcaption>
+</figure>
+</center>
+
+4. **Abstracción**: Consiste en el proceso de **separar una interfaz pública limpia de los detalles internos de implementación** de un objeto, permitiendo interactuar con el código al nivel de detalle más adecuado para cada tarea y omitiendo las complejidades que no son relevantes.
+
+<center>
+<figure>
+![](img/poo-control.jpg)
+<figcaption>**Abstracción**. Al igual que el control remoto, los objetos POO exponen métodos simples y esconden el código dificil.</figcaption>
+</figure>
+</center>
+
+5.  **Composición (Composition):** Consiste en construir clases complejas utilizando instancias de otras clases como atributos (relación "tiene un" o *has-a*).
 
 5.  **Métodos Especiales (Dunder Methods):** Métodos que comienzan y terminan con doble guion bajo (como `__str__` o `__len__`) y permiten que los objetos se integren con la sintaxis nativa de Python, como el uso de operadores matemáticos o la función `len()`.
 
