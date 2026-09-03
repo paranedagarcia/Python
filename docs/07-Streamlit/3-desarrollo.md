@@ -10,7 +10,7 @@ slug: /streamlit-dev
 Las aplicaciones creadas con Streamlit no son muy  flexibles, como otras, sin embargo, tienen la virtud de ser muy fáciles de construir en comparación, justamente por esa estructura predefinida.
 <center>
 <figure> 
-![png](img/interface.webp)
+![](img/interface.webp)
 <figcaption>Anatomia de una interface de aplicación Streamlit.</figcaption>
 </figure>
 </center>
@@ -22,7 +22,7 @@ Para crear una aplicación de Streamlit que cargue archivos, muestre indicadores
 #### Paso 1: Preparación e Importación de Librerías
 Lo primero es crear un archivo Python (por ejemplo, `dashboard.py`) e importar los módulos necesarios: **Streamlit** para la interfaz, **Pandas** para el manejo de datos y **Altair** para las visualizaciones estadísticas.
 
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 import streamlit as st
 import pandas as pd
 import altair as alt
@@ -31,7 +31,7 @@ import altair as alt
 #### Paso 2: Configuración de la Página y Título
 Configura el diseño de la aplicación para que utilice todo el ancho de la pantalla, lo cual es ideal para tableros con múltiples gráficos. Luego, añade un título descriptivo.
 
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 st.set_page_config(
     page_title="Plan de Compras",
     layout="wide"
@@ -43,7 +43,7 @@ st.title("📊 Tablero de Análisis Simple")
 #### Paso 3: Carga de Archivos
 Utiliza el comando **`st.file_uploader`** para permitir que el usuario suba su propio dataset en formato CSV. Es fundamental envolver el resto del código en una condición `if` para asegurar que la aplicación solo intente procesar los datos una vez que el archivo ha sido cargado.
 
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 uploaded_file = st.file_uploader("Sube tu archivo CSV", type=["csv"])
 
 if uploaded_file is not None:
@@ -54,7 +54,7 @@ if uploaded_file is not None:
 #### Paso 4: Visualización de KPIs (Card Metrics)
 Para mostrar totales generales de forma atractiva, utiliza **`st.columns`** para organizar los widgets horizontalmente y **`st.metric`** para las tarjetas de datos. Las métricas son ideales para resaltar números importantes como ventas totales o conteos de registros.
 
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 # Ejemplo calculando métricas basadas en el DataFrame
 revenue = 12400
 users=1024
@@ -79,7 +79,7 @@ Altair utiliza un enfoque **declarativo** donde defines las relaciones entre las
 2.  **Gráfico de Líneas:** Ideal para ver tendencias temporales con `mark_line()` o `mark_point()`.
 3.  **Gráfico de Áreas o Dispersión:** Puedes usar `mark_area()` para totales acumulados o `mark_circle()` para correlaciones.
 
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 st.subheader("Visualizaciones Estadísticas")
 
 # Gráfico 1: Barras
@@ -127,7 +127,7 @@ Streamlit sigue un modelo de ejecución en el que el script se vuelve a ejecutar
 
 #### 3. Organización en la Barra Lateral (`st.sidebar`)
 Para mantener el área principal despejada, es una práctica recomendada colocar los filtros en la barra lateral. Puedes hacerlo simplemente anteponiendo `.sidebar` al comando del widget:
-```python showLineNumbers showLineNumbers
+```python showLineNumbers
 # Ejemplo de filtro en la barra lateral
 seleccion = st.sidebar.multiselect("Filtrar por categoría", df['categoria'].unique())
 if seleccion:
