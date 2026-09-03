@@ -25,11 +25,11 @@ Piensa en un **auto**. Todos los autos tienen características (color, marca, ve
 ![](img/poo-objeto.jpg)
 </center>
 
-## Clases y objetos
+## **Clases y objetos**
 - **Clase**: Es como un **molde** o **receta** para crear objetos. Define qué atributos y comportamientos tendrán.
 - **Objeto**: Es una **instancia** de una clase. Es decir, un objeto real creado a partir de esa receta.
 
-```python
+```python showLineNumbers
 # Definimos una clase llamada "Perro"
 class Perro:
     pass
@@ -77,10 +77,10 @@ class Auto:
         print “No se mueve”
  ```
 
-## Constructores
+## **Constructores**
 El **constructor** es un método especial que se ejecuta **automáticamente** cuando creamos un nuevo objeto. En Python, se llama `__init__`.
 
-```python
+```python showLineNumbers
 class Perro:
     def __init__(self, nombre, raza):
         self.nombre = nombre
@@ -95,7 +95,7 @@ El constructor permite **inicializar** los atributos del objeto al crearlo.
 El primer método `__init__` es relevante porque es la instanciación inicial, realiza todo el proceso de inicialización que sea necesario.
 El primer parámetro de este es `self`y que se refiere al objeto actual y permite acceder a todos los atributos y métodos del objeto.
 
-## Función isinstance()
+### Función isinstance()
 Esta función nos dice si un objeto **es una instancia** de una clase determinada.
 
 ```python
@@ -180,6 +180,7 @@ En Python, podemos proteger los atributos internos (como el saldo) usando un dob
 </div>
 </TabItem>
 <TabItem value="mnp-python" label="Pyhton" >
+
 ```python showLineNumbers
 # Implementación en Python
 class Account:
@@ -275,7 +276,8 @@ Desarrollar clases para figuras como `Circle`, `Rectangle` o `Triangle` que incl
 
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="Pyhton" default>
+<TabItem value="mnp-python" label="💻 Pyhton" default>
+
 ```python showLineNumbers
 # Implementación en Python
 from abc import ABC, abstractmethod
@@ -395,7 +397,8 @@ Al hacer que `Parabola` herede de `Line`, reutilizamos la lógica de los coefici
 3. **Mantenibilidad:** Si el día de mañana decides cambiar la forma en que se imprimen o calculan las funciones lineales básicas, cualquier cambio en `Line` se transmitirá automáticamente a `Parabola` sin necesidad de tocar su código.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="Pyhton">
+<TabItem value="mnp-python" label="💻 Pyhton">
+
 ```python showLineNumbers
 # Implementación en Python
 class Line:
@@ -460,4 +463,150 @@ if __name__ == "__main__":
 
 *   **Uso de `super()`:** Modificar una clase derivada para que llame explícitamente al inicializador de su clase base mediante `super().__init__()`.
 *   **Refactorización:** Tomar un programa procedimental (como un simulador de crecimiento logístico o un lector de archivos CSV) y reorganizar su lógica dentro de una estructura de clases.
+
+---
+## **Method Resolution Order**
+
+**MRO** son las siglas de **Method Resolution Order** (u **Orden de Resolución de Métodos** en español). Es el mecanismo interno que utiliza Python para determinar de manera exacta y predecible el **orden en el que se deben buscar los atributos y métodos** en una jerarquía de clases. 
+
+Aunque su nombre hace referencia a los "métodos", el MRO se aplica para la resolución de **cualquier tipo de atributo** (como variables de clase o propiedades) y no solo para funciones.
+
+A continuación se detallan sus aspectos clave:
+
+### ¿Por qué es necesario?
+En la herencia simple, el orden de búsqueda es directo: Python busca en la clase del objeto, luego en su padre, luego en el abuelo, y así sucesivamente. Sin embargo, bajo **herencia múltiple**, la estructura puede volverse compleja. 
+
+El caso más crítico es la **herencia en diamante** (cuando una clase hereda de dos padres que a su vez comparten un ancestro común). Sin una regla clara, Python podría buscar atributos de forma desordenada o resolver de manera contraintuitiva. El MRO resuelve esto asegurando que **cada clase en la jerarquía se visite una sola vez, y siempre después de todas sus subclases**.
+
+### El algoritmo C3 Linearization
+A partir de la versión 2.3, Python adoptó el algoritmo **C3 linearization** para calcular este orden de búsqueda. Este algoritmo (originalmente creado para el lenguaje de programación Dylan) genera una lista plana y ordenada de ancestros garantizando propiedades fundamentales:
+*   **Monotonía:** Si una clase (`A`) precede a la clase (`B`) en el orden de búsqueda de una subclase, esa relación de precedencia debe mantenerse en cualquier otra subclase más compleja que herede de ellas.
+*   **Preservación del orden local:** Se respeta rigurosamente el orden de izquierda a derecha en el que se declaran las clases base en la cabecera de la subclase.
+
+### ¿Cómo se inspecciona en Python?
+Cada vez que creas una clase, Python calcula su MRO en tiempo de definición y lo almacena. Puedes consultarlo de dos formas:
+*   Accediendo al atributo especial de lectura de la clase: `Clase.__mro__` (que devuelve una tupla).
+*   Llamando al método de clase: `Clase.mro()` (que devuelve una lista).
+
+```python
+print(MiClase.__mro__)
+# Muestra el orden exacto de búsqueda, terminando siempre en la clase base 'object'
+```
+
+### Su relación con `super()`
+La función integrada **`super()` no busca necesariamente en el padre directo de la clase actual**. Lo que realmente hace `super()` es localizar la clase donde se está ejecutando la llamada dentro del MRO del objeto original (`self.__class__.__mro__`) y delegar la llamada al **siguiente elemento en esa lista**. Esto es lo que permite la **inicialización cooperativa** a través de toda la jerarquía de herencia.
+
+
+<Tabs>
+<TabItem value="mro" label="Ejercicio" default>
+<div class="alert alert--primary">
+**Script interactivo:**
+
+Construir una jerarquía con herencia múltiple compleja y mostrar exactamente cómo cambia su lista de MRO según el orden de declaración de sus padres.
+
+Para este experimento, definiremos una jerarquía en diamante donde cambiaremos únicamente el **orden de declaración de los padres** en la subclase. Esto nos permitirá visualizar de manera directa el impacto en el **MRO** y en la ruta que sigue **`super()`**.
+</div>
+</TabItem>
+<TabItem value="mro-python" label="💻 Pyhton" >
+
+```python showLineNumbers
+class Ancestro:
+    def mensaje(self):
+        print("   [Ancestro]  Método ejecutado.")
+
+
+class ServicioLog(Ancestro):
+    def mensaje(self):
+        print("-> [ServicioLog] Iniciando...")
+        super().mensaje()
+        print("<- [ServicioLog] Finalizado.")
+
+
+class ServicioSeguridad(Ancestro):
+    def mensaje(self):
+        print("-> [ServicioSeguridad] Verificando credenciales...")
+        super().mensaje()
+        print("<- [ServicioSeguridad] Verificación terminada.")
+
+
+# =====================================================================
+# EXPERIMENTO 1: ServicioLog va a la IZQUIERDA (tiene prioridad)
+# =====================================================================
+class GestorA(ServicioLog, ServicioSeguridad):
+    def mensaje(self):
+        print("\n=== EJECUTANDO GESTOR A (Log -> Seguridad) ===")
+        super().mensaje()
+
+
+# =====================================================================
+# EXPERIMENTO 2: ServicioSeguridad va a la IZQUIERDA (tiene prioridad)
+# =====================================================================
+class GestorB(ServicioSeguridad, ServicioLog):
+    def mensaje(self):
+        print("\n=== EJECUTANDO GESTOR B (Seguridad -> Log) ===")
+        super().mensaje()
+
+
+# --- Bloque de ejecución e inspección del MRO ---
+if __name__ == "__main__":
+    # 1. Mostramos los MRO calculados por Python
+    print("MRO de GestorA:")
+    for i, clase in enumerate(GestorA.mro(), start=1):
+        print(f"  {i}. {clase.__name__}")
+        
+    print("\nMRO de GestorB:")
+    for i, clase in enumerate(GestorB.mro(), start=1):
+        print(f"  {i}. {clase.__name__}")
+
+    # 2. Ejecutamos los métodos para ver el orden de las llamadas
+    obj_a = GestorA()
+    obj_a.mensaje()
+
+    obj_b = GestorB()
+    obj_b.mensaje()
+```
+</TabItem>
+<TabItem value="mro-res" label="Resultado" >
+Cuando corras el script, la salida en tu terminal será exactamente esta:
+
+```text
+MRO de GestorA:
+  1. GestorA
+  2. ServicioLog
+  3. ServicioSeguridad
+  4. Ancestro
+  5. object
+
+MRO de GestorB:
+  1. GestorB
+  2. ServicioSeguridad
+  3. ServicioLog
+  4. Ancestro
+  5. object
+
+=== EJECUTANDO GESTOR A (Log -> Seguridad) ===
+-> [ServicioLog] Iniciando...
+-> [ServicioSeguridad] Verificando credenciales...
+   [Ancestro]  Método ejecutado.
+<- [ServicioSeguridad] Verificación terminada.
+<- [ServicioLog] Finalizado.
+
+=== EJECUTANDO GESTOR B (Seguridad -> Log) ===
+-> [ServicioSeguridad] Verificando credenciales...
+-> [ServicioLog] Iniciando...
+   [Ancestro]  Método ejecutado.
+<- [ServicioLog] Finalizado.
+<- [ServicioSeguridad] Verificación terminada.
+```
+</TabItem>
+</Tabs>
+<br/>
+
+### Tres observaciones clave
+
+1.  **Prioridad de izquierda a derecha:** Python respeta estrictamente el orden en que declaras las clases base en la cabecera. En `GestorA(ServicioLog, ServicioSeguridad)`, el primer paso de búsqueda tras el propio gestor es `ServicioLog`. En `GestorB`, la prioridad se invierte.
+
+2.  **`super()` como un hilo continuo:** Observa el comportamiento en `GestorA`. Cuando `ServicioLog.mensaje()` llama a `super().mensaje()`, el flujo no sube directamente a su padre `Ancestro`. En su lugar, el MRO del objeto le dice: *"el siguiente en la lista es tu hermano, ServicioSeguridad"*. De esta manera, el flujo "zigzaguea" de forma segura por todas las ramas del diamante antes de tocar el ancestro común.
+
+3.  **El desenrollado de la pila:** Debido a que cada método ejecuta código *antes* y *después* de su llamada a `super()`, verás que el orden de entrada a los métodos es exactamente el inverso al orden de salida. Esto permite realizar operaciones de limpieza (como cerrar archivos o liberar transacciones de bases de datos) en el orden inverso en el que se abrieron.
 

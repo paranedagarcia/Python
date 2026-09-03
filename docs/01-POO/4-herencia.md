@@ -276,3 +276,105 @@ print(f"Nombre: {mi_amigo.nombre} | Ciudad: {mi_amigo.ciudad} | Teléfono: {mi_a
 
 
 
+---
+
+## **Herencia vs Composición**
+
+La elección entre **herencia** y **composición** es una de las decisiones de diseño más importantes en la Programación Orientada a Objetos (POO). Aunque ambos mecanismos tienen como objetivo principal la reutilización del código, abordan el problema desde perspectivas filosóficas, semánticas y técnicas completamente diferentes.
+
+
+### La Diferencia Semántica Central: "Es-Un" vs. "Tiene-Un"
+
+La forma más sencilla de distinguir entre estos dos conceptos es analizar la relación lógica entre los objetos que intentas modelar:
+
+*   **Herencia (Relación *Is-A* / "Es-Un"):** Se utiliza cuando una clase es una versión especializada de otra. Define una relación de pertenencia a un conjunto o taxonomía matemática.
+    *   *Ejemplo:* Un coche eléctrico **es un** coche. Un alfil **es una** pieza de ajedrez. Una cuenta refrigerada **es un** contenedor.
+*   **Composición (Relación *Has-A* / "Tiene-Un"):** Se utiliza cuando un objeto complejo se construye reuniendo o ensamblando otros objetos más simples que actúan como sus partes.
+    *   *Ejemplo:* Un coche **tiene un** motor. Un departamento **tiene** empleados. Un coche eléctrico **tiene una** batería. Una cuenta de correo **tiene una** dirección.
+
+
+
+### Análisis Técnico de Ambos Enfoques
+
+#### A. Herencia: Reutilización por Extensión
+La herencia permite a una subclase adoptar automáticamente el estado (atributos) y el comportamiento (métodos) de su superclase de forma "invisible", permitiendo reescribir o agregar solo lo que difiere. 
+
+*   **Mecanismo de resolución:** Cuando llamas a un atributo o método en un objeto, Python activa una búsqueda hacia arriba en el árbol jerárquico de namespaces (`object.attribute`), buscando la definición más cercana en el camino de herencia (MRO).
+*   **Acoplamiento Fuerte:** El principal peligro de la herencia es que crea un acoplamiento extremadamente rígido. Cualquier modificación en la firma del inicializador (`__init__`) o de los métodos de la clase base repercutirá directamente y puede "romper" silenciosamente el comportamiento de todas las subclases derivadas si no se actualizan en consecuencia.
+
+*Ejemplo Conceptual de Herencia (Coche Eléctrico):*
+```python
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+class ElectricCar(Car):
+    def __init__(self, brand, model, battery_size):
+        # Acoplamiento directo: dependemos de la firma exacta del padre
+        super().__init__(brand, model)
+        self.battery_size = battery_size
+```
+
+
+#### B. Composición: Reutilización por Delegación
+La composición consiste en descomponer una clase grande en clases pequeñas e independientes que colaboran entre sí. El objeto contenedor almacena instancias de otros objetos en sus propios atributos y delega en ellos las tareas.
+
+*   **Mecanismo de delegación:** En lugar de buscar atributos automáticamente "hacia arriba" a través del MRO, la composición pasa las llamadas "hacia abajo" para que el objeto interno se encargue de realizar el trabajo.
+*   **Acoplamiento Débil:** Permite cambiar la implementación o el tipo de los componentes internos dinámicamente en tiempo de ejecución sin alterar la interfaz pública de la clase contenedora. Por ejemplo, un objeto `Car` podría cambiar su motor `V8Engine` por un `ElectricEngine` simplemente reasignando el atributo de la instancia, algo que la herencia estructural no permite de forma nativa.
+
+*Ejemplo Conceptual de Composición (Coche Eléctrico):*
+```python
+class Battery:
+    def __init__(self, capacity=40):
+        self.capacity = capacity
+
+class ElectricCar:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+        # Creamos y encapsulamos un objeto independiente dentro de nuestro coche
+        self.battery = Battery(62) 
+```
+
+
+
+
+### Impacto en el Diseño de Datos
+
+La diferencia estructural en la memoria es evidente al analizar cómo se guardan las variables:
+
+1.  **En un diseño enfocado en Herencia:** Si la clase `KnownSample` hereda de `Sample`, un objeto instanciado tendrá todos los atributos del padre fusionados de forma lineal en su propio namespace, sumando sus nuevos atributos de especialización.
+2.  **En un diseño enfocado en Composición:** Si `KnownSample` se compone de `Sample`, la instancia solo tendrá atributos que hacen referencia a otros objetos independientes (por ejemplo, un atributo `self.sample` que apunta a una instancia aislada de `Sample`). Esto ayuda a aislar las responsabilidades y a mantener las clases limpias.
+
+
+
+### La sutil variante: Composición vs. Agregación
+
+Dentro del espectro de "unión de partes", las fuentes distinguen dos relaciones según la dependencia del **ciclo de vida** de los objetos:
+
+*   **Composición Estricta:** El objeto contenedor controla por completo la creación y destrucción de los objetos internos. Si destruyes el contenedor, sus partes mueren con él.
+    *   *Ejemplo:* Un tablero de ajedrez y sus casillas (no puedes tener una casilla física de ajedrez flotando en el aire sin pertenecer a un tablero).
+*   **Agregación:** Los objetos relacionados son independientes y pueden existir por sí mismos antes o después del ciclo de vida del contenedor.
+    *   *Ejemplo:* El tablero de ajedrez y sus piezas (puedes meter las piezas en una caja y guardar el tablero; las piezas siguen existiendo sin el tablero).
+
+
+
+### ¿Cuándo elegir cada uno?
+
+*   **Prefiere la Herencia cuando:**
+    1.  Exista una jerarquía de clasificación estricta e incuestionable (por ejemplo, un `WavFile` es inequívocamente un `AudioFile`).
+
+    2.  Desees construir un framework con plantillas de comportamiento comunes (como clases base que definen la estructura de un algoritmo general y delegan pasos específicos a subclases concretas).
+
+    3.  La relación sea verdaderamente de tipo sustitutivo (Principio de Sustitución de Liskov): cualquier fragmento de código que acepte la superclase debe poder consumir la subclase sin fallar.
+
+*   **Prefiere la Composición cuando:**
+    1.  Desees evitar la rigidez y las complejidades de la herencia múltiple (como lidiar con colisiones de nombres o coordinar constructores cooperativos con `super()`).
+
+    2.  Los componentes del objeto deban ser dinámicos, intercambiables o modificables en tiempo de ejecución.
+
+    3.  La taxonomía de herencia se vuelva confusa o ambigua. El clásico dilema: *"Una manzana es una fruta (herencia), pero también es un postre (herencia múltiple)"* se resuelve de manera limpia usando composición.
+
+    4.  Quieras adherirte al principio de diseño clásico de la ingeniería de software: **"Favorece la composición de objetos sobre la herencia de clases"**.
+

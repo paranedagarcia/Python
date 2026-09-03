@@ -1,11 +1,17 @@
 ---
-id: dycktyping
+id: ducktyping
 title: "Duck Typing"
 sidebar_label: "Duck Typing"
 description: "Duck Typing (tipado de pato)"
 ---
 
 **Duck Typing** (o **tipado de pato**) es un estilo de tipado dinámico en el que la clase o el tipo de un objeto es menos importante que los métodos y atributos que este define. Bajo este principio, para determinar si un objeto se puede utilizar en un bloque de código, Python no evalúa si el objeto hereda de una clase específica; en su lugar, se enfoca únicamente en si el objeto se comporta como se espera en ese contexto.
+
+<center>
+<figure>
+![](img/poo-duck.jpg)
+</figure>
+</center>
 
 El término proviene de la máxima de James Whitcomb Riley: *"Si camina como un pato y grazna como un pato, entonces debe ser un pato"*. En el desarrollo "Pythonic", esto significa que si un objeto implementa los métodos requeridos por una función, Python lo aceptará sin cuestionar si el objeto hereda de una clase específica o implementa formalmente una interfaz.
 

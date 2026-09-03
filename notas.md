@@ -153,3 +153,17 @@ Explica el Method Resolution Order (MRO).
 Explica la herencia Mixin
 Ejemplos de super()
 ¿Qué es el problema del diamante?
+
+¿Cómo funciona el algoritmo C3?
+Ejemplo de super() y MRO
+Herencia múltiple y Mixins
+
+🧠 ¿Te gustaría que pongamos a prueba los conocimientos de tus alumnos con un reto de código interactivo donde tengan que calcular manualmente el MRO de un caso de herencia múltiple más complejo y verificarlo con Python?
+
+¿Cómo se usan las factorías con @classmethod?
+¿Qué diferencia hay con @staticmethod?
+Dame un ejemplo de @property y @classmethod juntos
+
+¿Cómo se aplica el MRO en la herencia de diamante?
+¿Qué diferencia hay entre composición y agregación?
+¿Cómo usar @classmethod como constructor alternativo?
