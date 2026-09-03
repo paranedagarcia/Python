@@ -39,6 +39,7 @@ mi_perro = Perro()
 
 # Aquí, `Perro` es la clase (el molde), y `mi_perro` es un objeto real basado en ese molde.
 ```
+![](img/poo-clases.jpg)
 
 ### Fundamentos de la POO
 
@@ -143,27 +144,161 @@ print(isinstance(mi_perro, str))    # False
 
 Los ejemplos prácticos para asentar estos conceptos serían:
 <br />
-#### 💻 Código:
+#### 💻 Modelado básico:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
 **Modelado básico:** 
-Crear una clase `Dog` con atributos `name` y `age`, y métodos como `sit()` y `roll_over()`.
+
+Imagina que vas a diseñar un sistema para una clínica veterinaria. Necesitas crear un "molde" (clase) para representar perros. Cada perro individual debe tener un nombre y una raza (atributos). Además, todos los perros deben ser capaces de realizar una acción: ladrar (un método que muestre un mensaje en pantalla indicando su nombre y un "¡Guau!").
+
+Conceptos a observar: Cómo el inicializador __init__ recibe los datos iniciales y cómo la variable self hace referencia al perro en específico que está realizando la acción.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="Pyhton" >
+<TabItem value="mnp-python" label="💻 Pyhton" >
+dog.py
+
 ```python showLineNumbers
-# Implementación en Python
+# 1. Definición de la CLASE (El molde)
+class Dog:
+    """Un intento sencillo de modelar un perro."""
+
+    def __init__(self, name, age):
+        """Inicializa los atributos de nombre y edad."""
+        self.name = name  # Atributo de instancia para el nombre
+        self.age = age    # Atributo de instancia para la edad
+
+    def sit(self):
+        """Simula un perro sentándose en respuesta a una orden."""
+        print(f"{self.name} is now sitting.")
+
+    def rueda(self):
+        """Simula hacer la croqueta en respuesta a una orden."""
+        print(f"{self.name} rolled over!")
+
+    # ejercicio 1:
+    # agrega más métodos según sea necesario: 
+    # saltar, ladrar, correr, detenerse
+    # agrega los métodos aquí:
+
+# --- Demostración de Uso del Programa ---
+
+# 1. Creamos una instancia específica de la clase Dog
+my_dog = Dog('Willie', 6)
+
+# 2. Accedemos e imprimimos sus atributos
+print(f"Mi perro se llama {my_dog.name}.")
+print(f"Mi perro tiene {my_dog.age} años.")
+
+# 3. Llamamos a los métodos del objeto
+my_dog.sit()
+my_dog.rueda()
+
+# 4. Creación de una segunda instancia independiente
+your_dog = Dog('Lucy', 3)
+print(f"\nMi otro perro se llama {your_dog.name}.")
+print(f"Mi otro perro tiene {your_dog.age} años.")
+your_dog.sit()
+your_dog.rueda()
 ```
 </TabItem>
 </Tabs>
-
-
-#### 💻 Código:
+<br/>
+#### 💻 La Alcancía Digital:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
-**Gestión bancaria:** <br /> 
+**La Alcancía Digital (Manipulación de estados)**
+
+Diseña una clase llamada Alcancia que permita a los niños aprender a ahorrar de forma digital. Cada alcancía debe comenzar vacía (con un saldo inicial de 0). Debe tener un método para guardar_dinero (añadiendo una cantidad al saldo) y otro método llamado ver_saldo que muestre en pantalla cuánto dinero lleva acumulado el objeto en ese momento.
+
+Conceptos a observar: Cómo los métodos pueden modificar directamente el valor de los atributos internos de un objeto a lo largo del tiempo.
+
+</div>
+</TabItem>
+<TabItem value="mnp-python" label="💻 Pyhton" >
+
+```python showLineNumbers
+# 1. Definición de la CLASE
+class Alcancia:
+    def __init__(self):
+        self.saldo = 0.0  # El atributo inicia automáticamente en cero
+
+    # MÉTODO para modificar el estado (guardar dinero)
+    def guardar_dinero(self, cantidad):
+        if cantidad > 0:
+            self.saldo = self.saldo + cantidad
+            print(f"¡Has guardado ${cantidad}! Saldo actual: ${self.saldo}")
+        else:
+            print("Error: No puedes guardar cantidades negativas o vacías.")
+
+    # MÉTODO para consultar el estado actual
+    def ver_saldo(self):
+        print(f"Saldo total acumulado: ${self.saldo}")
+
+
+# 2. Creación de la INSTANCIA
+mi_cucha = Alcancia()
+
+# 3. Uso de los métodos de la instancia
+mi_cucha.ver_saldo()          # Salida: Saldo total acumulado: $0.0
+mi_cucha.guardar_dinero(50)   # Salida: ¡Has guardado $50! Saldo actual: $50.0
+mi_cucha.guardar_dinero(20.5) # Salida: ¡Has guardado $20.5! Saldo actual: $70.5
+mi_cucha.ver_saldo()          # Salida: Saldo total acumulado: $70.5
+```
+</TabItem>
+</Tabs>
+<br />
+
+#### 💻 El Catálogo de Biblioteca:
+<Tabs>
+<TabItem value="mnp" label="Antecedentes" default>
+<div class="alert alert--primary">
+**El Catálogo de Biblioteca (Formatear información)**
+
+Un programa que ayuda a organizar una biblioteca escolar. Crea una clase Libro donde cada ejemplar guarde su titulo y su autor. Define un método llamado obtener_informacion que devuelva una cadena de texto formal formateada con los datos del libro (por ejemplo: "'Don Quijote de la Mancha', escrito por Miguel de Cervantes").
+
+Conceptos a observar: Cómo un método puede procesar la información interna del objeto y retornar un valor de texto estructurado para que el programa principal decida cómo mostrarlo.
+
+</div>
+</TabItem>
+<TabItem value="mnp-python" label="💻 Pyhton" >
+
+```python showLineNumbers
+# 1. Definición de la CLASE
+class Libro:
+    def __init__(self, titulo, autor):
+        self.titulo = titulo  # Atributo de texto
+        self.autor = autor    # Atributo de texto
+
+    # MÉTODO que procesa y retorna un valor estructurado
+    def obtener_informacion(self):
+        # En lugar de imprimir directamente, devolvemos el texto formateado con 'return'
+        return f"'{self.titulo}', escrito por {self.autor}"
+
+
+# 2. Creación de las INSTANCIAS (Dos libros diferentes en nuestra base de datos)
+libro_favorito = Libro("Cien años de soledad", "Gabriel García Márquez")
+libro_estudio = Libro("Curso Intensivo de Python", "Eric Matthes")
+
+# 3. Llamada e impresión del resultado retornado
+info_uno = libro_favorito.obtener_informacion()
+info_dos = libro_estudio.obtener_informacion()
+
+print("Fichas bibliográficas generadas:")
+print(info_uno)  # Salida: 'Cien años de soledad', escrito por Gabriel García Márquez
+print(info_dos)  # Salida: 'Curso Intensivo de Python', escrito por Eric Matthes
+```
+</TabItem>
+</Tabs>
+<br />
+
+#### 💻 Gestión bancaria:
+<Tabs>
+<TabItem value="mnp" label="Antecedentes" default>
+<div class="alert alert--primary">
+**Gestión bancaria:**
+
 Implementar una clase `Account` que maneje depósitos, retiros y muestre el balance actual de forma controlada.
 
 Concepto clave: Encapsulamiento.
@@ -179,7 +314,7 @@ En Python, podemos proteger los atributos internos (como el saldo) usando un dob
 3. **Métodos de Acceso (Getters)**: El método get_balance() proporciona una interfaz de "solo lectura" para conocer el saldo, separando la visualización de datos de la lógica de modificación.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="Pyhton" >
+<TabItem value="mnp-python" label="💻 Pyhton" >
 
 ```python showLineNumbers
 # Implementación en Python
@@ -260,7 +395,7 @@ if __name__ == "__main__":
 </Tabs>
 <br />
 
-#### 💻 Código:
+#### 💻 Geometría:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -367,7 +502,7 @@ if __name__ == "__main__":
 </Tabs>
 
 
-#### 💻 Código:
+#### 💻 Herencia aplicada:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">

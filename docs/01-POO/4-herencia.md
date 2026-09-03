@@ -11,7 +11,7 @@ La **herencia** es un mecanismo fundamental de la programación orientada a obje
 
 A continuación, se presenta un ejemplo didáctico y sencillo basado en el modelado de vehículos:
 
-```python
+```python showLineNumbers
 class Vehiculo:
     """Clase base que representa un vehículo genérico."""
     
@@ -44,7 +44,7 @@ class CocheElectrico(Vehiculo):
 3. **Especialización:** Una vez que la clase base está inicializada, podemos añadir nuevos atributos específicos (como `capacidad_bateria`) y métodos especializados (como `describir_bateria`) que solo tienen sentido para los coches eléctricos.
 
 ### Demostración de uso:
-```python
+```python showLineNumbers
 # Crear una instancia de la clase derivada
 mi_coche = CocheElectrico('nissan', 'leaf', 62)
 
@@ -54,6 +54,126 @@ print(mi_coche.obtener_nombre_descriptivo())  # Salida: Nissan Leaf
 # 2. Acceso al método propio de la clase derivada:
 mi_coche.describir_bateria()  # Salida: Este coche tiene una batería de 62 kWh.
 ```
+
+
+Aplicar el concepto de **herencia** en Python nos permite crear una versión especializada de una clase existente sin necesidad de duplicar su código. En esta relación, la clase original se denomina **clase base** (o superclase) y la nueva se conoce como **clase derivada** (o subclase).
+
+El ejemplo práctico de cómo la clase `PerroRescate` extiende y especializa el comportamiento de la clase base `Perro`:
+
+### Código en Python: `herencia_perros.py`
+
+```python
+class Perro:
+    """Modela el comportamiento y atributos básicos de un perro."""
+
+    def __init__(self, nombre, edad):
+        """Inicializa los atributos de nombre y edad."""
+        self.nombre = nombre
+        self.edad = edad
+
+    def sentarse(self):
+        """Simula al perro sentándose."""
+        print(f"🐕 {self.nombre} se ha sentado.")
+
+    def dar_vuelta(self):
+        """Simula al perro dando la vuelta."""
+        print(f"🐾 {self.nombre} dio una vuelta completa.")
+
+
+# Declaramos la clase derivada colocando la clase base entre paréntesis
+class PerroRescate(Perro):
+    """Representa un perro de rescate, especializado en tareas de búsqueda."""
+
+    def __init__(self, nombre, edad, especialidad):
+        """
+        Inicializa tanto los atributos de la clase base (Perro)
+        como los atributos específicos del perro de rescate.
+        """
+        # Usamos super() para ejecutar de forma segura el constructor del padre
+        super().__init__(nombre, edad)
+        
+        # Agregamos el nuevo atributo exclusivo de esta clase derivada
+        self.especialidad = especialidad
+
+    def buscar_personas(self):
+        """Un comportamiento único y exclusivo de los perros de rescate."""
+        print(f"🚨 {self.nombre} está rastreando el área buscando personas ({self.especialidad})...")
+
+    def alertar(self):
+        """Simula la alerta tras encontrar a alguien."""
+        print(f"¡{self.nombre} ladra fuertemente para guiar a los rescatistas!")
+```
+
+
+### Puntos Clave:
+
+1.  **Establecer la Jerarquía:** Para indicar que `PerroRescate` es una subclase de `Perro`, la colocamos entre paréntesis en la cabecera: `class PerroRescate(Perro):`. Esto le da de forma automática e invisible todos los métodos de su clase ancestra.
+
+2.  **Inicialización Cooperativa con `super()`:** Al redefinir `__init__` en la clase hija, estamos ocultando o sobrescribiendo el constructor de la clase padre. Para evitar que el perro nazca sin nombre ni edad (atributos de la clase base), llamamos a **`super().__init__(nombre, edad)`**. Esto delega la configuración inicial a la clase base y nos evita duplicar asignaciones de código.
+
+3.  **Especialización y Extensión:** La clase derivada tiene la libertad de incorporar sus propios datos (`self.especialidad`) y funciones específicas (`buscar_personas()`) que los perros normales no poseen.
+
+4.  **Polimorfismo en Acción:** Si creamos un objeto de tipo `PerroRescate`, este podrá invocar tanto los métodos que heredó del padre (`sentarse()`) como sus habilidades especializadas (`buscar_personas()`):
+
+```python showLineNumbers
+# --- Prueba de la Herencia ---
+
+# Instanciamos el perro de rescate
+mi_heroe = PerroRescate("Kona", 4, "Búsqueda en Estructuras Colapsadas")
+
+# 1. Usamos un método heredado de la clase Perro
+mi_heroe.sentarse()  # Salida: 🐕 Kona se ha sentado.
+
+# 2. Usamos métodos específicos de la clase PerroRescate
+mi_heroe.buscar_personas()  # Salida: 🚨 Kona está rastreando el área...
+mi_heroe.alertar()          # Salida: ¡Kona ladra fuertemente... !
+```
+
+---
+
+## super()
+
+La función **`super()`** en Python es una herramienta integrada que permite **acceder y llamar a los métodos definidos en la clase padre (superclase) desde una clase hija (subclase)**. 
+
+Funciona como un "puente" o delegado que le dice a Python: *"Busca este método en la jerarquía de herencia hacia arriba y ejecútalo"*.
+
+---
+
+### 1. ¿Cómo funciona? (Retomando nuestro ejemplo anterior)
+
+En el código de `PerroRescate` que vimos hace un momento, utilizamos `super()` dentro del constructor:
+
+```python
+class PerroRescate(Perro):
+    def __init__(self, nombre, edad, especialidad):
+        super().__init__(nombre, edad)  # <-- Aquí invocamos al padre
+        self.especialidad = especialidad
+```
+
+Al escribir **`super().__init__(nombre, edad)`**, lo que ocurre tras bambalinas es:
+1.  `super()` localiza de forma automática a la clase padre de `PerroRescate` (que es `Perro`).
+2.  Llama a su método inicializador `__init__` pasando los argumentos `nombre` y `edad`.
+3.  Esto configura los atributos básicos del perro de forma limpia, y luego la clase hija continúa ejecutando su propia lógica (añadiendo el atributo `especialidad`).
+
+*Nota sintáctica:* A diferencia de hacer una llamada explícita como `Perro.__init__(self, nombre, edad)`, al usar `super()` **no necesitas pasar el argumento `self` manualmente**; Python lo asocia y lo inyecta de forma implícita.
+
+---
+
+### 2. Las Dos Grandes Ventajas de usar `super()`
+
+El uso de `super()` no es solo un capricho estético, sino una práctica fundamental de diseño por dos razones críticas:
+
+#### A. Evita el "Hardcoding" (Desacoplamiento de Código)
+Si en el futuro decides cambiar el nombre de tu clase base de `Perro` a `Canino` o `AnimalMasco`, **no tendrás que renombrar manualmente las llamadas internas de los constructores en tus subclases**. Al usar `super()`, la relación se resuelve dinámicamente, haciendo que tu código sea infinitamente más fácil de mantener y refactorizar.
+
+#### B. Es imprescindible en la Herencia Múltiple (Cooperación con el MRO)
+Cuando una clase hereda de múltiples padres (por ejemplo, una clase que hereda de `A` y `B`), el orden en el que se deben inicializar las clases se vuelve complejo. 
+
+Como vimos al inicio de nuestra conversación, Python calcula este orden de prioridad de forma determinista usando el **Algoritmo C3 (el MRO)**. La función `super()` está diseñada para **respetar estrictamente el MRO de la clase en ejecución**. 
+* Si usas llamadas directas con el nombre de la clase (como `A.__init__(self)` y `B.__init__(self)`), corres el riesgo de que las clases ancestras comunes (como `object` o bases compartidas) **se inicialicen dos o más veces** (el problema del diamante).
+* Al usar `super()`, Python garantiza un flujo cooperativo donde **cada constructor de la jerarquía se ejecuta exactamente una sola vez** y en el orden matemático correcto.
+
+
 ---
 
 ## **Herencia múltiple**
