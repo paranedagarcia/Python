@@ -173,3 +173,6 @@ Dame un ejemplo de @property y @classmethod juntos
 
 Explícame la diferencia entre un método de clase y un método estático.
 ¿Qué son los métodos especiales como __repr__ y __str__?
+
+Dame un ejemplo práctico de MRO.
+¿Cómo evito que una clase base se inicialice dos veces?

@@ -137,11 +137,10 @@ La función **`super()`** en Python es una herramienta integrada que permite **a
 
 Funciona como un "puente" o delegado que le dice a Python: *"Busca este método en la jerarquía de herencia hacia arriba y ejecútalo"*.
 
----
 
-### 1. ¿Cómo funciona? (Retomando nuestro ejemplo anterior)
+### Funcionamiento
 
-En el código de `PerroRescate` que vimos hace un momento, utilizamos `super()` dentro del constructor:
+En el código de `PerroRescate` que creamos anteriormente, utilizamos `super()` dentro del constructor:
 
 ```python
 class PerroRescate(Perro):
@@ -155,11 +154,12 @@ Al escribir **`super().__init__(nombre, edad)`**, lo que ocurre tras bambalinas 
 2.  Llama a su método inicializador `__init__` pasando los argumentos `nombre` y `edad`.
 3.  Esto configura los atributos básicos del perro de forma limpia, y luego la clase hija continúa ejecutando su propia lógica (añadiendo el atributo `especialidad`).
 
-*Nota sintáctica:* A diferencia de hacer una llamada explícita como `Perro.__init__(self, nombre, edad)`, al usar `super()` **no necesitas pasar el argumento `self` manualmente**; Python lo asocia y lo inyecta de forma implícita.
+:::info[Nota] 
+A diferencia de hacer una llamada explícita como `Perro.__init__(self, nombre, edad)`, al usar `super()` **no necesitas pasar el argumento `self` manualmente**; Python lo asocia y lo inyecta de forma implícita.
+:::
 
----
 
-### 2. Las Dos Grandes Ventajas de usar `super()`
+### Las 2 Grandes Ventajas de usar `super()`
 
 El uso de `super()` no es solo un capricho estético, sino una práctica fundamental de diseño por dos razones críticas:
 
@@ -170,8 +170,11 @@ Si en el futuro decides cambiar el nombre de tu clase base de `Perro` a `Canino`
 Cuando una clase hereda de múltiples padres (por ejemplo, una clase que hereda de `A` y `B`), el orden en el que se deben inicializar las clases se vuelve complejo. 
 
 Como vimos al inicio de nuestra conversación, Python calcula este orden de prioridad de forma determinista usando el **Algoritmo C3 (el MRO)**. La función `super()` está diseñada para **respetar estrictamente el MRO de la clase en ejecución**. 
+
 * Si usas llamadas directas con el nombre de la clase (como `A.__init__(self)` y `B.__init__(self)`), corres el riesgo de que las clases ancestras comunes (como `object` o bases compartidas) **se inicialicen dos o más veces** (el problema del diamante).
+
 * Al usar `super()`, Python garantiza un flujo cooperativo donde **cada constructor de la jerarquía se ejecuta exactamente una sola vez** y en el orden matemático correcto.
+
 
 
 ---
