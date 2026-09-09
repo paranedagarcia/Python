@@ -745,3 +745,89 @@ MRO de GestorB:
 
 3.  **El desenrollado de la pila:** Debido a que cada método ejecuta código *antes* y *después* de su llamada a `super()`, verás que el orden de entrada a los métodos es exactamente el inverso al orden de salida. Esto permite realizar operaciones de limpieza (como cerrar archivos o liberar transacciones de bases de datos) en el orden inverso en el que se abrieron.
 
+---
+## **self.data vs self._data**
+
+En Python, la diferencia entre **`clase.datos`** y **`clase._datos`** (o **`self.datos`** y **`self._datos`**) radica en la **visibilidad contractual y las convenciones de encapsulamiento** del lenguaje.
+
+
+### Atributo Público 
+**`clase.datos` (o `self.datos`)**
+
+* **Propósito:** Representa una variable o miembro **público** de la interfaz accesible del objeto.
+
+* **Acceso:** Está diseñado para ser leído, modificado o invocado libremente tanto desde dentro de la clase como desde cualquier parte externa del código.
+
+* **Filosofía en Python:** A diferencia de lenguajes como C++ o Java, en Python la convención preferida es exponer directamente atributos públicos cuando no se requiere lógica de validación previa.
+
+```python
+class Usuario:
+    def __init__(self, datos):
+        self.datos = datos  # Atributo público: acceso y modificación libre
+
+u = Usuario("Información pública")
+print(u.datos)        # Acceso directo permitido
+u.datos = "Nuevo dato" # Modificación directa permitida
+```
+
+
+
+### Atributo Protegido o Interno
+**`clase._datos` (o `self._datos`)**
+
+* **Propósito:** Indica que el atributo es de **uso interno** y forma parte de los detalles de implementación de la clase.
+
+* **Convención de nomenclatura (PEP 8):** El guion bajo inicial (`_`) advierte a otros desarrolladores de que el atributo **no forma parte de la API pública** y no debería ser modificado directamente fuera del código de la clase.
+
+* **Acceso real:** El intérprete de Python **no bloquea el acceso externo** a `objeto._datos`. La filosofía de Python respecto al encapsulamiento se resume en *"Todos somos adultos aquí"* (*We're all adults here*), confiando en que los programadores respetarán la convención sin imponer barreras estrictas a nivel de intérprete.
+
+```python
+class Usuario:
+    def __init__(self, datos):
+        self._datos = datos  # Guion bajo simple: convención de atributo interno/protegido
+
+u = Usuario("Dato sensible")
+print(u._datos)  # Funciona técnicamente, pero rompe la convención de diseño
+```
+
+
+### Patrón Habitual
+**`_datos` respaldando a `@property datos`**
+
+Es muy común combinar ambos conceptos utilizando el decorador **`@property`**. Con este patrón, el estado real se almacena de forma segura en el atributo protegido **`_datos`**, mientras que la interfaz pública **`datos`** gestiona la lectura y escritura mediante *getters* y *setters*:
+
+```python
+class CuentaBancaria:
+    def __init__(self, saldo_inicial):
+        self._datos = saldo_inicial  # Almacenamiento interno protegido
+
+    @property
+    def datos(self):
+        """Interfaz pública de lectura."""
+        return self._datos
+
+    @datos.setter
+    def datos(self, nuevo_valor):
+        """Interfaz pública de escritura con validación de negocio."""
+        if nuevo_valor >= 0:
+            self._datos = nuevo_valor
+        else:
+            raise ValueError("El saldo no puede ser negativo")
+
+cuenta = CuentaBancaria(100)
+print(cuenta.datos)  # Invoca el getter -> 100
+cuenta.datos = 200   # Invoca el setter con validación implícita
+```
+
+
+### Resumen Comparativo de Atributos
+
+| Sintaxis | Tipo de Atributo | Acceso Externo | Propósito Principal |
+| :--- | :--- | :--- | :--- |
+| **`self.datos`** | Público | Permitido libremente | Interfaz principal y visible de la clase. |
+| **`self._datos`** | Protegido / Interno | Permitido (rompe la convención) | Ocultar detalles de implementación interna. |
+| **`self.__datos`** | Pseudo-privado (*Name Mangling*) | Renombrado a `_Clase__datos` | Evitar colisiones accidentales de nombres en la herencia. |
+
+:::info[💻 código]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DKHvcbGlirMk85LMN-0DBGU9KyOpxwzn?usp=sharing)
+:::

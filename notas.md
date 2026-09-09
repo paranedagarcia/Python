@@ -1,5 +1,10 @@
 # Notas
 
+:::info[💻 Código:]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z)
+
+:::
+
 <center>
 <figure>
 ![](img/sql_analisis_g.png)
@@ -29,6 +34,22 @@
 <TabItem value="ph-python" label="Pyhton" >
 ```python showLineNumbers
 # Implementación en Python
+```
+</TabItem>
+</Tabs>
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+
+
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="💻 Código" >
+
+```python showLineNumbers
+
 ```
 </TabItem>
 </Tabs>
@@ -176,3 +197,11 @@ Explícame la diferencia entre un método de clase y un método estático.
 
 Dame un ejemplo práctico de MRO.
 ¿Cómo evito que una clase base se inicialice dos veces?
+
+Reto: Crea una clase abstracta para un banco
+Diferencia entre abstracción y herencia
+
+🔄 ¿Te gustaría que utilicemos la herramienta de creación de aplicaciones de tu panel para estructurar un **banco interactivo de preguntas tipo cuestionario (quiz)** que evalúe si tus estudiantes comprenden a qué nivel de la jerarquía de abstracción pertenece cada sección de estos ejemplos?
+
+¿Cómo se vería un ejemplo de @property?
+¿Qué pasa si uso doble guion bajo?
