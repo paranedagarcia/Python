@@ -1,6 +1,6 @@
 ---
 id: introduccion
-title: "Fundamentos de Python"
+title: "Fundamentos"
 sidebar_label: "📚 Fundamentos"
 sidebar_position: 1
 description: "Fundamentos del lenguaje"

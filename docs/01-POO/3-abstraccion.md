@@ -20,6 +20,13 @@ En términos de diseño, la abstracción nos ayuda a "ignorar los detalles irrel
 Las fuentes ilustran este concepto mediante ejemplos cotidianos:
 *   **El coche:** Un conductor interactúa con el vehículo a través de un nivel de abstracción muy simple: el volante, el acelerador y el freno. No necesita saber cómo funciona internamente la transmisión, el motor o el sistema hidráulico de frenado para poder conducir. Sin embargo, un mecánico trabaja en un nivel de abstracción diferente, lidiando de forma directa con la afinación del motor y el mantenimiento de las piezas.
 
+<center>
+<figure>
+![](img/abs-drive.jpg)
+<figcaption>**Abstracción**. Usamos objetos complejos sin necesidad de entender su mecánica interna.</figcaption>
+</figure>
+</center>
+
 *   **La televisión:** La interfaz pública que utilizamos para interactuar con ella es el control remoto. Cada botón representa un método. Al pulsarlo, no nos importa si la televisión procesa señales por cable o satélite, ni los flujos de corriente eléctrica necesarios para ajustar el volumen.
 
 <center>
@@ -29,7 +36,14 @@ Las fuentes ilustran este concepto mediante ejemplos cotidianos:
 </figure>
 </center>
 
+En la abstracción la clase se trata como una plantilla a partir de la cual se crean y funcionan otras plantillas. Una clase de tipo abstracta es una "idea" que se define en forma general.
 
+<center>
+<figure>
+![](img/abs-clase.jpg)
+<figcaption>La clase como concepto.</figcaption>
+</figure>
+</center>
 
 En Python, existen principalmente dos formas de abordar la abstracción: mediante **Clases Base Abstractas** o mediante el enfoque dinámico de **Duck Typing**.
 
@@ -38,6 +52,13 @@ Cuando se requiere una estructura formal —por ejemplo, al diseñar complemento
 *   **Clases abstractas:** Actúan como una plantilla genérica que no se puede instanciar (crear un objeto de ella) de forma directa.
 
 *   **Métodos abstractos:** Utilizan el decorador **`@abstractmethod`** para actuar como marcadores de posición (*placeholders*). Estos métodos declaran una obligación: *"exigimos que este método exista en cualquier subclase no abstracta, pero nos negamos a definir una implementación concreta en esta clase"*.
+
+<center>
+<figure>
+![](img/abs-figura.jpg)
+<figcaption>**El Cómo**. Las clases hijas hijas implementan la matemática real. El programa principal solo necesita llamar a .area() sin preocuparse de la fórmula exacta.</figcaption>
+</figure>
+</center>
 
 **Ejemplo práctico:**
 ```python showLineNumbers

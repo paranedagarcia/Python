@@ -1,6 +1,6 @@
 ---
 id: poliformismo
-title: "Polimorfismo con 'Duck Typing'"
+title: "Polimorfismo"
 sidebar_label: "Poliformismo"
 sidebar_position: 3
 description: "Polimorfismo con 'Duck Typing'"

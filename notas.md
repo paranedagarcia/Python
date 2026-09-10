@@ -7,8 +7,8 @@
 
 <center>
 <figure>
-![](img/sql_analisis_g.png)
-<figcaption>Tu subtítulo</figcaption>
+![](img)
+<figcaption></figcaption>
 </figure>
 </center>
 
@@ -205,3 +205,6 @@ Diferencia entre abstracción y herencia
 
 ¿Cómo se vería un ejemplo de @property?
 ¿Qué pasa si uso doble guion bajo?
+
+¿Cómo se usan las clases abstractas en problemas matemáticos?
+¿Cómo evitan las clases abstractas la inicialización doble?
