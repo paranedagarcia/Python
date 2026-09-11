@@ -109,7 +109,7 @@ def create_app(config_name):
 
     return app
 ```
-(Fuentes)
+
 
 Este patrón permite que los Blueprints permanezcan "inactivos" hasta que se inyectan en la aplicación real al llamar a la fábrica.
 

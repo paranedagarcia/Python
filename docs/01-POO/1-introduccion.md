@@ -1,8 +1,7 @@
 ---
 id: poo
 title: "Fundamentos"
-sidebar_label: "Fundamentos"
-sidebar_position: 1
+sidebar_label: "📄 Fundamentos"
 description: "Fundamentos del POO"
 ---
 

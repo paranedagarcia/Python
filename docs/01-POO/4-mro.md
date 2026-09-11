@@ -1,7 +1,7 @@
 ---
 id: mro
 title: "Method Resolution Order"
-sidebar_label: "Method Resolution Order"
+sidebar_label: "📄 Method Resolution Order"
 description: "Method Resolution Order"
 ---
 

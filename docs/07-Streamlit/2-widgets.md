@@ -119,7 +119,7 @@ Este widget es fundamental en aplicaciones de ciencia de datos porque permite a 
 Para el parámetro `delta` del widget **`st.metric`**, Streamlit acepta los siguientes tipos de datos:
 
 *   **Enteros (`int`)**: Por ejemplo, se puede asignar un valor numérico directo como `delta=10` o `delta=0`.
-*   **Flotantes (`float`)**: Las fuentes indican que el widget procesa números de punto flotante, especialmente al determinar si el cambio es positivo o negativo.
+*   **Flotantes (`float`)**: El widget procesa números de punto flotante, especialmente al determinar si el cambio es positivo o negativo.
 *   **Cadenas de texto (`str`)**: Es muy común para incluir unidades o descripciones junto al valor del cambio, como `delta="1.2 °C"`, `delta="1 Billions"` o `delta="-1132649"`.
 *   **`None`**: Es el valor por defecto; si se utiliza, el subindicador de delta no se muestra en la aplicación.
 

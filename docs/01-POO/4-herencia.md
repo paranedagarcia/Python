@@ -1,7 +1,7 @@
 ---
 id: herencia
 title: "Herencia"
-sidebar_label: "Herencia"
+sidebar_label: "📄 Herencia"
 description: "Crear una nueva clase a partir de una existente"
 ---
 
@@ -474,7 +474,7 @@ La diferencia estructural en la memoria es evidente al analizar cómo se guardan
 
 ### La sutil variante: Composición vs. Agregación
 
-Dentro del espectro de "unión de partes", las fuentes distinguen dos relaciones según la dependencia del **ciclo de vida** de los objetos:
+Dentro del espectro de "unión de partes", se distinguen dos relaciones según la dependencia del **ciclo de vida** de los objetos:
 
 *   **Composición Estricta:** El objeto contenedor controla por completo la creación y destrucción de los objetos internos. Si destruyes el contenedor, sus partes mueren con él.
     *   *Ejemplo:* Un tablero de ajedrez y sus casillas (no puedes tener una casilla física de ajedrez flotando en el aire sin pertenecer a un tablero).

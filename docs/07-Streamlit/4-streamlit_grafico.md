@@ -79,7 +79,7 @@ st.pyplot(fig)
 
 #### Detalles clave para su implementación:
 
-*   **Uso de `plt.subplots()`:** Las fuentes recomiendan este enfoque (definir explícitamente `fig` y `ax`) en lugar de llamar a `plt.hist()` o `plt.bar()` de forma global. Esto asegura que los gráficos se mantengan separados y no se encimen datos de visualizaciones anteriores en la misma sesión.
+*   **Uso de `plt.subplots()`:** Se recomienda este enfoque (definir explícitamente `fig` y `ax`) en lugar de llamar a `plt.hist()` o `plt.bar()` de forma global. Esto asegura que los gráficos se mantengan separados y no se encimen datos de visualizaciones anteriores en la misma sesión.
 
 *   **Integración con Pandas:** Es común definir los datos en un **DataFrame** de Pandas y luego pasar las columnas deseadas a los ejes de Matplotlib.
 
@@ -324,7 +324,7 @@ El proceso estándar consiste en definir un objeto de gráfico y luego pasarlo a
 *   **Gráfico de Cajas (Boxplot):** Usa `mark_boxplot()` para representar cuartiles, promedios y valores atípicos.
 *   **Mapa de Calor (Heatmap):** Se utiliza `mark_rect()` para representar la intensidad de valores en dos dimensiones.
 
-Aunque las fuentes detallan específicamente el uso de la librería Seaborn para la creación de gráficos de violín (sns.violinplot), la librería Altair permite realizar un análisis estadístico similar mediante el uso de transformaciones de densidad o diagramas de caja (boxplots).
+La librería Seaborn se utiliza para la creación de gráficos de violín (sns.violinplot), además, la librería Altair permite realizar un análisis estadístico similar mediante el uso de transformaciones de densidad o diagramas de caja (boxplots).
 
 Se presenta un ejemplo de código que utiliza Altair en Streamlit para generar una visualización de densidad vertical (similar a un violín) para comparar la edad de los pasajeros según su clase y estado de supervivencia:
 
@@ -342,7 +342,7 @@ import altair as alt
 
 @st.cache_data
 def load_titanic():
-    # Carga el archivo titanic3.csv mencionado en las fuentes [7]
+    # Carga el archivo titanic3.csv 
     df = pd.read_csv('titanic3.csv')
     # Limpieza de datos: eliminar nulos en 'age' para la distribución [7]
     df = df.dropna(subset=['age', 'pclass', 'survived'])
@@ -374,7 +374,7 @@ violin_like_chart = alt.Chart(df).transform_density(
 # 3. Mostrar el gráfico en Streamlit [6, 9]
 st.altair_chart(violin_like_chart, use_container_width=True)
 
-# Alternativa rápida: Boxplot (Soportado nativamente por Altair en las fuentes [5])
+# Alternativa rápida: Boxplot (Soportado nativamente por Altair)
 st.subheader("Alternativa: Gráfico de Caja (Boxplot)")
 boxplot = alt.Chart(df).mark_boxplot().encode(
     x='survived:N',
@@ -451,7 +451,7 @@ En conclusión, **Altair ofrece la mejor combinación de simplicidad de código,
 
 Para personalizar el diseño de tus gráficos de **Altair** en Streamlit, puedes utilizar diversos métodos y parámetros integrados en la librería que permiten controlar desde los colores hasta la interactividad.
 
-A continuación, se detallan las formas principales de personalización según las fuentes:
+A continuación, se detallan las formas principales de personalización:
 
 #### Uso de Métodos de Marca (`mark_*`)
 El método de marca define el tipo de gráfico y permite ajustes estéticos globales:
@@ -508,7 +508,7 @@ Si necesitas que un gráfico específico de Altair tenga un esquema de colores d
     alt.Color('columna_categoria:N', 
               scale=alt.Scale(range=['#e74c3c', '#27ae60'])) # Rojo y verde personalizados
     ```
-*   **Uso de esquemas predefinidos:** Aunque las fuentes se centran en rangos manuales, mencionan que el método `mark_*` permite definir colores estáticos (ej. `mark_area(color="orange")`).
+*   **Uso de esquemas predefinidos:** El método `mark_*` permite definir colores estáticos (ej. `mark_area(color="orange")`).
 
 #### Personalización Dinámica con `st.color_picker`
 Puedes permitir que el usuario elija el tema de color del gráfico interactivamente usando el widget **`st.color_picker()`**.

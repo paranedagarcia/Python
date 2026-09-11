@@ -1,7 +1,7 @@
 ---
 id: composicion
 title: "Composición"
-sidebar_label: "Composición"
+sidebar_label: "📄 Composición"
 description: "Combinar u organizar múltiples objetos simples para construir un objeto más complejo"
 ---
 
@@ -40,13 +40,11 @@ class CocheElectrico:
         # Delegamos la descripción en el objeto interno batería
         print(f"Vehículo: {self.marca} | {self.bateria.describir()}")
 ```
-*(Estructura técnica y ejemplos basados en las explicaciones de las fuentes)*
 
----
 
 ### La sutil diferencia: Composición vs. Agregación
 
-Las fuentes señalan que el diseño con clases a veces distingue entre dos formas de composición según el **ciclo de vida (*lifespan*)** de los objetos involucrados:
+El diseño con clases a veces distingue entre dos formas de composición según el **ciclo de vida (*lifespan*)** de los objetos involucrados:
 
 1.  **Composición Estricta:** Existe una dependencia de vida absoluta. El objeto contenedor (externo) controla por completo la creación y destrucción de los objetos internos. Si destruyes el compuesto, las partes se destruyen con él.
     *   *Ejemplo:* Un tablero de ajedrez y sus casillas. Si eliminas el tablero de la memoria, las casillas dejan de existir porque no tienen sentido fuera de él.
@@ -59,7 +57,7 @@ A pesar de esta distinción teórica en el modelado, en la práctica y al moment
 
 ### ¿Por qué es altamente recomendada frente a la herencia?
 
-Existe un famoso lema en la arquitectura de software: *"Favorece la composición sobre la herencia"*. Esto se debe a varias razones que las fuentes destacan:
+Existe un famoso lema en la arquitectura de software: *"Favorece la composición sobre la herencia"*. Esto se debe a varias razones:
 
 *   **Evita el acoplamiento fuerte:** La herencia acopla fuertemente a las subclases con sus padres; si cambias el constructor o un método de la clase base, puedes romper accidentalmente todo el árbol de herencia. En la composición, las clases componentes son independientes y autónomas, lo que facilita enormemente el mantenimiento y las pruebas aisladas.
 *   **Flexibilidad en tiempo de ejecución:** La herencia es estática (se define al escribir el código). Con composición, puedes cambiar dinámicamente un componente interno por otro diferente en tiempo de ejecución siempre que cumpla con la misma interfaz.

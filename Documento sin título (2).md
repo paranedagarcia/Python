@@ -26,7 +26,7 @@ Imaginemos un orquestador de datos que debe leer información de una fuente y en
 ### **Configuración del Esqueleto**
 
 Definiremos diversas fuentes y destinos sin ninguna relación de herencia entre sí:
-```python
+```python showLineNumbers
 class FileReader:
 
     def readline(self):

@@ -1,7 +1,7 @@
 ---
 id: ducktyping
 title: "Duck Typing"
-sidebar_label: "Duck Typing"
+sidebar_label: "📄 Duck Typing"
 description: "Duck Typing (tipado de pato)"
 ---
 
@@ -49,7 +49,7 @@ realizar_movimiento(Alfil())  # "El Alfil se mueve en diagonal."
 realizar_movimiento(Auto())   # "El Auto avanza por la carretera."
 realizar_movimiento(Pato())   # "El Pato vuela o nada en el estanque."
 ```
-*(Código conceptual estructurado a partir del comportamiento de chess/move de las fuentes)*
+
 
 ### Ventajas del Duck Typing
 1. **Extensión fácil y acoplamiento débil:** Permite a futuros diseñadores crear nuevos comportamientos "drop-in" que se acoplen con sistemas existentes sin tener que adherirse formalmente a jerarquías rígidas.

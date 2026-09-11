@@ -1,7 +1,7 @@
 ---
 id: abstraccion
 title: "Abstracción"
-sidebar_label: "Abstracción"
+sidebar_label: "📄 Abstracción"
 description: ""
 ---
 
@@ -17,7 +17,7 @@ La **abstracción** es uno de los pilares fundamentales de la Programación Orie
 En términos de diseño, la abstracción nos ayuda a "ignorar los detalles irrelevantes" para enfocarnos exclusivamente en el modelo que realmente necesitamos reproducir en el software.
 
 ### Analogías del mundo real
-Las fuentes ilustran este concepto mediante ejemplos cotidianos:
+Ejemplos cotidianos:
 *   **El coche:** Un conductor interactúa con el vehículo a través de un nivel de abstracción muy simple: el volante, el acelerador y el freno. No necesita saber cómo funciona internamente la transmisión, el motor o el sistema hidráulico de frenado para poder conducir. Sin embargo, un mecánico trabaja en un nivel de abstracción diferente, lidiando de forma directa con la afinación del motor y el mantenimiento de las piezas.
 
 <center>
@@ -61,24 +61,63 @@ Cuando se requiere una estructura formal —por ejemplo, al diseñar complemento
 </center>
 
 **Ejemplo práctico:**
+
+Creamos una clase maestra **Figura** con un método `calcular_area` y `perimetro`, sin embargo, solo **area** definimos con `abstractmethod`, por lo que solo este es obligatorio.
 ```python showLineNumbers
 from abc import ABC, abstractmethod
+import math
 
-# Clase abstracta (plantilla o interfaz obligatoria)
-class Figure(ABC):
+class Figura(ABC):
+    """Clase abstracta que actúa como molde para cualquier figura geométrica."""
+
     @abstractmethod
-    def area(self):
+    def calcular_area(self) -> float:
+        """Método abstracto. Las subclases deben definir cómo calcular su área."""
         pass
 
-# Subclase concreta que implementa la abstracción
-class Square(Figure):
-    def __init__(self, a):
-        self.a = a
+    def perimetro(self) -> float:
+        """Método que calcula el perímetro de la figura."""
+        pass
 
-    def area(self):
-        return self.a * self.a
+class Circulo(Figura):
+    def __init__(self, radio: float):
+        self.radio = radio
+
+    def calcular_area(self) -> float:
+        # Implementación de la fórmula específica para el círculo
+        return math.pi * (self.radio ** 2)
+
+    def perimetro(self) -> float:
+        # Implementación de la fórmula específica para el círculo
+        return 2 * math.pi * self.radio
+
+class Rectangulo(Figura):
+    def __init__(self, base: float, altura: float):
+        self.base = base
+        self.altura = altura
+
+    def calcular_area(self) -> float:
+        # Implementación de la fórmula específica para el rectángulo
+        return self.base * self.altura
+
+    def perimetro(self) -> float:
+        # Implementación de la fórmula específica para el rectángulo
+        return 2 * (self.base + self.altura)
+
+# triangulo ??
+
+# Uso del código:
+# figura = Figura()  # Esto lanzará un TypeError automáticamente en Python.
+circulo = Circulo(5.0)
+print(f"Área del círculo: {circulo.calcular_area():.2f}")
+print(f"Perimetro es {circulo.perimetro}")
+
+rectangulo = Rectangulo(4.0, 6.0)
+print(f"Área del rectángulo: {rectangulo.calcular_area():.2f}")
+print(f"Perimetro es {rectangulo.perimetro}")
+
 ```
-
+Si se define una clase Rectangulo sin el método calcular_area generará un error.
 
 Si intentamos crear una instancia de una clase derivada que no implementa todos los métodos abstractos (por ejemplo, definir un objeto `Wav` que herede de la clase de carga `MediaLoader` pero que omita la definición del método `play`), Python lanzará una excepción `TypeError` en tiempo de ejecución.
 
@@ -122,7 +161,7 @@ A pesar de ser conceptos opuestos, Python permite fusionar la formalidad de las 
 
 Si defines este método de clase dentro de un ABC, puedes programar lógica personalizada para que funciones como `isinstance()` o `issubclass()` reconozcan a un objeto como miembro de esa clase abstracta **sin necesidad de que herede formalmente de ella**. Esto evalúa la estructura interna del objeto en tiempo de ejecución:
 
-```python
+```python showLineNumbers
 # Ejemplo conceptual de cómo las ABCs de Python usan subclass hooks
 # (Así es como collections.abc valida si eres un 'Container')
 class Container(ABC):
@@ -137,7 +176,7 @@ class Container(ABC):
                 return True
         return NotImplemented
 ```
-*(Estructura adaptada de la lógica de hooks y colecciones de las fuentes)*
+
 
 Gracias a esto, cualquier clase que defina un método `__contains__` se considerará automáticamente una subclase de `Container` ante `isinstance()` o `issubclass()`, beneficiándose del Duck Typing pero con una verificación formal.
 
@@ -165,7 +204,7 @@ A continuación se presentan tres ejemplos prácticos para entender cómo diseñ
 #### Ejemplo 1: Figuras Geométricas (`Figure` y `Square`)
 Este es el diseño clásico de jerarquía donde la clase abstracta define una interfaz obligatoria para calcular propiedades matemáticas básicas.
 
-```python
+```python showLineNumbers
 from abc import ABC, abstractmethod
 
 # 1. Definimos la clase abstracta heredando de ABC
@@ -181,10 +220,10 @@ class Figure(ABC):
         """Método abstracto: debe calcular el perímetro en subclases."""
         pass
 ```
-*(Código basado en)*
+
 
 **Intentar instanciar la clase abstracta directamente fallará:**
-```python
+```python showLineNumbers
 try:
     figura = Figure()
 except TypeError as error:
@@ -196,7 +235,7 @@ except TypeError as error:
 **Implementación en una subclase concreta (`Square`):**
 
 Para poder instanciar la clase `Square`, esta **debe** proveer la implementación de todos los métodos abstractos heredados.
-```python
+```python showLineNumbers
 class Square(Figure):
     def __init__(self, a):
         self.a = a
@@ -217,7 +256,7 @@ print(cuadrado.perimeter())  # Salida: 40
 #### Ejemplo 2: Gestión de Contribuyentes (`Taxpayer`)
 Este ejemplo ilustra cómo una clase abstracta puede tener un constructor tradicional (`__init__`) para almacenar atributos comunes (como `salary`) y al mismo tiempo exigir una lógica de cálculo específica mediante un método abstracto.
 
-```python
+```python showLineNumbers
 from abc import ABC, abstractmethod
 
 class Taxpayer(ABC):
@@ -245,7 +284,7 @@ class WorkerTaxPayer(Taxpayer):
 
 
 **Uso del polimorfismo con la lista de contribuyentes:**
-```python
+```python showLineNumbers
 tax_payers = [StudentTaxPayer(50000), WorkerTaxPayer(90000)]
 
 for contribuyente in tax_payers:
@@ -256,7 +295,7 @@ for contribuyente in tax_payers:
 #### Ejemplo 3: Lanzamiento de Dados (`Die` y sus variantes `D4`, `D6`)
 En este diseño avanzado, el inicializador de la clase abstracta llama a un método abstracto (`roll()`) durante la creación del objeto. Esto asegura que el valor inicial se genere de inmediato según las reglas específicas de cada tipo de dado.
 
-```python
+```python showLineNumbers
 import abc
 import random
 
@@ -278,7 +317,7 @@ class Die(abc.ABC):
 **Implementación de dados con distintos números de caras:**
 
 Cada tipo de dado implementa el método `roll()` utilizando la distribución aleatoria que mejor se ajuste a sus caras.
-```python
+```python showLineNumbers
 class D4(Die):
     def roll(self) -> None:
         # El dado de 4 caras elige de una tupla de opciones
@@ -784,3 +823,154 @@ for cuenta in mis_cuentas:
 
 
 
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+
+**Sistema de Domótica / IoT (Controlador de Dispositivos)**
+
+Un sistema de casa inteligente necesita gestionar distintos dispositivos (como Luces Inteligentes y Termostatos). El panel de control principal no debe preocuparse por los protocolos de red ni por cómo se enciende o apaga cada aparato físicamente; únicamente debe llamar a los métodos universales encender() y apagar().
+
+El panel de control solo conoce la existencia del método .encender(). No necesita saber si el aparato envía comandos Zigbee, Wi-Fi o si enciende motores o focos LED.
+
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="💻 Código" >
+
+```python showLineNumbers
+from abc import ABC, abstractmethod
+
+# 1. Clase Abstracta que define la interfaz común de cualquier dispositivo
+class DispositivoInteligente(ABC):
+    def __init__(self, nombre: str):
+        self.nombre = nombre
+        self.estado = False  # False = Apagado, True = Encendido
+
+    @abstractmethod
+    def encender(self) -> None:
+        """Contrato obligatorio: cada dispositivo define cómo inicia su encendido."""
+        pass
+
+    @abstractmethod
+    def apagar(self) -> None:
+        """Contrato obligatorio: cada dispositivo define cómo se apaga."""
+        pass
+
+
+# 2. Subclases Concretas
+class LuzInteligente(DispositivoInteligente):
+    def encender(self) -> None:
+        self.estado = True
+        print(f"💡 [{self.nombre}] Enviando señal Zigbee: Encendiendo LED a 100% de brillo.")
+
+    def apagar(self) -> None:
+        self.estado = False
+        print(f"💡 [{self.nombre}] Enviando señal Zigbee: Cortando corriente del foco.")
+
+
+class Termostato(DispositivoInteligente):
+    def encender(self) -> None:
+        self.estado = True
+        print(f"🌡️ [{self.nombre}] Activando compresor de aire y regulando temperatura a 21°C.")
+
+    def apagar(self) -> None:
+        self.estado = False
+        print(f"🌡️ [{self.nombre}] Apagando compresor y cerrando válvulas de flujo.")
+
+
+# --- Uso del sistema ---
+panel_control = [
+    LuzInteligente("Luz Sala"),
+    Termostato("Termostato Dormitorio")
+]
+
+# El panel enciende todos los dispositivos sin conocer su tecnología interna
+for dispositivo in panel_control:
+    dispositivo.encender()
+```
+</TabItem>
+</Tabs>
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+**Exportador de Reportes de Datos (CSV vs JSON)**
+
+Un módulo de analítica genera listas de datos y necesita exportarlas a distintos formatos (CSV y JSON). El sistema debe llamar a un único método exportar(datos, nombre_archivo), mientras que cada clase concreta se encarga de la sintaxis y formateo específicos de cada archivo
+
+La aplicación genera la información y delega el formateo. Si en el futuro agregas un ExportadorPDF, solo creas la nueva subclase sin tocar el código cliente existente.
+
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="💻 Código" >
+
+```python showLineNumbers
+from abc import ABC, abstractmethod
+import json
+from typing import List, Dict, Any
+
+# 1. Interfaz Abstracta para Exportadores
+class ExportadorDatos(ABC):
+
+    @abstractmethod
+    def exportar(self, datos: List[Dict[str, Any]], nombre_archivo: str) -> None:
+        """Define el contrato de exportación."""
+        pass
+
+
+# 2. Implementaciones Concretas
+class ExportadorCSV(ExportadorDatos):
+    def exportar(self, datos: List[Dict[str, Any]], nombre_archivo: str) -> None:
+        if not datos:
+            return
+        
+        # Oculta la lógica de extracción de cabeceras y separación por comas
+        columnas = ",".join(datos.keys())
+        filas = ["Rule,Val"]  # Simulación de filas
+        contenido_csv = f"{columnas}\n" + "\n".join([",".join(str(v) for v in d.values()) for d in datos])
+        
+        print(f"📄 [Exportador CSV] Guardando en '{nombre_archivo}.csv':\n{contenido_csv}\n")
+
+
+class ExportadorJSON(ExportadorDatos):
+    def exportar(self, datos: List[Dict[str, Any]], nombre_archivo: str) -> None:
+        # Oculta la conversión a sintaxis JSON estructurada
+        cadena_json = json.dumps(datos, indent=2)
+        print(f"📦 [Exportador JSON] Guardando en '{nombre_archivo}.json':\n{cadena_json}\n")
+
+
+# --- Uso del sistema ---
+datos_ventas = [
+    {"producto": "Laptop", "precio": 1200},
+    {"producto": "Mouse", "precio": 25}
+]
+
+exportadores: List[ExportadorDatos] = [ExportadorCSV(), ExportadorJSON()]
+
+for exp in exportadores:
+    exp.exportar(datos_ventas, "reporte_ventas")
+```
+</TabItem>
+</Tabs>
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+
+**Gateway de Autenticación de Usuarios**
+
+Una plataforma web permite a sus usuarios iniciar sesión mediante **Contraseña Tradicional** o **OAuth (Google / GitHub)**. La puerta de enlace de seguridad requiere un método único autenticar(credenciales) que retorne un resultado booleano (True/False), ocultando los tokens de red o los algoritmos de verificación de contraseñas.
+
+El servidor web trata la autenticación como un proceso genérico. El detalle de si se consulta una base de datos local o se valida un token con un servidor externo queda totalmente aislado dentro de cada subclase.
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="💻 Código" >
+
+```python showLineNumbers
+
+```
+</TabItem>
+</Tabs>

@@ -1,7 +1,7 @@
 ---
 id: crear-modulo
 title: "Crear un módulo"
-sidebar_label: "​📊 Crear un módulo"
+sidebar_label: "​📄 Crear un módulo"
 description: "Cómo crear un módulo python"
 slug: /crear-modulo
 ---

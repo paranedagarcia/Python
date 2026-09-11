@@ -1,7 +1,7 @@
 ---
 id: excepciones
 title: "Excepciones"
-sidebar_label: "🗂️​ Excepciones"
+sidebar_label: "📄​ Excepciones"
 description: "Manejo de excepciones y errores"
 sidebar_position: 13
 ---

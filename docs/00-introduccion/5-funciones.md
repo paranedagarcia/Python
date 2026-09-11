@@ -111,10 +111,11 @@ print(f"Tienes {edad_usuario} años.")
 
 ### Funciones Personalizadas
 
-Ahora, aprenderemos a crear nuestras propias funciones. Usamos la palabra clave `def` para definirlas.
+Ahora, aunque existen muchas funciones dentro de Python así como de cualquier otro lenguaje, siempre habrá situaciones en que requerireos algo para lo que no existe una funcióndeterminada. Entonces es hora de crear nuestras propias funciones para resolver problemas puntuales. Aprenderemos a crear nuestras propias funciones. Usamos la palabra clave `def` para definirlas.
 
 #### A. Funciones Simples: Sin parámetros y/o sin valor de retorno
 
+Estas funciones realizan acciones únicas ( una o varias) sin requerir información adicional, o interacción alguna con el usuario. 
 
 ```python showLineNumbers
 # Función sin parámetros y sin valor de retorno
@@ -133,7 +134,6 @@ saludar()
 ```
 
 ---
-
 
 ```python showLineNumbers
 # Función con un parámetro y sin valor de retorno
@@ -399,7 +399,7 @@ Crea un notebook (.ipynb) que contenga las 4 funciones que se mencionan abajo, c
 #### 1. Función sin argumentos
 Esta función no requiere información externa para realizar su tarea. En Python, aunque no reciba parámetros, es obligatorio incluir los paréntesis en su definición y llamada.
 
-```python
+```python showLineNumbers
 def mostrar_mensaje():
     """
     Muestra un mensaje de bienvenida al sistema.
@@ -412,7 +412,7 @@ def mostrar_mensaje():
 #### 2. Función con argumentos (sin retorno explícito)
 Las funciones pueden aceptar **parámetros**, que son nombres que actúan como variables locales dentro de la función y reciben los valores (**argumentos**) al ser llamadas.
 
-```python
+```python showLineNumbers
 def saludar():
     """
     Imprime un saludo personalizado para el estudiante
@@ -426,7 +426,7 @@ def saludar():
 #### 3. Función con argumentos y un resultado de retorno
 Para que una función envíe un dato de vuelta al programa principal, se utiliza la palabra clave **`return`**. Una vez que se ejecuta un `return`, la función termina inmediatamente.
 
-```python
+```python showLineNumbers
 def calcular_cuadrado():
     """
     Calcula el cuadrado de un número dado.
@@ -453,7 +453,7 @@ def perimetro():
 #### 4. Función con argumentos y múltiples resultados
 En Python, una función puede devolver más de un valor separándolos por comas en la sentencia `return`. Técnicamente, Python empaqueta estos valores en una **tupla** que luego puede ser desempaquetada por el usuario.
 
-```python
+```python showLineNumbers
 def obtener_estadisticas_basicas():
     """
     Calcula la suma y el producto de dos números.
@@ -471,7 +471,7 @@ def obtener_estadisticas_basicas():
 #### Ejemplo de uso de las funciones
 Para probar estas funciones, se puede utilizar el siguiente bloque de código:
 
-```python
+```python showLineNumbers
 # 1. Llamada a función sin argumentos
 
 
@@ -485,7 +485,7 @@ Para probar estas funciones, se puede utilizar el siguiente bloque de código:
 
 ```
 
-**Nota sobre los Docstrings:** Es una convención en Python insertar estas cadenas de texto inmediatamente después de la línea `def`. Sirven para que herramientas como `help()` muestren la ayuda de la función al usuario.
+**Nota sobre los [Docstrings](/docs/introduccion/funciones#docstring):** Es una convención en Python insertar estas cadenas de texto inmediatamente después de la línea `def`. Sirven para que herramientas como `help()` muestren la ayuda de la función al usuario.
 
 ---
 ### (B):
@@ -493,8 +493,86 @@ Crea una funcion 'limpiar_rut' que acepte un 'texto' y devuelva un rut limpio:
 - **ingrese:** limpiar_rut(' 10. 789 . 300-k')
 - **devuelve:** '10789300-K'
 
+---
+## **Argumentos \*args y \**kwargs**
 
-## Docstring
+Los argumentos variables en Python (**`*args`** y **`**kwargs`**) son mecanismos que permiten a una función aceptar un número indeterminado o flexible de argumentos al momento de ser invocada. 
+
+
+### `*args` (Argumentos Posicionales Variables)
+
+* **¿Qué es?**: El asterisco (`*`) antes del nombre del parámetro le indica a Python que recoja todos los argumentos posicionales adicionales que se le pasen a la función y los agrupe dentro de una **tupla**.
+* **Nombre por convención**: Aunque el nombre `args` es una convención estándar en la comunidad, lo que activa este comportamiento es el operador asterisco `*`.
+* **Funcionamiento interno**: Si no se envían argumentos adicionales, la tupla resultante estará vacía.
+
+#### Ejemplo de uso de `*args`:
+```python showLineNumbers
+def sumar_numeros(*args):
+    # 'args' se recibe internamente como una tupla (1, 2, 3, 4)
+    return sum(args)
+
+print(sumar_numeros(1, 2, 3, 4))  # Salida: 10
+```
+
+
+### `**kwargs` (Argumentos de Palabra Clave Variables)
+
+* **¿Qué es?**: El doble asterisco (`**`) le indica a Python que recoja todos los argumentos de palabra clave (*keyword arguments* o pares `clave=valor`) que no hayan sido capturados por otros parámetros y los almacene en un **diccionario**.
+* **Nombre por convención**: La palabra `kwargs` proviene de *keyword arguments*, pero técnicamente cualquier nombre precedido de `**` cumplirá la misma función.
+* **Funcionamiento interno**: Las claves del diccionario corresponden a los nombres de los argumentos pasados en la llamada y los valores a sus respectivos datos.
+
+#### Ejemplo de uso de `**kwargs`:
+```python showLineNumbers
+def mostrar_perfil(**kwargs):
+    # 'kwargs' se recibe como un diccionario {'nombre': 'Ana', 'edad': 25}
+    for clave, valor in kwargs.items():
+        print(f"{clave}: {valor}")
+
+mostrar_perfil(nombre="Ana", edad=25, ciudad="Madrid")
+```
+
+
+### Desempaquetado en Llamadas a Funciones (*Unpacking*)
+
+Los operadores `*` y `**` no solo se usan en la definición de la función, sino también al **invocarla** para realizar la operación inversa (desempaquetar colecciones):
+
+* **`*colección`**: Desempaqueta los elementos de una lista, tupla o iterable y los envía como argumentos posicionales individuales.
+* **`**diccionario`**: Desempaqueta los pares clave-valor de un diccionario y los envía como argumentos de palabra clave.
+
+```python showLineNumbers
+def calcular_volumen(largo, ancho, alto):
+    return largo * ancho * alto
+
+dimensiones =
+# Desempaqueta la lista en 3 argumentos posicionales
+print(calcular_volumen(*dimensiones))  # Equivale a calcular_volumen(10, 5, 2)
+
+datos = {'largo': 10, 'ancho': 5, 'alto': 2}
+# Desempaqueta el diccionario en argumentos de palabra clave
+print(calcular_volumen(**datos))  # Equivale a calcular_volumen(largo=10, ancho=5, alto=2)
+```
+
+
+### Orden Obligatorio de Parámetros
+
+Cuando se combinan diferentes tipos de parámetros en la firma de una misma función, Python exige respetar estrictamente el siguiente orden sintáctico para evitar ambigüedades:
+
+1. **Parámetros posicionales normales** (ej. `a, b`).
+2. **`*args`** (captura de argumentos posicionales adicionales).
+3. **Parámetros con valores por defecto / Keyword-only** (ej. `c=10` o parámetros tras un `*`).
+4. **`**kwargs`** (captura de argumentos de palabra clave adicionales, siempre al final).
+
+```python showLineNumbers
+def funcion_mixta(a, b, *args, opcion=True, **kwargs):
+    print(a, b)
+    print(args)
+    print(opcion)
+    print(kwargs)
+```
+
+
+---
+## **Docstring**
 
 Los **docstrings** (o cadenas de documentación) son literales de cadena que se insertan como la primera sentencia en la definición de un módulo, función, clase o método en Python. A diferencia de los comentarios comunes (usando `#`), los docstrings se conservan en el código compilado y son accesibles en tiempo de ejecución.
 
@@ -511,11 +589,24 @@ Los **docstrings** (o cadenas de documentación) son literales de cadena que se 
 Para escribir docstrings profesionales, se sugiere seguir las pautas de la **PEP 257** y adoptar las siguientes prácticas:
 
 *   **Docstrings de una sola línea:** Se utilizan para funciones muy simples. Deben indicar el propósito del objeto de forma concisa y terminar con un punto (ej. `"""Convierte grados Celsius a Fahrenheit."""`). No deben simplemente repetir la firma de la función.
-
+```python
+"""Entrega el resultado de la suma de dos números."""
+```
 *   **Estructura multilínea:** Para objetos complejos, se recomienda incluir:
     *   Un **resumen corto** en la primera línea seguido de una línea en blanco.
     *   Una descripción detallada de los **argumentos** (parámetros) y los **valores de retorno**.
     *   Menciones sobre posibles **efectos secundarios** o excepciones que se puedan lanzar.
+```python
+"""
+Calcula el área de un rectangulo.
+
+Argumentos: 
+base (float): la base del rectangulo
+altura (float): la altura del rectangulo
+
+Retorna el area calculada
+"""
+```
 *   **Inclusión de ejemplos (Doctests):** Una de las mejores prácticas es incluir ejemplos de sesiones interactivas de Python (comenzando con `>>>`) dentro del docstring. Herramientas como el módulo `doctest` pueden ejecutar estos ejemplos automáticamente para asegurar que la documentación y el código coincidan y funcionen correctamente.
 *   **Legibilidad y Estilo:**
     *   Mantener la longitud de las líneas por debajo de los **80 caracteres**.

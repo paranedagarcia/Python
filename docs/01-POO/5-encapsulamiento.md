@@ -1,7 +1,7 @@
 ---
 id: encapsulamiento
 title: "Encapsulamiento"
-sidebar_label: "Encapsulamiento"
+sidebar_label: "📄 Encapsulamiento"
 description: "Ocultar los detalles internos de un objeto y exponer solo una interfaz pública"
 ---
 
@@ -243,7 +243,6 @@ class Persona:
         print("Borrando el atributo nacimiento...")
         del self._nacimiento
 ```
-*(Estructura técnica adaptada de la lógica de validación de fechas y propiedades de las fuentes)*
 
 #### Probando la clase en acción:
 
