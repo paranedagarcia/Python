@@ -629,7 +629,7 @@ print(MiClase.__mro__)
 ```
 
 ### Su relación con `super()`
-La función integrada **`super()` no busca necesariamente en el padre directo de la clase actual**. Lo que realmente hace `super()` es localizar la clase donde se está ejecutando la llamada dentro del MRO del objeto original (`self.__class__.__mro__`) y delegar la llamada al **siguiente elemento en esa lista**. Esto es lo que permite la **inicialización cooperativa** a través de toda la jerarquía de herencia.
+La función integrada [**`super()`**](/docs/POO/poo#la-funci%C3%B3n-super) no busca necesariamente en el padre directo de la clase actual**. Lo que realmente hace `super()` es localizar la clase donde se está ejecutando la llamada dentro del MRO del objeto original (`self.__class__.__mro__`) y delegar la llamada al **siguiente elemento en esa lista**. Esto es lo que permite la **inicialización cooperativa** a través de toda la jerarquía de herencia.
 
 
 <Tabs>
@@ -831,3 +831,84 @@ cuenta.datos = 200   # Invoca el setter con validación implícita
 :::info[💻 código]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DKHvcbGlirMk85LMN-0DBGU9KyOpxwzn?usp=sharing)
 :::
+
+
+---
+
+## **La función super()**
+
+La función **`super()`** en Python es la herramienta estándar para invocar métodos de superclases o ancestros dentro de una jerarquía de clases de manera segura y mantenible. Su uso correcto previene fallos estructurales importantes en la Programación Orientada a Objetos.
+
+
+#### ¿Qué errores previene?
+
+* **Evita la inicialización doble (Problema del Diamante):** En esquemas de herencia múltiple donde dos clases hijas heredan de una misma clase base y luego una subclase hereda de ambas, llamar a las clases padre directamente por su nombre (`ClasePadre.__init__(self)`) provoca que el constructor de la clase base común se ejecute dos veces. Esto puede causar errores graves, como reabrir conexiones a bases de datos o duplicar transacciones.
+
+* **Evita la omisión de inicialización de ancestros:** Llama automáticamente a los inicializadores requeridos en el orden correcto, impidiendo que atributos de las clases superiores queden sin definir por un olvido en el código.
+
+* **Evita el acoplamiento rígido de nombres:** Si cambias el nombre de una clase base en tu código, no necesitas buscar y actualizar manualmente todas las llamadas duras al nombre de la clase dentro de las subclases; `super()` resuelve la referencia automáticamente.
+
+
+#### ¿Cómo funciona `super()` internamente?
+
+A diferencia de otros lenguajes donde `super` apunta únicamente al padre directo, en Python **`super()` retorna un objeto *proxy* que busca el método en el siguiente nodo del MRO (Method Resolution Order)**.
+
+El MRO es la secuencia linealizada calculada mediante el algoritmo **C3** que determina el orden exacto en que se buscan los atributos y métodos. Gracias al MRO, cuando se utiliza la llamada cooperativa `super().metodo()`, Python asegura que **cada clase dentro del diamante o jerarquía se ejecute exactamente una vez**.
+
+
+#### Ejemplo Práctico: Herencia Simple vs. Múltiple Cooperativa
+
+#### **A. Herencia Simple (Uso Básico)**
+En herencia simple, `super()` invoca el método de la clase base sin necesidad de pasar explícitamente el parámetro `self`:
+
+```python
+class Vehiculo:
+    def __init__(self, marca: str, modelo: str):
+        self.marca = marca
+        self.modelo = modelo
+
+class AutoElectrico(Vehiculo):
+    def __init__(self, marca: str, modelo: str, capacidad_bateria: int):
+        # Llama al __init__ de Vehiculo pasando los parámetros requeridos
+        super().__init__(marca, modelo)  #
+        self.capacidad_bateria = capacidad_bateria
+```
+
+#### **B. Herencia Múltiple y Manejo de Argumentos (`**kwargs`)**
+Cuando las clases de una jerarquía múltiple reciben parámetros distintos, la práctica recomendada para evitar errores de argumentos es usar **`**kwargs`**. Esto permite que cada clase extraiga los parámetros que necesita y delegue el resto a la siguiente clase en la cadena del MRO:
+
+```python
+class Contacto:
+    def __init__(self, nombre: str, email: str, **kwargs):
+        super().__init__(**kwargs)  # Pasa los argumentos restantes al siguiente en el MRO
+        self.nombre = nombre
+        self.email = email
+
+class Direccion:
+    def __init__(self, calle: str, ciudad: str, **kwargs):
+        super().__init__(**kwargs)  # Sigue la cadena hasta llegar a 'object'
+        self.calle = calle
+        self.ciudad = ciudad
+
+class Amigo(Contacto, Direccion):
+    def __init__(self, telefono: str, **kwargs):
+        # Llama cooperativamente al primer ancestro del MRO de Amigo
+        super().__init__(**kwargs)  #
+        self.telefono = telefono
+
+# Creación de instancia pasando todos los argumentos nombrados:
+f = Amigo(
+    nombre="Sofía", 
+    email="sofia@email.com", 
+    calle="Av. Central 123", 
+    ciudad="Santiago", 
+    telefono="+56912345678"
+)
+```
+
+
+#### Reglas de Oro para evitar fallos con `super()`
+
+1. **Usa `super()` de forma consistente en toda la jerarquía:** Para que el despacho cooperativo funcione sin romper la cadena MRO, todas las subclases de la estructura deben usar `super()` en lugar de llamadas directas por nombre de clase.
+2. **Acepta `**kwargs` en los constructores:** Si las clases base reciben firmas de argumentos diferentes, pasa `**kwargs` hacia `super().__init__(**kwargs)` para que los argumentos fluyan sin interrupciones.
+3. **Inspecciona el MRO si hay dudas:** Si quieres verificar el orden exacto en que Python recorrerá las clases, puedes consultar el atributo especial `Clase.__mro__` o `objeto.__class__.__mro__` en la terminal.

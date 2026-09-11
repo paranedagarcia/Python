@@ -105,7 +105,7 @@ A través del método especial `__exit__`, un administrador de contexto puede de
 
 En resumen, se recomienda utilizar `with` siempre que se trabaje con objetos que soporten el protocolo de administración de contexto, reservando `try-finally` solo para situaciones muy específicas donde no exista un administrador de contexto disponible.
 
-## Excepción personalizada
+## **Excepción personalizada**
 
 Para definir una excepción personalizada en Python, debes crear una **clase que herede de una clase de excepción existente**, preferiblemente de la clase base **`Exception`**.
 
@@ -144,7 +144,7 @@ Un ejemplo real y robusto de una excepción personalizada en Python es la gesti�
 
 A continuación, se presenta una implementación basada en los principios de diseño:
 
-### Definición de la excepción personalizada
+#### Definición de la excepción personalizada
 En este caso, heredamos de `ValueError` porque el error se debe a un valor inapropiado (intentar sacar más dinero del disponible).
 
 ```python showLineNumbers title="utils.py"
@@ -163,7 +163,7 @@ class InvalidRetiro(ValueError):
         return self.amount - self.balance
 ```
 
-### Uso y captura en el programa
+#### Uso y captura en el programa
 Para manejar esta situación, se utiliza el bloque **`try-except`** y la palabra clave **`as`** para acceder a la instancia de la excepción y sus métodos específicos.
 
 ```python showLineNumbers
@@ -180,17 +180,17 @@ except InvalidRetiro as ex:
     print(f"Lo sentimos, su retiro excede su saldo por ${ex.overage()}")
 ```
 
-### ¿Por qué es un "ejemplo real" efectivo?
+#### ¿Por qué es un "ejemplo real" efectivo?
 *   **Encapsulación:** Al definir `InvalidRetiro`, separas la lógica de errores bancarios de los errores genéricos de Python.
 *   **Tratamiento de datos sensibles:** Es una buena práctica no incluir datos sensibles (como números de cuenta) directamente en el mensaje de la excepción para evitar que aparezcan en los registros de errores (*logs*) o rastreos (*tracebacks*).
 *   **Uso de `Decimal`:** Para aplicaciones financieras, se utiliza la clase `Decimal` de la biblioteca estándar en lugar de `float` para evitar errores de redondeo binario.
 *   **Control de flujo:** Este diseño permite que el programa no se detenga bruscamente (*crash*), sino que tome una ruta alternativa para informar al usuario de forma amigable.
 
-## Multiples excepciones
+## **Multiples excepciones**
 
 Para capturar múltiples excepciones en un mismo bloque `try-except` y darles el mismo tratamiento, debes agrupar los tipos de excepción en una **tupla** (dentro de paréntesis) separada por comas.
 
-### Sintaxis para capturar varias excepciones
+#### Sintaxis para capturar varias excepciones
 La estructura recomendada es la siguiente:
 
 ```python
@@ -202,12 +202,14 @@ except (ZeroDivisionError, TypeError, ValueError) as e:
     print(f"Ocurrió un error esperado: {e}")
 ```
 
-### Detalles técnicos importantes
+#### Detalles técnicos
 *   **Uso de paréntesis:** Al listar más de una excepción en una sola cláusula `except`, **los paréntesis son obligatorios**. Si se omiten, Python podría interpretar el segundo nombre como una variable donde guardar el objeto de la excepción (sintaxis antigua) en lugar de un segundo tipo de error a capturar.
+
 *   **Acceso al objeto de la excepción:** Puedes usar la palabra clave **`as`** después de la tupla para asignar la excepción capturada a una variable (comúnmente `e`, `ex` o `err`) y así acceder a sus argumentos o mensajes de error.
+
 *   **Mismo tratamiento:** Esta técnica es útil únicamente cuando deseas que la respuesta del programa sea **idéntica** para todos los errores listados.
 
-### Alternativa: Bloques except múltiples
+#### Alternativa: Bloques except múltiples
 Si necesitas realizar acciones diferentes según el tipo de error, lo correcto es apilar bloques `except` individuales:
 
 ```python
@@ -224,6 +226,6 @@ except Exception:
 **Nota sobre el orden:** Cuando se usan múltiples cláusulas `except`, Python ejecuta solo la **primera que coincida** con la excepción lanzada. Por ello, debes colocar las excepciones más específicas al principio y las más genéricas (como `Exception`) al final.
 
 
-## EJERCICIO
+## **EJERCICIO**
 
 Aplique `try` y `except` a los ejercicios para el calculo de la edad futura (edad, año).

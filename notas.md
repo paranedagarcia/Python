@@ -208,3 +208,7 @@ Diferencia entre abstracción y herencia
 
 ¿Cómo se usan las clases abstractas en problemas matemáticos?
 ¿Cómo evitan las clases abstractas la inicialización doble?
+
+¿Cómo se usa __repr__ para representar clases?
+Ejemplo de herencia múltiple y el MRO.
+¿Qué es el polimorfismo dinámico o Duck Typing?
