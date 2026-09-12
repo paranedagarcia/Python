@@ -35,7 +35,7 @@ Para crear un gráfico de barras utilizando la librería **Matplotlib** en una a
 A continuación, se presenta un ejemplo completo de uso:
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python
 import streamlit as st
@@ -219,7 +219,7 @@ pip install altair
 Luego, impórtala en tu script junto con Streamlit y Pandas.
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 import streamlit as st
@@ -329,7 +329,7 @@ La librería Seaborn se utiliza para la creación de gráficos de violín (sns.v
 Se presenta un ejemplo de código que utiliza Altair en Streamlit para generar una visualización de densidad vertical (similar a un violín) para comparar la edad de los pasajeros según su clase y estado de supervivencia:
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 Para evaluar la relación entre la clase del pasajero (pclass) y su supervivencia (survived) en el dataset titanic3.csv utilizando un enfoque de distribución, se recomienda incluir una variable numérica continua como la edad para que el gráfico de violín sea representativo de una densidad real.
 
@@ -525,7 +525,7 @@ Para crear una visualización personalizada en Streamlit utilizando Altair y el 
 A continuación, se presenta un ejemplo completo que analiza la relación entre la edad, la clase y la supervivencia:
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 import streamlit as st

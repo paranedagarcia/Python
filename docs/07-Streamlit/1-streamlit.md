@@ -1,7 +1,7 @@
 ---
 id: streamlit-intro
 title: "Streamlit"
-sidebar_label: "💻 Streamlit"
+sidebar_label: "🖥️ Streamlit"
 sidebar_position: 1
 description: "Streamlit en Ciencia de Datos"
 slug: /streamlit-intro

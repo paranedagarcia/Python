@@ -1,7 +1,7 @@
 ---
 id: streamlit-dev
 title: "Streamlit"
-sidebar_label: "💻 Desarrollo en Streamlit"
+sidebar_label: "🖥️ Desarrollo en Streamlit"
 sidebar_position: 3
 description: "Desarrollo de aplicaciones"
 slug: /streamlit-dev
@@ -450,7 +450,7 @@ Crea un gráfico para cada una de las tablas resumenes solicitadas previamente (
 
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 import streamlit as st

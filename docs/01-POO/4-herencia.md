@@ -199,7 +199,7 @@ Este ejercicio introduce el concepto de **Mixin**, que es una clase diseñada pa
 Crear una clase `Persona` que represente a un individuo y una clase de utilidad (Mixin) llamada `EnviadorCorreo` que permita simular el envío de correos electrónicos utilizando el atributo `.email` del objeto. Finalmente, crear una clase `ContactoEmailable` que herede de ambas clases.
 </div>
 </TabItem>
-<TabItem value="ph-python" label="💻 Código" >
+<TabItem value="ph-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 class Persona:
@@ -262,7 +262,7 @@ Imagina que modelamos un animal como el `Cocodrilo`, el cual comparte caracterí
 
 </div>
 </TabItem>
-<TabItem value="ph2-python" label="💻 Código" >
+<TabItem value="ph2-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 class Terrestre:
@@ -327,7 +327,7 @@ Escribir una clase `Contacto` (con `nombre` y `email`) y una clase `PoseedorDire
 
 </div>
 </TabItem>
-<TabItem value="ph3-python" label="💻 Código" >
+<TabItem value="ph3-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 # Implementación en Python

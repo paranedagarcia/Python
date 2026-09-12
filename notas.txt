@@ -1,7 +1,7 @@
 
 
 <br />
-#### 💻 Código:
+#### 🖥️ Código:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">

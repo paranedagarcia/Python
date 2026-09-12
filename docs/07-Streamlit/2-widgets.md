@@ -1,7 +1,7 @@
 ---
 id: streamlit-widgets
 title: "Uso de Componentes"
-sidebar_label: "💻 Componentes"
+sidebar_label: "🖥️ Componentes"
 sidebar_position: 2
 description: "Componentes de usabilidad en Streamlit"
 slug: /streamlit-widgets
@@ -79,7 +79,7 @@ La sintaxis básica es `st.metric(label, value, delta=None, delta_color="normal"
 En un dashboard profesional, es común mostrar varias métricas una al lado de la otra en la parte superior. Para lograr esto, se debe combinar `st.metric` con **`st.columns()`**:
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 import streamlit as st
@@ -132,7 +132,7 @@ El widget utiliza el valor de `delta` para mostrar una flecha indicadora y un co
 *   **Personalización**: El color de estos indicadores puede alterarse o desactivarse utilizando el parámetro adicional **`delta_color`**, que acepta valores como `"normal"`, `"inverse"` (invierte rojo y verde) u `"off"` (muestra el delta en gris).
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 from streamlit_extras.metric_cards import *
@@ -260,7 +260,7 @@ if st.button("Guardar cambios y sobrescribir archivo"):
 #### columnas ajustables
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 from streamlit_extras.resizable_columns import *
@@ -400,7 +400,7 @@ Se usa cuando no conoces el tiempo exacto que tomará la tarea, pero quieres mos
 El widget **`st.spinner`** se utiliza en Streamlit para mostrar un mensaje de espera mientras la aplicación ejecuta una tarea pesada o un proceso en segundo plano. Su función principal es mejorar la experiencia del usuario (UX) al indicar visualmente que la aplicación está procesando información y no se ha congelado.
 
 <details>
-<summary>💻 Un ejemplo completo que simula la carga de un modelo de datos:</summary>
+<summary>🖥️ Un ejemplo completo que simula la carga de un modelo de datos:</summary>
 
 ```python
 import streamlit as st
@@ -453,7 +453,7 @@ Este widget es útil para mostrar el estado de operaciones en curso, permitiendo
 El widget **`st.status`** es una herramienta de Streamlit diseñada para mostrar el estado de operaciones o tareas de larga duración. A diferencia de otros indicadores de carga, actúa como un contenedor que permite agrupar múltiples notificaciones o mensajes internos, informando al usuario si el proceso está en progreso, se ha completado o ha encontrado errores.
 
 <details>
-<summary>💻 Un ejemplo completo que simula un proceso de carga de datos por pasos:</summary>
+<summary>🖥️ Un ejemplo completo que simula un proceso de carga de datos por pasos:</summary>
 
 ```python showLineNumbers
 import streamlit as st
@@ -582,7 +582,7 @@ Para crear una aplicación autocontenida que agrupe diversos tipos de entrada de
 Este ejemplo muestra los diversos tipos de widgets de entrada disponibles en el núcleo de Streamlit dentro de un `st.form`.
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 import streamlit as st
@@ -702,7 +702,7 @@ if submit_button:
 ### Inputs personalizados
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 ```python showLineNumbers
 from streamlit_extras.specialized_inputs import *

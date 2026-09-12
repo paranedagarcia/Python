@@ -350,7 +350,7 @@ print(f"Nuevo lanzamiento: {dado_seis}")
 * **Por qué es Abstracción:** El resto de la aplicación interactúa con objetos de tipo `Figura` invocando `.calcular_area()`, ignorando por completo si se trata de un círculo, un cuadrado o cualquier otra forma compleja.
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -401,7 +401,7 @@ print(f"Área del círculo: {circulo.calcular_area():.2f}")
 * **Por qué es Abstracción:** El sistema de nómina no necesita saber qué tipo de contrato legal tiene cada empleado para emitir sus pagos; la clase abstracta unifica la interfaz.
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -459,7 +459,7 @@ for emp in nomina:
 * **Por qué es Abstracción:** Permite construir un reproductor de música modular que cargue dinámicamente archivos externos y pueda validar sus metadatos (`codec_name`) antes de llamar al decodificador.
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -506,7 +506,7 @@ print(f"Codec activo: {reproductor.codec_name}")
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -556,7 +556,7 @@ print(repo.obtener_usuario("usr_01"))
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -612,7 +612,7 @@ generador.generar_reporte("ventas.csv")
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -705,7 +705,7 @@ Cualquier cuenta en nuestro banco tiene un **titular**, un **saldo** y debe perm
 *   **Seguridad:** El saldo (`_saldo`) está protegido bajo la interfaz de solo lectura de la propiedad `@property saldo`, impidiendo que agentes externos alteren los saldos directamente sin pasar por las reglas de depósito y retiro.
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 # CUENTABANCARIA
@@ -814,7 +814,7 @@ for cuenta in mis_cuentas:
 </TabItem>
 </Tabs>
 
-:::info[💻 Código]
+:::info[🖥️ Código]
 **Ejercicio cuenta bancaria**
 
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1xzhYcbTg8IhPDcKg5_zqSREqnIhVMMY3?usp=sharing)
@@ -836,7 +836,7 @@ El panel de control solo conoce la existencia del método .encender(). No necesi
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -904,7 +904,7 @@ La aplicación genera la información y delega el formateo. Si en el futuro agre
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from abc import ABC, abstractmethod
@@ -967,7 +967,7 @@ Una plataforma web permite a sus usuarios iniciar sesión mediante **Contraseña
 El servidor web trata la autenticación como un proceso genérico. El detalle de si se consulta una base de datos local o se valida un token con un servidor externo queda totalmente aislado dentro de cada subclase.
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 

@@ -54,7 +54,7 @@ En este se muestra en la primera parte **por qué ocurre el Problema del Diamant
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 

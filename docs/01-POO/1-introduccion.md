@@ -143,7 +143,7 @@ print(isinstance(mi_perro, str))    # False
 
 Los ejemplos prácticos para asentar estos conceptos serían:
 <br />
-#### 💻 Modelado básico:
+#### 🖥️ Modelado básico:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -154,7 +154,7 @@ Imagina que vas a diseñar un sistema para una clínica veterinaria. Necesitas c
 Conceptos a observar: Cómo el inicializador __init__ recibe los datos iniciales y cómo la variable self hace referencia al perro en específico que está realizando la acción.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton" >
+<TabItem value="mnp-python" label="🖥️ Pyhton" >
 dog.py
 
 ```python showLineNumbers
@@ -203,7 +203,7 @@ your_dog.rueda()
 </TabItem>
 </Tabs>
 <br/>
-#### 💻 La Alcancía Digital:
+#### 🖥️ La Alcancía Digital:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -215,7 +215,7 @@ Conceptos a observar: Cómo los métodos pueden modificar directamente el valor 
 
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton" >
+<TabItem value="mnp-python" label="🖥️ Pyhton" >
 
 ```python showLineNumbers
 # 1. Definición de la CLASE
@@ -249,7 +249,7 @@ mi_cucha.ver_saldo()          # Salida: Saldo total acumulado: $70.5
 </Tabs>
 <br />
 
-#### 💻 El Catálogo de Biblioteca:
+#### 🖥️ El Catálogo de Biblioteca:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -261,7 +261,7 @@ Conceptos a observar: Cómo un método puede procesar la información interna de
 
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton" >
+<TabItem value="mnp-python" label="🖥️ Pyhton" >
 
 ```python showLineNumbers
 # 1. Definición de la CLASE
@@ -292,7 +292,7 @@ print(info_dos)  # Salida: 'Curso Intensivo de Python', escrito por Eric Matthes
 </Tabs>
 <br />
 
-#### 💻 Gestión bancaria:
+#### 🖥️ Gestión bancaria:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -313,7 +313,7 @@ En Python, podemos proteger los atributos internos (como el saldo) usando un dob
 3. **Métodos de Acceso (Getters)**: El método get_balance() proporciona una interfaz de "solo lectura" para conocer el saldo, separando la visualización de datos de la lógica de modificación.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton" >
+<TabItem value="mnp-python" label="🖥️ Pyhton" >
 
 ```python showLineNumbers
 # Implementación en Python
@@ -394,7 +394,7 @@ if __name__ == "__main__":
 </Tabs>
 <br />
 
-#### 💻 Geometría:
+#### 🖥️ Geometría:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -410,7 +410,7 @@ Desarrollar clases para figuras como `Circle`, `Rectangle` o `Triangle` que incl
 
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton" default>
+<TabItem value="mnp-python" label="🖥️ Pyhton" default>
 
 ```python showLineNumbers
 # Implementación en Python
@@ -501,7 +501,7 @@ if __name__ == "__main__":
 </Tabs>
 
 
-#### 💻 Herencia aplicada:
+#### 🖥️ Herencia aplicada:
 <Tabs>
 <TabItem value="mnp" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -531,7 +531,7 @@ Al hacer que `Parabola` herede de `Line`, reutilizamos la lógica de los coefici
 3. **Mantenibilidad:** Si el día de mañana decides cambiar la forma en que se imprimen o calculan las funciones lineales básicas, cualquier cambio en `Line` se transmitirá automáticamente a `Parabola` sin necesidad de tocar su código.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Pyhton">
+<TabItem value="mnp-python" label="🖥️ Pyhton">
 
 ```python showLineNumbers
 # Implementación en Python
@@ -641,7 +641,7 @@ Construir una jerarquía con herencia múltiple compleja y mostrar exactamente c
 Para este experimento, definiremos una jerarquía en diamante donde cambiaremos únicamente el **orden de declaración de los padres** en la subclase. Esto nos permitirá visualizar de manera directa el impacto en el **MRO** y en la ruta que sigue **`super()`**.
 </div>
 </TabItem>
-<TabItem value="mro-python" label="💻 Pyhton" >
+<TabItem value="mro-python" label="🖥️ Pyhton" >
 
 ```python showLineNumbers
 class Ancestro:
@@ -827,7 +827,7 @@ cuenta.datos = 200   # Invoca el setter con validación implícita
 | **`self._datos`** | Protegido / Interno | Permitido (rompe la convención) | Ocultar detalles de implementación interna. |
 | **`self.__datos`** | Pseudo-privado (*Name Mangling*) | Renombrado a `_Clase__datos` | Evitar colisiones accidentales de nombres en la herencia. |
 
-:::info[💻 código]
+:::info[🖥️ código]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DKHvcbGlirMk85LMN-0DBGU9KyOpxwzn?usp=sharing)
 :::
 

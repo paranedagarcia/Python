@@ -81,7 +81,7 @@ Imagina que estás diseñando un reproductor de medios. Queremos que pueda repro
 *   Cualquier clase que implemente un método `.play()` será considerada compatible de forma automática, sin necesidad de usar herencia formal.
 </div>
 </TabItem>
-<TabItem value="mnp-python" label="💻 Código" >
+<TabItem value="mnp-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 from typing import Protocol, runtime_checkable

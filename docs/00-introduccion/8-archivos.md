@@ -406,7 +406,7 @@ df.to_excel("resultados.xlsx", sheet_name="Final")
 **Nota técnica:** Al exportar a Excel desde Pandas, es importante asegurar que las fechas no tengan información de zona horaria, ya que el formato de Excel no siempre las soporta directamente.
 
 
-#### 💻 Código:
+#### 🖥️ Código:
 <Tabs>
 <TabItem value="file" label="Antecedentes" default>
 <div class="alert alert--primary">

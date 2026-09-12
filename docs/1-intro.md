@@ -1,5 +1,7 @@
 ---
-sidebar_position: 1
+id: intro
+title: "Programación"
+sidebar_label: "📄 Presentación"
 ---
 
 # Programación en Python

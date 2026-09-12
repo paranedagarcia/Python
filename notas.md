@@ -1,10 +1,23 @@
 # Notas
 
-:::info[💻 Código:]
+import YouTubeVideo from '@site/src/components/YouTubeVideo';
+
+<YouTubeVideo id="iNoOj41oRYY" title="Etica y regulación en la IA" />
+
+:::info[🖥️ Código:]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z)
 
 :::
-
+--- columnas
+<div class="container">
+  <div class="row">
+    <div class="col col--7">
+    </div>
+    <div class="col col--5">
+    </div>
+  </div>
+</div>
+----
 <center>
 <figure>
 ![](img)
@@ -13,12 +26,12 @@
 </center>
 
 <details>
-<summary>💻 Código</summary>
+<summary>🖥️ Código</summary>
 
 </details>
 
 <br />
-#### 💻 Código:
+#### 🖥️ Código:
 <Tabs>
 <TabItem value="ph" label="Antecedentes" default>
 <div class="alert alert--primary">
@@ -46,7 +59,7 @@
 
 </div>
 </TabItem>
-<TabItem value="abs1-python" label="💻 Código" >
+<TabItem value="abs1-python" label="🖥️ Código" >
 
 ```python showLineNumbers
 
