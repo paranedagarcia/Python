@@ -6,8 +6,8 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 
 :::info[🖥️ Código:]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z)
-
 :::
+
 --- columnas
 <div class="container">
   <div class="row">
