@@ -193,6 +193,253 @@ Gracias a esto, cualquier clase que defina un método `__contains__` se consider
     *   Diseñes colecciones personalizadas que deban integrarse de manera limpia y estricta con los tipos integrados de Python (heredando, por ejemplo, de `collections.abc.MutableMapping` para crear un diccionario especializado).
     *   Quieras estructurar plantillas de comportamiento donde la clase base defina el flujo general (patrón de diseño *Template Method*) y deje solo ciertos pasos específicos a las subclases.
 
+
+---
+## **@property**
+
+El decorador **`@property`** en Python se utiliza para definir **propiedades de clase**, lo que permite acceder y gestionar métodos como si fueran **atributos de datos convencionales** (sin necesidad de invocar al método explícitamente con paréntesis `()`).
+
+Sus funciones y ventajas principales dentro de la Programación Orientada a Objetos incluyen:
+
+
+### Encapsulamiento "Pythonico" sin romper el Código Cliente
+* En otros lenguajes (como Java o C++), es habitual escribir explícitamente métodos *getter* y *setter* (`get_edad()`, `set_edad()`) desde el inicio para proteger las variables.
+
+* En Python, la convención recomendada es **comenzar exponiendo atributos públicos simples**. Si más adelante el sistema requiere agregar validaciones, registros (*logging*) o transformaciones de datos, se envuelve el atributo con **`@property`**.
+
+* Esto permite **modificar la lógica interna de la clase sin alterar la interfaz pública** ni romper el código que ya accedía directamente al atributo mediante la sintaxis `objeto.atributo`.
+
+
+### Control de Acceso: Read-Only, Setters y Deleters
+El decorador `@property` permite asociar métodos específicos para gestionar las distintas operaciones sobre un atributo:
+
+* **Lectura (*Getter*):** Decorar un método con `@property` lo convierte en el punto de acceso para lectura del atributo.
+
+* **Atributos de solo lectura:** Si defines un método con `@property` pero **no defines un setter**, Python impedirá que el usuario modifique el atributo desde fuera de la clase, lanzando un `AttributeError` si lo intenta.
+
+* **Escritura (*Setter*):** Decorar un segundo método con **`@<nombre>.setter`** intercepta las asignaciones de valor (`objeto.atributo = valor`), permitiendo aplicar validaciones antes de modificar la variable interna.
+
+* **Eliminación (*Deleter*):** Decorar un método con **`@<nombre>.deleter`** define el comportamiento cuando se ejecuta la instrucción `del objeto.atributo`.
+
+
+
+### Cálculos Dinámicos y *Lazy Evaluation*
+`@property` permite crear **atributos calculados en tiempo real** (cuyo valor depende de otras variables de la instancia) o de **evaluación diferida (*lazy evaluation*)**, evitando cómputos innecesarios en la inicialización si la variable es costosa de calcular y no siempre se consulta.
+
+
+
+#### Mecanismo Técnico Interno
+Por debajo, `@property` es una implementación simplificada e integrada del **protocolo de descriptores** de Python, un mecanismo avanzado que vincula el acceso a un atributo con un conjunto de métodos interceptores de lectura y escritura.
+
+
+#### Ejemplo Práctico
+
+```python showLineNumbers
+class Persona:
+    def __init__(self, edad: int):
+        self._edad = edad  # Atributo 'protegido' por convención (_)
+
+    # 1. Getter (hace que 'persona.edad' acceda a esta función)
+    @property
+    def edad(self) -> int:
+        return self._edad
+
+    # 2. Setter (intercepta 'persona.edad = valor' y aplica validaciones)
+    @edad.setter
+    def edad(self, nueva_edad: int):
+        if 18 <= nueva_edad <= 99:
+            self._edad = nueva_edad
+        else:
+            raise ValueError("La edad debe estar dentro del rango")
+
+# --- Uso transparente del atributo ---
+persona = Persona(25)
+
+print(persona.edad)   # Salida: 25 (Acceso como atributo, sin paréntesis)
+
+persona.edad = 30     # Modificación interceptada por el setter
+print(persona.edad)   # Salida: 30
+
+# persona.edad = 150  # Lanza ValueError: La edad debe estar dentro del rango
+```
+
+### Validar datos
+
+El uso del decorador **`@property`** para validar datos es el enfoque estándar y más "pythonico" en la Programación Orientada a Objetos. Permite interceptar la asignación de valores a un atributo e incluir reglas de validación (como comprobación de rangos, tipos o formatos) sin romper el código externo que accede al atributo como si fuera una variable pública tradicional.
+
+
+#### El Patrón de Validación (`Getter` + `Setter`)
+
+Para implementar la validación mediante propiedades se siguen tres pasos:
+
+1. **Atributo subyacente protegido (`_atributo`):** Se utiliza un guión bajo por convención para almacenar el valor real del objeto de forma interna.
+2. **El Getter (`@property`):** Define el acceso de lectura a la propiedad.
+3. **El Setter (`@<nombre>.setter`):** Intercepta cualquier intento de asignación o modificación. Es aquí donde se evalúa si los datos cumplen las reglas de negocio y, si no es así, se lanza una excepción como `ValueError` o `TypeError`.
+
+<details>
+<summary>🖥️ **Ejemplo:** Validación de Edad en una Clase</summary>
+
+```python showLineNumbers
+class Persona:
+    def __init__(self, nombre: str, edad: int):
+        self.nombre = nombre
+        # Al asignar self.edad (en lugar de self._edad), se ejecuta automáticamente el setter
+        self.edad = edad  
+
+    # 1. GETTER: Lectura del atributo
+    @property
+    def edad(self) -> int:
+        return self._edad
+
+    # 2. SETTER: Interceptación y validación de datos
+    @edad.setter
+    def edad(self, valor: int):
+        if not isinstance(valor, int):
+            raise TypeError("La edad debe ser un número entero.")
+        if valor < 18 or valor > 99:
+            raise ValueError("La edad debe estar comprendida entre 18 y 99 años.")
+        
+        # Si supera las validaciones, se asigna al atributo protegido
+        self._edad = valor
+
+# --- Prueba del comportamiento ---
+
+# Instanciación válida
+p = Persona("Ana", 25)
+print(p.edad)  # Salida: 25 (Acceso transparente mediante el getter)
+
+# Modificación válida
+p.edad = 30
+print(p.edad)  # Salida: 30
+
+# Intento de asignación fuera de rango
+try:
+    p.edad = 150  # Lanza ValueError
+except ValueError as e:
+    print(f"Error: {e}")
+
+# Intento de instanciación con datos no válidos desde el inicio
+try:
+    p_invalida = Persona("Carlos", 10)  # Lanza ValueError en __init__
+except ValueError as e:
+    print(f"Error en creación: {e}")
+```
+</details>
+
+
+
+
+#### Ventajas clave de validar con `@property`
+
+* **Validación en la instanciación (`__init__`):** Si en el constructor `__init__` asignas los valores iniciales usando el nombre público de la propiedad (`self.edad = edad`), las reglas de validación del `@edad.setter` se ejecutarán "gratis" desde el primer instante en que se crea el objeto.
+
+* **Atributos de Solo Lectura (*Read-Only*):** Si defines un método con `@property` pero **omites el método `.setter`**, el atributo quedará bloqueado contra modificaciones externas. Cualquier intento de asignación (`p.atributo = nuevo_valor`) lanzará un `AttributeError`.
+
+* **Encapsulamiento Limpio:** Evita llenar las clases con métodos verbosos del estilo `get_edad()` o `set_edad()`.
+
+### Atributos calculados
+
+Un **atributo calculado dinámicamente** es aquel que **no se almacena directamente en la memoria del objeto**, sino que se procesa al vuelo (*on the fly*) cada vez que se consulta.
+
+Usar `@property` para este propósito tiene tres ventajas fundamentales:
+1. **Sintaxis limpia:** El código cliente accede al dato como una variable habitual (`persona.edad`), manteniendo una interfaz intuitiva.
+
+2. **Garantía de datos actualizados:** Al no guardar un valor fijo, se evita que el dato quede desactualizado si cambian las variables de las que depende o si pasa el tiempo.
+
+3. **Protección de solo lectura (*read-only*):** Al no definir un `.setter`, Python impide que alguien modifique el valor calculado directamente por error (`persona.edad = 25` lanzará un `AttributeError`).
+
+
+<details>
+<summary>🖥️ **Ejemplo:** Cálculo de Edad según la Fecha de Nacimiento</summary>
+
+Si guardaras la edad como un entero fijo (`self.edad = 25`), al año siguiente el valor quedaría desfasado. Al usar `@property`, la edad se calcula en tiempo real comparando la fecha de nacimiento con la fecha actual del sistema.
+
+```python showLineNumbers
+from datetime import date
+
+class Persona:
+    def __init__(self, nombre: str, fecha_nacimiento: date):
+        self.nombre = nombre
+        self.fecha_nacimiento = fecha_nacimiento  # Atributo almacenado en memoria
+
+    # Propiedad calculada dinámicamente
+    @property
+    def edad(self) -> int:
+        hoy = date.today()
+        # Verifica si ya pasó su cumpleaños en el año actual
+        cumplido_este_anio = (hoy.month, hoy.day) >= (self.fecha_nacimiento.month, self.fecha_nacimiento.day)
+        diferencia_anios = hoy.year - self.fecha_nacimiento.year
+        
+        return diferencia_anios if cumplido_este_anio else diferencia_anios - 1
+
+# --- Uso ---
+p = Persona("Sofía", date(1998, 5, 20))
+
+print(f"Titular: {p.nombre}")
+print(f"Fecha Nacimiento: {p.fecha_nacimiento}")
+print(f"Edad actual: {p.edad} años")  # Se calcula automáticamente
+
+# Intento de modificación directa (Bloqueado automáticamente)
+# p.edad = 30  # ❌ AttributeError: can't set attribute
+```
+</details>
+
+
+<details>
+<summary>🖥️ **Ejemplo:** Saldo Disponible en una Cuenta Financiera</summary>
+
+En un sistema bancario, el **saldo disponible** para compras o giros suele depender del saldo real de la cuenta más la línea de crédito o sobregiro autorizado.
+
+```python showLineNumbers
+class CuentaCredito:
+    def __init__(self, titular: str, saldo_real: float, limite_sobregiro: float = 500.0):
+        self.titular = titular
+        self.saldo_real = saldo_real            # Atributo base
+        self.limite_sobregiro = limite_sobregiro  # Atributo base
+
+    # Atributo calculado dinámicamente
+    @property
+    def saldo_disponible(self) -> float:
+        """Suma el saldo real disponible más el margen de sobregiro autorizado."""
+        return self.saldo_real + self.limite_sobregiro
+
+    # Otro atributo calculado: Estado de la cuenta
+    @property
+    def en_sobregiro(self) -> bool:
+        """Devuelve True si el cliente está usando su margen de crédito."""
+        return self.saldo_real < 0
+
+# --- Uso ---
+cuenta = CuentaCredito("Carlos", saldo_real=1200.0, limite_sobregiro=500.0)
+
+print(f"Saldo Real: ${cuenta.saldo_real}")
+print(f"Saldo Disponible: ${cuenta.saldo_disponible}")  # Salida: $1700.0
+print(f"¿En sobregiro?: {cuenta.en_sobregiro}")         # Salida: False
+
+# Si realiza una compra que deja el saldo negativo:
+cuenta.saldo_real = -150.0
+
+print("\n--- Tras realizar una compra ---")
+print(f"Saldo Real: ${cuenta.saldo_real}")
+print(f"Saldo Disponible: ${cuenta.saldo_disponible}")  # Salida: $350.0 (500 - 150)
+print(f"¿En sobregiro?: {cuenta.en_sobregiro}")         # Salida: True
+```
+</details>
+
+
+
+
+#### Resumen de Buenas Prácticas
+
+* **Efectos secundarios de rendimiento:** Dado que el acceso parece una lectura de variable simple (`objeto.propiedad`), procura que los cálculos dentro de un `@property` sean **rápidos y livianos**. Si un cálculo requiere consultar una base de datos externa o un proceso pesado, es preferible utilizar un método tradicional (`obtener_reporte()`) o aplicar un decorador de caché como `@cached_property`.
+
+### Por qué `@property` es clave en Finanzas
+
+* **Seguridad de solo lectura:** Evita que el usuario cambie directamente variables derivadas como la cuota o el rendimiento sin modificar los parámetros originales.
+* **Consistencia e integridad:** Garantiza que si el tipo de cambio o el precio de mercado cambia, todas las métricas asociadas se revalúen automáticamente.
+
+
+
 ---
 ## **Ejemplos**
 
@@ -974,3 +1221,172 @@ El servidor web trata la autenticación como un proceso genérico. El detalle de
 ```
 </TabItem>
 </Tabs>
+
+#### Area Finanzas
+En el sector financiero, el uso de **`@property`** es fundamental para diseñar modelos contables, plataformas de *trading* y gestores de portafolios. 
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+**Ejemplo 1: Métricas de Acciones (*Dividend Yield* y *P/E Ratio*)**
+
+En el mercado bursátil, indicadores como la **Rentabilidad por Dividendo (*Dividend Yield*)** o la **Relación Precio-Beneficio (*P/E Ratio*)** cambian constantemente según la cotización de la acción.
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="🖥️ Código" >
+
+```python showLineNumbers
+
+class Accion:
+    def __init__(self, ticker: str, precio_actual: float, beneficio_por_accion: float, dividendo_anual: float):
+        self.ticker = ticker
+        self.precio_actual = precio_actual                  # Atributo validado con setter
+        self.beneficio_por_accion = beneficio_por_accion    # Atributo almacenado
+        self.dividendo_anual = dividendo_anual              # Atributo almacenado
+
+    # 1. VALIDACIÓN CON SETTER: El precio no puede ser cero o negativo
+    @property
+    def precio_actual(self) -> float:
+        return self._precio_actual
+
+    @precio_actual.setter
+    def precio_actual(self, valor: float):
+        if valor <= 0:
+            raise ValueError("El precio de mercado de la acción debe ser mayor a 0.")
+        self._precio_actual = valor
+
+    # 2. PROPIEDAD CALCULADA (Read-Only): Rentabilidad por Dividendo (%)
+    @property
+    def dividend_yield(self) -> float:
+        """Calcula el rendimiento porcentual del dividendo respecto al precio actual."""
+        return (self.dividendo_anual / self.precio_actual) * 100
+
+    # 3. PROPIEDAD CALCULADA (Read-Only): Ratio P/E
+    @property
+    def pe_ratio(self) -> float:
+        """Calcula cuántas veces se paga el beneficio por acción."""
+        return self.precio_actual / self.beneficio_por_accion
+
+# --- Uso ---
+apple = Accion("AAPL", precio_actual=180.0, beneficio_por_accion=6.5, dividendo_anual=0.96)
+
+print(f"📈 {apple.ticker} - Precio: ${apple.precio_actual}")
+print(f"   Dividend Yield: {apple.dividend_yield:.2f}%")
+print(f"   P/E Ratio: {apple.pe_ratio:.2f}x")
+
+# Si el mercado actualiza el precio:
+apple.precio_actual = 200.0
+print(f"\n📈 {apple.ticker} tras subida a ${apple.precio_actual}:")
+print(f"   Nuevo Dividend Yield: {apple.dividend_yield:.2f}%") # Se recalcula automáticamente
+```
+</TabItem>
+</Tabs>
+
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+**Ejemplo 2: Gestión de Portafolio de Inversiones (Agregación Dinámica)**
+
+Un portafolio de inversión agrupa múltiples activos. El **Valor Total del Portafolio** y la **Ganancia/Pérdida (PNL)** deben actualizarse dinámicamente según el comportamiento de las posiciones individuales, sin riesgo de ser sobrescritos manualmente.
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="🖥️ Código" >
+
+```python showLineNumbers
+
+class PosicionInversion:
+    def __init__(self, activo: str, cantidad: float, precio_compra: float, precio_mercado: float):
+        self.activo = activo
+        self.cantidad = cantidad
+        self.precio_compra = precio_compra
+        self.precio_mercado = precio_mercado
+
+    @property
+    def valor_actual(self) -> float:
+        return self.cantidad * self.precio_mercado
+
+    @property
+    def ganancia_perdida(self) -> float:
+        return (self.precio_mercado - self.precio_compra) * self.cantidad
+
+class Portafolio:
+    def __init__(self, cliente: str):
+        self.cliente = cliente
+        self.posiciones: list[PosicionInversion] = []
+
+    def agregar_posicion(self, posicion: PosicionInversion):
+        self.posiciones.append(posicion)
+
+    # Propiedad calculada que suma todas las posiciones
+    @property
+    def valor_total(self) -> float:
+        return sum(pos.valor_actual for pos in self.posiciones)
+
+    # Propiedad calculada de PNL global
+    @property
+    def pnl_total(self) -> float:
+        return sum(pos.ganancia_perdida for pos in self.posiciones)
+
+# --- Uso ---
+mi_portafolio = Portafolio("Elena")
+
+mi_portafolio.agregar_posicion(PosicionInversion("BTC", cantidad=1.5, precio_compra=60000, precio_mercado=65000))
+mi_portafolio.agregar_posicion(PosicionInversion("ETH", cantidad=10.0, precio_compra=3000, precio_mercado=2800))
+
+print(f"💼 Portafolio de {mi_portafolio.cliente}:")
+print(f"   Valor Total de la Cartera: ${mi_portafolio.valor_total:,.2f}")
+print(f"   Ganancia/Pérdida Acumulada: ${mi_portafolio.pnl_total:,.2f}")
+```
+</TabItem>
+</Tabs>
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejercicio" default>
+<div class="alert alert--primary">
+**Ejemplo 3: Cálculo de Cuotas de Crédito con Tasa de Interés**
+
+En la simulación de préstamos bancarios, la **cuota mensual de un crédito** depende del capital solicitado, la tasa de interés anual y el plazo en meses. `@property` permite consultar la cuota estimada o el costo total del crédito sin duplicar datos en memoria.
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="🖥️ Código" >
+
+```python showLineNumbers
+class PrestamoHipotecario:
+    def __init__(self, monto_solicitado: float, tasa_anual_porcentaje: float, plazo_meses: int):
+        self.monto_solicitado = monto_solicitado
+        self.tasa_anual_porcentaje = tasa_anual_porcentaje
+        self.plazo_meses = plazo_meses
+
+    @property
+    def tasa_mensual(self) -> float:
+        """Convierte la tasa anual a decimal mensual."""
+        return (self.tasa_anual_porcentaje / 100) / 12
+
+    # Cálculo dinámico de la cuota fija mensual (Fórmula de amortización francesa)
+    @property
+    def cuota_mensual(self) -> float:
+        i = self.tasa_mensual
+        n = self.plazo_meses
+        if i == 0:
+            return self.monto_solicitado / n
+        return self.monto_solicitado * (i * (1 + i)**n) / (((1 + i)**n) - 1)
+
+    # Atributo calculado de costo total
+    @property
+    def costo_total_credito(self) -> float:
+        return self.cuota_mensual * self.plazo_meses
+
+# --- Uso ---
+hipoteca = PrestamoHipotecario(monto_solicitado=100000, tasa_anual_porcentaje=6.5, plazo_meses=240)
+
+print(f"🏠 Crédito de ${hipoteca.monto_solicitado:,.2f} a {hipoteca.plazo_meses // 12} años:")
+print(f"   Cuota fija mensual: ${hipoteca.cuota_mensual:,.2f}")
+print(f"   Costo total a pagar: ${hipoteca.costo_total_credito:,.2f}")
+```
+</TabItem>
+</Tabs>
+
+

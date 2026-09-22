@@ -56,7 +56,6 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 <TabItem value="abs1" label="Ejercicio" default>
 <div class="alert alert--primary">
 
-
 </div>
 </TabItem>
 <TabItem value="abs1-python" label="🖥️ Código" >
@@ -225,3 +224,10 @@ Diferencia entre abstracción y herencia
 ¿Cómo se usa __repr__ para representar clases?
 Ejemplo de herencia múltiple y el MRO.
 ¿Qué es el polimorfismo dinámico o Duck Typing?
+
+💡 ¿Te gustaría que exploremos la eliminación de atributos con `@deleter` o prefieres ver cómo usar `@cached_property` de `functools` para almacenar en caché resultados costosos?
+
+
+¿Cómo se usa @property para validar datos?
+¿Cuál es la diferencia entre @property y un método normal?
+Dame un ejemplo de atributo de solo lectura.
