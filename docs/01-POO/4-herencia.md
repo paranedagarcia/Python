@@ -7,6 +7,10 @@ description: "Crear una nueva clase a partir de una existente"
 
 ![](img/herencia.webp)
 
+:::info[Código]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1--L06uthSiU5IiY7Eq8Oojuw_6SFfGQQ?usp=sharing)
+:::
+
 La **herencia** es un mecanismo fundamental de la programación orientada a objetos que permite crear una clase nueva (llamada **clase derivada** o **subclase**) basándose en una clase existente (llamada **clase base** o **superclase**). Al hacer esto, la subclase adopta automáticamente los atributos y métodos de la clase original, lo que facilita la reutilización de código y evita la redundancia.
 
 A continuación, se presenta un ejemplo didáctico y sencillo basado en el modelado de vehículos:
