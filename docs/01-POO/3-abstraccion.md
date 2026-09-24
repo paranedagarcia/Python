@@ -199,6 +199,8 @@ Gracias a esto, cualquier clase que defina un método `__contains__` se consider
 
 El decorador **`@property`** en Python se utiliza para definir **propiedades de clase**, lo que permite acceder y gestionar métodos como si fueran **atributos de datos convencionales** (sin necesidad de invocar al método explícitamente con paréntesis `()`).
 
+![](img/poo-property.jpg)
+
 Sus funciones y ventajas principales dentro de la Programación Orientada a Objetos incluyen:
 
 
@@ -275,6 +277,8 @@ Para implementar la validación mediante propiedades se siguen tres pasos:
 1. **Atributo subyacente protegido (`_atributo`):** Se utiliza un guión bajo por convención para almacenar el valor real del objeto de forma interna.
 2. **El Getter (`@property`):** Define el acceso de lectura a la propiedad.
 3. **El Setter (`@<nombre>.setter`):** Intercepta cualquier intento de asignación o modificación. Es aquí donde se evalúa si los datos cumplen las reglas de negocio y, si no es así, se lanza una excepción como `ValueError` o `TypeError`.
+
+![](img/poo-propertycode.png)
 
 <details>
 <summary>🖥️ **Ejemplo:** Validación de Edad en una Clase</summary>

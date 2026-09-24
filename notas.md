@@ -231,3 +231,7 @@ Ejemplo de herencia múltiple y el MRO.
 ¿Cómo se usa @property para validar datos?
 ¿Cuál es la diferencia entre @property y un método normal?
 Dame un ejemplo de atributo de solo lectura.
+
+¿Cómo se implementan los métodos de clase en Python?
+¿Qué diferencia hay entre un método estático y uno de clase?
+Dame un ejemplo de polimorfismo dinámico

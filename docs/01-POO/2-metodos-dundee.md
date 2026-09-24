@@ -38,9 +38,117 @@ A continuación se detallan los más utilizados:
 *   **`__new__(cls, ...)`**: Se encarga de construir y devolver la instancia del objeto antes de que se llame a `__init__`. Se utiliza principalmente en casos avanzados como la creación de *singletons* o metaclases.
 
 ### 2. Representación de Objetos
-*   **`__str__(self)`**: Devuelve una cadena de texto amigable diseñada para el usuario final. Se invoca al usar `print(objeto)` o la función `str()`.
-*   **`__repr__(self)`**: Genera una representación técnica y detallada del objeto. La convención establece que debe ser una cadena que, evaluada con `eval()`, sea capaz de recrear el objeto original.
 
+El método **`def __str__(self)`** es un método especial (o *dunder method*) en Python que define la **representación en texto legible e informal** de una instancia de clase.
+
+*   **`__str__(self)`**: Devuelve una cadena de texto amigable orientado al **usuario final**. Se invoca al usar `print(objeto)` o la función `str()`. Prima la legibilidad y la presentación informal.
+
+*   **`__repr__(self)`**: Genera una representación técnica y detallada del objeto. La convención establece que debe ser una cadena que, evaluada con `eval()`, sea capaz de recrear el objeto original. Orientado al **desarrollador y depuración**. Busca dar una representación formal e inequívoca de la estructura interna del objeto (idealmente una expresión que permita recrearlo).
+
+#### `__str__`
+
+#### ¿Para qué sirve y cuándo se invoca?
+
+Su propósito es transformar el estado interno de un objeto en una cadena de texto clara y comprensible para las personas. Python llama automáticamente a `__str__(self)` en las siguientes situaciones:
+
+* Al imprimir un objeto directamente con **`print(objeto)`**.
+* Al realizar una conversión explícita mediante **`str(objeto)`**.
+* Al interpolar el objeto en cadenas usando **f-strings** (`f"{objeto}"`), el método `.format()` o especificadores como `%s`.
+
+Si una clase **no** define `__str__`, Python muestra por defecto el nombre de la clase y la dirección de memoria donde está almacenada (por ejemplo: `<__main__.Persona object at 0x7f8a...>`).
+
+
+#### Ejemplo
+
+**Sin implementar `__str__`:**
+```python showLineNumbers
+class Estudiante:
+    def __init__(self, nombre, carrera):
+        self.nombre = nombre
+        self.carrera = carrera
+
+est = Estudiante("Ana", "Ingeniería")
+print(est)  # Muestra la dirección de memoria: <__main__.Estudiante object at 0x7f9a...>
+```
+
+**Con `__str__` implementado:**
+```python showLineNumbers
+class Estudiante:
+    def __init__(self, nombre, carrera):
+        self.nombre = nombre
+        self.carrera = carrera
+
+    def __str__(self) -> str:
+        return f"Estudiante: {self.nombre} | Carrera: {self.carrera}"
+
+est = Estudiante("Ana", "Ingeniería")
+print(est)  # Muestra: Estudiante: Ana | Carrera: Ingeniería
+```
+
+
+:::info[**Nota:**] 
+Si una clase define únicamente `__repr__`, Python lo utilizará también como alternativa para `print()` y `str()` cuando `__str__` esté ausente.
+:::
+
+---
+#### `__repr__`
+
+El método especial **`__repr__(self)`** está diseñado específicamente para los desarrolladores y el proceso de **depuración (*debugging*)**. Mientras que `__str__` busca presentar una salida amigable e informal para el usuario final, `__repr__` tiene como objetivo proporcionar una **representación formal, transparente e inequívoca del estado interno del objeto**.
+
+Por convención, el valor devuelto por `__repr__` debería parecerse al código en Python necesario para reconstruir el objeto (cumpliendo idealmente la regla `eval(repr(obj)) == obj`) o seguir la estructura `NombreClase(atributo1=valor1, atributo2=valor2)`.
+
+
+#### Donde `__repr__` Facilita la Depuración
+
+1. **Inspección en consolas interactivas y depuradores (`pdb` / REPL)**:
+   Al ejecutar un script en la terminal, evaluar código interactivamente o pausar la ejecución con depuradores como `pdb` o `ipdb`, escribir el nombre de la variable invoca automáticamente a `__repr__`.
+   * **Sin `__repr__`:** `<__main__.Producto object at 0x7f8a...>` (no revela el estado interno).
+   * **Con `__repr__`:** `Producto(nombre='Monitor 4K', precio=350.0)`.
+
+2. **Visualización dentro de contenedores (Listas, Diccionarios y Tuplas)**:
+   Al imprimir una colección de objetos (por ejemplo, `print([prod1, prod2])`), Python **siempre llama a `__repr__`** para representar cada elemento dentro del contenedor, ignorando el método `__str__`.
+
+3. **F-Strings autodocumentadas con `=` y `!r`**:
+   Desde Python 3.8, las f-strings admiten la sintaxis de depuración con el signo `=`, la cual imprime la expresión y evalúa su `__repr__` de forma automática:
+   ```python showLineNumbers
+   producto = Producto("Monitor 4K", 350.0)
+
+   # Imprime la variable y su representación repr()
+   print(f"{producto=}")   # Salida: producto=Producto(nombre='Monitor 4K', precio=350.0)
+
+   # Fuerza explícitamente el uso de __repr__ en lugar de __str__
+   print(f"{producto!r}")  # Salida: Producto(nombre='Monitor 4K', precio=350.0)
+   ```
+
+
+#### Ejemplo
+
+```python showLineNumbers
+class Producto:
+    def __init__(self, nombre: str, precio: float):
+        self.nombre = nombre
+        self.precio = precio
+
+    # Representación formal para logs y debugging
+    def __repr__(self) -> str:
+        # Usa !r para asegurar que el string lleve comillas en la representación
+        return f"Producto(nombre={self.nombre!r}, precio={self.precio})"
+
+p1 = Producto("Monitor 4K", 350.0)
+p2 = Producto("Teclado Mecánico", 80.0)
+
+# 1. Depuración rápida en logs
+print(f"{p1=}")  
+# Salida: p1=Producto(nombre='Monitor 4K', precio=350.0)
+
+# 2. Impresión dentro de colecciones
+inventario = [p1, p2]
+print(inventario)  
+# Salida: [Producto(nombre='Monitor 4K', precio=350.0), Producto(nombre='Teclado Mecánico', precio=80.0)]
+```
+
+
+---
 ### 3. Operadores Aritméticos y de Comparación
 Permiten la **sobrecarga de operadores**, logrando que los objetos respondan a símbolos matemáticos estándar.
 *   **Aritmética**: 
