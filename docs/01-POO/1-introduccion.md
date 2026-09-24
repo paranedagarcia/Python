@@ -77,6 +77,9 @@ class Auto:
         print “No se mueve”
  ```
 
+
+---
+
 ## **Constructores**
 El **constructor** es un método especial que se ejecuta **automáticamente** cuando creamos un nuevo objeto. En Python, se llama `__init__`.
 
@@ -599,6 +602,126 @@ if __name__ == "__main__":
 *   **Refactorización:** Tomar un programa procedimental (como un simulador de crecimiento logístico o un lector de archivos CSV) y reorganizar su lógica dentro de una estructura de clases.
 
 ---
+
+## **Mixins**
+
+Un **mixin** es un patrón de diseño en Programación Orientada a Objetos mediante el cual se crea una clase especializada para **proveer métodos y funcionalidades reutilizables a otras clases**, sin estar destinada a ser instanciada por sí sola.
+
+
+
+### Características Principales
+
+* **No se instancian de forma independiente:** Una clase *mixin* no está concebida para crear objetos autónomos, sino para servir como componente secundario de otras clases.
+
+* **Uso de herencia múltiple:** Se incorporan a una clase concreta declarándolas como clases base adicionales en la cabecera de definición.
+
+* **Diferencia frente a funciones o módulos:** A diferencia de las funciones simples organizadas en un módulo externo, los métodos definidos dentro de un *mixin* participan plenamente en la **jerarquía de herencia** de la clase y tienen acceso directo al objeto e instancia mediante el parámetro **`self`**.
+
+* **Separación de responsabilidades:** La convención recomendada es que el *mixin* aporte comportamientos o métodos adicionales, mientras que los atributos de estado o datos principales se mantengan centralizados en la clase base u host.
+
+
+### Sintaxis de Uso
+
+En Python, el patrón *mixin* se aplica incluyendo la clase *mixin* junto a la clase base dentro de los paréntesis de herencia:
+
+```python
+# MailSender actúa como un Mixin que añade capacidad de envío de correo
+class EmailableContact(Contact, MailSender):
+    pass
+```
+
+En este escenario, `MailSender` aporta el método para enviar correos sin alterar la jerarquía de la clase `Contact`, dando origen a una combinación limpia cuya definición a menudo solo requiere la instrucción `pass`.
+
+
+### Casos de Uso y Ventajas
+
+* **Reutilización modular:** Son ideales para agregar funcionalidades transversales a clases no relacionadas entre sí (como exportación a formatos JSON, auditoría de fechas de creación/modificación o utilidades de red).
+
+* **Uso en *Frameworks*:** Son ampliamente utilizados en grandes librerías y *frameworks* de Python (como Django) para enriquecer vistas o modelos con capacidades predefinidas.
+
+* **Composición de comportamientos:** Permiten equipar objetos con capacidades específicas bajo demanda sin necesidad de construir profundas cadenas de herencia vertical.
+
+
+### Consideraciones de Diseño
+
+Debido a que el patrón depende de la **herencia múltiple**, un diseño deficiente de los *mixins* puede introducir complejidad en la búsqueda de atributos a través del orden de resolución de métodos (*Method Resolution Order* o MRO). Por ello, se aconseja mantener los *mixins* pequeños, enfocados en una única responsabilidad y diseñados de forma autónoma.
+
+
+
+<br />
+<Tabs>
+<TabItem value="abs1" label="Ejemplo" default>
+<div class="alert alert--primary">
+**Mixins**
+
+Aquí tienes un ejemplo práctico de cómo diseñar y combinar dos **Mixins** de responsabilidades independientes (**auditoría de fechas** y **serialización a JSON**) sobre un modelo de datos.
+
+**Claves:**
+
+1. **Inicialización cooperativa (`**kwargs`):** Para que la herencia múltiple funcione sin problemas entre varios *mixins*, cada constructor utiliza `super().__init__(**kwargs)`. Esto permite que la cadena de llamadas del **MRO (*Method Resolution Order*)** fluya a través de todas las clases base.
+
+2. **Desacoplamiento total:** Ni `AuditMixin` ni `JsonMixin` conocen la existencia del otro ni de la clase `Producto`. Se pueden reutilizar en cualquier otra clase del sistema (por ejemplo, `UsuarioAuditable` o `PedidoAuditable`).
+
+3. **Inyección limpia de comportamiento:** La clase `ProductoAuditable` adquiere el método `.to_json()` y `.tocar_registro()` de forma inmediata sin tener que escribir lógica repetida dentro de su cuerpo.
+</div>
+</TabItem>
+<TabItem value="abs1-python" label="🖥️ Código" >
+
+```python showLineNumbers
+import json
+from datetime import datetime
+
+# 1. MIXIN 1: Añade registro automatizado de fechas de auditoría
+class AuditMixin:
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.creado_en = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.actualizado_en = self.creado_en
+
+    def tocar_registro(self):
+        """Actualiza la fecha de última modificación."""
+        self.actualizado_en = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+# 2. MIXIN 2: Añade la capacidad de exportarse a JSON
+class JsonMixin:
+    def to_json(self) -> str:
+        """Convierte los atributos de instancia en una cadena JSON formateada."""
+        return json.dumps(self.__dict__, indent=2, ensure_ascii=False)
+
+# 3. CLASE BASE: Modelo de datos de negocio
+class Producto:
+    def __init__(self, nombre: str, precio: float, **kwargs):
+        super().__init__(**kwargs)
+        self.nombre = nombre
+        self.precio = precio
+
+# 4. CLASE COMBINADA: Hereda de ambos Mixins + la Clase Base
+class ProductoAuditable(AuditMixin, JsonMixin, Producto):
+    def __init__(self, nombre: str, precio: float):
+        # La inicialización cooperativa pasa los argumentos mediante kwargs
+        super().__init__(nombre=nombre, precio=precio)
+
+# --- Demostración de Uso ---
+
+# Creación de la instancia
+laptop = ProductoAuditable("Laptop Pro 16", 1499.99)
+
+print("--- 📄 Estado Inicial (Exportación JSON) ---")
+print(laptop.to_json())
+
+# Modificación de datos y actualización de auditoría
+laptop.precio = 1349.99
+laptop.tocar_registro()
+
+print("\n--- 🔄 Estado Tras Descuento y Registro de Modificación ---")
+print(laptop.to_json())
+```
+</TabItem>
+</Tabs>
+
+
+
+---
 ## **Method Resolution Order**
 
 **MRO** son las siglas de **Method Resolution Order** (u **Orden de Resolución de Métodos** en español). Es el mecanismo interno que utiliza Python para determinar de manera exacta y predecible el **orden en el que se deben buscar los atributos y métodos** en una jerarquía de clases. 
@@ -749,15 +872,17 @@ MRO de GestorB:
 
 En Python, la diferencia entre **`clase.datos`** y **`clase._datos`** (o **`self.datos`** y **`self._datos`**) radica en la **visibilidad contractual y las convenciones de encapsulamiento** del lenguaje.
 
+A diferencia de lenguajes como C++ o Java, Python no tiene palabras clave estrictas para métodos privados o protegidos (como private o protected). En su lugar, utiliza convenciones de nombres:
 
-### Atributo Público 
+
+### Atributo o Método Público 
 **`clase.datos` (o `self.datos`)**
 
-* **Propósito:** Representa una variable o miembro **público** de la interfaz accesible del objeto.
+* **Propósito:** Representa una variable o miembro **público** de la interfaz accesible del objeto. Es un método público que forma parte de la interfaz oficial (API) de la clase.
 
-* **Acceso:** Está diseñado para ser leído, modificado o invocado libremente tanto desde dentro de la clase como desde cualquier parte externa del código.
+* **Acceso:** Está diseñado para ser leído, modificado o invocado libremente tanto desde dentro de la clase como desde cualquier parte externa del código. Está diseñado para ser llamado directamente desde fuera de la clase por cualquier usuario o código cliente (objeto.validar(x)).
 
-* **Filosofía en Python:** A diferencia de lenguajes como C++ o Java, en Python la convención preferida es exponer directamente atributos públicos cuando no se requiere lógica de validación previa.
+* **Estabilidad:** Al ser parte de la interfaz pública, se asume que no cambiará intempestivamente de nombre o firma entre versiones para no romper el código de quien use la clase.
 
 ```python
 class Usuario:
@@ -767,6 +892,16 @@ class Usuario:
 u = Usuario("Información pública")
 print(u.datos)        # Acceso directo permitido
 u.datos = "Nuevo dato" # Modificación directa permitida
+
+class ValidadorEntrada:
+    def validar(self, elemento):
+        """Método público accesible desde cualquier lugar."""
+        return isinstance(elemento, int) and elemento > 0
+
+# Uso externo (Correcto y esperado)
+val = ValidadorEntrada()
+if val.validar(10):
+    print("Elemento válido")
 ```
 
 
@@ -774,9 +909,13 @@ u.datos = "Nuevo dato" # Modificación directa permitida
 ### Atributo Protegido o Interno
 **`clase._datos` (o `self._datos`)**
 
-* **Propósito:** Indica que el atributo es de **uso interno** y forma parte de los detalles de implementación de la clase.
+* **Propósito:** El guion bajo al inicio (_) indica por convención que es un método o atributo de uso interno o auxiliar (helper method). Forma parte de los detalles de implementación de la clase.
+
+* **Uso esperado:** Está pensado para ser utilizado únicamente dentro de los métodos de la misma clase o de sus subclases, no por el usuario final.
 
 * **Convención de nomenclatura (PEP 8):** El guion bajo inicial (`_`) advierte a otros desarrolladores de que el atributo **no forma parte de la API pública** y no debería ser modificado directamente fuera del código de la clase.
+
+* **Señal para desarrolladores:** Le dice a otros programadores: "Este método es un detalle de implementación interna. Puede cambiar o eliminarse en el futuro, no lo invoques directamente desde fuera".
 
 * **Acceso real:** El intérprete de Python **no bloquea el acceso externo** a `objeto._datos`. La filosofía de Python respecto al encapsulamiento se resume en *"Todos somos adultos aquí"* (*We're all adults here*), confiando en que los programadores respetarán la convención sin imponer barreras estrictas a nivel de intérprete.
 
@@ -787,8 +926,34 @@ class Usuario:
 
 u = Usuario("Dato sensible")
 print(u._datos)  # Funciona técnicamente, pero rompe la convención de diseño
+
+class ListaTipada(list):
+    def _validar(self, elemento):
+        """Método auxiliar interno para verificar tipos."""
+        if not isinstance(elemento, int):
+            raise TypeError("Solo se permiten enteros")
+
+    def append(self, elemento):
+        """Método público que reutiliza la lógica interna."""
+        self._validar(elemento)  # Llamada interna legítima
+        super().append(elemento)
+
+# Uso externo:
+lista = ListaTipada()
+lista.append(5)  # Correcto: interactúa con el método público
+
+# lista._validar("texto")  # Funciona sin error de sintaxis, pero viola la convención
 ```
 
+
+
+---
+
+:::info[] 
+**Nota adicional:** `__validar(self, elemento)` (Doble guion bajo)
+
+Si utilizas **dos** guiones bajos al inicio (`def __validar...`), Python activa un mecanismo llamado ***Name Mangling* (ofuscación de nombres)**. En este caso, el método se renombra internamente como `_NombreClase__validar` para evitar que subclases lo sobrescriban accidentalmente por colisión de nombres.
+:::
 
 ### Patrón Habitual
 **`_datos` respaldando a `@property datos`**
@@ -819,13 +984,25 @@ cuenta.datos = 200   # Invoca el setter con validación implícita
 ```
 
 
-### Resumen Comparativo de Atributos
+### Resumen comparativo
+
+#### Atributos
 
 | Sintaxis | Tipo de Atributo | Acceso Externo | Propósito Principal |
 | :--- | :--- | :--- | :--- |
 | **`self.datos`** | Público | Permitido libremente | Interfaz principal y visible de la clase. |
 | **`self._datos`** | Protegido / Interno | Permitido (rompe la convención) | Ocultar detalles de implementación interna. |
 | **`self.__datos`** | Pseudo-privado (*Name Mangling*) | Renombrado a `_Clase__datos` | Evitar colisiones accidentales de nombres en la herencia. |
+
+#### Métodos
+
+| Aspecto | `validar(self, elemento)` | `_validar(self, elemento)` |
+| :--- | :--- | :--- |
+| **Acceso intendido** | Público (Interfaz externa) | Privado / Protegido (Uso interno de la clase) |
+| **Uso en código cliente** | `objeto.validar(x)` (Recomendado) | `objeto._validar(x)` (Desaconsejado) |
+| **Soporte de Autocompletado** | Aparece normalmente en IDEs | Se oculta o marca como interno en los IDEs |
+| **Restricción de runtime** | Ninguna | Ninguna (es una convención de caballeros) |
+
 
 :::info[🖥️ código]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DKHvcbGlirMk85LMN-0DBGU9KyOpxwzn?usp=sharing)

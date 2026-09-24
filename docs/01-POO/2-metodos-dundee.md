@@ -45,7 +45,7 @@ El método **`def __str__(self)`** es un método especial (o *dunder method*) en
 
 *   **`__repr__(self)`**: Genera una representación técnica y detallada del objeto. La convención establece que debe ser una cadena que, evaluada con `eval()`, sea capaz de recrear el objeto original. Orientado al **desarrollador y depuración**. Busca dar una representación formal e inequívoca de la estructura interna del objeto (idealmente una expresión que permita recrearlo).
 
-#### `__str__`
+### `__str__`
 
 #### ¿Para qué sirve y cuándo se invoca?
 
@@ -91,7 +91,7 @@ Si una clase define únicamente `__repr__`, Python lo utilizará también como a
 :::
 
 ---
-#### `__repr__`
+### `__repr__`
 
 El método especial **`__repr__(self)`** está diseñado específicamente para los desarrolladores y el proceso de **depuración (*debugging*)**. Mientras que `__str__` busca presentar una salida amigable e informal para el usuario final, `__repr__` tiene como objetivo proporcionar una **representación formal, transparente e inequívoca del estado interno del objeto**.
 
@@ -145,6 +145,68 @@ print(f"{p1=}")
 inventario = [p1, p2]
 print(inventario)  
 # Salida: [Producto(nombre='Monitor 4K', precio=350.0), Producto(nombre='Teclado Mecánico', precio=80.0)]
+```
+
+La regla de oro en Python para decidir entre ambos métodos es: **`__repr__` está pensado para desarrolladores**, mientras que **`__str__` está pensado para el usuario final**.
+
+
+
+### ¿Cuándo usar `__repr__` en lugar de `__str__`?
+
+Debes implementar o preferir **`__repr__`** en los siguientes escenarios principales:
+
+#### 1. Si solo vas a implementar un único método de representación (Regla de respaldo)
+Si solo quieres escribir un método de texto en tu clase, **escribe `__repr__`**. 
+* Python utiliza `__repr__` como **mecanismo de reserva (*fallback*)** cuando se invoca `print()` o `str()` y `__str__` no está definido.
+
+* De manera inversa no funciona: si solo defines `__str__`, las consolas interactivas y las colecciones seguirán mostrando la dirección de memoria por defecto (`<__main__.Objeto at 0x...>`).
+
+#### 2. Cuando inspeccionas objetos dentro de colecciones (Listas, Tuplas, Diccionarios)
+Cuando imprimes una lista o contenedor que guarda tus objetos (por ejemplo, `print([obj1, obj2])`), Python **siempre invoca el `__repr__`** de cada elemento interno, ignorando por completo `__str__`.
+
+#### 3. Para tareas de depuración (*debugging*) y generación de *logs*
+`__repr__` debe mostrar el estado exacto e inequívoco del objeto (incluyendo diferencias entre cadenas y números, comillas, etc.). Idealmente, su salida debería seguir el formato de código ejecutable que permita recrear el objeto con la función `eval()`.
+
+#### 4. Para inspección en consolas interactivas (REPL, IPython, Jupyter)
+Al escribir el nombre de una variable en la terminal o celda interactiva sin usar `print()`, el entorno invoca automáticamente a `__repr__` para mostrar el resultado.
+
+
+
+#### Resumen Comparativo
+
+| Criterio | `__repr__(self)` | `__str__(self)` |
+| :--- | :--- | :--- |
+| **Audiencia** | Desarrollador / Depuración. | Usuario final / Interfaz. |
+| **Objetivo** | Inequívoco, técnico y detallado. | Legible, amigable y simplificado. |
+| **Formato ideal** | Estructura ejecutable: `Clase(attr=valor)`. | Texto libre para visualización ("pretty print"). |
+| **Cuándo se llama** | `repr(obj)`, consola interactiva, objetos dentro de listas/diccionarios. | `print(obj)`, `str(obj)`, f-strings simples. |
+
+
+
+#### Ejemplo Ilustrativo
+
+```python
+class Producto:
+    def __init__(self, nombre: str, precio: float):
+        self.nombre = nombre
+        self.precio = precio
+
+    # Representación técnica para desarrolladores
+    def __repr__(self):
+        return f"Producto(nombre={self.nombre!r}, precio={self.precio})"
+
+    # Representación amigable para usuarios
+    def __str__(self):
+        return f"{self.nombre} (${self.precio:.2f})"
+
+p = Producto("Laptop", 1200.0)
+
+# Uso de __str__ (usuario final)
+print(p)         # Salida: Laptop ($1200.00)
+
+# Uso de __repr__ (dentro de listas o depuración)
+print([p])       # Salida: [Producto(nombre='Laptop', precio=1200.0)]
+print(f"{p!r}")  # Salida: Producto(nombre='Laptop', precio=1200.0)
 ```
 
 
