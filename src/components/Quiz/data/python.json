@@ -1,0 +1,87 @@
+{
+  "quizTitle": "Cuestionario Básico de Python",
+  "quizSynopsis": "Evaluación breve de 5 preguntas sobre los fundamentos básicos del lenguaje Python.",
+  "nrOfQuestions": "5",
+  "questions": [
+    {
+      "question": "¿Qué palabra clave se utiliza para definir una función en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "func",
+        "define",
+        "def",
+        "function"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python, las funciones se definen utilizando la palabra clave 'def', seguida del nombre de la función y sus parámetros entre paréntesis.",
+      "point": "20"
+    },
+    {
+      "question": "¿Cuál de los siguientes símbolos se utiliza para escribir comentarios de una sola línea en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "//",
+        "#",
+        "/*",
+        "--"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El símbolo '#' le indica al intérprete de Python que todo lo que sigue en esa línea debe ser ignorado como un comentario.",
+      "point": "20"
+    },
+    {
+      "question": "¿Cuál es la función integrada que devuelve la longitud (número de elementos) de una lista o cadena en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "size()",
+        "count()",
+        "length()",
+        "len()"
+      ],
+      "correctAnswer": "4",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La función nativa 'len()' recibe un objeto iterable (como listas, tuplas o cadenas) y retorna la cantidad de elementos que contiene.",
+      "point": "20"
+    },
+    {
+      "question": "¿Cómo se declara una variable de tipo lista en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "mi_lista = (1, 2, 3)",
+        "mi_lista = [1, 2, 3]",
+        "mi_lista = {1, 2, 3}",
+        "mi_lista = <1, 2, 3>"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Las listas en Python se delimitan mediante corchetes '[]', mientras que los paréntesis '()' corresponden a tuplas y las llaves '{}' a diccionarios o conjuntos.",
+      "point": "20"
+    },
+    {
+      "question": "¿Qué tipo de dato devuelve la expresión type(3.14) en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "<class 'int'>",
+        "<class 'float'>",
+        "<class 'str'>",
+        "<class 'double'>"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Los números con decimales en Python pertenecen a la clase flotante '<class 'float'>'.",
+      "point": "20"
+    }
+  ]
+}

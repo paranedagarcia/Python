@@ -1,0 +1,15 @@
+.quiz-container {
+  margin: 2rem 0;
+}
+
+.quiz-container .questionWrapper {
+  margin-top: 1rem;
+}
+
+.react-quiz-container h2 {
+  font-size: 1.5rem !important;
+}
+
+.react-quiz-container h3 {
+  font-size: 1.3rem !important;
+}

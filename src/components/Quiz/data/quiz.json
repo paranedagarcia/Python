@@ -1,0 +1,55 @@
+{
+  "quizTitle": "Docusaurus & React Basics Quiz",
+  "quizSynopsis": "Test your knowledge of Docusaurus architecture, MDX integration, and React component workflows.",
+  "nrOfQuestions": "3",
+  "questions": [
+    {
+      "question": "Which technology allows you to write JSX inside standard Markdown files in Docusaurus?",
+      "questionType": "text",
+      "answerType": "single",
+      "answers": [
+        "HTML5",
+        "MDX",
+        "Liquid",
+        "Mustache"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "Correct! MDX blends Markdown and React seamlessly.",
+      "messageForIncorrectAnswer": "Incorrect. Docusaurus relies on MDX to render React elements.",
+      "explanation": "MDX lets you import and use UI components directly inside your documentation files.",
+      "point": "20"
+    },
+    {
+      "question": "Which of the following can be used to add global interactive UI elements like banners or chatbots in Docusaurus?",
+      "questionType": "text",
+      "answerType": "single",
+      "answers": [
+        "A theme Swizzle component",
+        "A Docusaurus Plugin",
+        "A custom MDX page layout",
+        "Both A and B"
+      ],
+      "correctAnswer": "4",
+      "messageForCorrectAnswer": "Spot on! You can write a custom plugin or inject functionality by swizzling existing themes.",
+      "messageForIncorrectAnswer": "Not quite. Remember that global features usually require deeper integration.",
+      "explanation": "Plugins let you hook into the client lifecycle, while Swizzling allows you to override default theme components.",
+      "point": "30"
+    },
+    {
+      "question": "Select all valid built-in interactive components provided by native Docusaurus themes:",
+      "questionType": "text",
+      "answerType": "multiple",
+      "answers": [
+        "<Tabs>",
+        "<Admonition>",
+        "<CodeBlock>",
+        "<LivePlayground>"
+      ],
+      "correctAnswer":,
+      "messageForCorrectAnswer": "Excellent! Tabs, Admonitions, and CodeBlocks are fully built-in.",
+      "messageForIncorrectAnswer": "Incorrect. Note that live code playgrounds require an optional first-party plugin package.",
+      "explanation": "Tabs, Admonitions, and standard CodeBlocks are included out-of-the-box. The live runtime playground requires installing `@docusaurus/theme-live-codeblock`.",
+      "point": "50"
+    }
+  ]
+}
