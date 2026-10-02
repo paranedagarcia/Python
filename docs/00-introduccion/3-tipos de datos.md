@@ -11,6 +11,68 @@ sidebar_position: 5
 
 En Python, los datos se representan mediante **objetos**, y los nombres (lo que usualmente llamamos variables) son simplemente **etiquetas** que hacen referencia a estos objetos en la memoria,.
 
+**Tipos de datos en categorias:**
+
+**Text:**	str
+**Numeric:**	int, float, complex
+**Sequence:**	list, tuple, range
+**Mapping:**	dict
+**Set:**	set, frozenset
+**Boolean:**	bool
+**Binary:**	bytes, bytearray, memoryview
+**None:**	NoneType
+
+**Obtener el tipo de variable**
+
+Usando la función type() obtenemos el tipo de cualquier variable:
+```python
+x = 25
+print (type(x))
+```
+
+### Set data
+El tipo de dato se establece cuando se asigna un valor a una variable.
+
+| Ejemplo | Tipo |
+| :---- | :---- |
+| x \= "Hello World" | str |
+| x \= 20 | int |
+| x \= 20.5 | float |
+| x \= 1j | complex |
+| x \= \["apple", "banana", "cherry"\] | list |
+| x \= ("apple", "banana", "cherry") | tuple |
+| x \= range(6) | range |
+| x \= {"name" : "John", "age" : 36} | dict |
+| x \= {"apple", "banana", "cherry"} | set |
+| x \= frozenset({"apple", "banana", "cherry"}) | frozenset |
+| x \= True | bool |
+| x \= b"Hello" | bytes |
+| x \= bytearray(5) | bytearray |
+| x \= memoryview(bytes(5)) | memoryview |
+| x \= None | NoneType |
+
+Para especificar el tipo de dato en forma explicita se utilizan funciones constructor:
+
+
+| Ejemplo | Tipo |
+| :---- | :---- |
+| x \= str("Hello World") | str |
+| x \= int(20) | int |
+| x \= float(20.5) | float |
+| x \= complex(1j) | complex |
+| x \= list(("apple", "banana", "cherry")) | list |
+| x \= tuple(("apple", "banana", "cherry")) | tuple |
+| x \= range(6) | range |
+| x \= dict(name="John", age=36) | dict |
+| x \= set(("apple", "banana", "cherry")) | set |
+| x \= frozenset(("apple", "banana", "cherry")) | frozenset |
+| x \= bool(5) | bool |
+| x \= bytes(5) | bytes |
+| x \= bytearray(5) | bytearray |
+| x \= memoryview(bytes(5)) | memoryview |
+
+
+
 A continuación se definen los tipos de datos principales y sus límites:
 
 ### Tipos Numéricos
