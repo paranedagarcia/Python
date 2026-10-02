@@ -10,7 +10,7 @@ sidebar_position: 9
 https://colab.research.google.com/drive/16oiDm_PVo708c-mlUyvWKMR8Bfa_DItN
 :::
 
-## Lógicas o condicionales
+## **Lógicas o condicionales**
 Las estructuras condicionales nos permiten desviar el flujo de un programa y tomar decisiones basadas en si una condición es verdadera (`True`) o falsa (`False`). En Python, esto se maneja de forma elegante y legible a través de las palabras clave `if`, `elif` y `else`.
 
 Para entenderlos fácilmente, piensa en ellos como caminos que toma tu código:
@@ -37,7 +37,7 @@ if edad >= 18:
 
 ---
 
-### Else
+### If __ Else
 La declaración `else` (De lo contrario)
 
 No siempre queremos que el programa simplemente ignore una condición falsa; a veces necesitamos definir un plan B. `else` no lleva una condición propia, sino que atrapa **todo** lo que el `if` original no pudo cumplir.
@@ -108,7 +108,7 @@ else:
 
 :::
 
-## Control de flujo
+## **Control de flujo**
 
 Los controles de flujo basados en bucles o ciclos nos permiten ejecutar un bloque de código repetidas veces sin tener que escribirlo una y otra vez. En Python, contamos con dos estructuras principales para lograr esto: while (basado en una condición) y for (basado en colecciones o elementos iterables).
 
@@ -213,7 +213,8 @@ for n in numeros:
 | **`for`** | Cuando quieres **recorrer una colección de datos fija** o necesitas realizar una acción una cantidad exacta de veces previamente calculada. | Es más seguro, limpio y rápido para recorrer datos. |
 
 
-### EJERCICIOS:
+## **EJERCICIOS**
+
 ```python showLineNumbers
 # detecta similitudes en listas
 """
