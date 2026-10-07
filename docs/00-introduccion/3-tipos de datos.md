@@ -42,9 +42,9 @@ El tipo de dato se establece cuando se asigna un valor a una variable.
 | x \= \["apple", "banana", "cherry"\] | list |
 | x \= ("apple", "banana", "cherry") | tuple |
 | x \= range(6) | range |
-| x \= {"name" : "John", "age" : 36} | dict |
-| x \= {"apple", "banana", "cherry"} | set |
-| x \= frozenset({"apple", "banana", "cherry"}) | frozenset |
+| x \= \{"name" : "John", "age" : 36\} | dict |
+| x \= \{"apple", "banana", "cherry"\} | set |
+| x \= frozenset(\{"apple", "banana", "cherry"\}) | frozenset |
 | x \= True | bool |
 | x \= b"Hello" | bytes |
 | x \= bytearray(5) | bytearray |

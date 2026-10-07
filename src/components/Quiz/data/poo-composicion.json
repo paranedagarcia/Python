@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Evaluación: Herencia vs. Composición en POO",
+  "quizSynopsis": "Cuestionario de 10 preguntas para evaluar los conceptos, ventajas, desventajas y casos de uso de Herencia ('Es-Un') y Composición ('Tiene-Un') en Programación Orientada a Objetos.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿Cuál es la relación conceptual fundamental que caracteriza a la Herencia frente a la Composición en POO?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Herencia representa 'Tiene-Un' y Composición representa 'Es-Un'.",
+        "Herencia representa 'Es-Un' y Composición representa 'Tiene-Un'.",
+        "Ambos representan exclusivamente la relación 'Usa-Un'.",
+        "Herencia representa 'Implementa-Un' y Composición representa 'Extiende-A'."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La Herencia establece una relación de tipo 'Es-Un' (un Perro es un Animal), mientras que la Composición establece una relación 'Tiene-Un' (un Coche tiene un Motor).",
+      "point": "10"
+    },
+    {
+      "question": "¿Por qué se afirma que la Herencia genera un nivel de acoplamiento más fuerte que la Composición?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Porque la subclase depende directamente de la estructura interna y métodos de la clase base, heredando todos sus cambios.",
+        "Porque los objetos compuestos comparten la misma dirección de memoria RAM.",
+        "Porque la Composición no permite llamar a métodos de otras clases.",
+        "Porque en la Herencia no se pueden sobrescribir métodos."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En la Herencia, las subclases están estrechamente acopladas a la clase madre, de modo que cualquier modificación en la clase base puede impactar o romper el funcionamiento de las subclases.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es una ventaja principal de la Composición respecto a la modificación de comportamientos en tiempo de ejecución?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "La Composición permite cambiar o sustituir componentes de un objeto dinámicamente en tiempo de ejecución, mientras que la Herencia es estática.",
+        "La Composición ejecuta el código más rápido en la CPU que la Herencia.",
+        "La Composición elimina la necesidad de usar constructores __init__.",
+        "La Composición obliga a que todas las clases hereden de la clase ABC."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Al usar Composición, un objeto puede reasignar o cambiar uno de sus atributos componentes en tiempo de ejecución (por ejemplo, cambiar la estrategia o el motor), modificando su comportamiento dinámicamente.",
+      "point": "10"
+    },
+    {
+      "question": "En el diseño de un videojuego RPG, ¿a qué se refiere el problema de la 'explosión de clases' al usar únicamente Herencia?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "A que el compilador se queda sin memoria al procesar tantas subclases.",
+        "A la necesidad de crear un número desproporcionado de subclases para cubrir cada combinación posible de tipos y habilidades.",
+        "A que los objetos del juego se destruyen automáticamente tras atacar.",
+        "A la incapacidad de la CPU para interpretar métodos sobrescritos."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La herencia rígida requiere crear subclases específicas para cada combinación (ej. PersonajeElectricoVoladorAtacante), lo que multiplica exponencialmente el número de clases. La composición resuelve esto ensamblando componentes independientes.",
+      "point": "10"
+    },
+    {
+      "question": "En el patrón de Composición, ¿de qué manera la clase contenedora utiliza las funcionalidades de sus componentes internos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Mediante la redefinición completa del código fuente de cada componente.",
+        "Mediante la delegación de tareas, invocando los métodos de los objetos que posee.",
+        "Heredando directamente de la clase list o dict.",
+        "Mediante el uso exclusivo de métodos mágicos como __repr__."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La clase contenedora delegará la responsabilidad invocando directamente los métodos del componente interno (por ejemplo, self.motor.encender()).",
+      "point": "10"
+    },
+    {
+      "question": "¿En qué consiste el 'problema de la clase base frágil' (Fragile Base Class Problem)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "En que la clase base no se puede instanciar porque no tiene constructor __init__.",
+        "En que cambios aparentemente inofensivos en la clase base pueden romper involuntariamente el comportamiento de las subclases derivadas.",
+        "En que las subclases no pueden acceder a variables globales.",
+        "En que la clase base consume demasiada memoria en la pila (stack)."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Ocurre cuando modificaciones en los detalles internos de una clase base alteran los supuestos de las subclases que heredan de ella, introduciendo errores sutiles.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué establece la famosa máxima de diseño del Gang of Four (GoF) respecto a la arquitectura orientada a objetos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Favorece la Herencia múltiple sobre la herencia simple.",
+        "Favorece la composición de objetos sobre la herencia de clases.",
+        "Evita el uso de clases y utiliza únicamente funciones puras.",
+        "Usa siempre herencia profunda de al menos 5 niveles."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La guía clásica de diseño orientada a objetos (GoF) recomienda priorizar la composición de componentes modulares ('Tiene-Un') antes que construir complejas jerarquías de herencia ('Es-Un').",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué es un Mixin en Python y cuál es su relación con la Herencia y la Composición?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Una función que reemplaza las clases en Python.",
+        "Una clase pequeña diseñada para aportar una funcionalidad específica y reutilizable mediante herencia múltiple, sin ser instanciada por sí sola.",
+        "Un método especial que se ejecuta únicamente al eliminar un objeto de la memoria.",
+        "Un archivo .json que almacena la configuración de las clases."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Un Mixin es una clase auxiliar modular que inyecta comportamientos específicos (como serialización a JSON o auditoría) en otras clases a través de herencia múltiple, funcionando como un puente pragmático de composición de comportamientos.",
+      "point": "10"
+    },
+    {
+      "question": "¿En cuál de los siguientes escenarios es MÁS apropiado utilizar Herencia en lugar de Composición?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Cuando se desea compartir métodos utilitarios sin una relación semántica clara entre las clases.",
+        "Cuando existe una relación jerárquica estricta y clara de tipo 'Es-Un' donde la subclase es un subtipo genuino y sustituible de la clase base.",
+        "Cuando se requiere cambiar el comportamiento del objeto dinámicamente durante la ejecución del programa.",
+        "Cuando se quiere evitar que las subclases accedan a los atributos de la clase madre."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La Herencia es ideal cuando hay una relación semántica auténtica 'Es-Un' y se cumple el Principio de Sustitución de Liskov (LSP), donde la clase derivada extiende un contrato o comportamiento base de manera transparente.",
+      "point": "10"
+    },
+    {
+      "question": "Analiza el siguiente fragmento: class Motor: pass | class Coche: def __init__(self): self.motor = Motor(). ¿Qué relación representa?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Herencia simple.",
+        "Composición ('Coche tiene un Motor').",
+        "Herencia múltiple.",
+        "Tipado de pato (Duck Typing)."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Coche instancia internamente un objeto Motor y lo asigna a su atributo self.motor, representando la relación de composición ('Tiene-Un').",
+      "point": "10"
+    }
+  ]
+}
