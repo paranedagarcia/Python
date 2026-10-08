@@ -67,6 +67,26 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 </Tabs>
 
 
+---
+<br />
+<Tabs>
+<TabItem value="ej1" label="Ejercicio" default>
+<div class="alert alert--primary">
+
+</div>
+</TabItem>
+<TabItem value="ej1-python" label="🖥️ Código" >
+
+```python showLineNumbers
+
+```
+</TabItem>
+<TabItem value="ej1-text" label="📄 Detalle" >
+
+
+</TabItem>
+</Tabs>
+
 ## Flask
 ¿Cómo configuro mi primera base de datos con Flask?
 Exploremos la creación de microservicios con Docker
