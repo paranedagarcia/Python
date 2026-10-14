@@ -1,7 +1,7 @@
 ---
 id: dunder
 title: "Métodos Dunder"
-sidebar_label: "📄 Métodos Dunder"
+sidebar_label: "📄 Métodos dunder (mágicos)"
 description: "Métodos Dunder"
 ---
 
