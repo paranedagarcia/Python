@@ -1633,6 +1633,692 @@ print(reporte.generar_documento())
 
 
 ---
+## **Ejercicios en Salud**
+
+
+Ejemplos de programación con un nivel de dificultad equivalente (estructuras condicionales, entrada/salida de datos y operaciones aritméticas/lógicas), basados en el sistema de gestión de atención médica con:
+- gestion de pacientes
+- gestión de médicos
+- atenciones médicas
+- diagnósticos
+
+Donde: los medicos atienden pacientes y generan diagnósticos y tratamientos, los pacientes presentan síntomas de enfermedades y son tratados por médicos.
+
+
+<br/>
+<Tabs>
+<TabItem value="ej1" label="Ejercicio 1" default>
+<div class="alert alert--primary">
+
+#### Gestión de Pacientes
+
+**Punto abordado:** Gestión de pacientes.
+
+**Enunciado del problema:**  
+Diseñar un algoritmo que permita registrar a un paciente y determinar la prioridad de su atención en la sala de urgencias. El programa debe solicitar el nombre del paciente, su edad y su nivel de dolor en una escala de 1 a 10. Si el nivel de dolor es mayor o igual a 8 o la edad del paciente es mayor a 65 años, la categoría asignada será **"Atención Inmediata"**. Si el nivel de dolor está entre 5 y 7, la categoría será **"Atención Prioritaria"**. En cualquier otro caso, se asignará **"Atención General"**. Finalmente, se deben imprimir los datos del paciente con su categoría correspondiente.
+</div>
+</TabItem>
+<TabItem value="ej1-ps" label="📄 Pseudocódigo">
+
+```text showLineNumbers
+Algoritmo GestionPacientes
+    Definir nombrePaciente, categoria Como Cadena
+    Definir edad, nivelDolor Como Entero
+
+    Escribir "Ingrese el nombre del paciente:"
+    Leer nombrePaciente
+    Escribir "Ingrese la edad del paciente:"
+    Leer edad
+    Escribir "Ingrese el nivel de dolor (1 al 10):"
+    Leer nivelDolor
+
+    Si nivelDolor >= 8 O edad > 65 Entonces
+        categoria <- "Atención Inmediata"
+    Sino
+        Si nivelDolor >= 5 Y nivelDolor <= 7 Entonces
+            categoria <- "Atención Prioritaria"
+        Sino
+            categoria <- "Atención General"
+        FinSi
+    FinSi
+
+    Escribir "=== FICHA DE REGISTRO DE PACIENTE ==="
+    Escribir "Nombre: ", nombrePaciente
+    Escribir "Edad: ", edad
+    Escribir "Nivel de Dolor: ", nivelDolor
+    Escribir "Categoría Asignada: ", categoria
+FinAlgoritmo
+```
+</TabItem>
+<TabItem value="ej1-py" label="🖥️ Python">
+Representamos al paciente como una entidad con atributos (nombre, edad, nivel_dolor) y encapsulamos la lógica de triage dentro del método **determinar_categoria()**
+
+```python
+class Paciente:
+    def __init__(self, nombre: str, edad: int, nivel_dolor: int):
+        self.nombre = nombre
+        self.edad = edad
+        self.nivel_dolor = nivel_dolor
+
+    def determinar_categoria(self) -> str:
+        """Determina la prioridad del paciente según su edad y nivel de dolor."""
+        if self.nivel_dolor >= 8 or self.edad > 65:
+            return "Atención Inmediata"
+        elif 5 <= self.nivel_dolor <= 7:
+            return "Atención Prioritaria"
+        else:
+            return "Atención General"
+
+    def mostrar_ficha(self):
+        """Imprime la ficha médica del paciente."""
+        categoria = self.determinar_categoria()
+        print("=== FICHA DE REGISTRO DE PACIENTE ===")
+        print(f"Nombre: {self.nombre}")
+        print(f"Edad: {self.edad} años")
+        print(f"Nivel de Dolor: {self.nivel_dolor}/10")
+        print(f"Categoría Asignada: {categoria}\n")
+
+
+# --- Ejemplo de uso ---
+paciente1 = Paciente(nombre="Ana Gómez", edad=70, nivel_dolor=4)
+paciente2 = Paciente(nombre="Carlos Ruiz", edad=30, nivel_dolor=6)
+
+paciente1.mostrar_ficha()
+paciente2.mostrar_ficha()
+```
+</TabItem>
+</Tabs><br/>
+
+
+<br/>
+<Tabs>
+<TabItem value="ej2" label="Ejercicio 2" default>
+<div class="alert alert--primary">
+
+#### Gestión de Médicos
+
+**Punto abordado:** Gestión de médicos.
+
+**Enunciado del problema:**  
+Diseñar un algoritmo para la evaluación de disponibilidad y remuneración de un médico en el centro de salud. El programa debe recibir el nombre del médico, su especialidad ("General" o "Especialista") y la cantidad de horas trabajadas en la semana. Si las horas trabajadas son menores a 40, su estado será **"Disponible para Turno"**; de lo contrario, será **"Límite de Horas Alcanzado"**. Además, si es "Especialista" y está "Disponible para Turno", se le calculará un bono semanal del 15% sobre su pago base (el pago base se calcula a \$20 USD por hora). Se debe mostrar el resumen con la disponibilidad y el pago total del médico.
+</div>
+</TabItem>
+<TabItem value="ej2-ps" label="📄 Pseudocódigo">
+
+```text showLineNumbers
+Algoritmo GestionMedicos
+    Definir nombreMedico, especialidad, estadoDisponibilidad Como Cadena
+    Definir horasTrabajadas Como Entero
+    Definir pagoBase, bono, pagoTotal Como Real
+
+    Escribir "Ingrese el nombre del médico:"
+    Leer nombreMedico
+    Escribir "Ingrese la especialidad (General / Especialista):"
+    Leer especialidad
+    Escribir "Ingrese las horas trabajadas en la semana:"
+    Leer horasTrabajadas
+
+    pagoBase <- horasTrabajadas * 20.0
+    bono <- 0.0
+
+    Si horasTrabajadas < 40 Entonces
+        estadoDisponibilidad <- "Disponible para Turno"
+    Sino
+        estadoDisponibilidad <- "Límite de Horas Alcanzado"
+    FinSi
+
+    Si especialidad = "Especialista" Y estadoDisponibilidad = "Disponible para Turno" Entonces
+        bono <- pagoBase * 0.15
+    FinSi
+
+    pagoTotal <- pagoBase + bono
+
+    Escribir "=== ESTADO Y REMUNERACIÓN DEL MÉDICO ==="
+    Escribir "Médico: ", nombreMedico
+    Escribir "Especialidad: ", especialidad
+    Escribir "Horas Trabajadas: ", horasTrabajadas
+    Escribir "Estado: ", estadoDisponibilidad
+    Escribir "Pago Total Semanal ($): ", pagoTotal
+FinAlgoritmo
+```
+</TabItem>
+<TabItem value="ej2-py" label="🖥️ Python">
+Utilizamos atributos de clase para tarifas estándar (TARIFA_HORA = 20.0), un @property para evaluar el estado de disponibilidad y métodos para calcular la remuneración semanal con bonos.
+
+```python showLineNumbers
+class Medico:
+    TARIFA_HORA = 20.0  # Pago base por hora en USD
+
+    def __init__(self, nombre: str, especialidad: str, horas_trabajadas: int):
+        self.nombre = nombre
+        self.especialidad = especialidad
+        self.horas_trabajadas = horas_trabajadas
+
+    @property
+    def estado_disponibilidad(self) -> str:
+        """Evalúa si el médico sobrepasó el límite de horas permitidas."""
+        if self.horas_trabajadas < 40:
+            return "Disponible para Turno"
+        return "Límite de Horas Alcanzado"
+
+    def calcular_remuneracion(self) -> tuple[float, float, float]:
+        """Calcula el pago base, el bono por especialidad y el total semanal."""
+        pago_base = self.horas_trabajadas * self.TARIFA_HORA
+        bono = 0.0
+
+        # Aplica un 15% de bono si es especialista y está disponible para turnos
+        if self.especialidad.lower() == "especialista" and self.estado_disponibilidad == "Disponible para Turno":
+            bono = pago_base * 0.15
+
+        pago_total = pago_base + bono
+        return pago_base, bono, pago_total
+
+    def mostrar_resumen(self):
+        """Muestra el reporte consolidado de disponibilidad y remuneración."""
+        pago_base, bono, pago_total = self.calcular_remuneracion()
+        print("=== ESTADO Y REMUNERACIÓN DEL MÉDICO ===")
+        print(f"Médico: {self.nombre}")
+        print(f"Especialidad: {self.especialidad}")
+        print(f"Horas Trabajadas: {self.horas_trabajadas} hrs")
+        print(f"Estado: {self.estado_disponibilidad}")
+        print(f"Bono Aplicado: ${bono:.2f} USD")
+        print(f"Pago Total Semanal: ${pago_total:.2f} USD\n")
+
+
+# --- Ejemplo de uso ---
+medico1 = Medico(nombre="Dr. Roberto Silva", especialidad="Especialista", horas_trabajadas=35)
+medico2 = Medico(nombre="Dra. Laura Martínez", especialidad="General", horas_trabajadas=42)
+
+medico1.mostrar_resumen()
+medico2.mostrar_resumen()
+```
+</TabItem>
+</Tabs><br/>
+
+
+<br/>
+<Tabs>
+<TabItem value="ej3" label="Ejercicio 3" default>
+<div class="alert alert--primary">
+
+#### Diagnósticos y Tratamientos
+
+**Punto abordado:** Diagnósticos.
+
+**Enunciado del problema:**  
+Diseñar un algoritmo que genere de forma automática un diagnóstico preliminar y su correspondiente tratamiento según los síntomas del paciente. El sistema solicitará la temperatura corporal en °C, si el paciente presenta tos (Verdadero/Falso) y si presenta dificultad respiratoria (Verdadero/Falso). Si la temperatura es mayor a 38.0 °C y presenta dificultad respiratoria, el diagnóstico será **"Infección Respiratoria Severa"** y el tratamiento **"Evaluación de Urgencias y Nebulización"**. Si la temperatura es mayor a 38.0 °C con tos pero sin dificultad respiratoria, el diagnóstico será **"Cuadro Gripal Fuerte"** y el tratamiento **"Analgésicos y Reposo"**. En cualquier otro escenario, el diagnóstico será **"Observación Preventiva"** y el tratamiento **"Hidratación y Control Térmico"**.
+</div>
+</TabItem>
+<TabItem value="ej3-ps" label="📄 Pseudocódigo">
+
+```text showLineNumbers
+Algoritmo GeneracionDiagnostico
+    Definir temperatura Como Real
+    Definir tieneTos, tieneDificultadRespiratoria Como Logico
+    Definir diagnostico, tratamiento Como Cadena
+
+    Escribir "Ingrese la temperatura corporal (°C):"
+    Leer temperatura
+    Escribir "¿Presenta tos? (Verdadero / Falso):"
+    Leer tieneTos
+    Escribir "¿Presenta dificultad respiratoria? (Verdadero / Falso):"
+    Leer tieneDificultadRespiratoria
+
+    Si temperatura > 38.0 Y tieneDificultadRespiratoria = Verdadero Entonces
+        diagnostico <- "Infección Respiratoria Severa"
+        tratamiento <- "Evaluación de Urgencias y Nebulización"
+    Sino
+        Si temperatura > 38.0 Y tieneTos = Verdadero Entonces
+            diagnostico <- "Cuadro Gripal Fuerte"
+            tratamiento <- "Analgésicos y Reposo"
+        Sino
+            diagnostico <- "Observación Preventiva"
+            tratamiento <- "Hidratación y Control Térmico"
+        FinSi
+    FinSi
+
+    Escribir "=== INFORME DE DIAGNÓSTICO Y TRATAMIENTO ==="
+    Escribir "Diagnóstico Emitido: ", diagnostico
+    Escribir "Tratamiento Sugerido: ", tratamiento
+FinAlgoritmo
+```
+</TabItem>
+<TabItem value="ej3-py" label="🖥️ Python">
+Encapsulamos la sintomatología del paciente en la clase **EvaluacionMedica**, retornando una tupla con el diagnóstico formal y la prescripción recomendada.
+
+```python showLineNumbers
+class EvaluacionMedica:
+    def __init__(self, temperatura: float, tiene_tos: bool, tiene_dificultad_respiratoria: bool):
+        self.temperatura = temperatura
+        self.tiene_tos = tiene_tos
+        self.tiene_dificultad_respiratoria = tiene_dificultad_respiratoria
+
+    def evaluar_diagnostico(self) -> tuple[str, str]:
+        """Evalúa los síntomas y emite un diagnóstico y tratamiento."""
+        if self.temperatura > 38.0 and self.tiene_dificultad_respiratoria:
+            diagnostico = "Infección Respiratoria Severa"
+            tratamiento = "Evaluación de Urgencias y Nebulización"
+        elif self.temperatura > 38.0 and self.tiene_tos:
+            diagnostico = "Cuadro Gripal Fuerte"
+            tratamiento = "Analgésicos y Reposo"
+        else:
+            diagnostico = "Observación Preventiva"
+            tratamiento = "Hidratación y Control Térmico"
+
+        return diagnostico, tratamiento
+
+    def emitir_informe(self):
+        """Imprime el resultado final de la consulta médica."""
+        diagnostico, tratamiento = self.evaluar_diagnostico()
+        print("=== INFORME DE DIAGNÓSTICO Y TRATAMIENTO ===")
+        print(f"Temperatura Corporal: {self.temperatura}°C")
+        print(f"Síntomas: Tos={self.tiene_tos}, Dificultad Respiratoria={self.tiene_dificultad_respiratoria}")
+        print(f"Diagnóstico Emitido: {diagnostico}")
+        print(f"Tratamiento Sugerido: {tratamiento}\n")
+
+
+# --- Ejemplo de uso ---
+consulta1 = EvaluacionMedica(temperatura=39.2, tiene_tos=True, tiene_dificultad_respiratoria=True)
+consulta2 = EvaluacionMedica(temperatura=37.5, tiene_tos=True, tiene_dificultad_respiratoria=False)
+
+consulta1.emitir_informe()
+consulta2.emitir_informe()
+```
+</TabItem>
+</Tabs><br/>
+
+<br/>
+<Tabs>
+<TabItem value="ej4" label="Ejercicio 4" default>
+<div class="alert alert--primary">
+
+#### Atenciones Médicas
+
+**Punto abordado:** Atenciones médicas (Cálculo de costos y facturación de la atención).
+
+**Enunciado del problema:**  
+Diseñar un algoritmo que calcule el costo total de una atención médica en función del tipo de consulta (**"General"** o **"Especialidad"**) y el tipo de cobertura del paciente (**"Sin Seguro"**, **"Seguro Básico"**, **"Seguro Premium"**). La tarifa base de la atención es de \$40 CLP para consulta General y \$70 USD para Especialidad. Si el paciente tiene "Seguro Básico", se aplica un 30% de descuento sobre la tarifa base; si tiene "Seguro Premium", se aplica un 60% de descuento; si no tiene seguro, no se otorga descuento. Finalmente, si el subtotal tras el descuento supera los \$50 CLP, se recarga un costo de gestión administrativa de \$5 CLP. El sistema debe mostrar el desglose completo del costo de la atención.
+</div>
+</TabItem>
+<TabItem value="ej4-ps" label="📄 Pseudocódigo">
+
+```text showLineNumbers
+Algoritmo GestionAtencionMedica
+    Definir tipoConsulta, tipoCobertura Como Cadena
+    Definir tarifaBase, descuento, subtotal, costoFinal, recargo Como Real
+
+    Escribir "Ingrese el tipo de consulta (General / Especialidad):"
+    Leer tipoConsulta
+    Escribir "Ingrese el tipo de cobertura (Sin Seguro / Seguro Básico / Seguro Premium):"
+    Leer tipoCobertura
+
+    Si tipoConsulta = "Especialidad" Entonces
+        tarifaBase <- 70.0
+    Sino
+        tarifaBase <- 40.0
+    FinSi
+
+    Si tipoCobertura = "Seguro Básico" Entonces
+        descuento <- tarifaBase * 0.30
+    Sino
+        Si tipoCobertura = "Seguro Premium" Entonces
+            descuento <- tarifaBase * 0.60
+        Sino
+            descuento <- 0.0
+        FinSi
+    FinSi
+
+    subtotal <- tarifaBase - descuento
+
+    Si subtotal > 50.0 Entonces
+        recargo <- 5.0
+    Sino
+        recargo <- 0.0
+    FinSi
+
+    costoFinal <- subtotal + recargo
+
+    Escribir "=== REGISTRO Y FACTURACIÓN DE ATENCIÓN MÉDICA ==="
+    Escribir "Tipo de Consulta: ", tipoConsulta
+    Escribir "Tipo de Cobertura: ", tipoCobertura
+    Escribir "Tarifa Base ($): ", tarifaBase
+    Escribir "Descuento Aplicado ($): ", descuento
+    Escribir "Recargo Administrativo ($): ", recargo
+    Escribir "Monto Total a Pagar ($): ", costoFinal
+FinAlgoritmo
+```
+</TabItem>
+<TabItem value="ej4-py" label="🖥️ Python">
+Encapsula la lógica de tarifas, descuentos por seguro y recargos administrativos.
+
+```python showLineNumbers
+class AtencionMedica:
+    def __init__(self, tipo_consulta: str, tipo_cobertura: str):
+        self.tipo_consulta = tipo_consulta
+        self.tipo_cobertura = tipo_cobertura
+
+    def calcular_facturacion() -> tuple[float, float, float, float, float]:
+        """Calcula tarifa base, descuento, subtotal, recargo administrativo y total."""
+        # Tarifa base
+        tarifa_base = 70.0 if self.tipo_consulta.lower() == "especialidad" else 40.0
+
+        # Descuento según cobertura
+        cobertura = self.tipo_cobertura.lower()
+        if cobertura in ["seguro básico", "seguro basico"]:
+            descuento = tarifa_base * 0.30
+        elif cobertura == "seguro premium":
+            descuento = tarifa_base * 0.60
+        else:
+            descuento = 0.0
+
+        subtotal = tarifa_base - descuento
+        recargo = 5.0 if subtotal > 50.0 else 0.0
+        monto_total = subtotal + recargo
+
+        return tarifa_base, descuento, subtotal, recargo, monto_total
+```
+
+</TabItem>
+</Tabs><br/>
+
+<br/>
+<Tabs>
+<TabItem value="ej5" label="Ejercicio 5" default>
+<div class="alert alert--primary">
+
+#### Tratamientos y Prescripción Médica
+
+**Punto abordado:** Tratamientos (Cálculo de posología y duración del tratamiento prescripto por el médico).
+
+**Enunciado del problema:**  
+Diseñar un algoritmo que calcule la cantidad total de dosis de un medicamento prescripto a un paciente y determine la necesidad de control médico según la severidad evaluada por el profesional (**"Leve"**, **"Moderada"**, **"Grave"**). El programa solicitará el nombre del medicamento, la frecuencia de toma en horas (ejemplo: cada 6, 8 o 12 horas) y la severidad del cuadro. La duración del tratamiento será de 3 días para un cuadro "Leve", 7 días para "Moderada" y 14 días para "Grave". La cantidad de tomas diarias se calcula dividiendo 24 entre la frecuencia en horas. Finalmente, el algoritmo debe imprimir el total de dosis a consumir y marcar si requiere **"Control Médico Obligatorio"** (si el total de dosis es mayor o igual a 28 o si la severidad es "Grave").
+</div>
+</TabItem>
+<TabItem value="ej5-ps" label="📄 Pseudocódigo">
+
+```text showLineNumbers
+Algoritmo GestionTratamientos
+    Definir nombreMedicamento, severidad Como Cadena
+    Definir frecuenciaHoras, diasTratamiento, tomasDiarias, totalDosis Como Entero
+    Definir requiereSupervision Como Logico
+
+    Escribir "Ingrese el nombre del medicamento prescripto:"
+    Leer nombreMedicamento
+    Escribir "Ingrese la frecuencia de toma en horas (ej. 6, 8, 12):"
+    Leer frecuenciaHoras
+    Escribir "Ingrese la severidad del cuadro (Leve / Moderada / Grave):"
+    Leer severidad
+
+    Si severidad = "Grave" Entonces
+        diasTratamiento <- 14
+    Sino
+        Si severidad = "Moderada" Entonces
+            diasTratamiento <- 7
+        Sino
+            diasTratamiento <- 3
+        FinSi
+    FinSi
+
+    tomasDiarias <- 24 / frecuenciaHoras
+    totalDosis <- tomasDiarias * diasTratamiento
+
+    Si totalDosis >= 28 O severidad = "Grave" Entonces
+        requiereSupervision <- Verdadero
+    Sino
+        requiereSupervision <- Falso
+    FinSi
+
+    Escribir "=== PLAN DE TRATAMIENTO MÉDICO ==="
+    Escribir "Medicamento Prescripto: ", nombreMedicamento
+    Escribir "Severidad Evaluada: ", severidad
+    Escribir "Duración del Tratamiento: ", diasTratamiento, " días"
+    Escribir "Tomas Diarias: ", tomasDiarias, " dosis al día (cada ", frecuenciaHoras, " horas)"
+    Escribir "Total de Dosis en el Tratamiento: ", totalDosis
+    Escribir "¿Requiere Control Médico Obligatorio?: ", requiereSupervision
+FinAlgoritmo
+```
+</TabItem>
+<TabItem value="ej5-py" label="🖥️ Python">
+
+Calcula la duración, las tomas diarias y la necesidad de supervisión médica obligatoria según la severidad y la frecuencia.
+
+```python showLineNumbers
+class Tratamiento:
+    def __init__(self, medicamento: str, frecuencia_horas: int, severidad: str):
+        self.medicamento = medicamento
+        self.frecuencia_horas = frecuencia_horas
+        self.severidad = severidad
+
+    def calcular_posologia() -> tuple[int, int, int, bool]:
+        """Calcula días de tratamiento, dosis diarias, dosis totales y requerimiento de control."""
+        sev = self.severidad.lower()
+        if sev == "grave":
+            dias = 14
+        elif sev == "moderada":
+            dias = 7
+        else:
+            dias = 3
+
+        tomas_diarias = int(24 / self.frecuencia_horas)
+        total_dosis = tomas_diarias * dias
+        requiere_control = (total_dosis >= 28) or (sev == "grave")
+
+        return dias, tomas_diarias, total_dosis, requiere_control
+```
+</TabItem>
+</Tabs><br/>
+
+
+
+#### Código Python Unificado con Composición
+
+Integración unificada de los tres ejercicios anteriores mediante el principio de Composición ("Tiene-Un").
+
+En esta solución, la clase ConsultaMedica actúa como la entidad contenedora que engloba y coordina a las tres componentes independientes: un Paciente, un Medico y su EvaluacionMedica.
+
+<details>
+<summary>🌌 Sistema Unificado Completo</summary>
+
+A continuación, la clase **`ConsultaMedica`** ensambla los 5 componentes en una única estructura modular ("Tiene-Un"):
+
+```python showLineNumbers
+from datetime import datetime
+
+# ==========================================
+# 1. COMPONENTE: PACIENTE
+# ==========================================
+class Paciente:
+    def __init__(self, nombre: str, edad: int, nivel_dolor: int):
+        self.nombre = nombre
+        self.edad = edad
+        self.nivel_dolor = nivel_dolor
+
+    def determinar_categoria() -> str:
+        if self.nivel_dolor >= 8 or self.edad > 65:
+            return "Atención Inmediata"
+        elif 5 <= self.nivel_dolor <= 7:
+            return "Atención Prioritaria"
+        return "Atención General"
+
+# ==========================================
+# 2. COMPONENTE: MÉDICO
+# ==========================================
+class Medico:
+    def __init__(self, nombre: str, especialidad: str, horas_trabajadas: int):
+        self.nombre = nombre
+        self.especialidad = especialidad
+        self.horas_trabajadas = horas_trabajadas
+
+    @property
+    def estado_disponibilidad(self) -> str:
+        return "Disponible para Turno" if self.horas_trabajadas < 40 else "Límite de Horas Alcanzado"
+
+# ==========================================
+# 3. COMPONENTE: EVALUACIÓN MÉDICA
+# ==========================================
+class EvaluacionMedica:
+    def __init__(self, temperatura: float, tiene_tos: bool, tiene_dificultad_respiratoria: bool):
+        self.temperatura = temperatura
+        self.tiene_tos = tiene_tos
+        self.tiene_dificultad_respiratoria = tiene_dificultad_respiratoria
+
+    def evaluar_diagnostico() -> tuple[str, str]:
+        if self.temperatura > 38.0 and self.tiene_dificultad_respiratoria:
+            return "Infección Respiratoria Severa", "Evaluación de Urgencias y Nebulización"
+        elif self.temperatura > 38.0 and self.tiene_tos:
+            return "Cuadro Gripal Fuerte", "Analgésicos y Reposo"
+        return "Observación Preventiva", "Hidratación y Control Térmico"
+
+# ==========================================
+# 4. COMPONENTE: ATENCIÓN Y FACTURACIÓN
+# ==========================================
+class AtencionMedica:
+    def __init__(self, tipo_consulta: str, tipo_cobertura: str):
+        self.tipo_consulta = tipo_consulta
+        self.tipo_cobertura = tipo_cobertura
+
+    def calcular_facturacion() -> tuple[float, float, float, float, float]:
+        tarifa_base = 70.0 if self.tipo_consulta.lower() == "especialidad" else 40.0
+        cobertura = self.tipo_cobertura.lower()
+        if cobertura in ["seguro básico", "seguro basico"]:
+            descuento = tarifa_base * 0.30
+        elif cobertura == "seguro premium":
+            descuento = tarifa_base * 0.60
+        else:
+            descuento = 0.0
+
+        subtotal = tarifa_base - descuento
+        recargo = 5.0 if subtotal > 50.0 else 0.0
+        monto_total = subtotal + recargo
+        return tarifa_base, descuento, subtotal, recargo, monto_total
+
+# ==========================================
+# 5. COMPONENTE: TRATAMIENTO
+# ==========================================
+class Tratamiento:
+    def __init__(self, medicamento: str, frecuencia_horas: int, severidad: str):
+        self.medicamento = medicamento
+        self.frecuencia_horas = frecuencia_horas
+        self.severidad = severidad
+
+    def calcular_posologia() -> tuple[int, int, int, bool]:
+        sev = self.severidad.lower()
+        if sev == "grave":
+            dias = 14
+        elif sev == "moderada":
+            dias = 7
+        else:
+            dias = 3
+
+        tomas_diarias = int(24 / self.frecuencia_horas)
+        total_dosis = tomas_diarias * dias
+        requiere_control = (total_dosis >= 28) or (sev == "grave")
+        return dias, tomas_diarias, total_dosis, requiere_control
+
+# ==========================================
+# CLASE COMPUESTA INTEGRADA: CONSULTA MÉDICA
+# ==========================================
+class ConsultaMedica:
+    """
+    Ensambla Paciente, Medico, EvaluacionMedica, AtencionMedica y Tratamiento
+    mediante el patrón de Composición ('Tiene-Un').
+    """
+
+    def __init__(
+        self,
+        id_consulta: int,
+        paciente: Paciente,
+        medico: Medico,
+        evaluacion: EvaluacionMedica,
+        atencion: AtencionMedica,
+        tratamiento: Tratamiento,
+    ):
+        self.id_consulta = id_consulta
+        self.fecha_hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        self.paciente = paciente        # COMPOSICIÓN 1
+        self.medico = medico            # COMPOSICIÓN 2
+        self.evaluacion = evaluacion    # COMPOSICIÓN 3
+        self.atencion = atencion        # COMPOSICIÓN 4
+        self.tratamiento = tratamiento  # COMPOSICIÓN 5
+
+    def generar_expediente_completo() -> str:
+        """Delega cálculos a cada componente y genera la ficha clínica consolidada."""
+        triage = self.paciente.determinar_categoria()
+        diag, indicacion = self.evaluacion.evaluar_diagnostico()
+        base, desc, sub, rec, total = self.atencion.calcular_facturacion()
+        dias, tomas_dia, dosis_tot, control = self.tratamiento.calcular_posologia()
+
+        expediente = [
+            "==================================================",
+            f"🏥 EXPEDIENTE CLÍNICO INTEGRADO N° {self.id_consulta}",
+            f"Fecha y Hora: {self.fecha_hora}",
+            "==================================================",
+            "👤 PACIENTE:",
+            f"  • Nombre: {self.paciente.nombre} ({self.paciente.edad} años)",
+            f"  • Nivel de Dolor: {self.paciente.nivel_dolor}/10 ➔ Prioridad: {triage}",
+            "--------------------------------------------------",
+            "👨‍⚕️ MÉDICO TRATANTE:",
+            f"  • {self.medico.nombre} ({self.medico.especialidad})",
+            f"  • Estado Horario: {self.medico.estado_disponibilidad}",
+            "--------------------------------------------------",
+            "📋 DIAGNÓSTICO Y SÍNTOMAS:",
+            f"  • Temperatura: {self.evaluacion.temperatura}°C",
+            f"  • Diagnóstico Emitido: {diag}",
+            f"  • Indicación Principal: {indicacion}",
+            "--------------------------------------------------",
+            "💊 PLAN DE TRATAMIENTO Y POSOLOGÍA:",
+            f"  • Medicamento: {self.tratamiento.medicamento}",
+            f"  • Severidad del Cuadro: {self.tratamiento.severidad}",
+            f"  • Esquema: {tomas_dia} dosis/día (cada {self.tratamiento.frecuencia_horas}h) por {dias} días",
+            f"  • Total Dosis: {dosis_tot} ➔ ¿Control Obligatorio?: {'SÍ' if control else 'NO'}",
+            "--------------------------------------------------",
+            "💳 FACTURACIÓN Y COBERTURA:",
+            f"  • Tipo Consulta: {self.atencion.tipo_consulta} | Cobertura: {self.atencion.tipo_cobertura}",
+            f"  • Tarifa Base: ${base:.2f} USD | Descuento: -${desc:.2f} USD",
+            f"  • Recargo Admin: +${rec:.2f} USD",
+            f"  • TOTAL MÁS IMPUESTOS: ${total:.2f} USD",
+            "==================================================",
+        ]
+        return "\n".join(expediente)
+
+# ==========================================
+# DEMOSTRACIÓN DE EJECUCIÓN
+# ==========================================
+if __name__ == "__main__":
+    # Instanciamos los 5 componentes
+    paciente1 = Paciente("Marta Sánchez", 72, nivel_dolor=9)
+    medico1 = Medico("Dr. Álvaro Torres", "Especialista", horas_trabajadas=28)
+    evaluacion1 = EvaluacionMedica(temperatura=38.9, tiene_tos=True, tiene_dificultad_respiratoria=True)
+    atencion1 = AtencionMedica(tipo_consulta="Especialidad", tipo_cobertura="Seguro Básico")
+    tratamiento1 = Tratamiento(medicamento="Amoxicilina + Nebulizaciones", frecuencia_horas=8, severidad="Grave")
+
+    # Ensamblamos la consulta compuesta
+    consulta_completa = ConsultaMedica(
+        id_consulta=5001,
+        paciente=paciente1,
+        medico=medico1,
+        evaluacion=evaluacion1,
+        atencion=atencion1,
+        tratamiento=tratamiento1,
+    )
+
+    # Imprimimos el reporte consolidado
+    print(consulta_completa.generar_expediente_completo())
+```
+</details>
+
+
+
+#### Beneficios Técnicos de esta Arquitectura
+
+1. **Desacoplamiento:** Si el día de mañana cambia la fórmula de cálculo del pago del `Medico` o las categorías de triage del `Paciente`, la clase `ConsultaMedica` no necesita modificarse.
+
+2. **Reutilización:** `Paciente`, `Medico` y `EvaluacionMedica` pueden usarse en otros procesos del hospital (como asignación de camas, liquidación de sueldos o historiales de urgencia) sin acoplarse a una consulta física.
+
+3. **Delegación:** La clase `ConsultaMedica` no resuelve directamente los diagnósticos ni los honorarios, sino que le pide a cada objeto componente que ejecute su propia responsabilidad.
+
+
+---
 ## 📝 **Test:** Composición
 
 Antes de continuar, comprueba tus conocimientos.
