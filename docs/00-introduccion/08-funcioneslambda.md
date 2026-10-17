@@ -2,7 +2,6 @@
 id: funcioneslambda
 title: "Funciones lambda"
 sidebar_label: "🔃 Funciones lambda"
-sidebar_position: 11
 ---
 
 

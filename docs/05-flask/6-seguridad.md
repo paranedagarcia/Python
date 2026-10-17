@@ -1,10 +1,10 @@
 ---
 id: flask-seguridad
 title: "Gestión de la seguridad"
-sidebar_label: "​Seguridad"
-sidebar_position: 9
+sidebar_label: "🖥️ ​Seguridad"
 sidebar_custom_props:
     icon: '​🔒'
+slug: /flask/seguridad
 ---
 
 Flask, como trabaja con una filosofía de **microframework** (marco de trabajo minimalista), proporciona un núcleo sólido pero delega la mayoría de los aspectos de seguridad de alto nivel a extensiones externas y a las buenas prácticas que usted, como desarrollador, decida implementar. A continuación, se detallan los aspectos fundamentales de seguridad que maneja Flask, las alternativas para su implementación y ejemplos técnicos orientados a su formación académica.

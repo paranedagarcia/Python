@@ -1,9 +1,8 @@
 {
   "label": "📦​ FastAPI",
-  "position": 7,
   "link": {
     "type": "generated-index",
-    "description": "Desarrollo en FastAPI",
+    "description": "FastAPI es un marco de trabajo (framework) web moderno, de alto rendimiento y de código abierto, diseñado para construir APIs con Python 3.6+ basándose en las sugerencias de tipo (type hints) estándar de Python.",
     "slug": "/fastapi"
   }
 }

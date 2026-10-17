@@ -3,7 +3,6 @@ id: tuplas
 title: "Tuplas vs Listas"
 sidebar_label: "🖥️ Tuplas vs Listas"
 description: "Similitudes y diferencias claves"
-sidebar_position: 6
 ---
 
 :::info[Codigo:]

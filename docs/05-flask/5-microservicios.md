@@ -1,8 +1,8 @@
 ---
 id: flask-microservicios
 title: "Microservicios"
-sidebar_label: "Microservicios"
-sidebar_position: 5
+sidebar_label: "🖥️ Microservicios"
+slug: flask/microservicios
 ---
 
 La arquitectura de **microservicios** representa un paradigma de diseño de software en el cual una aplicación de gran envergadura se descompone en unidades funcionales pequeñas, independientes y autónomas que se comunican entre sí a través de una red,. A diferencia de la arquitectura monolítica, donde todos los componentes residen en un único proceso, cada microservicio se enfoca en una tarea específica y es gobernado por un contrato de interfaz, generalmente bajo el estilo arquitectónico **REST** (*Representational State Transfer* o Transferencia de Estado Representacional),.

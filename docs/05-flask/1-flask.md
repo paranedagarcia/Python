@@ -1,8 +1,8 @@
 ---
 id: flask-introduccion
 title: "Introducción a Flask"
-sidebar_label: "Introducción a Flask"
-sidebar_position: 1
+sidebar_label: "🖥️ Introducción a Flask"
+slug: /flask/intro
 ---
 
 

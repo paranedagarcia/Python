@@ -1,8 +1,8 @@
 ---
 id: flask-estructura
 title: "Estructura"
-sidebar_label: "Estructura"
-sidebar_position: 2
+sidebar_label: "🖥️ Estructura"
+slug: /flask/estructura
 ---
 
 Para manejar aplicaciones de alta complejidad, Flask utiliza una estructura modular basada en **paquetes de Python** y **Blueprints**. Esta organización permite que el proyecto escale de manera predecible y que varios desarrolladores trabajen en distintas áreas sin interferir entre sí.

@@ -1,5 +1,5 @@
 version = 1
-revision = 3
+revision = 5
 requires-python = ">=3.13"
 resolution-markers = [
     "python_full_version >= '3.14' and sys_platform == 'win32'",
@@ -1682,6 +1682,7 @@ dependencies = [
     { name = "webencodings" },
     { name = "websocket-client" },
     { name = "widgetsnbextension" },
+    { name = "wxpython" },
 ]
 
 [package.metadata]
@@ -1807,6 +1808,7 @@ requires-dist = [
     { name = "webencodings", specifier = "==0.5.1" },
     { name = "websocket-client", specifier = "==1.9.0" },
     { name = "widgetsnbextension", specifier = "==4.0.15" },
+    { name = "wxpython" },
 ]
 
 [[package]]
@@ -2350,4 +2352,30 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/bd/f4/c67440c7fb409a71b7404b7aefcd7569a9c0d6bd071299bf4198ae7a5d95/widgetsnbextension-4.0.15.tar.gz", hash = "sha256:de8610639996f1567952d763a5a41af8af37f2575a41f9852a38f947eb82a3b9", size = 1097402, upload-time = "2025-11-01T21:15:55.178Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3f/0e/fa3b193432cfc60c93b42f3be03365f5f909d2b3ea410295cf36df739e31/widgetsnbextension-4.0.15-py3-none-any.whl", hash = "sha256:8156704e4346a571d9ce73b84bee86a29906c9abfd7223b7228a28899ccf3366", size = 2196503, upload-time = "2025-11-01T21:15:53.565Z" },
+]
+
+[[package]]
+name = "wxpython"
+version = "4.3.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/0b/a7/da0cde189c0764e33ddb9f326005596956855de90d889a8025d517396ab6/wxpython-4.3.2.tar.gz", hash = "sha256:5531baa9344488a15081a6b2eaeb67af047d12a814cf657c082360ccc37204fb", size = 65858455, upload-time = "2026-10-13T22:52:48.462Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1c/b4/d2e03146ffa7e549baeab87dea28d6f4a73f0fcf506059463a0d67e0b8af/wxpython-4.3.2-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:29beb69852278de27834b529bdf9b9b229bfb1bb765831b94b881f8edc3629e0", size = 20355365, upload-time = "2026-10-13T22:48:30.396Z" },
+    { url = "https://files.pythonhosted.org/packages/8f/2a/50961e175c1c68da6b5ccffaa8f3aeeb15736a4b1fde2d24c63fc1838b32/wxpython-4.3.2-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:b77dc6c4932d1404f0816a60273db33905034a833ba572e74d13d039b586460b", size = 19074483, upload-time = "2026-10-13T22:48:33.859Z" },
+    { url = "https://files.pythonhosted.org/packages/64/87/ee775d04b2966960819570be210692e66a5b3349369d6643af8a820c49e3/wxpython-4.3.2-cp313-cp313-win32.whl", hash = "sha256:6108b0515e4f2b6f8fbc1513253b746775cb0b33020054803175a6c7899aedde", size = 17152978, upload-time = "2026-10-16T00:49:23.849Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/8f/1f3c34a10209d534c12c5da28dcc68bdd8054682b76ac2216b165f7dcaf7/wxpython-4.3.2-cp313-cp313-win_amd64.whl", hash = "sha256:9ef2cec75f570ac09fbcfe31cd668bbf122dc650a2c43a9016aba668c557c725", size = 19665229, upload-time = "2026-10-13T22:46:43.133Z" },
+    { url = "https://files.pythonhosted.org/packages/06/a8/1ac4e7c9b986170cf90fe4c08f1f01b9b5da259588c90964397ff872660b/wxpython-4.3.2-cp313-cp313-win_arm64.whl", hash = "sha256:100d532ddaf457e21421f69fbcaf63d6403dc10d70ca80c1726152aaf4967856", size = 17466924, upload-time = "2026-10-13T22:46:46.553Z" },
+    { url = "https://files.pythonhosted.org/packages/a3/ad/3ae59c7a1bc8a42d1be1891d029871933b04e35668e5636e23094c84d425/wxpython-4.3.2-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:2c60d38f3d4ee79b753805a66aa62cbde721f8a12aea20747508500e41939751", size = 20364802, upload-time = "2026-10-13T22:48:37.748Z" },
+    { url = "https://files.pythonhosted.org/packages/35/92/fe5f32a1fe3e449cf26035c68e212897391a1ce86721e2aa0a222771f3d1/wxpython-4.3.2-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:f333fb08b738721ecc8ed69d2aea296875a9ff2991febcc8c06c0b8236f48067", size = 19079177, upload-time = "2026-10-13T22:48:41.696Z" },
+    { url = "https://files.pythonhosted.org/packages/75/e4/2c9ff9a45b5f6d5ad17c4d4995bdba63e827db891496d3c3cdcd7b78be59/wxpython-4.3.2-cp314-cp314-win32.whl", hash = "sha256:71db87ca19d0c629f407431387044d56d227d62335d21f9c1ecd38a1000ebda9", size = 17155979, upload-time = "2026-10-16T00:49:27.44Z" },
+    { url = "https://files.pythonhosted.org/packages/06/29/b381fe93b9d8fa9d431f3eb6bd18706f3eac1cf2cab41ac05d81bdc185b2/wxpython-4.3.2-cp314-cp314-win_amd64.whl", hash = "sha256:03c20c625acd9bc97f1fbe12db8ba74c35a20306c1ae04480d4c4c2af62ca499", size = 19663848, upload-time = "2026-10-13T22:46:50.129Z" },
+    { url = "https://files.pythonhosted.org/packages/36/cb/1205b96a2c73a6422f4e0963ad05b1e143d68d2829742115b8cd18869475/wxpython-4.3.2-cp314-cp314-win_arm64.whl", hash = "sha256:8ef1bca30118e11926f3e19d5fab9f9720b795bf674cf5482989bca5399fc736", size = 17479249, upload-time = "2026-10-13T22:46:53.427Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/65/d02fff9a60e660bf2052ddb0093acbb81ae2b6e0f44f31553bac339e8b83/wxpython-4.3.2-cp315-cp315-macosx_10_15_x86_64.whl", hash = "sha256:93eb66ade8a8da17009cd48b336ac3900c892047a051b8bdbc97a686a1fe7f4a", size = 20365407, upload-time = "2026-10-13T22:48:45.232Z" },
+    { url = "https://files.pythonhosted.org/packages/6b/3b/bb8ce39e582d88d5a489421199420d3fa19c525fe425c8ef962bd28aec24/wxpython-4.3.2-cp315-cp315-macosx_11_0_arm64.whl", hash = "sha256:5ce08b7086957d5d70abcf36544427be2b92003181811ea8737d428aa3c321d4", size = 19098302, upload-time = "2026-10-13T22:48:48.999Z" },
+    { url = "https://files.pythonhosted.org/packages/23/48/80610d2a4666a18a00d135fd6507519e4c09dbe22107f4b048936de90bec/wxpython-4.3.2-cp315-cp315-win32.whl", hash = "sha256:ee020117de744d57c125cad214debfc1fe91fec659b9a259676a948c004d1637", size = 17157207, upload-time = "2026-10-16T00:49:30.976Z" },
+    { url = "https://files.pythonhosted.org/packages/23/1b/021cca42b0e35df1b686a65aefc4f8a4575b14053a1181188ce70ca2e570/wxpython-4.3.2-cp315-cp315-win_amd64.whl", hash = "sha256:e9c5bedb76ca280cfc568d657e0daadfbb9a0151022db5e430bcddd291f39069", size = 19665207, upload-time = "2026-10-13T22:46:57.088Z" },
+    { url = "https://files.pythonhosted.org/packages/c7/d4/5ae91a15db8131479f7630902a71b1ecee9f8003692a098783a993889772/wxpython-4.3.2-cp315-cp315-win_arm64.whl", hash = "sha256:7d9be0748e5c10fae1db10ee910fa594e6d5db1fac406c008f566e13ea89e92c", size = 17477984, upload-time = "2026-10-13T22:47:03.079Z" },
 ]

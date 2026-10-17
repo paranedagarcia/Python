@@ -2,8 +2,8 @@
 id: introduccion
 title: "Fundamentos"
 sidebar_label: "📄 Fundamentos"
-sidebar_position: 1
 description: "Fundamentos del lenguaje"
+slug: /python/intro
 ---
 
 ![](img/python-front.jpg)

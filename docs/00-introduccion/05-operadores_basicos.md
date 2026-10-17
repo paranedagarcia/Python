@@ -3,7 +3,6 @@ id: operadores
 title: "Operadores básicos"
 sidebar_label: "🖥️ Operadores básicos"
 description: "Operaciones básicos"
-sidebar_position: 4
 ---
 # Operadores básicos
 :::info[Codigo:]

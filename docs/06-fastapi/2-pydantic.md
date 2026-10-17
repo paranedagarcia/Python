@@ -1,7 +1,7 @@
 ---
 id: pydantic
 title: "Pydantic"
-sidebar_label: "📚 Introducción a Pydantic"
+sidebar_label: "🖥️ Introducción a Pydantic"
 sidebar_position: 1
 slug: /pydantic
 ---

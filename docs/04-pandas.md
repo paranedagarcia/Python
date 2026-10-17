@@ -2,7 +2,6 @@
 id: python
 title: "Pandas"
 sidebar_label: "🖥️ Pandas"
-sidebar_position: 6
 description: "Pandas"
 slug: /pandas
 ---

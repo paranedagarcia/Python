@@ -3,7 +3,6 @@ id: cadenas
 title: "Operaciones con cadenas"
 sidebar_label: "🖥️ Cadenas"
 description: "Dato fundamental en Python"
-sidebar_position: 8
 ---
 
 

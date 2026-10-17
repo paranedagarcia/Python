@@ -3,7 +3,6 @@ id: python-estructura
 title: "Estructura General"
 sidebar_label: "🖥️ Estructura General"
 description: "Estructura General de un Programa en Python"
-sidebar_position: 3
 ---
 
 

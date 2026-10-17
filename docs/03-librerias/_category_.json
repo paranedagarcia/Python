@@ -1,6 +1,5 @@
 {
-  "label": "⚙️​ Librerías y módulos",
-  "position": 5,
+  "label": "📁 Librerías y módulos",
   "link": {
     "type": "generated-index",
     "description": "Conceptos sobre librerías y módulos en Python",

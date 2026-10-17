@@ -221,6 +221,13 @@ casa.mostrar_habitaciones()
 
 print(f"Superficie total: {casa.superficie_total()} m²")
 ```
+```text
+Casa ubicada en: Av. Los Pinos 123
+Dormitorio: 15 m²
+Cocina: 12 m²
+Living: 25 m²
+Superficie total: 52 m²
+```
 </TabItem>
 <TabItem value="ej1-text" label="📄 Detalle" >
 
@@ -254,7 +261,6 @@ Casa
 La clase `Casa` **usa y contiene objetos de otra clase**.
 </TabItem>
 </Tabs>
-
 
 
 <br />
@@ -330,6 +336,16 @@ print()
 
 # Arrancar automóvil
 auto.arrancar()
+```
+```text
+Resultado:
+Marca: Toyota
+Modelo: Yaris
+Combustible: Gasolina
+Potencia: 120 HP
+
+El automóvil Toyota Yaris está arrancando.
+El motor está funcionando.
 ```
 </TabItem>
 <TabItem value="ej2-text" label="📄 Detalle" >
@@ -464,6 +480,14 @@ print()
 
 # Encender
 computador.encender()
+```
+```text
+Computador: Dell
+Procesador: Intel Core i5
+Memoria RAM: 16 GB
+
+El computador se está encendiendo...
+Sistema iniciado.
 ```
 </TabItem>
 <TabItem value="ej3-text" label="📄 Detalle" >
@@ -622,6 +646,18 @@ biblioteca.mostrar_libros()
 
 # Buscar por autor
 biblioteca.buscar_por_autor("George Orwell")
+```
+```text
+Biblioteca: Biblioteca Central
+Libros disponibles:
+Cien años de soledad - Gabriel García Márquez - 1967
+El amor en los tiempos del cólera - Gabriel García Márquez - 1985
+1984 - George Orwell - 1949
+Rebelión en la granja - George Orwell - 1945
+
+Libros de George Orwell:
+1984 - George Orwell - 1949
+Rebelión en la granja - George Orwell - 1945
 ```
 </TabItem>
 <TabItem value="ej4-text" label="📄 Detalle" >

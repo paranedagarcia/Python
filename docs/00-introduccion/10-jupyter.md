@@ -3,7 +3,6 @@ id: jupyter
 title: "IPython y Jupyter"
 sidebar_label: "🖥️ IPython y Jupyter"
 description: "IPython y Jupyter"
-sidebar_position: 4
 ---
 
 ## IPython

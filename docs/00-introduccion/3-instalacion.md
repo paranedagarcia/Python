@@ -2,7 +2,7 @@
 id: instalacion
 title: "Instalación"
 sidebar_label: "🖥️ Instalación"
-description: "N{ucleo y entornos de programación"
+description: "Núcleo y entornos de programación"
 sidebar_position: 3
 ---
 

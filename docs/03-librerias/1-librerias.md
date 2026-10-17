@@ -2,7 +2,6 @@
 id: librerias
 title: "Librerías"
 sidebar_label: "⚙️ Librerías"
-sidebar_position: 1
 ---
 
 ![](img/data-visualisation-python-setup.png)

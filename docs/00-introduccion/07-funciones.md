@@ -2,7 +2,6 @@
 id: funciones
 title: "Funciones"
 sidebar_label: "🔃 Funciones"
-sidebar_position: 10
 ---
 
 :::info[Codigo:]

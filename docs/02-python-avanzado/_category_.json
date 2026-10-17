@@ -1,6 +1,5 @@
 {
-  "label": "🖥️ Python avanzado",
-  "position": 4,
+  "label": "📁 Python avanzado",
   "link": {
     "type": "generated-index",
     "description": "Programación avanzada en Python",

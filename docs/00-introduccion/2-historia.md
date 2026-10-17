@@ -2,8 +2,8 @@
 id: historia
 title: "Historia y evolución"
 sidebar_label: "📄 Historia y evolución"
-sidebar_position: 2
 description: "Historia de la Creación y Evolución del Lenguaje Python"
+slug: /python/historia
 ---
 
 

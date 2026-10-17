@@ -1,8 +1,8 @@
 ---
 id: flask-blueprint
 title: "Blueprint"
-sidebar_label: "Blueprint"
-sidebar_position: 3
+sidebar_label: "🖥️ Blueprint"
+slug: flask/blueprint
 ---
 
 Un **Blueprint** es un objeto de Flask diseñado para organizar y modularizar aplicaciones al permitir la división de estas en componentes independientes y reutilizables. 
