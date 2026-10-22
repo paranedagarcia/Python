@@ -5,8 +5,9 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 <YouTubeVideo id="iNoOj41oRYY" title="Etica y regulación en la IA" />
 
 :::info[🖥️ Código:]
-[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1ZTL7UKsr7hzdVyqjgRQqiYWqeWjm5J4Z)
+[![](https://colab.research.google.com/assets/colab-badge.svg)]()
 :::
+
 
 --- columnas
 <div class="container">

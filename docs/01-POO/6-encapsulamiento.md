@@ -193,6 +193,9 @@ El decorador **`@property`** es una de las herramientas más elegantes y utiliza
 
 Este mecanismo permite implementar **getters** (métodos de acceso) y **setters** (métodos de modificación) de una manera limpia, ordenada y bajo la filosofía del lenguaje.
 
+:::info[🖥️ Código:]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DKHvcbGlirMk85LMN-0DBGU9KyOpxwzn?usp=sharing)
+:::
 ---
 
 ### 1. La Filosofía de Python: ¿Por qué existe `@property`?
