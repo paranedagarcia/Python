@@ -5,8 +5,8 @@ sidebar_label: "🖥️ Operaciones con datos"
 description: "Operaciones con listas y tuplas"
 ---
 
-:::info[Codigo:]
-- https://colab.research.google.com/drive/1R83n85Op0KIiHPHd3upBqSJ9bru45lcn
+:::info[🖥️ Código:]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1R83n85Op0KIiHPHd3upBqSJ9bru45lcn)
 :::
 
 ## Listas (Arrays o Arreglos)

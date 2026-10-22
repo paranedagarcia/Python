@@ -4,8 +4,8 @@ title: "Datos y estructuras"
 sidebar_label: "🖥️ Datos y estructuras"
 ---
 
-:::info[Codigo:]
-- https://colab.research.google.com/drive/1S3lUwphZRBF6mobRPb_fym7AZ2AbNjcB
+:::info[🖥️ Código:]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1S3lUwphZRBF6mobRPb_fym7AZ2AbNjcB)
 :::
 
 En Python, los datos se representan mediante **objetos**, y los nombres (lo que usualmente llamamos variables) son simplemente **etiquetas** que hacen referencia a estos objetos en la memoria,.

@@ -6,7 +6,7 @@ description: "Dato fundamental en Python"
 ---
 
 
-:::info[🖥️ Codigo:]
+:::info[🖥️ Código:]
 [![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1lK2FVdyeL1zFzt4ZXKy0tXUqOw7qBJHl)
 :::
 

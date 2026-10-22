@@ -32,6 +32,8 @@ IPython es el motor subyacente (kernel) de los **Jupyter Notebooks**, una aplica
 
 Los notebooks de Jupyter juegan un papel fundamental en el **flujo de trabajo exploratorio**, ya que transforman la programación en un ciclo interactivo de **"ejecución-exploración"**, en lugar del flujo tradicional de "editar-compilar-ejecutar". Actúan como un entorno de computación interactiva donde el pensamiento y la acción se funden en un mismo flujo, permitiendo al científico o analista actuar como un explorador.
 
+![](https://patricioaraneda.cl/informatica/assets/images/jupyternotebooks-1f948a5ca64a46c02d915b72026fb2b5.jpg)
+
 A continuación se detallan sus funciones principales en este flujo:
 
 ### Inspección y verificación paso a paso

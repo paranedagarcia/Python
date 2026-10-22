@@ -5,8 +5,8 @@ sidebar_label: "🖥️ Tuplas vs Listas"
 description: "Similitudes y diferencias claves"
 ---
 
-:::info[Codigo:]
-- https://drive.google.com/file/d/12SFe-OU-creS-Ka1y66z8yAdW2hkhE4n
+:::info[🖥️ Código:]
+[![](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/18YvYwnbdqvctzXcsWZDvZ_wQpKU0kE_r?usp=sharing)
 :::
 ### Similitudes y Diferencias Clave
 

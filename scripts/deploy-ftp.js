@@ -93,6 +93,12 @@ async function connectClient(client) {
     }
 
     client.close()
+    if (resolveSecureMode(FTP_SECURE_RAW) === false) {
+      console.warn('Server rejected cleartext FTP. Retrying with explicit FTPS.')
+      await client.access(buildAccessOptions({ secure: true }))
+      return
+    }
+
     console.warn('Explicit FTPS was rejected by the server. Retrying with implicit FTPS.')
     await client.access(
       buildAccessOptions({
