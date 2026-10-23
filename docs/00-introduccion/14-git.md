@@ -102,6 +102,17 @@ Independientemente del sistema operativo, para verificar que Git se haya instala
 git --version
 ```
 
+### Primer paso: usuario
+
+El primer paso es establecer el nombre de usuario y un correo elctrónico. Todos los **commits** que se realicen utilizarán esta iformación si se define globalmente.
+```bash
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+```
+Al definir con la opción `--global` solo se requiere hacerlo una sola vez, ya que git usará esta información para todos los commits que se realicen. Si se desea establecer nombre y correo diferente para algún proyecto se debe repetir estos comandos en el proyecto sin la opción `--global`.
+
+
+
 ## **Comandos básicos**
 
 - `git init`: Inicializa un nuevo repositorio Git en el directorio actual.
