@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Cuestionario sobre Abstracción en Python",
+  "quizSynopsis": "Evaluación de 10 preguntas acerca de los conceptos de Abstracción, Clases Base Abstractas (ABCs), Duck Typing, __subclasshook__ y el decorador @property.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿En qué consiste fundamentalmente el concepto de abstracción en la Programación Orientada a Objetos según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "En separar una interfaz pública limpia de los detalles internos de implementación, permitiendo interactuar con el código al nivel adecuado e ignorando complejidades irrelevantes.",
+        "En obligar a que todas las variables de una clase sean privadas usando un doble guion bajo inicial (__).",
+        "En duplicar el código de los métodos en todas las subclases para evitar el uso de la herencia.",
+        "En convertir automáticamente todos los métodos de una clase en funciones estáticas."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La abstracción consiste en el proceso de separar una interfaz pública limpia de los detalles internos de implementación, permitiendo interactuar con el código al nivel de detalle más adecuado y omitiendo las complejidades irrelevantes.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué ocurre si se intenta instanciar directamente una Clase Base Abstracta (ABC) o una subclase concreta que no ha implementado todos sus métodos abstractos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Python crea el objeto asignando el valor None a los métodos no implementados.",
+        "Lanza automáticamente una excepción de tipo TypeError en tiempo de ejecución.",
+        "Se genera un bucle infinito que agota la memoria del sistema.",
+        "El objeto se instancía normalmente pero muestra una advertencia (Warning) en la consola."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Las clases abstractas actúan como plantillas y no se pueden instanciar directamente. Intentar instanciar una ABC o una subclase que omita la implementación de algún método abstracto provoca un TypeError automáticamente en Python.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la función del decorador @abstractmethod dentro de una Clase Base Abstracta?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Convertir el método en una propiedad de solo lectura de forma automática.",
+        "Actuar como un marcador de posición (placeholder) que declara la obligación de que cualquier subclase no abstracta implemente dicho método.",
+        "Ocultar el método para que no sea accesible desde fuera del módulo abc.",
+        "Ejecutar el método en un hilo secundario antes de llamar al constructor __init__."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Los métodos abstractos utilizan el decorador @abstractmethod para actuar como marcadores de posición (placeholders) que exigen que el método exista obligatoriamente en cualquier subclase no abstracta.",
+      "point": "10"
+    },
+    {
+      "question": "Según la tabla comparativa del documento, ¿cuál es la diferencia principal en el momento de validación entre Duck Typing y las ABCs?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Duck Typing valida en tiempo de compilación, mientras que las ABCs validan en tiempo de ejecución.",
+        "Duck Typing valida en la instanciación del objeto, mientras que las ABCs nunca realizan validaciones.",
+        "Duck Typing valida en el momento de la ejecución (al intentar invocar un método inexistente), mientras que las ABCs validan en el momento de la instanciación (al crear el objeto).",
+        "Ambos enfoques realizan la validación únicamente mediante análisis estático con herramientas externas."
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Duck Typing valida de forma dinámica en tiempo de ejecución (falla al invocar un método inexistente), mientras que las ABCs validan en el momento de la instanciación, impidiendo crear la instancia si no se han implementado todos los métodos abstractos.",
+      "point": "10"
+    },
+    {
+      "question": "¿Para qué se utiliza el método especial __subclasshook__ dentro de una Clase Base Abstracta?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Para obligar a que la subclase herede explícitamente de múltiples superclases.",
+        "Para programar lógica que permite a funciones como isinstance() o issubclass() reconocer a un objeto como miembro de la ABC sin necesidad de que herede formalmente de ella.",
+        "Para eliminar los métodos abstractos de la memoria al finalizar el programa.",
+        "Para convertir atributos protegidos en atributos públicos automáticamente."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El método __subclasshook__ permite fusionar la formalidad de las ABCs con el dinamismo del Duck Typing, evaluando la estructura interna del objeto para que isinstance() o issubclass() lo reconozcan sin requerir herencia formal.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la ventaja de utilizar el decorador @property para el encapsulamiento en Python en lugar de métodos getter y setter tradicionales?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Permite comenzar exponiendo atributos públicos simples y luego agregar validaciones o lógica interna sin alterar la interfaz pública (objeto.atributo) ni romper el código cliente.",
+        "Aumenta la velocidad de ejecución de las operaciones matemáticas de la clase.",
+        "Evita que Python requiera el parámetro self dentro de los métodos de la clase.",
+        "Garantiza que la clase pueda instanciar objetos abstractos sin importar el módulo abc."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La convención recomendada en Python es empezar exponiendo atributos públicos simples y, si más adelante se requiere validación o lógica interna, envolverlos con @property sin modificar la sintaxis de acceso objeto.atributo existente.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo se define un atributo de solo lectura (Read-Only) utilizando el decorador @property?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Definiendo un método decorado con @property y omitiendo la definición de un método setter (@<nombre>.setter).",
+        "Agregando el decorador @abstractmethod sobre el constructor __init__.",
+        "Asignando la variable directamente a la clase base ABC.",
+        "Declarando el atributo dentro de un bloque try-except con TypeError."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Si se define un método decorado con @property pero no se define un método setter (@<nombre>.setter), Python impedirá que el usuario modifique el atributo desde fuera de la clase, lanzando un AttributeError si lo intenta.",
+      "point": "10"
+    },
+    {
+      "question": "En el patrón de validación con @property (Getter + Setter), ¿qué rol cumple la convención del guion bajo (ejemplo: _edad) y cuál el setter?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "_edad es el nombre público del atributo y el setter elimina la variable de la memoria.",
+        "_edad es el atributo subyacente protegido para almacenar el valor real, mientras que el setter intercepta la asignación para evaluar las reglas de validación.",
+        "_edad sirve para definir una constante global y el setter impide la instanciación.",
+        "_edad se utiliza para invocar métodos dunder y el setter reemplaza a la función super()."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Se utiliza un guion bajo por convención (_atributo) para almacenar el valor real internamente, y el método setter (@<nombre>.setter) intercepta cualquier intento de asignación para evaluar si los datos cumplen las reglas antes de modificar el atributo protegido.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué es un atributo calculado dinámicamente mediante @property y cuál es una de sus principales ventajas?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Es un atributo que se guarda en el disco duro y se borra al cerrar el programa.",
+        "Es un atributo que no se almacena fíjamente en la memoria del objeto, sino que se procesa en tiempo real al consultarse, evitando que la información quede desactualizada.",
+        "Es un método que requiere ser llamado obligatoriamente con paréntesis () en cada consulta.",
+        "Es una variable compartida por todas las subclases que impide el uso de la herencia."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Un atributo calculado dinámicamente no se almacena de forma fija en la memoria del objeto, sino que se procesa al vuelo (on the fly) cada vez que se consulta, garantizando datos siempre actualizados (como calcular la edad a partir de la fecha de nacimiento).",
+      "point": "10"
+    },
+    {
+      "question": "Respecto al rendimiento, ¿cuál es la recomendación de buena práctica para los cálculos dentro de un método decorado con @property?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Forzar la ejecución de procesos pesados dentro del getter de @property en cada lectura.",
+        "Procurar que los cálculos sean rápidos y livianos; si el proceso es costoso o requiere consultar bases de datos externas, usar un método tradicional o un decorador de caché.",
+        "Eliminar la clase abstracta y convertir todo el código a funciones globales.",
+        "Ejecutar el cálculo dentro del decorador @abstractmethod durante la instanciación."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Dado que el acceso a una propiedad parece una lectura simple de variable (objeto.propiedad), los cálculos deben ser rápidos y livianos. Si un cálculo requiere procesos pesados o consultas externas, se recomienda usar un método tradicional o aplicar caché (como @cached_property).",
+      "point": "10"
+    }
+  ]
+}

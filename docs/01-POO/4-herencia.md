@@ -505,3 +505,15 @@ Dentro del espectro de "unión de partes", se distinguen dos relaciones según l
 
     4.  Quieras adherirte al principio de diseño clásico de la ingeniería de software: **"Favorece la composición de objetos sobre la herencia de clases"**.
 
+
+---
+## 📝 **Test:** Herencia
+
+Antes de continuar, comprueba tus conocimientos.
+
+
+import QuizComponent from '@site/src/components/Quiz';
+import quiz from '@site/src/components/Quiz/data/poo-herencia.json';
+
+
+<QuizComponent quiz={quiz} showInstantFeedback />

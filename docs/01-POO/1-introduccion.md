@@ -941,3 +941,15 @@ f = Amigo(
 1. **Usa `super()` de forma consistente en toda la jerarquía:** Para que el despacho cooperativo funcione sin romper la cadena MRO, todas las subclases de la estructura deben usar `super()` en lugar de llamadas directas por nombre de clase.
 2. **Acepta `**kwargs` en los constructores:** Si las clases base reciben firmas de argumentos diferentes, pasa `**kwargs` hacia `super().__init__(**kwargs)` para que los argumentos fluyan sin interrupciones.
 3. **Inspecciona el MRO si hay dudas:** Si quieres verificar el orden exacto en que Python recorrerá las clases, puedes consultar el atributo especial `Clase.__mro__` o `objeto.__class__.__mro__` en la terminal.
+
+---
+## 📝 **Test:** Fundamentos
+
+Antes de continuar, comprueba tus conocimientos.
+
+
+import QuizComponent from '@site/src/components/Quiz';
+import quiz from '@site/src/components/Quiz/data/poo-fundamentos.json';
+
+
+<QuizComponent quiz={quiz} showInstantFeedback />

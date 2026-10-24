@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Cuestionario sobre Fundamentos de POO en Python",
+  "quizSynopsis": "Evaluación de 10 preguntas acerca de los conceptos centrales de la Programación Orientada a Objetos en Python: Clases, Objetos, __init__, self, Encapsulamiento, Herencia, Mixins, MRO y super().",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿Cómo se definen conceptualmente una 'clase' y un 'objeto' en la Programación Orientada a Objetos según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Una clase es un molde o plantilla que define atributos y comportamientos, mientras que un objeto es una instancia concreta creada a partir de esa clase.",
+        "Una clase es una variable global en memoria y un objeto es la función que la modifica.",
+        "Una clase es un archivo ejecutable de Python (.py) y un objeto es el módulo importado.",
+        "Una clase es un método especial dunder y un objeto es una función lambda."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La clase es la plantilla o plano general que define los atributos y métodos comunes de una categoría, mientras que el objeto (o instancia) es la realización concreta creada a partir de esa plantilla.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es el rol del método especial __init__ dentro de una clase en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Es el constructor o inicializador que Python ejecuta automáticamente al crear una nueva instancia para establecer sus valores iniciales.",
+        "Es un método encargado de eliminar el objeto de la memoria RAM una vez finalizado el programa.",
+        "Es una función opcional que convierte automáticamente todos los atributos en cadenas de texto.",
+        "Es un decorador que impide que la clase pueda heredarse en subclases derivadas."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El método __init__ se conoce como constructor o inicializador y es ejecutado automáticamente por el intérprete de Python al instanciar un objeto para configurar su estado y atributos iniciales.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué función cumple el parámetro obligatorio self en los métodos de una instancia?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Representa a la instancia específica que llama al método, permitiendo acceder a sus propios atributos y a otros métodos del objeto.",
+        "Es una variable global que conecta la clase con el módulo principal del sistema.",
+        "Indica al intérprete de Python que el método debe ejecutarse de forma asíncrona.",
+        "Es una constante del lenguaje que almacena la dirección de memoria de la superclase."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El parámetro self es el primer argumento obligatorio en los métodos de instancia y hace referencia a la instancia u objeto específico que está invocando el método.",
+      "point": "10"
+    },
+    {
+      "question": "¿Para qué sirve la función integrada isinstance(objeto, clase) en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Para verificar si un objeto determinado es una instancia de una clase específica, retornando True o False.",
+        "Para convertir un objeto en una instancia abstracta del módulo abc.",
+        "Para listar todos los atributos públicos y protegidos almacenados dentro de la clase.",
+        "Para forzar la reejecución inmediata del método constructor __init__."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La función isinstance() evalúa si un objeto pertenece a una clase determinada y devuelve True si es una instancia de esa clase o False en caso contrario.",
+      "point": "10"
+    },
+    {
+      "question": "¿De qué manera implementa Python el polimorfismo dinámico según se describe en el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Principalmente mediante Duck Typing ('si camina como un pato y grazna como un pato, entonces es un pato'), priorizando las capacidades del objeto sobre su clase o tipo estricto.",
+        "A través de la declaración estricta de tipos de datos en tiempo de compilación mediante palabras clave reservadas.",
+        "Mediante la sobrecarga estática obligatoria de métodos con el mismo nombre y distinta cantidad de argumentos.",
+        "Bloqueando la ejecución si dos objetos de clases distintas comparten el mismo nombre de método."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python, el polimorfismo opera a través de Duck Typing: no se exige una jerarquía rígida, sino que lo relevante es que el objeto disponga de los métodos y comportamientos esperados.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué ocurre internamente (Name Mangling) cuando un atributo se define con un doble guion bajo inicial (ejemplo: self.__balance)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Python aplica deformación de nombres (Name Mangling), renombrándolo internamente como _NombreClase__balance para restringir el acceso directo e inseguro desde fuera del objeto.",
+        "El atributo se convierte en una constante inmutable del sistema operativo que no puede modificarse nunca.",
+        "El intérprete borra el atributo de la memoria RAM inmediatamente después de finalizar la llamada al método __init__.",
+        "Se convierte automáticamente en un método estático accesible mediante el decorador @staticmethod."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Al anteponer un doble guion bajo (__), Python aplica Name Mangling para ofuscar el nombre del atributo, obligando a interactuar con el estado interno mediante métodos de control seguros.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué caracteriza al patrón de diseño denominado 'Mixin' en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Es una clase especializada diseñada para proveer métodos y funcionalidades reutilizables a otras clases mediante herencia múltiple, sin estar destinada a instanciarse autónomamente.",
+        "Es un objeto contenedor básico que solo almacena variables globales y no permite declarar métodos.",
+        "Es un método dunder que se ejecuta únicamente justo antes de liberar la memoria del objeto.",
+        "Es una estructura condicional que sustituye el uso de bloques if-else dentro de un bucle."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Un mixin es una clase de componente secundario que aporta comportamientos reutilizables a clases concretas mediante herencia múltiple, sin ser instanciada directamente.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo se define la Composición dentro de la Programación Orientada a Objetos según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Consiste en construir clases complejas utilizando instancias de otras clases como atributos, representando una relación del tipo 'tiene un' (has-a).",
+        "Es el mecanismo de adoptar automáticamente todos los atributos de una superclase representando una relación 'es un' (is-a).",
+        "Es la redefinición obligatoria de funciones abstractas utilizando el decorador @abstractmethod.",
+        "Es el proceso de compilar clases a bytecode para evitar la inspección de variables."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La composición modela relaciones de partes o componentes 'tiene un' (has-a), creando objetos complejos a partir de instancias de otras clases almacenadas dentro de sus atributos.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo se puede inspeccionar el orden de búsqueda del Method Resolution Order (MRO) de una clase en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Consultando el atributo especial Clase.__mro__ (tupla) o llamando al método Clase.mro() (lista).",
+        "Mediante la función global inspect.get_mro_tree(Clase).",
+        "Invocando la función isinstance(Clase, MRO) desde el módulo sys.",
+        "Imprimiendo el resultado devuelto por la llamada super().__mro__ en la terminal."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El orden exacto de resolución de métodos calculado por el algoritmo C3 se almacena en el atributo `Clase.__mro__` y se puede obtener llamando a `Clase.mro()`.",
+      "point": "10"
+    },
+    {
+      "question": "Respecto a la función super(), ¿cuál es su comportamiento real frente al MRO según se detalla en el texto?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Retorna un objeto proxy que busca el método en el siguiente nodo de la lista linealizada del MRO del objeto original (self.__class__.__mro__).",
+        "Se limita estrictamente a ejecutar la clase base implícita object ignorando cualquier superclase intermedia.",
+        "Busca métodos únicamente en la primera clase declarada a la derecha en la herencia simple.",
+        "Elimina las variables locales de la subclase actual para reiniciar el constructor."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La función super() no solo busca en el padre directo, sino que devuelve un proxy que localiza la clase en ejecución dentro del MRO del objeto y delega la llamada al siguiente nodo en la cadena.",
+      "point": "10"
+    }
+  ]
+}

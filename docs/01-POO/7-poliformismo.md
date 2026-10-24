@@ -69,3 +69,15 @@ def __call__(self, x):
 
 En resumen, la herencia permite que la clase `Parabola` sea mucho más pequeña y fácil de mantener, ya que solo contiene el código que la hace diferente de una línea recta.
 
+
+---
+## 📝 **Test:** Polimorfismo
+
+Antes de continuar, comprueba tus conocimientos.
+
+
+import QuizComponent from '@site/src/components/Quiz';
+import quiz from '@site/src/components/Quiz/data/poo-polimorfismo.json';
+
+
+<QuizComponent quiz={quiz} showInstantFeedback />

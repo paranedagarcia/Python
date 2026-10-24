@@ -249,9 +249,6 @@ Ejemplo de herencia múltiple y el MRO.
 💡 ¿Te gustaría que exploremos la eliminación de atributos con `@deleter` o prefieres ver cómo usar `@cached_property` de `functools` para almacenar en caché resultados costosos?
 
 
-¿Cómo se usa @property para validar datos?
-¿Cuál es la diferencia entre @property y un método normal?
-Dame un ejemplo de atributo de solo lectura.
 
 ¿Cómo se implementan los métodos de clase en Python?
 ¿Qué diferencia hay entre un método estático y uno de clase?

@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Métodos Dunder en Python",
+  "quizSynopsis": "Evaluación acerca de conceptos, funciones integradas, representación de objetos y sobrecarga de operadores con Métodos Dunder.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿De dónde proviene el término 'dunder' en Python y qué otro nombre reciben estos métodos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "De 'double underscore' (doble guion bajo), también conocidos como métodos especiales o métodos mágicos.",
+        "De 'dynamic under', también conocidos como métodos estáticos o decoradores.",
+        "De 'data underflow', también conocidos como funciones globales anónimas.",
+        "De 'double dictionary', también conocidos como atributos privados de módulo."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El término 'dunder' deriva del inglés 'double underscore' (doble guion bajo), y a estas funciones también se les conoce como métodos mágicos o métodos especiales [1].",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la principal recomendación respecto a la creación de nombres de métodos personalizados con la convención dunder (ejemplo: __mi_metodo__)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Se debe usar libremente para cualquier método privado de una clase.",
+        "Es obligatorio utilizarlos para definir métodos de ayuda internos (helper methods).",
+        "Nunca se deben inventar nombres propios con esta convención, ya que están reservados para el núcleo de Python.",
+        "Deben usarse únicamente si la clase hereda explícitamente de la clase ABC."
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La regla de uso establece que nunca se deben inventar nombres propios rodeados de doble guion bajo, ya que están reservados para el núcleo de Python y podrían provocar conflictos en versiones futuras [2].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué diferencia principal existe entre los métodos __str__ y __repr__ en cuanto a su propósito y audiencia?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__str__ se usa para depuración técnica, mientras que __repr__ muestra texto para el usuario final.",
+        "__str__ está pensado para el usuario final (informal y legible), mientras que __repr__ está orientado al desarrollador y la depuración (técnico y formal).",
+        "__str__ se llama automáticamente dentro de listas, mientras que __repr__ se llama únicamente con la función print().",
+        "__str__ requiere el parámetro cls, mientras que __repr__ no recibe ningún parámetro."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "__str__ define una representación informal y legible para el usuario final, mientras que __repr__ genera una representación técnica y detallada orientada al desarrollador y las tareas de depuración [3, 4].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué ocurre cuando se imprime una colección de objetos (por ejemplo, print([prod1, prod2])) en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Lanza una excepción de tipo AttributeError en tiempo de ejecución.",
+        "Python ignora el método __str__ y llama automáticamente al método __repr__ para representar cada elemento dentro del contenedor.",
+        "Muestra una advertencia (Warning) y convierte todos los objetos a diccionarios.",
+        "Ejecuta automáticamente el método __init__ de cada objeto."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Al visualizar objetos dentro de contenedores como listas, diccionarios o tuplas, Python siempre invoca el método __repr__ de cada elemento interno e ignora el método __str__ [5, 6].",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la función del método dunder __new__(cls, ...) y en qué se diferencia de __init__(self, ...)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__new__ destruye el objeto en memoria, mientras que __init__ lo modifica.",
+        "__new__ convierte la instancia en una función invocable mediante paréntesis.",
+        "__new__ se encarga de construir y devolver la instancia del objeto antes de que se ejecute __init__.",
+        "__new__ se ejecuta al finalizar la sentencia with, mientras que __init__ se ejecuta al iniciarla."
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "__new__ se encarga de construir y devolver la instancia físicamente antes de que se llame a __init__, utilizándose en casos avanzados como la creación de singletons o metaclases [3].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué método dunder permite que una instancia de una clase personalizada se pueda invocar como si fuera una función (ejemplo: objeto())?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__init__",
+        "__call__",
+        "__getitem__",
+        "__enter__"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El método __call__(self, ...) permite que una instancia de clase se comporte y sea llamada como una función mediante el uso de paréntesis [7, 8].",
+      "point": "10"
+    },
+    {
+      "question": "Para permitir que un objeto personalizado admita la sintaxis de acceso por corchetes e índice (ejemplo: objeto[i]), ¿qué método dunder se debe implementar?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__contains__",
+        "__len__",
+        "__getitem__",
+        "__setitem__"
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El método dunder __getitem__(self, key) habilita el acceso a los elementos internos de un objeto utilizando índices o corchetes [7, 9].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué sucede si solo se implementa el método __repr__ en una clase y no se define __str__ cuando se ejecuta print(objeto)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Ocurre un error de sintaxis al no encontrar el método __str__.",
+        "Python utiliza __repr__ como mecanismo de reserva (fallback) para mostrar la representación del objeto.",
+        "El programa imprime únicamente la dirección de memoria hexadecimal.",
+        "Python convierte el objeto a un número entero mediante __hash__."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Si una clase no define __str__, Python recurre a __repr__ como mecanismo de reserva (fallback) cuando se llama a print() o str() [4].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué métodos dunder constituyen la base de los administradores de contexto en Python al utilizar la sentencia with?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__add__ y __sub__",
+        "__enter__ y __exit__",
+        "__str__ y __repr__",
+        "__len__ y __getitem__"
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Los métodos __enter__ y __exit__ son los pilares del protocolo de administración de contexto y se ejecutan automáticamente al ingresar y salir de un bloque with [8].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué método dunder se encarga de definir la sobrecarga del operador de igualdad (==) entre dos objetos de una clase personalizada?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "__eq__",
+        "__ne__",
+        "__same__",
+        "__match__"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El método dunder __eq__(self, otro) define la lógica de comparación de igualdad cuando se utiliza el operador == entre dos instancias [9].",
+      "point": "10"
+    }
+  ]
+}

@@ -16,6 +16,11 @@ Estos métodos constituyen un **protocolo** que determina cómo responde el leng
 *   **Sobrecarga de operadores:** Gracias a ellos, es posible definir el comportamiento de operadores como `+`, `-`, `*` o `==` para clases personalizadas.
 *   **Nomenclatura reservada:** La convención de los dos guiones bajos ayuda a evitar conflictos entre los nombres de métodos predeterminados de Python y los definidos por el programador.
 
+:::danger[alerta]
+**Nunca se deben inventar nombres propios** que sigan esta convención de doble guion bajo (como `__mi_metodo__`). Estos nombres están reservados para el núcleo de Python, y crear uno nuevo podría causar errores si en versiones futuras del lenguaje se introduce un método oficial con ese mismo nombre.
+:::
+
+
 ### Ejemplos comunes y su funcionamiento
 | Método | Acción que lo invoca | Propósito |
 | :--- | :--- | :--- |
@@ -27,9 +32,36 @@ Estos métodos constituyen un **protocolo** que determina cómo responde el leng
 | `__getitem__` | `objeto[indice]` | Permite el acceso a elementos mediante índices o corchetes. |
 | `__call__` | `objeto()` | Permite que una instancia se comporte y sea llamada como una función. |
 
-### Recomendaciones de uso
-**Nunca se deben inventar nombres propios** que sigan esta convención de doble guion bajo (como `__mi_metodo__`). Estos nombres están reservados para el núcleo de Python, y crear uno nuevo podría causar errores si en versiones futuras del lenguaje se introduce un método oficial con ese mismo nombre.
+Cómo se implementarn algunos de los métodos dunder más comunes dentro de una clase personalizada:
 
+```python showLineNumbers
+class Producto:
+    # 1. Constructor: se ejecuta al crear una instancia [12, 13]
+    def __init__(self, nombre: str, precio: float):
+        self.nombre = nombre
+        self.precio = precio
+
+    # 2. Representación legible para el usuario final (usado por print() y str()) [14]
+    def __str__(self) -> str:
+        return f"{self.nombre} (${self.precio:.2f})"
+
+    # 3. Representación técnica para desarrolladores e inspección en listas [10, 15]
+    def __repr__(self) -> str:
+        return f"Producto(nombre={self.nombre!r}, precio={self.precio})"
+
+    # 4. Sobrecarga del operador (+) para sumar el precio de dos productos [9, 16]
+    def __add__(self, otro: "Producto") -> float:
+        return self.precio + otro.precio
+
+
+# --- Uso en código ---
+p1 = Producto("Teclado", 25.0)
+p2 = Producto("Mouse", 15.0)
+
+print(p1)          # Invoca __str__: Teclado ($25.00)
+print([p1, p2])    # Invoca __repr__ dentro de listas [15]
+total = p1 + p2    # Invoca __add__: 40.0
+```
 
 A continuación se detallan los más utilizados:
 
@@ -70,6 +102,10 @@ class Estudiante:
 est = Estudiante("Ana", "Ingeniería")
 print(est)  # Muestra la dirección de memoria: <__main__.Estudiante object at 0x7f9a...>
 ```
+```raw
+resultado:
+<__main__.Estudiante object at 0x7fcf733538c0>
+```
 
 **Con `__str__` implementado:**
 ```python showLineNumbers
@@ -83,6 +119,10 @@ class Estudiante:
 
 est = Estudiante("Ana", "Ingeniería")
 print(est)  # Muestra: Estudiante: Ana | Carrera: Ingeniería
+```
+```raw
+resultado:
+Estudiante: Ana | Carrera: Ingeniería
 ```
 
 
@@ -145,6 +185,11 @@ print(f"{p1=}")
 inventario = [p1, p2]
 print(inventario)  
 # Salida: [Producto(nombre='Monitor 4K', precio=350.0), Producto(nombre='Teclado Mecánico', precio=80.0)]
+```
+```raw
+resultado:
+p1=Producto(nombre='Monitor 4K', precio=350.0)
+[Producto(nombre='Monitor 4K', precio=350.0), Producto(nombre='Teclado Mecánico', precio=80.0)]
 ```
 
 La regla de oro en Python para decidir entre ambos métodos es: **`__repr__` está pensado para desarrolladores**, mientras que **`__str__` está pensado para el usuario final**.
@@ -258,3 +303,14 @@ class MiClase:
 ### 4. Sobrecarga y Protocolos
 Definir estos métodos es, en esencia, **sobrescribir** comportamientos predeterminados. Python utiliza estos métodos para implementar "protocolos"; por ejemplo, si tu clase define `__len__`, Python la reconoce como una colección que puede ser medida con la función `len()`.
 
+---
+## 📝 **Test:** Dunder
+
+Antes de continuar, comprueba tus conocimientos.
+
+
+import QuizComponent from '@site/src/components/Quiz';
+import quiz from '@site/src/components/Quiz/data/poo-dunder.json';
+
+
+<QuizComponent quiz={quiz} showInstantFeedback />

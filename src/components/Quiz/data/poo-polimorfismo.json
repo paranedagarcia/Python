@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Cuestionario sobre Polimorfismo en Python",
+  "quizSynopsis": "Evaluación de 10 preguntas sobre el principio de Polimorfismo, Duck Typing, Sobrecarga de Operadores, singledispatch y Protocolos en Python.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿En qué consiste fundamentalmente el principio de Polimorfismo en Programación Orientada a Objetos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "En la capacidad de objetos de distintas clases de responder al mismo mensaje o nombre de método con sus propias implementaciones específicas.",
+        "En obligar a que todos los métodos de una clase compartan el mismo nombre de variable interna.",
+        "En prevenir que una subclase herede los atributos y métodos de su clase padre.",
+        "En compilar el código fuente a código máquina de forma estática antes de ejecutar el programa."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El polimorfismo permite que objetos de diferentes clases expongan una misma interfaz o nombre de método, ejecutando cada uno el comportamiento correspondiente a su propia naturaleza.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es el mecanismo principal mediante el cual Python implementa el polimorfismo de forma dinámica?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Sobrecarga estática de métodos basada en la firma de tipos de argumentos al estilo de C++.",
+        "Duck Typing ('tipado de pato'), priorizando las capacidades y métodos del objeto sobre su clase o jerarquía estricta.",
+        "Declaración explícita y obligatoria de interfaces abstractas mediante la metaclase ABC.",
+        "Comprobación rígida de tipos en tiempo de compilación."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python el polimorfismo opera a través de Duck Typing: no importa la clase a la que pertenece un objeto, sino que este disponga de los métodos y comportamientos esperados en el contexto.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué frase célebre resume la filosofía del Duck Typing aplicada al polimorfismo en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "\"Si camina como un pato y grazna como un pato, entonces es un pato.\"",
+        "\"Toda clase debe heredar obligatoriamente de una superclase común.\"",
+        "\"Es mejor prevenir errores en tiempo de compilación que pedir perdón en ejecución.\"",
+        "\"Los tipos de datos de los argumentos deben declararse explícitamente en la firma del método.\""
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La máxima del Duck Typing establece que si un objeto se comporta y responde como se requiere en un contexto determinado ('camina y grazna como un pato'), se trata como tal sin exigir verificaciones de tipo rígidas.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo se manifiesta el polimorfismo a través de la herencia en una jerarquía de clases?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Al redefinir o sobrescribir un método heredado de la superclase para adaptar la lógica al comportamiento particular de cada subclase.",
+        "Al forzar que todas las subclases tengan exactamente el mismo constructor __init__ sin parámetros.",
+        "Al eliminar los métodos heredados para ahorrar memoria en el intérprete de CPython.",
+        "Al impedir que las subclases utilicen la función super() para llamar a la superclase."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "A través de la herencia, las subclases pueden sobrescribir métodos de la clase padre (polimorfismo por sobrescritura), ofreciendo una implementación especializada para el mismo método.",
+      "point": "10"
+    },
+    {
+      "question": "La sobrecarga de operadores (por ejemplo, que '+' sume números o concatene listas) es una forma de polimorfismo. ¿Cómo se define en clases personalizadas?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Implementando métodos especiales o dunder (como __add__, __sub__, __mul__) dentro de la clase.",
+        "Utilizando el decorador @staticmethod sobre el método constructor __init__.",
+        "Modificando las variables de entorno del sistema operativo antes de instanciar la clase.",
+        "Encapsulando la operación dentro de un bloque try-except a nivel de módulo."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Los métodos dunder (como __add__ para el operador +) permiten dotar a las clases personalizadas de sobrecarga de operadores, adaptando la sintaxis del lenguaje a la clase propia.",
+      "point": "10"
+    },
+    {
+      "question": "¿Por qué Python NO soporta sobrecarga de funciones tradicional por firma de argumentos (mismo nombre de función con distintos tipos/cantidades de parámetros) en el mismo ámbito?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Porque al ser de tipado dinámico, la última definición de una función con un nombre dado sobrescribe en el espacio de nombres a cualquier definición anterior.",
+        "Porque la sintaxis de las funciones con def impide asignar valores por defecto.",
+        "Porque el módulo abc bloquea las funciones que reciben parámetros posicionales variables.",
+        "Porque los métodos dunder impiden la declaración de más de dos funciones por archivo."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python las funciones se asignan dinámicamente a nombres en el espacio de nombres de un módulo o clase; redefinir una función con el mismo nombre reemplaza la versión anterior.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué herramienta del módulo functools permite implementar una alternativa limpia a la sobrecarga de funciones desglosando la lógica según el tipo del primer argumento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "functools.singledispatch",
+        "functools.lru_cache",
+        "functools.partial",
+        "functools.wraps"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El decorador functools.singledispatch permite registrar múltiples implementaciones especializadas de una función para ejecutarlas dinámicamente según el tipo de dato que reciba su primer argumento.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo permite typing.Protocol (PEP 544) formalizar el polimorfismo basado en Duck Typing sin exigir herencia explícita?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Define interfaces implícitas o contratos de subtipeado estructural que verificadores estáticos como mypy pueden validar antes de la ejecución.",
+        "Convierte automáticamente el código Python a C++ compilado en tiempo de ejecución.",
+        "Elimina las comprobaciones de atributos e inhabilita las funciones isinstance().",
+        "Obliga a que las clases hereden obligatoriamente de la clase base collections.abc.Container."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "typing.Protocol formaliza el Duck Typing permitiendo definir interfaces conceptuales que se verifican de forma estática (subtipeado estructural), sin acoplar las clases mediante herencia explícita.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es una de las principales ventajas del diseño polimórfico en la arquitectura de software?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Permite escribir código cliente desacoplado e intercambiable que interactúa con interfaces comunes, facilitando extender el sistema sin modificar el código existente.",
+        "Elimina la necesidad de inicializar los atributos dentro del método constructor __init__.",
+        "Garantiza que todas las instancias de distintas clases ocupen el mismo espacio exacto en memoria RAM.",
+        "Impide que los métodos de una clase puedan aceptar argumentos nombrados (**kwargs)."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El polimorfismo favorece el bajo acoplamiento y la extensibilidad: el código cliente invoca una interfaz conocida y cada objeto responde según su propia lógica sin requerir condicionales rígidos.",
+      "point": "10"
+    },
+    {
+      "question": "En un bucle que recorre una lista de figuras heterogéneas [circulo, rectangulo, triangulo] ejecutando figura.calcular_area(), ¿qué sucede tras bambalinas gracias al polimorfismo?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Cada objeto resuelve y ejecuta su propio método calcular_area() de forma transparente, sin que el bucle necesite comprobar el tipo específico de cada elemento.",
+        "Se genera un error TypeError por intentar procesar clases distintas dentro de una misma lista.",
+        "Python ejecuta únicamente el método del primer elemento y replica ese resultado para los demás.",
+        "El intérprete convierte automáticamente todas las figuras a tipos de datos numéricos flotantes antes de llamar al método."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Gracias al polimorfismo, la llamada figura.calcular_area() se resuelve dinámicamente en tiempo de ejecución invocando la versión concreta del método que corresponde al objeto actual.",
+      "point": "10"
+    }
+  ]
+}

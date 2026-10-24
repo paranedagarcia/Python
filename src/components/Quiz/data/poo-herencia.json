@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Cuestionario sobre Herencia en Python",
+  "quizSynopsis": "Evaluación de 10 preguntas sobre los conceptos de herencia simple, el uso de super(), herencia múltiple, MRO, el problema del diamante y la comparación entre herencia y composición.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿Cómo se define conceptualmente la herencia en Python según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Es un mecanismo que permite crear una clase derivada (subclase) basándose en una clase base (superclase), adoptando sus atributos y métodos automáticamente [1].",
+        "Es un método para convertir atributos privados en públicos mediante funciones estáticas.",
+        "Es un decorador que impide que una clase se instancie directamente en memoria.",
+        "Es la capacidad de ejecutar múltiples procesos en paralelo sin necesidad de bucles."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La herencia permite crear una subclase que adopta los atributos y métodos de la superclase para facilitar la reutilización de código y evitar la redundancia [1].",
+      "point": "10"
+    },
+    {
+      "question": "En el ejemplo de CocheElectrico que hereda de Vehiculo, ¿cuál es la sintaxis correcta para declarar la jerarquía?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "class CocheElectrico(Vehiculo): [2]",
+        "class CocheElectrico extends Vehiculo:",
+        "class CocheElectrico -> Vehiculo:",
+        "class CocheElectrico(super.Vehiculo):"
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Para indicar que una clase hereda de otra en Python, se coloca el nombre de la clase base entre paréntesis al definir la subclase [2].",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la función del método super() dentro del constructor de una subclase?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Invocar únicamente los métodos de la clase object ignorando las clases intermedias.",
+        "Permitir acceder y llamar a los métodos de la clase padre para inicializar los atributos comunes de forma limpia [2, 3].",
+        "Borrar los atributos heredados de la memoria para ahorrar espacio.",
+        "Convertir los métodos de la clase derivada en funciones estáticas."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La función super() actúa como un delegado para ejecutar el constructor o métodos de la superclase, evitando duplicar código de inicialización [2, 3].",
+      "point": "10"
+    },
+    {
+      "question": "Al realizar la llamada super().__init__(marca, modelo) en Python, ¿cuál de las siguientes afirmaciones respecto al argumento self es correcta?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Es obligatorio pasar self como primer argumento: super().__init__(self, marca, modelo).",
+        "No se debe pasar el argumento self manualmente, ya que Python lo asocia e inyecta implícitamente [4].",
+        "Debe pasarse self únicamente si la superclase hereda de ABC.",
+        "self debe ser reemplazado por la palabra clave cls."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "A diferencia de la llamada explícita por nombre de clase (Padre.__init__(self, ...)), al usar super() Python inyecta e implícitamente asocia el argumento self [4].",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es una de las principales ventajas de usar super() frente a llamadas explícitas por nombre de clase (ej. Vehiculo.__init__(self, ...))?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Evita el 'hardcoding' desacoplando el código, de modo que si cambia el nombre de la clase base no se requiere modificar las llamadas internas en las subclases [5].",
+        "Desactiva la comprobación de tipos dinámicos de Python.",
+        "Obliga a que la subclase sea tratada obligatoriamente como un Mixin.",
+        "Aumenta la velocidad de ejecución de los bucles en la consola."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El uso de super() evita el acoplamiento rígido de nombres (hardcoding) y además resulta imprescindible para la cooperación en esquemas de herencia múltiple mediante el MRO [5, 6].",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué es un 'Mixin' en el contexto de la herencia múltiple según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Una superclase principal que contiene todos los atributos del sistema de forma pública.",
+        "Una clase diseñada para proveer una funcionalidad o comportamiento auxiliar específico a otras clases, sin estar pensada para instanciarse por sí sola [7].",
+        "Un método dunder que se ejecuta únicamente antes del recolector de basura.",
+        "Un error de ejecución que ocurre cuando dos clases tienen constructores incompatibles."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Un Mixin es una clase auxiliar que aporta capacidades específicas (como enviar correos o serializar datos) mediante herencia múltiple sin ser instanciada directamente [7].",
+      "point": "10"
+    },
+    {
+      "question": "Si la clase Cocodrilo hereda en el orden class Cocodrilo(Terrestre, Acuatico): y ambas definen el método desplazar(), ¿cuál método prevalece al invocar Cocodrilo().desplazar() y por qué?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Prevalece el de Acuatico porque las superclases de la derecha tienen prioridad.",
+        "Lanza un error de ambigüedad TypeError por conflicto de nombres.",
+        "Prevalece el de Terrestre porque la búsqueda MRO se realiza de izquierda a derecha en la declaración de la subclase [8, 9].",
+        "Combina ambos métodos imprimiendo los dos resultados."
+      ],
+      "correctAnswer": "3",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El algoritmo MRO de Python (C3) busca los atributos de izquierda a derecha. Al declarar Terrestre primero, su versión del método tiene prioridad sobre la de Acuatico [8, 9].",
+      "point": "10"
+    },
+    {
+      "question": "¿En qué consiste el 'problema del diamante' en herencia múltiple y cómo se resuelve de forma cooperativa?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Ocurre cuando dos clases no heredan de object, y se resuelve usando decoradores.",
+        "Ocurre cuando una subclase hereda de dos padres que comparten un ancestro común; si los constructores se llaman manualmente por nombre, el ancestro común se inicializa dos veces. Se resuelve usando super().__init__(**kwargs) [9, 10].",
+        "Ocurre al utilizar propiedades con @property, y se soluciona eliminando el setter.",
+        "Ocurre al definir más de cuatro clases en un mismo archivo."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El problema del diamante causa la doble inicialización de ancestros comunes. Se soluciona utilizando super().__init__(**kwargs) de forma cooperativa para recorrer el MRO exactamente una vez [9, 10].",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la diferencia semántica central entre Herencia y Composición según el documento?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "La herencia representa la relación 'Tiene-Un' (Has-A), mientras que la composición representa 'Es-Un' (Is-A).",
+        "La herencia representa la relación 'Es-Un' (Is-A), mientras que la composición representa 'Tiene-Un' (Has-A) [11].",
+        "La herencia impide la reutilización de código, mientras que la composición la fuerza.",
+        "Ambos conceptos representan exactamente la misma relación semántica."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La herencia establece una relación semántica de tipo 'Es-Un' (ej. CocheElectrico es un Vehiculo), mientras que la composición establece una relación 'Tiene-Un' (ej. Coche tiene una Bateria) [11].",
+      "point": "10"
+    },
+    {
+      "question": "Según el análisis técnico expuesto en el documento, ¿cuándo es preferible elegir Composición frente a Herencia?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Cuando se desee evitar el acoplamiento fuerte y la rigidez de la herencia múltiple, o cuando se necesiten componentes dinámicos e intercambiables en tiempo de ejecución [12, 13].",
+        "Únicamente cuando las clases no incluyan métodos inicializadores __init__.",
+        "Cuando exista una jerarquía de clasificación estricta basada en el Principio de Sustitución de Liskov.",
+        "Cuando se necesite forzar la inicialización doble de las superclases."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La composición reduce el acoplamiento fuerte y permite cambiar o reasignar componentes internos en tiempo de ejecución con total flexibilidad [12, 13].",
+      "point": "10"
+    }
+  ]
+}

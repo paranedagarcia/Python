@@ -1,0 +1,167 @@
+{
+  "quizTitle": "Cuestionario sobre Encapsulamiento",
+  "quizSynopsis": "Evaluación acerca del principio de Encapsulamiento, niveles de acceso, Name Mangling y las buenas prácticas en Python.",
+  "nrOfQuestions": "10",
+  "questions": [
+    {
+      "question": "¿En qué consiste fundamentalmente el principio de Encapsulamiento en Programación Orientada a Objetos?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "En ocultar el estado interno y los detalles de implementación de un objeto, exponiendo únicamente una interfaz pública para interactuar con él.",
+        "En compilar el código de Python a lenguaje máquina para evitar que los usuarios lean los scripts.",
+        "En obligar a que todas las clases hereden de la clase base abstracta ABC.",
+        "En ejecutar todos los métodos de una clase dentro de administradores de contexto con la sentencia with."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El encapsulamiento empaqueta los datos y comportamientos de un objeto, protegiendo su estado interno y ofreciendo una interfaz controlada (métodos/propiedades) para evitar modificaciones accidentales o no autorizadas.",
+      "point": "10"
+    },
+    {
+      "question": "A diferencia de lenguajes como C++ o Java, ¿cómo gestiona Python los niveles de acceso (público, protegido, privado)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Utiliza las palabras clave estrictas public, protected y private respaldadas por el intérprete.",
+        "No utiliza palabras clave estrictas de restricción de acceso en tiempo de ejecución, sino que confía en convenciones de nomenclatura de nombres.",
+        "Bloquea el acceso a todas las variables que no estén decoradas con @staticmethod.",
+        "Genera un error de sintaxis si se intenta acceder a un atributo fuera del constructor __init__."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python no existen calificadores explícitos como private o protected. Se utilizan convenciones de nombres (como el guion bajo inicial) bajo la filosofía de 'todos somos adultos aquí' (We're all adults here).",
+      "point": "10"
+    },
+    {
+      "question": "Según la convención de nomenclatura en Python (PEP 8), ¿qué indica un atributo o método cuyo nombre comienza con un solo guion bajo (ejemplo: _saldo)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Que es un atributo público libremente modificable por cualquier usuario.",
+        "Que es un atributo o método de uso interno o protegido, advirtiendo que no forma parte de la API pública y no debería modificarse directamente desde fuera.",
+        "Que es una constante global inmutable del lenguaje.",
+        "Que el atributo se eliminará automáticamente cuando termine la función."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "El guion bajo inicial (_variable) es una convención de diseño que advierte a otros desarrolladores que el atributo forma parte de la implementación interna y no debe llamarse desde fuera de la clase, aunque el intérprete no lo bloquee técnicamente.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué mecanismo activa Python cuando un atributo o método se declara con doble guion bajo inicial (ejemplo: __saldo)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Descriptores de evaluación diferida (Lazy Evaluation).",
+        "Ofuscación / deformación de nombres (Name Mangling).",
+        "Herencia múltiple cooperativa mediante super().",
+        "Conversión automática a atributo calculado dinámicamente."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Al anteponer dos guiones bajos (__atributo), Python activa el mecanismo de Name Mangling, renombrando el atributo internamente a _NombreClase__atributo para prevenir colisiones accidentales de nombres en la herencia.",
+      "point": "10"
+    },
+    {
+      "question": "¿Es imposible acceder desde fuera de la clase a un atributo privado que utiliza Name Mangling (ejemplo: self.__saldo)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Sí, es 100% imposible porque Python cifra la variable en la memoria RAM.",
+        "No, sigue siendo accesible mediante el nombre deformado por Name Mangling (objeto._NombreClase__saldo).",
+        "Sí, a menos que la clase herede explícitamente de Dict.",
+        "No, pero solo se puede leer en sistemas operativos Linux."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Name Mangling hace más incómodo el acceso externo pero no lo imposibilita. Usando la sintaxis objeto._NombreClase__atributo es posible acceder al valor, demostrando que Python prioriza las convenciones sobre las restricciones rígidas.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cuál es la frase célebre que resume la filosofía de Python respecto al encapsulamiento y las restricciones de acceso estrictas?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "\"Todo código debe ser privado por defecto.\"",
+        "\"Todos somos adultos aquí\" (We're all adults here).",
+        "\"Los datos no se deben tocar jamás.\"",
+        "\"La seguridad prevalece sobre la sintaxis.\""
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "La frase 'We're all adults here' es la piedra angular del diseño de Python en POO, asumiendo que los programadores respetarán las convenciones de nomenclatura (como _variable) sin necesidad de que el lenguaje imponga barreras estrictas.",
+      "point": "10"
+    },
+    {
+      "question": "¿Por qué escribir explícitamente métodos getter y setter tradicionales (ejemplo: get_saldo() y set_saldo()) desde el inicio se considera un anti-patrón en Python?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Porque ralentiza en un 50% la velocidad de procesamiento del intérprete.",
+        "Porque sobre-encapsula la clase de forma innecesaria; la práctica pythonica es empezar con atributos públicos simples y usar @property solo cuando se requieran validaciones.",
+        "Porque los métodos getter no pueden retornar valores flotantes ni enteros.",
+        "Porque impide que las clases puedan heredarse mediante la sintaxis class SubClase(Base):."
+      ],
+      "correctAnswer": "2",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "En Python no se recomienda llenar las clases preventivamente con get_x() y set_x(). Es preferible exponer el atributo directamente (self.x) y, si en el futuro se necesita validación, envolverlo con @property sin alterar el código cliente.",
+      "point": "10"
+    },
+    {
+      "question": "¿Cómo contribuye el uso de @property al encapsulamiento sin romper el código cliente existente?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Permite reemplazar atributos públicos por métodos validados manteniendo la sintaxis de acceso como atributo (objeto.atributo), sin modificar la interfaz externa.",
+        "Convierte automáticamente la clase en un módulo ejecutable desde la línea de comandos.",
+        "Duplica el estado interno de la memoria para que las subclases no puedan leerlo.",
+        "Elimina la necesidad de usar el método constructor __init__."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Gracias a @property, se puede transformar un atributo simple en un método interceptado con getters y setters sin cambiar la forma en que los usuarios leen o asignan valores (objeto.atributo = valor), preservando la compatibilidad retroactiva.",
+      "point": "10"
+    },
+    {
+      "question": "En un diseño bancario con la clase Account, ¿cuál es el beneficio principal de encapsular la variable __balance detrás de los métodos deposit() y withdraw()?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "Garantiza que el saldo solo se altere mediante reglas de negocio válidas (evitando depósitos negativos o sobregiros no permitidos).",
+        "Hace que el saldo de la cuenta se guarde automáticamente en una base de datos SQL.",
+        "Impide que se puedan crear más de dos cuentas bancarias en un mismo programa.",
+        "Permite que la clase Account funcione sin necesitar el parámetro self."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "Al encapsular el saldo detrás de métodos de control, estos actúan como 'guardias de seguridad', verificando que las reglas de negocio (monto mayor a cero, fondos suficientes) se cumplan estrictamente antes de modificar el estado interno.",
+      "point": "10"
+    },
+    {
+      "question": "¿Qué diferencia existe en el propósito principal entre un atributo público (self.datos), un atributo protegido (self._datos) y uno pseudo-privado (self.__datos)?",
+      "questionType": "text",
+      "answerSelectionType": "single",
+      "answers": [
+        "self.datos forma la API pública oficial; self._datos indica uso interno por convención; self.__datos usa Name Mangling para prevenir colisiones en la herencia.",
+        "self.datos es de solo lectura; self._datos es de solo escritura; self.__datos es para números flotantes.",
+        "self.datos se destruye al salir del método; self._datos vive en el módulo; self.__datos pertenece a la clase ABC.",
+        "Ninguna, las tres sintaxis son exactamente idénticas en comportamiento y propósito."
+      ],
+      "correctAnswer": "1",
+      "messageForCorrectAnswer": "¡Respuesta correcta!",
+      "messageForIncorrectAnswer": "Respuesta incorrecta.",
+      "explanation": "self.datos es la interfaz pública y visible; self._datos advierte sobre un detalle de implementación interna; y self.__datos ofusca el nombre con la clase para evitar sobreescritura accidental en subclases.",
+      "point": "10"
+    }
+  ]
+}
