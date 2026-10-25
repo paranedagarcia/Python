@@ -1,7 +1,7 @@
 ---
 id: decoradores
 title: "Decoradores"
-sidebar_label: "​⚙️ Decoradores"
+sidebar_label: "​📄 Decoradores"
 slug: /decoradores
 ---
 

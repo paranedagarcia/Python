@@ -1,8 +1,0 @@
-{
-  "label": "🖥️ GUI",
-  "link": {
-    "type": "generated-index",
-    "description": "Interfaz gráfica de usuario con Tkinter en Python",
-    "slug": "/python-avanzado/gui"
-  }
-}

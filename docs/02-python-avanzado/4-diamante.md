@@ -1,7 +1,7 @@
 ---
 id: diamante
 title: "​Problema del diamante"
-sidebar_label: "​El problema del diamante"
+sidebar_label: "📄 ​El problema del diamante"
 description: "El problema del diamante y su ejecución"
 ---
 

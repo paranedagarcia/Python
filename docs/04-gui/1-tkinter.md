@@ -83,7 +83,7 @@ A diferencia del estilo imperativo tradicional (donde las variables globales que
 
 ### Ejemplo
 
-<br />
+<br/>
 <Tabs>
 <TabItem value="ej1" label="Ejemplo" default>
 <div class="alert alert--primary">
@@ -244,13 +244,13 @@ if __name__ == "__main__":
    * `_guardar_registro()` y `_limpiar_formulario()` contienen la lógica de respuesta a eventos, manteniendo el código limpio y modular.
 </TabItem>
 </Tabs>
+<br/>
 
 
 
 
 
-
-### Claves del Gestor de Diseño `grid()`
+### Claves del gestor de diseño
 
 El gestor `grid()` divide el contenedor en una cuadrícula virtual de filas y columnas indexadas desde `0`:
 
@@ -270,7 +270,7 @@ El módulo **`tkinter.ttk`** (*Tk Themed Widgets*) es una extensión integrada e
 Mientras que los widgets tradicionales de Tkinter (`tk.Button`, `tk.Entry`, etc.) conservan la estética de los años 90 (bordes biselados gruesos y colores planos), **`ttk` dibuja los elementos utilizando los motores de renderizado nativos del sistema operativo** (Windows, macOS o Linux/GTK), logrando una integración visual limpia y moderna.
 
 
-### Ventajas
+#### Ventajas
 
 1. **Aspecto nativo e integrado:** Los controles (botones, barras de desplazamiento, cajas de texto) adoptan automáticamente el estilo visual del sistema en el que se ejecutan.
 2. **Separación entre Estructura y Estilo:** En Tkinter tradicional, la estética se define individualmente en cada widget (`bg="blue"`, `bd=2`). En `ttk`, la apariencia se gestiona de forma centralizada mediante el objeto **`ttk.Style()`**, funcionando de manera análoga a una hoja de estilos CSS.
@@ -282,7 +282,7 @@ Mientras que los widgets tradicionales de Tkinter (`tk.Button`, `tk.Entry`, etc.
    * **`ttk.Separator`**: Líneas divisoras horizontales y verticales.
 
 
-### Configuración de Temas y Estilos con `ttk.Style`
+#### Configuración de Temas y Estilos con `ttk.Style`
 
 El motor de `ttk` se controla a través de dos mecanismos principales: **Temas** (*Themes*) y **Estilos personalizados** (*Styles*).
 
@@ -446,7 +446,7 @@ if __name__ == "__main__":
 ![](img/tkinter-usuarios.png)
 
 
-### Alternativas de Terceros
+#### Alternativas de Terceros
 
 Si deseas lograr diseños idénticos a aplicaciones web o móviles modernas (con soporte nativo para **Modo Oscuro**, bordes redondeados suaves y sombras) sin escribir reglas de estilo complejas desde cero, existen librerías basadas en Tkinter/`ttk` muy populares:
 
@@ -461,7 +461,7 @@ Aplicar un **tema oscuro (*Dark Mode*)** en Python se puede lograr de tres forma
 
 
 
-### 1. Tema Oscuro Nativo con `ttk.Style` (Sin librerías externas)
+#### 1. Tema Oscuro Nativo con `ttk.Style` (Sin librerías externas)
 
 Para crear un tema oscuro en **`ttk`** sin dependencias externas, definimos una paleta de colores oscuros (como tonos gris carbón `#18181b`, `#27272a` y acentos azules `#2563eb`) y los aplicamos mediante el gestor de estilos:
 
@@ -513,7 +513,7 @@ if __name__ == "__main__":
 ```
 
 
-### Modo Oscuro Instantáneo con `ttkbootstrap`
+#### Modo Oscuro Instantáneo con `ttkbootstrap`
 
 Si prefieres no configurar cada color manualmente, la librería **`ttkbootstrap`** incluye temas oscuros profesionales ya listos (**`darkly`**, **`cyborg`**, **`solar`**, **`vapor`**):
 
@@ -539,55 +539,15 @@ app.mainloop()
 
 
 
-### Interfaz Ultra-Moderna con `CustomTkinter`
 
-**`CustomTkinter`** es la opción más popular hoy en día para aplicaciones de escritorio con estética moderna (*Flat Design*). Soporta cambio dinámico entre modo claro y oscuro con una sola línea de código:
-
-```python
-# Requiere instalación previa: pip install customtkinter
-import customtkinter as ctk
-
-# Configuración global del tema oscuro
-ctk.set_appearance_mode("Dark")       # Opciones: "System", "Dark", "Light"
-ctk.set_default_color_theme("blue")   # Opciones: "blue", "green", "dark-blue"
-
-app = ctk.CTk()
-app.title("Modo Oscuro con CustomTkinter")
-app.geometry("400x260")
-
-frame = ctk.CTkFrame(app, corner_radius=10)
-frame.pack(padx=20, pady=20, fill="both", expand=True)
-
-label = ctk.CTkLabel(frame, text="Bienvenido al Modo Oscuro", font=("Roboto", 16, "bold"))
-label.pack(pady=15)
-
-entry = ctk.CTkEntry(frame, placeholder_text="Escribe algo aquí...")
-entry.pack(pady=10, fill="x", padx=15)
-
-btn = ctk.CTkButton(frame, text="Guardar Cambios")
-btn.pack(pady=10)
-
-app.mainloop()
-```
-
-
-
-### Resumen Comparativo
-
-* **`ttk` Nativo:** Ideal si no quieres instalar dependencias externas en tu proyecto Python.
-* **`ttkbootstrap`:** La mejor opción para prototipado rápido con temas profesionales estilo Bootstrap.
-* **`CustomTkinter`:** La mejor alternativa si buscas bordes redondeados, sombras y soporte para cambiar entre tema claro y oscuro automáticamente según la configuración del sistema operativo.
-
-
-***
-## **Crear un tabla ttk.Treeview**
+### Crear un tabla ttk.Treeview
 
 El widget **`ttk.Treeview`** es el componente estándar en Tkinter para construir **tablas de datos** de múltiples columnas de forma eficiente, permitiendo la selección de filas, el ordenamiento dinámico por columnas y la integración con barras de desplazamiento (*scrollbars*).
 
 He generado un script completo en Python con **Programación Orientada a Objetos** que implementa una tabla profesional con diseño estilizado, bandas de color alternadas (*zebra striping*) y eventos interactivos. El archivo `tabla_treeview_ttk.py` está listo en tu panel lateral de Studio.
 
 
-### **Pasos Fundamentales para Crear una Tabla con `ttk.Treeview`**
+#### Pasos Fundamentales
 
 1. **Definir las columnas y activar el modo tabla:**
    Se pasa la tupla de identificadores de columna al parámetro `columns` y se especifica `show="headings"` para ocultar la columna cero predeterminada (reservada para estructuras jerárquicas de árbol).
@@ -610,7 +570,7 @@ He generado un script completo en Python con **Programación Orientada a Objetos
 
 
 <details>
-<summary>🖥️ Código de ejemlplo</summary>
+<summary>🖥️ Código de ejemplo</summary>
 
 ```python
 import tkinter as tk
@@ -785,19 +745,19 @@ if __name__ == "__main__":
     app.mainloop()
 ```
 </details>
+![](img/tkinter-directorio.png)
 
-***
-## **ttkbootstrap**
 
-***
-## **ttk y bases de datos**
+
+
+### ttk y bases de datos
 
 La vinculación entre **Tkinter** (la interfaz gráfica de usuario de Python) y una **base de datos** se basa en un patrón de arquitectura desacoplado entre la **capa de presentación (GUI)** y la **capa de persistencia de datos (DB-API)**. 
 
 Tkinter funciona mediante un **bucle de eventos** (*event loop*) que reacciona a las acciones del usuario (como clics en botones o ingreso de texto). Para interactuar con una base de datos, los controladores de eventos (*callbacks*) ejecutan instrucciones mediante un módulo de interfaz de base de datos de Python, como el módulo integrado `sqlite3` o conectores para bases de datos relacionales como `psycopg2` (PostgreSQL) o bibliotecas ORM como SQLAlchemy.
 
 
-### Pasos fundamentales para conectar Tkinter con una base de datos
+#### Pasos fundamentales
 
 #### 1. Establecer la conexión y crear el cursor
 Para iniciar la comunicación con el motor de base de datos relacional (como SQLite), se crea un objeto de conexión mediante `sqlite3.connect()` y posteriormente un objeto **`cursor`**, el cual se encarga de enviar y ejecutar las instrucciones SQL.
@@ -816,11 +776,14 @@ Para ejecutar operaciones de creación (`INSERT`), consulta (`SELECT`), actualiz
 * **Operaciones de lectura (`SELECT`)**: Se leen las filas resultantes mediante `cursor.fetchall()`, `cursor.fetchone()` o iterando directamente sobre el cursor.
 * Al finalizar la transacción o al cerrar la aplicación, se deben cerrar el cursor (`cursor.close()`) y la conexión (`conn.close()`) para liberar los recursos de memoria y del servidor.
 
----
 
-### **Ejemplo de integración (Tkinter + SQLite)**
+
+#### Ejemplo de integración
 
 A continuación se presenta una estructura completa que ilustra la arquitectura de vinculación entre una interfaz de Tkinter y una base de datos SQLite local:
+
+<details>
+<summary>🖥️ Código de integración</summary>
 
 ```python
 import sqlite3
@@ -907,4 +870,1079 @@ if __name__ == "__main__":
     app = AplicacionBaseDatos()
     app.mainloop()
 ```
+</details>
+![](img/tkinter-db.png)
+
+
+
+***
+## **CustomTkinter**
+
+**CustomTkinter** es una biblioteca de Python construida como una extensión sobre **Tkinter** que permite crear **Interfaces Gráficas de Usuario (GUI)** con un aspecto moderno, estilizado y contemporáneo (*Flat Design*).
+
+A diferencia de los widgets tradicionales de Tkinter (que mantienen la apariencia estética clásica de los años 90), CustomTkinter rediseña todos los controles gráficos añadiendo **esquinas redondeadas**, **sombras**, **soporte nativo para Modo Oscuro y Modo Claro**, y **escalado automático para pantallas de alta densidad (HiDPI / Retina)** en Windows, macOS y Linux.
+
+---
+
+### Características principales
+
+* **Widgets modernos nativos (`CTk`):** Proporciona equivalentes mejorados para casi todos los elementos estándar de Tkinter (`CTkButton`, `CTkEntry`, `CTkLabel`, `CTkFrame`, `CTkOptionMenu`, `CTkCheckBox`, `CTkSwitch`, `CTkProgressBar`, etc.).
+
+* **Gestión de Apariencia Simplificada:** Permite alternar dinámicamente entre **`"Dark"`**, **`"Light"`** o el modo predeterminado del sistema (**`"System"`**) con una sola línea de código (`ctk.set_appearance_mode("Dark")`).
+
+* **Temas de Color Personalizables:** Ofrece temas predefinidos (`blue`, `green`, `dark-blue`) y permite cargar paletas de colores en archivos `.json`.
+
+* **Paneles desplazables avanzables (`CTkScrollableFrame`):** Un contenedor nativo con barras de desplazamiento estilizadas, ideal para construir **listas dinámicas, tarjetas de contenido y tablas de datos**.
+
+
+
+### Uso en Ingreso de Datos
+
+Para construir formularios de entrada de datos seguros y estilizados, CustomTkinter utiliza componentes específicos:
+
+* **`CTkEntry`:** Cajas de texto de una línea con bordes redondeados y texto de sugerencia (*placeholder_text*).
+* **`CTkOptionMenu` / `CTkComboBox`:** Menús desplegables para seleccionar opciones predefinidas.
+* **`CTkSwitch` / `CTkCheckBox`:** Interruptores de estado (activo/inactivo) o casillas de verificación.
+* **`CTkButton`:** Botones interactivos con colores de fondo (`fg_color`), colores al pasar el cursor (`hover_color`) y bordes suavizados.
+
+
+
+### Uso en Lista de Resultados
+
+Existen dos estrategias principales para mostrar listas o tablas de datos con CustomTkinter:
+
+#### **Enfoque A: Tabla Nativa con `CTkScrollableFrame` (Recomendado)**
+Utiliza un panel desplazable (`CTkScrollableFrame`) organizado con un sistema de cuadrícula (`grid`). Cada registro se dibuja como una fila de etiquetas (`CTkLabel`) y botones de acción (editar/eliminar). 
+* **Ventaja:** Mantiene una integración visual del 100% con los bordes redondeados, colores del tema y el cambio dinámico entre modo claro y oscuro.
+
+#### **Enfoque B: Contenedor con `ttk.Treeview`**
+Integra el widget tradicional de tabla multi-columna de `ttk.Treeview` dentro de un panel `CTkFrame`.
+* **Ventaja:** Ideal para conjuntos masivos de datos tabulares tradicionales con ordenamiento por encabezados.
+
+
+**`CustomTkinter`** es la opción más popular hoy en día para aplicaciones de escritorio con estética moderna (*Flat Design*). Soporta cambio dinámico entre modo claro y oscuro con una sola línea de código:
+
+<details>
+<summary>🖥️ Código de tema dark</summary>
+
+```python
+# Tema Oscuro con CustomTkinter
+# Requiere instalación previa: pip install customtkinter
+import customtkinter as ctk
+
+# Configuración global del tema oscuro
+ctk.set_appearance_mode("Dark")       # Opciones: "System", "Dark", "Light"
+ctk.set_default_color_theme("blue")   # Opciones: "blue", "green", "dark-blue"
+# set default font to roboto
+default_font = ("Helvetica", 14)
+bold_font = ("Helvetica", 16, "bold")
+
+app = ctk.CTk()
+app.title("Modo Oscuro con CustomTkinter")
+app.geometry("400x260")
+
+frame = ctk.CTkFrame(app, corner_radius=10)
+frame.pack(padx=20, pady=20, fill="both", expand=True)
+
+label = ctk.CTkLabel(frame, text="Bienvenido al Modo Oscuro", font=bold_font)
+label.pack(pady=15)
+
+entry = ctk.CTkEntry(frame, placeholder_text="Escribe algo aquí...", font=default_font)
+entry.pack(pady=10, fill="x", padx=15)
+
+btn = ctk.CTkButton(frame, text="Guardar Cambios", font=default_font)
+btn.pack(pady=10)
+
+app.mainloop()
+```
+</details>
+![](img/tkinter-customdark.png)
+
+
+### Ejemplo de aplicación registro
+
+Un script completo en Python con **Programación Orientada a Objetos** que implementa un **Formulario de Ingreso de Datos** en el panel izquierdo y una **Tabla de Resultados Dinámica** en el panel derecho con cambio instantáneo entre Modo Claro y Modo Oscuro.
+
+<Tabs>
+<TabItem value="ej1" label="tkinter" default>
+<div class="alert alert--primary">
+**Formulario y Tabla de Resultados**
+
+![](img/tkinter-registrotabla.png)
+
+</div>
+</TabItem>
+<TabItem value="ej1-python" label="🖥️ Código tkinter" >
+
+```python showLineNumbers
+import tkinter as tk
+from tkinter import messagebox, ttk
+
+
+class AppGestionTkinter(tk.Tk):
+    """Formulario de registro y lista de usuarios con widgets estándar de Tkinter."""
+
+    def __init__(self):
+        super().__init__()
+
+        self.title("Sistema de Registro y Lista de Resultados - Tkinter")
+        self.geometry("1000x600")
+        self.minsize(850, 500)
+
+        self.registros = [
+            {"id": 1, "nombre": "Ana Martínez", "email": "ana.martinez@email.com", "rol": "Administrador", "estado": "Activo"},
+            {"id": 2, "nombre": "Carlos López", "email": "carlos.lopez@email.com", "rol": "Desarrollador", "estado": "Activo"},
+            {"id": 3, "nombre": "Sofía Torres", "email": "sofia.torres@email.com", "rol": "Diseñador UX", "estado": "Inactivo"},
+        ]
+        self.contador_id = 4
+        self.estilo = ttk.Style(self)
+
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=2)
+        self.grid_rowconfigure(0, weight=1)
+
+        self._crear_panel_formulario()
+        self._crear_panel_tabla()
+        self._cargar_datos_tabla()
+        self._cambiar_apariencia("Claro")
+
+    def _crear_panel_formulario(self):
+        self.frame_form = ttk.LabelFrame(self, text="Ingreso de Datos", padding=15)
+        self.frame_form.grid(row=0, column=0, padx=(15, 10), pady=15, sticky="nsew")
+        self.frame_form.columnconfigure(0, weight=1)
+
+        ttk.Label(self.frame_form, text="Nombre Completo:").grid(row=0, column=0, sticky="w", pady=(5, 2))
+        self.ent_nombre = ttk.Entry(self.frame_form)
+        self.ent_nombre.grid(row=1, column=0, sticky="ew", pady=(0, 10))
+
+        ttk.Label(self.frame_form, text="Correo Electrónico:").grid(row=2, column=0, sticky="w", pady=(5, 2))
+        self.ent_email = ttk.Entry(self.frame_form)
+        self.ent_email.grid(row=3, column=0, sticky="ew", pady=(0, 10))
+
+        ttk.Label(self.frame_form, text="Rol Profesional:").grid(row=4, column=0, sticky="w", pady=(5, 2))
+        self.opt_rol = ttk.Combobox(
+            self.frame_form,
+            values=["Desarrollador", "Administrador", "Diseñador UX", "Analista de Datos"],
+            state="readonly",
+        )
+        self.opt_rol.current(0)
+        self.opt_rol.grid(row=5, column=0, sticky="ew", pady=(0, 10))
+
+        self.estado_activo = tk.BooleanVar(value=True)
+        ttk.Checkbutton(
+            self.frame_form,
+            text="Usuario Activo",
+            variable=self.estado_activo,
+        ).grid(row=6, column=0, sticky="w", pady=(10, 15))
+
+        ttk.Button(
+            self.frame_form,
+            text="Registrar Usuario",
+            command=self._agregar_registro,
+        ).grid(row=7, column=0, sticky="ew", pady=(5, 10))
+
+        ttk.Label(self.frame_form, text="Apariencia de la Interfaz:").grid(
+            row=8, column=0, sticky="w", pady=(25, 2)
+        )
+        self.opt_tema = ttk.Combobox(
+            self.frame_form,
+            values=["Claro", "Oscuro"],
+            state="readonly",
+        )
+        self.opt_tema.set("Claro")
+        self.opt_tema.bind("<<ComboboxSelected>>", self._cambiar_apariencia)
+        self.opt_tema.grid(row=9, column=0, sticky="ew", pady=(0, 15))
+
+    def _crear_panel_tabla(self):
+        self.frame_tabla = ttk.LabelFrame(self, text="Lista de Resultados", padding=15)
+        self.frame_tabla.grid(row=0, column=1, padx=(10, 15), pady=15, sticky="nsew")
+        self.frame_tabla.columnconfigure(0, weight=1)
+        self.frame_tabla.rowconfigure(0, weight=1)
+
+        columnas = ("id", "nombre", "email", "rol", "estado")
+        self.tabla = ttk.Treeview(
+            self.frame_tabla,
+            columns=columnas,
+            show="headings",
+            selectmode="browse",
+        )
+        titulos = {
+            "id": "ID",
+            "nombre": "Nombre",
+            "email": "Email",
+            "rol": "Rol",
+            "estado": "Estado",
+        }
+        anchos = {"id": 45, "nombre": 150, "email": 190, "rol": 130, "estado": 85}
+        for columna in columnas:
+            self.tabla.heading(columna, text=titulos[columna])
+            self.tabla.column(columna, width=anchos[columna], minwidth=50, anchor="w")
+
+        self.tabla.tag_configure("activo", foreground="#15803d")
+        self.tabla.tag_configure("inactivo", foreground="#dc2626")
+        self.tabla.grid(row=0, column=0, sticky="nsew")
+
+        barra = ttk.Scrollbar(self.frame_tabla, orient="vertical", command=self.tabla.yview)
+        barra.grid(row=0, column=1, sticky="ns")
+        self.tabla.configure(yscrollcommand=barra.set)
+
+        ttk.Button(
+            self.frame_tabla,
+            text="Eliminar seleccionado",
+            command=self._eliminar_registro_seleccionado,
+        ).grid(row=1, column=0, sticky="e", pady=(10, 0))
+
+    def _cargar_datos_tabla(self):
+        for fila in self.tabla.get_children():
+            self.tabla.delete(fila)
+
+        for item in self.registros:
+            etiqueta = "activo" if item["estado"] == "Activo" else "inactivo"
+            self.tabla.insert(
+                "",
+                "end",
+                iid=str(item["id"]),
+                values=(item["id"], item["nombre"], item["email"], item["rol"], item["estado"]),
+                tags=(etiqueta,),
+            )
+
+    def _agregar_registro(self):
+        nombre = self.ent_nombre.get().strip()
+        email = self.ent_email.get().strip()
+
+        if not nombre or not email:
+            messagebox.showwarning("Campos Incompletos", "Por favor completa el nombre y el correo.")
+            return
+
+        self.registros.append({
+            "id": self.contador_id,
+            "nombre": nombre,
+            "email": email,
+            "rol": self.opt_rol.get(),
+            "estado": "Activo" if self.estado_activo.get() else "Inactivo",
+        })
+        self.contador_id += 1
+
+        self._cargar_datos_tabla()
+        self.ent_nombre.delete(0, tk.END)
+        self.ent_email.delete(0, tk.END)
+        messagebox.showinfo("Éxito", f"Usuario '{nombre}' registrado correctamente.")
+
+    def _eliminar_registro_seleccionado(self):
+        seleccion = self.tabla.selection()
+        if not seleccion:
+            messagebox.showwarning("Sin selección", "Selecciona un usuario para eliminarlo.")
+            return
+
+        id_registro = int(seleccion[0])
+        self.registros = [registro for registro in self.registros if registro["id"] != id_registro]
+        self._cargar_datos_tabla()
+
+    def _cambiar_apariencia(self, evento=None):
+        oscuro = self.opt_tema.get() == "Oscuro"
+        fondo = "#252525" if oscuro else "#f0f0f0"
+        texto = "#f5f5f5" if oscuro else "#202020"
+        campo = "#333333" if oscuro else "#ffffff"
+
+        self.configure(bg=fondo)
+        self.estilo.configure("TFrame", background=fondo)
+        self.estilo.configure("TLabelframe", background=fondo, foreground=texto)
+        self.estilo.configure("TLabelframe.Label", background=fondo, foreground=texto)
+        self.estilo.configure("TLabel", background=fondo, foreground=texto)
+        self.estilo.configure("TCheckbutton", background=fondo, foreground=texto)
+        self.estilo.map("TCheckbutton", background=[("active", fondo)])
+        self.estilo.configure("TEntry", fieldbackground=campo, foreground=texto)
+        self.estilo.configure("TCombobox", fieldbackground=campo, foreground=texto)
+        self.estilo.configure(
+            "Treeview",
+            background=campo,
+            fieldbackground=campo,
+            foreground=texto,
+        )
+        self.estilo.configure("Treeview.Heading", background=fondo, foreground=texto)
+        self.estilo.map(
+            "Treeview",
+            background=[("selected", "#2563eb")],
+            foreground=[("selected", "#ffffff")],
+        )
+
+
+if __name__ == "__main__":
+    app = AppGestionTkinter()
+    app.mainloop()
+```
+</TabItem>
+</Tabs>
+
+<Tabs>
+<TabItem value="ej2" label="customtkinter" default>
+<div class="alert alert--primary">
+**Formulario y Tabla de Resultados**
+
+![](img/customtkinter-registro.png)
+
+</div>
+</TabItem>
+<TabItem value="ej2-python" label="🖥️ Código customtkinter" >
+
+```python showLineNumbers
+import tkinter as tk
+from tkinter import messagebox
+import customtkinter as ctk
+
+# Configuración global del tema y la apariencia
+ctk.set_appearance_mode("System")  # Opciones: "System", "Dark", "Light"
+ctk.set_default_color_theme("blue") # Opciones: "blue", "green", "dark-blue"
+
+class AppGestionCustomTkinter(ctk.CTk):
+    """
+    Aplicación de escritorio desarrollada con CustomTkinter que integra:
+    1. Formulario de ingreso de datos (Data Entry) estilizado.
+    2. Tabla de resultados/registros utilizando CTkScrollableFrame.
+    """
+
+    def __init__(self):
+        super().__init__()
+
+        # 1. Configuración de la ventana principal
+        self.title("Sistema de Registro y Lista de Resultados - CustomTkinter")
+        self.geometry("1000x600")
+        self.minsize(850, 500)
+
+        # Datos en memoria
+        self.registros = [
+            {"id": 1, "nombre": "Ana Martínez", "email": "ana.martinez@email.com", "rol": "Administrador", "estado": "Activo"},
+            {"id": 2, "nombre": "Carlos López", "email": "carlos.lopez@email.com", "rol": "Desarrollador", "estado": "Activo"},
+            {"id": 3, "nombre": "Sofía Torres", "email": "sofia.torres@email.com", "rol": "Diseñador UX", "estado": "Inactivo"},
+        ]
+        self.contador_id = 4
+
+        # 2. Estructura del Layout principal (Grid de 2 columnas)
+        self.grid_columnconfigure(0, weight=1)  # Columna 0: Formulario (Panel Izquierdo)
+        self.grid_columnconfigure(1, weight=2)  # Columna 1: Tabla de Resultados (Panel Derecho)
+        self.grid_rowconfigure(0, weight=1)
+
+        # 3. Construcción de los paneles
+        self._crear_panel_formulario()
+        self._crear_panel_tabla()
+        self._cargar_datos_tabla()
+
+    def _crear_panel_formulario(self):
+        """Crea el panel izquierdo para el ingreso de datos (Data Entry)."""
+        self.frame_form = ctk.CTkFrame(self, corner_radius=12)
+        self.frame_form.grid(row=0, column=0, padx=(15, 10), pady=15, sticky="nsew")
+
+        # Título del Formulario
+        lbl_titulo = ctk.CTkLabel(
+            self.frame_form,
+            text="Ingreso de Datos",
+            font=ctk.CTkFont(family="Roboto", size=18, weight="bold")
+        )
+        lbl_titulo.pack(padx=15, pady=(20, 15), anchor="w")
+
+        # Campo: Nombre Completo
+        lbl_nombre = ctk.CTkLabel(self.frame_form, text="Nombre Completo:", font=ctk.CTkFont(size=12))
+        lbl_nombre.pack(padx=15, pady=(5, 2), anchor="w")
+
+        self.ent_nombre = ctk.CTkEntry(
+            self.frame_form,
+            placeholder_text="Ej. Laura Gómez",
+            height=35
+        )
+        self.ent_nombre.pack(padx=15, pady=(0, 10), fill="x")
+
+        # Campo: Correo Electrónico
+        lbl_email = ctk.CTkLabel(self.frame_form, text="Correo Electrónico:", font=ctk.CTkFont(size=12))
+        lbl_email.pack(padx=15, pady=(5, 2), anchor="w")
+
+        self.ent_email = ctk.CTkEntry(
+            self.frame_form,
+            placeholder_text="ejemplo@correo.com",
+            height=35
+        )
+        self.ent_email.pack(padx=15, pady=(0, 10), fill="x")
+
+        # Campo: Rol Profesional (Dropdown Menu)
+        lbl_rol = ctk.CTkLabel(self.frame_form, text="Rol Profesional:", font=ctk.CTkFont(size=12))
+        lbl_rol.pack(padx=15, pady=(5, 2), anchor="w")
+
+        self.opt_rol = ctk.CTkOptionMenu(
+            self.frame_form,
+            values=["Desarrollador", "Administrador", "Diseñador UX", "Analista de Datos"],
+            height=35
+        )
+        self.opt_rol.pack(padx=15, pady=(0, 10), fill="x")
+
+        # Campo: Estado (Switch de CustomTkinter)
+        self.switch_estado = ctk.CTkSwitch(
+            self.frame_form,
+            text="Usuario Activo",
+            font=ctk.CTkFont(size=12)
+        )
+        self.switch_estado.select()
+        self.switch_estado.pack(padx=15, pady=(10, 15), anchor="w")
+
+        # Botón de Guardar Registro
+        btn_guardar = ctk.CTkButton(
+            self.frame_form,
+            text="➕ Registrar Usuario",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            height=40,
+            command=self._agregar_registro
+        )
+        btn_guardar.pack(padx=15, pady=(10, 10), fill="x")
+
+        # Selector de Apariencia (Modo Claro / Oscuro / Sistema)
+        lbl_tema = ctk.CTkLabel(self.frame_form, text="Apariencia de la Interfaz:", font=ctk.CTkFont(size=11))
+        lbl_tema.pack(padx=15, pady=(25, 2), anchor="w")
+
+        self.opt_tema = ctk.CTkOptionMenu(
+            self.frame_form,
+            values=["System", "Dark", "Light"],
+            command=self._cambiar_apariencia,
+            height=30,
+            fg_color="gray30",
+            button_color="gray25"
+        )
+        self.opt_tema.pack(padx=15, pady=(0, 15), fill="x")
+
+    def _crear_panel_tabla(self):
+        """Crea el panel derecho para visualizar la lista de resultados en formato Tabla."""
+        self.frame_tabla = ctk.CTkFrame(self, corner_radius=12)
+        self.frame_tabla.grid(row=0, column=1, padx=(10, 15), pady=15, sticky="nsew")
+
+        self.frame_tabla.grid_columnconfigure(0, weight=1)
+        self.frame_tabla.grid_rowconfigure(1, weight=1)
+
+        # Encabezado del Panel
+        lbl_titulo_tabla = ctk.CTkLabel(
+            self.frame_tabla,
+            text="Lista de Resultados",
+            font=ctk.CTkFont(family="Roboto", size=18, weight="bold")
+        )
+        lbl_titulo_tabla.grid(row=0, column=0, padx=15, pady=(20, 10), sticky="w")
+
+        # Tabla Nativa con CTkScrollableFrame
+        self.scroll_tabla = ctk.CTkScrollableFrame(self.frame_tabla, corner_radius=8)
+        self.scroll_tabla.grid(row=1, column=0, padx=15, pady=(0, 15), sticky="nsew")
+
+        # Configurar proporciones de las columnas
+        self.scroll_tabla.grid_columnconfigure(0, weight=1)  # ID
+        self.scroll_tabla.grid_columnconfigure(1, weight=3)  # Nombre
+        self.scroll_tabla.grid_columnconfigure(2, weight=4)  # Email
+        self.scroll_tabla.grid_columnconfigure(3, weight=3)  # Rol
+        self.scroll_tabla.grid_columnconfigure(4, weight=2)  # Estado
+        self.scroll_tabla.grid_columnconfigure(5, weight=1)  # Acción
+
+        # Cabeceras de la Tabla
+        cabeceras = ["ID", "Nombre", "Email", "Rol", "Estado", "Acción"]
+        for col_idx, texto in enumerate(cabeceras):
+            lbl_cabecera = ctk.CTkLabel(
+                self.scroll_tabla,
+                text=texto,
+                font=ctk.CTkFont(size=12, weight="bold"),
+                text_color="gray70"
+            )
+            lbl_cabecera.grid(row=0, column=col_idx, padx=5, pady=8, sticky="w")
+
+        # Línea divisoria
+        sep = ctk.CTkFrame(self.scroll_tabla, height=2, fg_color="gray40")
+        sep.grid(row=1, column=0, columnspan=6, sticky="ew", pady=(0, 10))
+
+    def _cargar_datos_tabla(self):
+        """Renderiza dinámicamente las filas dentro de la tabla."""
+        # Limpiar filas existentes
+        for widget in self.scroll_tabla.winfo_children():
+            if widget.grid_info().get("row", 0) > 1:
+                widget.destroy()
+
+        # Insertar registros
+        for idx, item in enumerate(self.registros, start=2):
+            lbl_id = ctk.CTkLabel(self.scroll_tabla, text=str(item["id"]), font=ctk.CTkFont(size=12))
+            lbl_id.grid(row=idx, column=0, padx=5, pady=6, sticky="w")
+
+            lbl_nom = ctk.CTkLabel(self.scroll_tabla, text=item["nombre"], font=ctk.CTkFont(size=12, weight="bold"))
+            lbl_nom.grid(row=idx, column=1, padx=5, pady=6, sticky="w")
+
+            lbl_email = ctk.CTkLabel(self.scroll_tabla, text=item["email"], font=ctk.CTkFont(size=12))
+            lbl_email.grid(row=idx, column=2, padx=5, pady=6, sticky="w")
+
+            lbl_rol = ctk.CTkLabel(self.scroll_tabla, text=item["rol"], font=ctk.CTkFont(size=12))
+            lbl_rol.grid(row=idx, column=3, padx=5, pady=6, sticky="w")
+
+            color_estado = "#22c55e" if item["estado"] == "Activo" else "#ef4444"
+            lbl_est = ctk.CTkLabel(self.scroll_tabla, text=item["estado"], font=ctk.CTkFont(size=11, weight="bold"), text_color=color_estado)
+            lbl_est.grid(row=idx, column=4, padx=5, pady=6, sticky="w")
+
+            # Botón eliminar
+            btn_borrar = ctk.CTkButton(
+                self.scroll_tabla,
+                text="🗑️",
+                width=30,
+                height=25,
+                fg_color="#dc2626",
+                hover_color="#991b1b",
+                command=lambda id_reg=item["id"]: self._eliminar_registro(id_reg)
+            )
+            btn_borrar.grid(row=idx, column=5, padx=5, pady=6)
+
+    def _agregar_registro(self):
+        """Procesa y valida el ingreso de un nuevo registro."""
+        nombre = self.ent_nombre.get().strip()
+        email = self.ent_email.get().strip()
+        rol = self.opt_rol.get()
+        estado = "Activo" if self.switch_estado.get() == 1 else "Inactivo"
+
+        if not nombre or not email:
+            messagebox.showwarning("Campos Incompletos", "Por favor completa el nombre y el correo.")
+            return
+
+        nuevo_registro = {
+            "id": self.contador_id,
+            "nombre": nombre,
+            "email": email,
+            "rol": rol,
+            "estado": estado
+        }
+
+        self.registros.append(nuevo_registro)
+        self.contador_id += 1
+
+        self._cargar_datos_tabla()
+        self.ent_nombre.delete(0, tk.END)
+        self.ent_email.delete(0, tk.END)
+        messagebox.showinfo("Éxito", f"Usuario '{nombre}' registrado correctamente.")
+
+    def _eliminar_registro(self, id_registro):
+        """Elimina un registro de la lista de resultados."""
+        self.registros = [r for r in self.registros if r["id"] != id_registro]
+        self._cargar_datos_tabla()
+
+    def _cambiar_apariencia(self, nuevo_modo):
+        """Cambia el modo claro / oscuro en tiempo de ejecución."""
+        ctk.set_appearance_mode(nuevo_modo)
+
+if __name__ == "__main__":
+    app = AppGestionCustomTkinter()
+    app.mainloop()
+```
+</TabItem>
+</Tabs>
+
+<Tabs>
+<TabItem value="ej3" label="ttkbootstrap" default>
+<div class="alert alert--primary">
+**Formulario y Tabla de Resultados**
+
+![](img/ttkbootstrap-registro.png)
+
+</div>
+</TabItem>
+<TabItem value="ej3-python" label="🖥️ Código ttkbootstrap" >
+
+```python showLineNumbers
+import tkinter as tk
+from tkinter import messagebox
+
+import ttkbootstrap as ttk
+
+
+class AppGestionTkinter(ttk.Window):
+    """Formulario de registro y lista de usuarios con ttkbootstrap."""
+
+    def __init__(self):
+        super().__init__(themename="flatly")
+
+        self.title("Sistema de Registro y Lista de Resultados - ttkbootstrap")
+        self.geometry("1000x600")
+        self.minsize(850, 500)
+
+        self.registros = [
+            {"id": 1, "nombre": "Ana Martínez", "email": "ana.martinez@email.com", "rol": "Administrador", "estado": "Activo"},
+            {"id": 2, "nombre": "Carlos López", "email": "carlos.lopez@email.com", "rol": "Desarrollador", "estado": "Activo"},
+            {"id": 3, "nombre": "Sofía Torres", "email": "sofia.torres@email.com", "rol": "Diseñador UX", "estado": "Inactivo"},
+        ]
+        self.contador_id = 4
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=2)
+        self.grid_rowconfigure(0, weight=1)
+
+        self._crear_panel_formulario()
+        self._crear_panel_tabla()
+        self._cargar_datos_tabla()
+        self._cambiar_apariencia()
+
+    def _crear_panel_formulario(self):
+        self.frame_form = ttk.LabelFrame(self, text="Ingreso de Datos", padding=15)
+        self.frame_form.grid(row=0, column=0, padx=(15, 10), pady=15, sticky="nsew")
+        self.frame_form.columnconfigure(0, weight=1)
+
+        ttk.Label(self.frame_form, text="Nombre Completo:").grid(row=0, column=0, sticky="w", pady=(5, 2))
+        self.ent_nombre = ttk.Entry(self.frame_form)
+        self.ent_nombre.grid(row=1, column=0, sticky="ew", pady=(0, 10))
+
+        ttk.Label(self.frame_form, text="Correo Electrónico:").grid(row=2, column=0, sticky="w", pady=(5, 2))
+        self.ent_email = ttk.Entry(self.frame_form)
+        self.ent_email.grid(row=3, column=0, sticky="ew", pady=(0, 10))
+
+        ttk.Label(self.frame_form, text="Rol Profesional:").grid(row=4, column=0, sticky="w", pady=(5, 2))
+        self.opt_rol = ttk.Combobox(
+            self.frame_form,
+            values=["Desarrollador", "Administrador", "Diseñador UX", "Analista de Datos"],
+            state="readonly",
+        )
+        self.opt_rol.current(0)
+        self.opt_rol.grid(row=5, column=0, sticky="ew", pady=(0, 10))
+
+        self.estado_activo = tk.BooleanVar(value=True)
+        ttk.Checkbutton(
+            self.frame_form,
+            text="Usuario Activo",
+            variable=self.estado_activo,
+        ).grid(row=6, column=0, sticky="w", pady=(10, 15))
+
+        ttk.Button(
+            self.frame_form,
+            text="Registrar Usuario",
+            command=self._agregar_registro,
+            bootstyle="success",
+        ).grid(row=7, column=0, sticky="ew", pady=(5, 10))
+
+        ttk.Label(self.frame_form, text="Apariencia de la Interfaz:").grid(
+            row=8, column=0, sticky="w", pady=(25, 2)
+        )
+        self.opt_tema = ttk.Combobox(
+            self.frame_form,
+            values=["Claro (flatly)", "Oscuro (darkly)"],
+            state="readonly",
+        )
+        self.opt_tema.set("Claro (flatly)")
+        self.opt_tema.bind("<<ComboboxSelected>>", self._cambiar_apariencia)
+        self.opt_tema.grid(row=9, column=0, sticky="ew", pady=(0, 15))
+
+    def _crear_panel_tabla(self):
+        self.frame_tabla = ttk.LabelFrame(self, text="Lista de Resultados", padding=15)
+        self.frame_tabla.grid(row=0, column=1, padx=(10, 15), pady=15, sticky="nsew")
+        self.frame_tabla.columnconfigure(0, weight=1)
+        self.frame_tabla.rowconfigure(0, weight=1)
+
+        columnas = ("id", "nombre", "email", "rol", "estado")
+        self.tabla = ttk.Treeview(
+            self.frame_tabla,
+            columns=columnas,
+            show="headings",
+            selectmode="browse",
+        )
+        titulos = {
+            "id": "ID",
+            "nombre": "Nombre",
+            "email": "Email",
+            "rol": "Rol",
+            "estado": "Estado",
+        }
+        anchos = {"id": 45, "nombre": 150, "email": 190, "rol": 130, "estado": 85}
+        for columna in columnas:
+            self.tabla.heading(columna, text=titulos[columna])
+            self.tabla.column(columna, width=anchos[columna], minwidth=50, anchor="w")
+
+        self.tabla.tag_configure("activo", foreground="#15803d")
+        self.tabla.tag_configure("inactivo", foreground="#dc2626")
+        self.tabla.grid(row=0, column=0, sticky="nsew")
+
+        barra = ttk.Scrollbar(self.frame_tabla, orient="vertical", command=self.tabla.yview)
+        barra.grid(row=0, column=1, sticky="ns")
+        self.tabla.configure(yscrollcommand=barra.set)
+
+        ttk.Button(
+            self.frame_tabla,
+            text="Eliminar seleccionado",
+            command=self._eliminar_registro_seleccionado,
+            bootstyle="danger-outline",
+        ).grid(row=1, column=0, sticky="e", pady=(10, 0))
+
+    def _cargar_datos_tabla(self):
+        for fila in self.tabla.get_children():
+            self.tabla.delete(fila)
+
+        for item in self.registros:
+            etiqueta = "activo" if item["estado"] == "Activo" else "inactivo"
+            self.tabla.insert(
+                "",
+                "end",
+                iid=str(item["id"]),
+                values=(item["id"], item["nombre"], item["email"], item["rol"], item["estado"]),
+                tags=(etiqueta,),
+            )
+
+    def _agregar_registro(self):
+        nombre = self.ent_nombre.get().strip()
+        email = self.ent_email.get().strip()
+
+        if not nombre or not email:
+            messagebox.showwarning("Campos Incompletos", "Por favor completa el nombre y el correo.")
+            return
+
+        self.registros.append({
+            "id": self.contador_id,
+            "nombre": nombre,
+            "email": email,
+            "rol": self.opt_rol.get(),
+            "estado": "Activo" if self.estado_activo.get() else "Inactivo",
+        })
+        self.contador_id += 1
+
+        self._cargar_datos_tabla()
+        self.ent_nombre.delete(0, tk.END)
+        self.ent_email.delete(0, tk.END)
+        messagebox.showinfo("Éxito", f"Usuario '{nombre}' registrado correctamente.")
+
+    def _eliminar_registro_seleccionado(self):
+        seleccion = self.tabla.selection()
+        if not seleccion:
+            messagebox.showwarning("Sin selección", "Selecciona un usuario para eliminarlo.")
+            return
+
+        id_registro = int(seleccion[0])
+        self.registros = [registro for registro in self.registros if registro["id"] != id_registro]
+        self._cargar_datos_tabla()
+
+    def _cambiar_apariencia(self, evento=None):
+        tema = "darkly" if self.opt_tema.get().startswith("Oscuro") else "flatly"
+        self.style.theme_use(tema)
+
+
+if __name__ == "__main__":
+    app = AppGestionTkinter()
+    app.mainloop()
+```
+</TabItem>
+</Tabs>
+<br/>
+---
+
+
+
+### Resumen Comparativo
+
+* **`ttk` Nativo:** Ideal si no quieres instalar dependencias externas en tu proyecto Python.
+
+* **`ttkbootstrap`:** La mejor opción para prototipado rápido con temas profesionales estilo Bootstrap.
+
+* **`CustomTkinter`:** La mejor alternativa si buscas bordes redondeados, sombras y soporte para cambiar entre tema claro y oscuro automáticamente según la configuración del sistema operativo.
+
+
+***
+## **ttkbootstrap**
+
+**`ttkbootstrap`** es una biblioteca de Python diseñada para transformar de forma instantánea la apariencia de las aplicaciones de escritorio creadas con **Tkinter**. 
+
+Funciona como una capa superior (*wrapper*) construida sobre el módulo de widgets temáticos **`tkinter.ttk`**, incorporando los principios de diseño, la paleta de colores y la semántica visual del popular marco de trabajo web **[Bootstrap](https://getbootstrap.com/)** (versiones 4 y 5).
+
+
+
+### Por qué usar `ttkbootstrap`
+
+1. **Catálogo de Temas Listos para Usar (*Themes*):**
+   Permite cambiar todo el aspecto visual de la aplicación asignando el nombre de un tema al instanciar la ventana principal (`ttk.Window(themename="superhero")`).
+   * **Temas Claros:** `flatly`, `cosmo`, `journal`, `minty`, `litera`, `pulse`, `lumen`, `sandstone`.
+   * **Temas Oscuros:** `darkly`, `cyborg`, `superhero`, `solar`, `vapor`.
+
+2. **Parámetro Semántico `bootstyle`:**
+   Todos los widgets admiten la propiedad `bootstyle`, permitiendo asignar colores y estados visuales basados en la convenciones universales de Bootstrap:
+   * **`primary`** (Azul - Acción principal / Enfoque)
+   * **`success`** (Verde - Confirmación / Válido)
+   * **`info`** (Cian - Información)
+   * **`warning`** (Amarillo - Advertencia)
+   * **`danger`** (Rojo - Error / Acción crítica)
+   * **`secondary` / `dark` / `light`** (Tonos neutros)
+   * Modificadores como **`outline-*`** (botones con borde calado) o **`round-toggle`** (interruptores de tipo *Switch*).
+
+3. **Componentes Avanzados para Formulario:**
+   Además de estilizar los elementos tradicionales, introduce widgets especializados como **`ttk.DateEntry`** (calendario desplegable para selección de fechas), **`Meter`** (indicadores circulares de progreso) y el módulo **`Messagebox`** (cuadros de diálogo modales adaptados al tema).
+
+
+
+### Ingreso de Datos (*Data Entry*)
+
+En las aplicaciones de captura de información, `ttkbootstrap` mejora la experiencia de usuario (*UX*) permitiendo que los campos, interruptores y botones comuniquen su propósito mediante colores y estilos claros.
+
+He creado el script ejecutable **`ttkbootstrap_ingreso_datos.py`** en tu panel Studio. A continuación se explica su implementación estructurada mediante Programación Orientada a Objetos:
+
+<details>
+<summary>🖥️ Código</summary>
+
+```python
+import tkinter as tk
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+from ttkbootstrap.dialogs import Messagebox
+
+class FormularioTTKBootstrapApp(ttk.Window):
+    """
+    Aplicación de escritorio para ingreso de datos estructurado utilizando ttkbootstrap.
+    """
+    def __init__(self):
+        # 1. Crear la ventana asignando un tema de Bootstrap ("superhero")
+        super().__init__(themename="lumen")
+        
+        self.title("Ingreso de Datos - ttkbootstrap")
+        self.geometry("560x620")
+        self.resizable(False, False)
+        
+        # 2. Variables de control conectadas a los campos del formulario
+        self.var_nombre = tk.StringVar()
+        self.var_email = tk.StringVar()
+        self.var_categoria = tk.StringVar(value="Tecnología")
+        self.var_prioridad = tk.StringVar(value="Media")
+        self.var_notificaciones = tk.BooleanVar(value=True)
+        
+        self._crear_interfaz()
+        
+    def _crear_interfaz(self):
+        main_container = ttk.Frame(self, padding=25)
+        main_container.pack(fill=BOTH, expand=YES)
+        
+        # Título del formulario
+        ttk.Label(
+            main_container, 
+            text="Formulario de Registro de Ticket", 
+            font=("Helvetica", 16, "bold"),
+            bootstyle="primary"
+        ).pack(pady=(0, 20), anchor=W)
+        
+        # --- Campo 1: Texto de entrada básico (Entry con bootstyle="primary") ---
+        ttk.Label(main_container, text="Nombre del Solicitante:", font=("Helvetica", 10, "bold")).pack(anchor=W, pady=(5, 2))
+        ttk.Entry(
+            main_container, 
+            textvariable=self.var_nombre, 
+            bootstyle="primary"
+        ).pack(fill=X, pady=(0, 15))
+        
+        # --- Campo 2: Correo electrónico (Entry con bootstyle="info") ---
+        ttk.Label(main_container, text="Correo Electrónico:", font=("Helvetica", 10, "bold")).pack(anchor=W, pady=(5, 2))
+        ttk.Entry(
+            main_container, 
+            textvariable=self.var_email, 
+            bootstyle="info"
+        ).pack(fill=X, pady=(0, 15))
+        
+        # --- Campo 3: Selección desplegable (Combobox con bootstyle="success") ---
+        ttk.Label(main_container, text="Categoría del Requerimiento:", font=("Helvetica", 10, "bold")).pack(anchor=W, pady=(5, 2))
+        ttk.Combobox(
+            main_container, 
+            textvariable=self.var_categoria,
+            values=["Tecnología", "Soporte Técnico", "Recursos Humanos", "Finanzas", "Infraestructura"],
+            state="readonly",
+            bootstyle="success"
+        ).pack(fill=X, pady=(0, 15))
+        
+        # --- Campo 4: Opción exclusiva con Radiobutton semánticos ---
+        ttk.Label(main_container, text="Nivel de Prioridad:", font=("Helvetica", 10, "bold")).pack(anchor=W, pady=(5, 2))
+        frame_prioridad = ttk.Frame(main_container)
+        frame_prioridad.pack(fill=X, pady=(0, 15))
+        
+        prioridades = [("Baja", "secondary"), ("Media", "warning"), ("Alta / Crítica", "danger")]
+        for val, style in prioridades:
+            ttk.Radiobutton(
+                frame_prioridad, 
+                text=val, 
+                value=val, 
+                variable=self.var_prioridad,
+                bootstyle=style
+            ).pack(side=LEFT, padx=(0, 20))
+            
+        # --- Campo 5: Interruptor estilizado (Checkbutton con bootstyle="round-toggle") ---
+        ttk.Checkbutton(
+            main_container,
+            text="Recibir confirmación y seguimiento por correo",
+            variable=self.var_notificaciones,
+            bootstyle="round-toggle"
+        ).pack(anchor=W, pady=(5, 20))
+        
+        ttk.Separator(main_container, bootstyle="secondary").pack(fill=X, pady=10)
+        
+        # --- Botones de Acción (outline vs solid) ---
+        frame_botones = ttk.Frame(main_container)
+        frame_botones.pack(fill=X, pady=10)
+        
+        ttk.Button(
+            frame_botones, 
+            text="Limpiar Campos", 
+            command=self._limpiar_formulario,
+            bootstyle="outline-secondary",
+            width=18
+        ).pack(side=LEFT)
+        
+        ttk.Button(
+            frame_botones, 
+            text="Enviar Requerimiento", 
+            command=self._procesar_formulario,
+            bootstyle="success",
+            width=22
+        ).pack(side=RIGHT)
+
+    def _procesar_formulario(self):
+        nombre = self.var_nombre.get().strip()
+        email = self.var_email.get().strip()
+        
+        # Validación de campos requeridos mediante los diálogos de ttkbootstrap
+        if not nombre or not email:
+            Messagebox.show_warning(
+                message="Por favor completa los campos de Nombre y Correo Electrónico.",
+                title="Campos Incompletos",
+                parent=self
+            )
+            return
+            
+        resumen = (
+            f"Ticket registrado con éxito:\n\n"
+            f"• Solicitante: {nombre}\n"
+            f"• Correo: {email}\n"
+            f"• Categoría: {self.var_categoria.get()}\n"
+            f"• Prioridad: {self.var_prioridad.get()}"
+        )
+        
+        Messagebox.show_info(
+            message=resumen,
+            title="Registro Exitoso",
+            parent=self
+        )
+        self._limpiar_formulario()
+        
+    def _limpiar_formulario(self):
+        self.var_nombre.set("")
+        self.var_email.set("")
+        self.var_categoria.set("Tecnología")
+        self.var_prioridad.set("Media")
+        self.var_notificaciones.set(True)
+
+if __name__ == "__main__":
+    app = FormularioTTKBootstrapApp()
+    app.mainloop()
+```
+</details>
+
+![](img/ttkbootstrap-tema.png)
+
+
+
+
+#### Puntos Destacados de esta Implementación
+
+1. **Gestor de Mensajes Integrado (`Messagebox`):**
+   Se utiliza `from ttkbootstrap.dialogs import Messagebox`. A diferencia de `tkinter.messagebox` (que genera cuadros de diálogo grises clásicos del sistema), `Messagebox.show_warning()` y `Messagebox.show_info()` despliegan ventanas flotantes estilizadas que respetan los colores del tema activo (`superhero`).
+
+2. **Interruptores tipo Switch (`round-toggle`):**
+   Al agregar `bootstyle="round-toggle"` a un `ttk.Checkbutton`, la casilla tradicional de verificación se transforma automáticamente en una palanca deslizante tipo *iOS/Android*.
+
+3. **Uso de Estilos Outline:**
+   Para acciones secundarias (como *"Limpiar Campos"*), el uso de `bootstyle="outline-secondary"` dibuja un botón transparente con borde fino que se rellena al pasar el cursor (*hover*), jerarquizando visualmente el botón principal de envío (`bootstyle="success"`).
+
+
+
+***
+## **Cambiar tema**
+
+Cambiar de tema en tiempo de ejecución (*runtime*) depende de la biblioteca gráfica que estés utilizando. Tanto en **CustomTkinter** como en **`ttkbootstrap`**, este proceso es directo y no requiere reiniciar la aplicación ni reconstruir las ventanas.
+
+![](img/tema.png)
+
+#### En CustomTkinter
+
+CustomTkinter permite alternar instantáneamente entre el **Modo Oscuro** (`"Dark"`), **Modo Claro** (`"Light"`) o sincronizarse con el sistema operativo (`"System"`) mediante la función **`ctk.set_appearance_mode()`**.
+
+<details>
+<summary>🖥️ **Código ejemplo con selector desplegable (`CTkOptionMenu`):**</summary>
+
+```python
+import customtkinter as ctk
+
+app = ctk.CTk()
+app.title("Cambio de Tema - CustomTkinter")
+app.geometry("350x200")
+
+# Función callback para cambiar el tema al seleccionar una opción
+def cambiar_apariencia(nuevo_modo):
+    ctk.set_appearance_mode(nuevo_modo)
+
+label = ctk.CTkLabel(app, text="Selecciona la apariencia:", font=("Roboto", 14))
+label.pack(pady=(30, 10))
+
+# Menú desplegable conectado directamente a la función
+combo_tema = ctk.CTkOptionMenu(
+    app, 
+    values=["Dark", "Light", "System"], 
+    command=cambiar_apariencia
+)
+combo_tema.pack(pady=10)
+
+app.mainloop()
+```
+</details>
+
+
+#### En `ttkbootstrap`
+
+En `ttkbootstrap`, el estilo visual de toda la aplicación se actualiza en tiempo real invocando el método **`style.theme_use(nombre_tema)`**. Puedes alternar entre temas claros (`flatly`, `minty`, `cosmo`) y oscuros (`darkly`, `cyborg`, `superhero`, `solar`).
+
+<details>
+<summary>🖥️ **Código de ejemplo**</summary>
+
+```python
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
+
+# Ventana con tema inicial "superhero"
+app = ttk.Window(themename="superhero")
+app.title("Cambio de Tema - ttkbootstrap")
+app.geometry("400x220")
+
+# Función callback invocada al cambiar la selección
+def cambiar_tema(event):
+    nuevo_tema = combo_temas.get()
+    app.style.theme_use(nuevo_tema)
+
+container = ttk.Frame(app, padding=20)
+container.pack(fill=BOTH, expand=YES)
+
+ttk.Label(container, text="Elige un tema visual:", font=("Helvetica", 12, "bold")).pack(anchor=W, pady=(0, 10))
+
+# Lista con temas claros y oscuros
+temas_disponibles = ["superhero", "darkly", "cyborg", "flatly", "minty", "cosmo", "solar"]
+
+combo_temas = ttk.Combobox(container, values=temas_disponibles, state="readonly")
+combo_temas.set("superhero")
+combo_temas.bind("<<ComboboxSelected>>", cambiar_tema)
+combo_temas.pack(fill=X, pady=10)
+
+# Botón de muestra para ver la reacción del tema
+ttk.Button(container, text="Botón de Prueba", bootstyle="success").pack(fill=X, pady=10)
+
+app.mainloop()
+```
+</details>
+
+
+
+#### 3. En Tkinter / `ttk` Nativo
+
+Si usas `ttk` estándar sin librerías externas, puedes cambiar entre los temas nativos del sistema operativo mediante **`ttk.Style().theme_use()`**:
+
+<details>
+<summary>🖥️ Código tkinter</summary>
+
+```python
+import tkinter as tk
+from tkinter import ttk
+
+root = tk.Tk()
+style = ttk.Style()
+
+# Consultar temas disponibles en tu S.O. (p. ej. 'clam', 'alt', 'default', 'vista')
+temas = style.theme_names()
+
+def cambiar_tema_nativo(nuevo_tema):
+    style.theme_use(nuevo_tema)
+```
+</details>
 

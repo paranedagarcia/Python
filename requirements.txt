@@ -120,6 +120,7 @@ threadpoolctl==3.6.0
 tinycss2==1.5.1
 toml==0.10.2
 tornado==6.5.7
+ttkbootstrap
 traitlets==5.15.1
 typing-extensions==4.15.0
 tzdata==2026.2

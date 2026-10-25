@@ -19,6 +19,7 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
   </div>
 </div>
 ----
+
 <center>
 <figure>
 ![](img)
@@ -31,7 +32,7 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 
 </details>
 
-<br />
+<br/>
 #### 🖥️ Código:
 <Tabs>
 <TabItem value="ph" label="Antecedentes" default>
@@ -51,8 +52,10 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 ```
 </TabItem>
 </Tabs>
+<br/>
 
-<br />
+
+<br/>
 <Tabs>
 <TabItem value="abs1" label="Ejercicio" default>
 <div class="alert alert--primary">
@@ -66,10 +69,10 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 ```
 </TabItem>
 </Tabs>
-
+<br/>
 
 ---
-<br />
+<br/>
 <Tabs>
 <TabItem value="ej1" label="Ejercicio" default>
 <div class="alert alert--primary">
@@ -87,6 +90,7 @@ import YouTubeVideo from '@site/src/components/YouTubeVideo';
 
 </TabItem>
 </Tabs>
+<br/>
 
 ## Flask
 ¿Cómo configuro mi primera base de datos con Flask?
@@ -253,3 +257,22 @@ Ejemplo de herencia múltiple y el MRO.
 ¿Cómo se implementan los métodos de clase en Python?
 ¿Qué diferencia hay entre un método estático y uno de clase?
 Dame un ejemplo de polimorfismo dinámico
+
+
+## GUI
+
+¿Cómo se crean interfaces gráficas avanzadas usando clases?
+¿Qué otros gestores de diseño existen en Tkinter?
+
+
+🎯 ¿Te gustaría ver cómo **guardar la preferencia de tema del usuario** en la base de datos o en un archivo de configuración para que se aplique automáticamente la próxima vez que abra la aplicación?
+
+📱 ¿Te gustaría que exploremos cómo estructurar interfaces en Kivy usando archivos de diseño `.kv` o prefieres ver cómo empaquetar una aplicación para Android con Buildozer?
+
+Explora cómo usar archivos KV en Kivy
+¿Cómo se estructuran las clases en Kivy?
+Compilar apps de Kivy para Android
+
+📱 ¿Te gustaría que exploremos cómo gestionar la navegación entre varias ventanas mediante **`ScreenManager`** o prefieres ver cómo compilar aplicaciones para Android con **Buildozer**?
+
+📱 ¿Te gustaría que exploremos cómo conectar esta tabla de Kivy con una **base de datos SQLite** o cómo usar el widget avanzado **`RecycleView`** para manejar grandes volúmenes de datos?
