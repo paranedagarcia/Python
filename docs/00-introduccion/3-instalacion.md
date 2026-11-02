@@ -32,6 +32,7 @@ python3.14 --version
 
 ```
 
+***
 ## **uv**
 UV es un gestor de paquetes y proyectos de Python de última generación diseñado para reemplazar herramientas como pip, virtualenv, poetry y pyenv. Creado para ofrecer velocidad y eficiencia, UV proporciona una interfaz unificada para gestionar entornos, dependencias e incluso versiones de Python. Está escrito en `Rust`, lo que lo hace significativamente más rápido que las herramientas tradicionales.
 
@@ -43,15 +44,24 @@ Instalar uv
 ```bash
 # linux / Mac
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
 # Windows
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Windows con permiso para uso de directorios
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
-Verificar
+Verificar la instalación (Terminal / PowerShell)
 ```bash
 uv --version
 ```
-Crear entorno
+**Crear un entorno**
+
+cambia al directorio de trabajo
+```bash
+cd directorio
+```
+crea el nuevo entorno
 ```bash
 uv venv --python 3.14
 ```
@@ -60,11 +70,11 @@ Activar entorno virtual
 source .venv/bin/activate  # For Linux/Mac
 .venv\Scripts\activate     # For Windows
 ```
-Crea un proyecto o inicializa el actual
+**Crea un proyecto** o inicializa el actual
 ```bash
 uv init
 ```
-Dependencias
+**Gestión de dependencias**
 ```bash
 uv add # instala dependencias
 uv remove # elimina dependencias
@@ -130,5 +140,7 @@ https://code.visualstudio.com/
 
 
 ## Colab Google
+
+Este es un entorno de fácil uso y orientado principalmente al aprendizaje y la academia. No requiere instalación de versión alguna de Python o de librerias adicicionales, ya que posee las esenciales.
 
 https://colab.research.google.com/
