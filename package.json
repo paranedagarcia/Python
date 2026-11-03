@@ -48,5 +48,21 @@
   },
   "engines": {
     "node": ">=20.0"
-  }
+  },
+  "description": "This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.",
+  "main": "docusaurus.config.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paranedagarcia/Python.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paranedagarcia/Python/issues"
+  },
+  "homepage": "https://github.com/paranedagarcia/Python#readme"
 }
