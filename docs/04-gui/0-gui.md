@@ -1,5 +1,5 @@
 ---
-id: tkinter
+id: guipython
 title: "GUI en Python"
 sidebar_label: "🖥️ GUI en Python"
 description: "Desarrollo GUI e Python"
