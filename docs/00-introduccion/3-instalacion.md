@@ -34,6 +34,7 @@ python3.14 --version
 
 ***
 ## **uv**
+
 UV es un gestor de paquetes y proyectos de Python de última generación diseñado para reemplazar herramientas como pip, virtualenv, poetry y pyenv. Creado para ofrecer velocidad y eficiencia, UV proporciona una interfaz unificada para gestionar entornos, dependencias e incluso versiones de Python. Está escrito en `Rust`, lo que lo hace significativamente más rápido que las herramientas tradicionales.
 
 **Documentación:**
@@ -92,16 +93,76 @@ uv pip freeze > requirements.txt
  ```bash
  uv deactivate
  ```
- ### Migración
- Para migrar un entorno ya creado hacia uv
- ```bash
- uv init
- ```
- Convertir las dependencias
- ```bash
- uv add -r requirements.txt
- ```
- Lo que recrea pyproject.toml and uv.lock haciendo el proyecto compatible con `uv`
+
+ ### Entornos centralizados
+
+ Se puede crear un entorno virtual dentro de una carpeta centralizada (ej: `~/.venvs/`). Nombras cada entorno (ej: datascience) y lo activas desde cualquier proyecto.
+
+ Crea la carpeta central y el entorno:
+```bash
+uv venv ~/.venvs/datascience
+```
+Para Windows
+```bash
+uv venv %USERPROFILE%\.venvs\datascience
+```
+Instala los paquetes directamente en el nuevo entorno sin activarlo:
+```bash
+uv pip install --python 3.14 ~/.venvs/datascience pandas requests 
+```
+Activalo desde cualquier carpeta de trabajo
+```bash
+# linux / Mac
+source ~/.venvs/datascience/bin/activate
+# Windows
+~\.venvs\datascience\Scripts\Activate.ps1
+```
+
+### Sin entornos
+
+Para crear un script sin requerir la creación de un nuevo entorno y solo utilizar uno previamente existente (no armas un proyecto), declara las dependencias dentro del mismo archivo Python .`.py`. 
+
+`uv` creará en entorno temporal en la cache central, instalará las librerias y se utilizará automáticamente cada vez que se ejecute el script, sin agregar carpetas.
+
+Agrega el encabezado siguiente en el archivo `simple.py`:
+```python
+# /// script
+# dependencies = [
+#   "requests",
+#   "rich",
+# ]
+# ///
+
+import requests
+from rich import print
+
+print("¡Ejecutando con dependencias aisladas y cacheadas!")
+```
+y se ejecuta directamente desde la terminal
+```bash
+uv run simple.py
+```
+
+#### Cuál elegir?
+
+
+| Objetivo	| Solución con uv |	Ventaja principal|
+|--- |--- |--- |
+| Varios proyectos con las mismas librerías | uv venv ~/.venvs/nombre |	Los activas por nombre desde cualquier ruta. |
+| Un solo entorno para toda la PC |	Variable<br/>UV_PROJECT_ENVIRONMENT | Nunca se crean carpetas .venv locales. |
+| Scripts sueltos y automatizaciones | Dependencias inline + uv run | Cero configuración manual y reutilización automática. |
+
+
+### Migración
+Para migrar un entorno ya creado hacia uv
+```bash
+uv init
+```
+Convertir las dependencias
+```bash
+uv add -r requirements.txt
+```
+Lo que recrea pyproject.toml and uv.lock haciendo el proyecto compatible con `uv`
 
 ### Avanzado
 Gestiona versiones de Python
