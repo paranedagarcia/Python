@@ -289,7 +289,7 @@ El motor de `ttk` se controla a través de dos mecanismos principales: **Temas**
 #### **A. Selección de Temas (`theme_use`)**
 Python incluye varios temas predeterminados. Puedes listar los disponibles en tu sistema con `style.theme_names()` y aplicarlos globalmente:
 
-```python
+```python showLineNumbers
 style = ttk.Style()
 print(style.theme_names())  # Muestra p. ej.: ('clam', 'alt', 'default', 'classic', 'vista')
 style.theme_use('clam')     # Aplica el tema seleccionado
@@ -298,7 +298,7 @@ style.theme_use('clam')     # Aplica el tema seleccionado
 #### **B. Configuración de Estilos (`style.configure`)**
 En lugar de pasar colores a cada botón, defines una regla de estilo aplicable a todos los botones o a un grupo específico:
 
-```python
+```python showLineNumbers
 # Configuración global para todos los Label
 style.configure("TLabel", font=("Helvetica", 11), foreground="#333333")
 
@@ -309,7 +309,7 @@ style.configure("Accent.TButton", font=("Helvetica", 10, "bold"), background="#0
 #### **C. Mapeo de Estados (`style.map`)**
 Permite cambiar dinámicamente la apariencia de un widget según su estado interactivo (cuando el usuario pasa el ratón por encima, hace clic o desactiva el botón):
 
-```python
+```python showLineNumbers
 style.map("Accent.TButton",
     background=[("active", "#0052a3"), ("disabled", "#cccccc")],
     foreground=[("active", "white")]
@@ -324,7 +324,7 @@ El siguiente script ilustra cómo construir una ventana estilizada combinando **
 <details>
 <summary>🖥️ Código</summary>
 
-```python
+```python showLineNumbers
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -465,7 +465,7 @@ Aplicar un **tema oscuro (*Dark Mode*)** en Python se puede lograr de tres forma
 
 Para crear un tema oscuro en **`ttk`** sin dependencias externas, definimos una paleta de colores oscuros (como tonos gris carbón `#18181b`, `#27272a` y acentos azules `#2563eb`) y los aplicamos mediante el gestor de estilos:
 
-```python
+```python showLineNumbers
 import tkinter as tk
 from tkinter import ttk
 
@@ -517,7 +517,7 @@ if __name__ == "__main__":
 
 Si prefieres no configurar cada color manualmente, la librería **`ttkbootstrap`** incluye temas oscuros profesionales ya listos (**`darkly`**, **`cyborg`**, **`solar`**, **`vapor`**):
 
-```python
+```python showLineNumbers
 # Requiere instalación previa: pip install ttkbootstrap
 import ttkbootstrap as ttk
 
@@ -572,7 +572,7 @@ He generado un script completo en Python con **Programación Orientada a Objetos
 <details>
 <summary>🖥️ Código de ejemplo</summary>
 
-```python
+```python showLineNumbers
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -785,7 +785,7 @@ A continuación se presenta una estructura completa que ilustra la arquitectura 
 <details>
 <summary>🖥️ Código de integración</summary>
 
-```python
+```python showLineNumbers
 import sqlite3
 import tkinter as tk
 from tkinter import messagebox
@@ -925,7 +925,7 @@ Integra el widget tradicional de tabla multi-columna de `ttk.Treeview` dentro de
 <details>
 <summary>🖥️ Código de tema dark</summary>
 
-```python
+```python showLineNumbers
 # Tema Oscuro con CustomTkinter
 # Requiere instalación previa: pip install customtkinter
 import customtkinter as ctk
@@ -1671,7 +1671,7 @@ He creado el script ejecutable **`ttkbootstrap_ingreso_datos.py`** en tu panel S
 <details>
 <summary>🖥️ Código</summary>
 
-```python
+```python showLineNumbers
 import tkinter as tk
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
@@ -1854,7 +1854,7 @@ CustomTkinter permite alternar instantáneamente entre el **Modo Oscuro** (`"Dar
 <details>
 <summary>🖥️ **Código ejemplo con selector desplegable (`CTkOptionMenu`):**</summary>
 
-```python
+```python showLineNumbers
 import customtkinter as ctk
 
 app = ctk.CTk()
@@ -1888,7 +1888,7 @@ En `ttkbootstrap`, el estilo visual de toda la aplicación se actualiza en tiemp
 <details>
 <summary>🖥️ **Código de ejemplo**</summary>
 
-```python
+```python showLineNumbers
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
@@ -1931,7 +1931,7 @@ Si usas `ttk` estándar sin librerías externas, puedes cambiar entre los temas 
 <details>
 <summary>🖥️ Código tkinter</summary>
 
-```python
+```python showLineNumbers
 import tkinter as tk
 from tkinter import ttk
 
