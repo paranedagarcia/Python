@@ -93,6 +93,16 @@ uv pip freeze > requirements.txt
  ```bash
  uv deactivate
  ```
+**Eliminar un entorno**
+
+Eliminar un entorno en Linux/Mac
+```
+rm -rf .venv
+```
+En Windows (PowerShell)
+```
+Remove-Item -Recurse -Force .venv
+```
 
  ### Entornos centralizados
 
@@ -100,11 +110,11 @@ uv pip freeze > requirements.txt
 
  Crea la carpeta central y el entorno:
 ```bash
-uv venv ~/.venvs/datascience
+uv venv --python 3.14 ~/.venvs/datascience
 ```
 Para Windows
 ```bash
-uv venv %USERPROFILE%\.venvs\datascience
+uv venv -- python 3.14 %USERPROFILE%\.venvs\datascience
 ```
 Instala los paquetes directamente en el nuevo entorno sin activarlo:
 ```bash
@@ -116,6 +126,25 @@ Activalo desde cualquier carpeta de trabajo
 source ~/.venvs/datascience/bin/activate
 # Windows
 ~\.venvs\datascience\Scripts\Activate.ps1
+```
+:::info
+Si la versión 3.14 aún no la tienes descargada o gestionada por uv, este intentará descargarla automáticamente o puedes asegurarte de instalarla primero ejecutando:
+```
+uv python install 3.14
+```
+:::
+
+**Eliminar un entorno centralizado**
+
+Eliminar entornos centralizados en una ruta específica, borra la carpeta
+
+Eliminar un entorno en Linux/Mac
+```
+rm -rf ~/.venvs/nombre_del_entorno
+```
+En Windows (PowerShell)
+```
+Remove-Item -Recurse -Force %USERPROFILE%\.venvs\nombre_del_entorno
 ```
 
 ### Sin entornos
