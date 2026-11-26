@@ -103,6 +103,11 @@ const config = {
         {property: 'og:type', content: 'website' },
         {property: 'og:image', content: 'https://patricioaraneda.cl/python/img/python.jpg' },
       ],
+      docs: {
+        sidebar: {
+          hideable: true,
+          },
+      },
       // Replace with your project's social card
       image: 'img/python.jpg',
       colorMode: {
